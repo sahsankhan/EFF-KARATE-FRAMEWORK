@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: examples.api.SampleTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 24.288 s <<< FAILURE! - in examples.api.SampleTest
+examples/api/sample.[1:6] Successful login with valid credentials  Time elapsed: 13.381 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+status code was: 500, expected: 200, response time in milliseconds: 9229, url: https://api.effportal.com/login, response: 
+{"message": "Internal server error"}
+classpath:examples/api/sample.feature:10
+
+examples/api/sample.[2:12] Login fails with missing password  Time elapsed: 9.532 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+status code was: 200, expected: 402, response time in milliseconds: 8268, url: https://api.effportal.com/login, response: 
+{"statusCode": 402, "body": {"error": "The password is incorrect!"}}
+classpath:examples/api/sample.feature:16
+
