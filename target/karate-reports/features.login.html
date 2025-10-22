@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="stylesheet" href="res/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="res/karate-report.css" type="text/css"/>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <script type="text/javascript" src="res/jquery.min.js"></script>
+    <script type="text/javascript" src="res/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="res/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="res/bootstrap.min.js"></script>
+    <script type="text/javascript" src="res/karate-report.js"></script>
+    <script type="text/javascript" src="res/Resemble.js"></script>
+    <script>
+!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
+  api_host:'https://app.posthog.com',
+  persistence:'localStorage',
+  autocapture:false,
+  capture_pageview:false,
+  api_transport:'sendBeacon',
+  loaded: function(posthog) { 
+    posthog.capture("report_feature",{distinct_id:"f04cf2bb-4dcf-489e-be3c-77e518eaa265",karate_version:"1.4.1",karate_meta:null});
+  }
+});
+</script>
+
+    <title>features.login</title>
+  </head>
+  <body>
+    <div id="root-container">
+      <div id="leftnav">
+        
+        <div>
+  <div class="nav-logo">
+    <a href="https://karatelabs.io">
+      <img src="karate-labs-logo-ring.svg" alt="Karate Labs"/>
+    </a>
+    <div class="nav-count">
+      <div id="nav-pass" class="bg-success">2</div>
+      <div id="nav-fail" class="bg-danger">0</div>
+    </div>
+  </div>
+  <div id="nav-env">
+    <div></div>
+  </div>
+  <div id="nav-type">
+    <div>Scenarios</div>
+  </div>
+  <div id="nav-date">
+    <div>2025-10-22 04:37:31 PM</div>
+  </div>
+</div>
+
+        <div class="nav-container">
+          <div class="nav-item passed">
+            <a href="#[1:8]"><span>[1:8]</span> <span>Successful login</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[2:19]"><span>[2:19]</span> <span>Invalid login</span></a>
+          </div>
+        </div>
+      </div>
+      <div id="content">
+        <div class="page-heading alert alert-primary">
+          <a href="karate-summary.html">Summary</a><span class="feature-label">|</span>
+          <a href="karate-tags.html">Tags</a><span class="feature-label">|</span>
+          <span class="feature-label">Feature:</span>
+          <span class="feature-path">features/login.feature</span><span class="feature-label">|</span>
+          <span class="feature-name">Login API</span>
+          <span class="feature-description"></span>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[1:8]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[1:8]</span>
+                <span class="scenario-name">Successful login</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>1295</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[1:8]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[1:8]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.4">
+      <div class="step-ref bg-step">4</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url &#39;https://api.effportal.com&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[1:8]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[1:8]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.9">
+      <div class="step-ref passed">9</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>path &#39;/login&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.10">
+      <div class="step-ref passed">10</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>request { email: &#39;temesgen.tiruneh@toptal.com&#39;, password: &#39;Temu@1234&#39; }</span>
+      </div>
+    </div>
+    <div class="time-cell passed">23</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.11">
+      <div class="step-ref passed">11</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1232</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.11">16:37:29.864 request:
+1 &gt; POST https://api.effportal.com/login
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; Content-Length: 62
+1 &gt; Host: api.effportal.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;email&quot;: &quot;temesgen.tiruneh@toptal.com&quot;,
+  &quot;password&quot;: &quot;Temu@1234&quot;
+}
+
+
+16:37:30.975 response time in milliseconds: 1105
+1 &lt; 200
+1 &lt; Date: Wed, 22 Oct 2025 11:37:30 GMT
+1 &lt; Content-Type: application/json
+1 &lt; Content-Length: 1314
+1 &lt; Connection: keep-alive
+1 &lt; x-amzn-RequestId: c13bd0c2-a8a0-4d1d-8afe-e302c63b0019
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; x-amz-apigw-id: S2M_MEnVIAMEbCg=
+1 &lt; X-Amzn-Trace-Id: Root=1-68f8c1fa-17906a9e2f4f8986047f5c47;Parent=2f745e76c306002f;Sampled=0;Lineage=1:d00e293b:0
+{
+  &quot;accessToken&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InRlbWVzZ2VuLnRpcnVuZWhAdG9wdGFsLmNvbSIsImV4cCI6MTc2MTEzNjY1MH0.KJgPxnE0L9hH-vIxbx5OF8FAnrqNTStMx7VLCnG70Sg&quot;,
+  &quot;refreshToken&quot;: &quot;gAAAAABo-MH6MsJmBdYAIWfpj_yxZH-2acqkgRKPAZEZglDY5uWejW5tKkTi3Se_FCQTaJaqzRuZRu0IO19JgUfTeO3EwpFm-hwN2Ep5G8kOotHMwHdeT_X9KhZo0-3qZpIjsZMYVwnW&quot;,
+  &quot;user&quot;: {
+    &quot;sys_userCreatedName&quot;: &quot;&quot;,
+    &quot;address&quot;: &quot;456 Down Street, Chicago&quot;,
+    &quot;last_login&quot;: 1761132382,
+    &quot;last_name&quot;: &quot;Tiruneh&quot;,
+    &quot;profile_picture&quot;: &quot;&quot;,
+    &quot;subscription&quot;: {
+      &quot;sys_userModifiedName&quot;: &quot;drea@123go.io&quot;,
+      &quot;sys_userCreatedName&quot;: &quot;drea@123go.io&quot;,
+      &quot;sys_dateModified&quot;: 1754170453,
+      &quot;price&quot;: 0,
+      &quot;sys_userModified_id&quot;: 3,
+      &quot;name&quot;: &quot;Rookie&quot;,
+      &quot;description&quot;: &quot;Rookie Tier Subscription&quot;,
+      &quot;_id&quot;: 1,
+      &quot;sys_deleted&quot;: false,
+      &quot;sys_userCreated_id&quot;: 3,
+      &quot;sys_dateCreated&quot;: 1754170134
+    },
+    &quot;sys_deleted&quot;: &quot;&quot;,
+    &quot;sys_userCreated_id&quot;: &quot;&quot;,
+    &quot;sys_userModifiedName&quot;: &quot;temesgen.tiruneh@toptal.com&quot;,
+    &quot;password&quot;: &quot;gAAAAABo9ciqog35ubpMq17rDdIXweaLC49nhvi7Hwv4id47sloc4jAOESCmNqx1Y8uY4GFbFojOPVI0q7XbzwIetE57_D9Teg==&quot;,
+    &quot;sys_dateModified&quot;: 1761129398,
+    &quot;phone&quot;: &quot;+12339112233&quot;,
+    &quot;dob&quot;: &quot;1996-06-12&quot;,
+    &quot;sys_userModified_id&quot;: 41,
+    &quot;details&quot;: &quot;{}&quot;,
+    &quot;mfa_enabled&quot;: &quot;&quot;,
+    &quot;created_date&quot;: &quot;&quot;,
+    &quot;_id&quot;: 41,
+    &quot;first_name&quot;: &quot;Temesgen&quot;,
+    &quot;email&quot;: &quot;temesgen.tiruneh@toptal.com&quot;,
+    &quot;username&quot;: &quot;&quot;,
+    &quot;sys_dateCreated&quot;: &quot;&quot;
+  },
+  &quot;statusCode&quot;: 200
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.12">
+      <div class="step-ref passed">12</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">4</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.13">
+      <div class="step-ref passed">13</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print &#39;🔹 Response:&#39;, response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">12</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.13">16:37:30.993 [print] 🔹 Response: {
+  &quot;accessToken&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InRlbWVzZ2VuLnRpcnVuZWhAdG9wdGFsLmNvbSIsImV4cCI6MTc2MTEzNjY1MH0.KJgPxnE0L9hH-vIxbx5OF8FAnrqNTStMx7VLCnG70Sg&quot;,
+  &quot;refreshToken&quot;: &quot;gAAAAABo-MH6MsJmBdYAIWfpj_yxZH-2acqkgRKPAZEZglDY5uWejW5tKkTi3Se_FCQTaJaqzRuZRu0IO19JgUfTeO3EwpFm-hwN2Ep5G8kOotHMwHdeT_X9KhZo0-3qZpIjsZMYVwnW&quot;,
+  &quot;user&quot;: {
+    &quot;sys_userCreatedName&quot;: &quot;&quot;,
+    &quot;address&quot;: &quot;456 Down Street, Chicago&quot;,
+    &quot;last_login&quot;: 1761132382,
+    &quot;last_name&quot;: &quot;Tiruneh&quot;,
+    &quot;profile_picture&quot;: &quot;&quot;,
+    &quot;subscription&quot;: {
+      &quot;sys_userModifiedName&quot;: &quot;drea@123go.io&quot;,
+      &quot;sys_userCreatedName&quot;: &quot;drea@123go.io&quot;,
+      &quot;sys_dateModified&quot;: 1754170453,
+      &quot;price&quot;: 0,
+      &quot;sys_userModified_id&quot;: 3,
+      &quot;name&quot;: &quot;Rookie&quot;,
+      &quot;description&quot;: &quot;Rookie Tier Subscription&quot;,
+      &quot;_id&quot;: 1,
+      &quot;sys_deleted&quot;: false,
+      &quot;sys_userCreated_id&quot;: 3,
+      &quot;sys_dateCreated&quot;: 1754170134
+    },
+    &quot;sys_deleted&quot;: &quot;&quot;,
+    &quot;sys_userCreated_id&quot;: &quot;&quot;,
+    &quot;sys_userModifiedName&quot;: &quot;temesgen.tiruneh@toptal.com&quot;,
+    &quot;password&quot;: &quot;gAAAAABo9ciqog35ubpMq17rDdIXweaLC49nhvi7Hwv4id47sloc4jAOESCmNqx1Y8uY4GFbFojOPVI0q7XbzwIetE57_D9Teg==&quot;,
+    &quot;sys_dateModified&quot;: 1761129398,
+    &quot;phone&quot;: &quot;+12339112233&quot;,
+    &quot;dob&quot;: &quot;1996-06-12&quot;,
+    &quot;sys_userModified_id&quot;: 41,
+    &quot;details&quot;: &quot;{}&quot;,
+    &quot;mfa_enabled&quot;: &quot;&quot;,
+    &quot;created_date&quot;: &quot;&quot;,
+    &quot;_id&quot;: 41,
+    &quot;first_name&quot;: &quot;Temesgen&quot;,
+    &quot;email&quot;: &quot;temesgen.tiruneh@toptal.com&quot;,
+    &quot;username&quot;: &quot;&quot;,
+    &quot;sys_dateCreated&quot;: &quot;&quot;
+  },
+  &quot;statusCode&quot;: 200
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.14">
+      <div class="step-ref passed">14</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print &#39;🔹 Access Token:&#39;, response.accessToken</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.14">16:37:31.000 [print] 🔹 Access Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InRlbWVzZ2VuLnRpcnVuZWhAdG9wdGFsLmNvbSIsImV4cCI6MTc2MTEzNjY1MH0.KJgPxnE0L9hH-vIxbx5OF8FAnrqNTStMx7VLCnG70Sg 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.15">
+      <div class="step-ref passed">15</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print &#39;🔹 User Email:&#39;, response.user.email</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.15">16:37:31.001 [print] 🔹 User Email: temesgen.tiruneh@toptal.com 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.16">
+      <div class="step-ref passed">16</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>match response contains { accessToken: &#39;#string&#39;, refreshToken: &#39;#string&#39;, user: &#39;#object&#39; }</span>
+      </div>
+    </div>
+    <div class="time-cell passed">16</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.17">
+      <div class="step-ref passed">17</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>match response.user contains { email: &#39;temesgen.tiruneh@toptal.com&#39; }</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[2:19]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[2:19]</span>
+                <span class="scenario-name">Invalid login</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>797</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[2:19]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[2:19]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.4">
+      <div class="step-ref bg-step">4</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url &#39;https://api.effportal.com&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[2:19]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[2:19]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.20">
+      <div class="step-ref passed">20</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>path &#39;/login&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.21">
+      <div class="step-ref passed">21</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>request { email: &#39;temesgen.tiruneh@toptal.com&#39;, password: &#39;Temu@123&#39; }</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.22">
+      <div class="step-ref passed">22</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">792</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.22">16:37:31.044 request:
+1 &gt; POST https://api.effportal.com/login
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; Content-Length: 61
+1 &gt; Host: api.effportal.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;email&quot;: &quot;temesgen.tiruneh@toptal.com&quot;,
+  &quot;password&quot;: &quot;Temu@123&quot;
+}
+
+
+16:37:31.834 response time in milliseconds: 789
+1 &lt; 401
+1 &lt; Date: Wed, 22 Oct 2025 11:37:31 GMT
+1 &lt; Content-Type: application/json
+1 &lt; Content-Length: 58
+1 &lt; Connection: keep-alive
+1 &lt; x-amzn-RequestId: 16f2eb81-4f60-4118-83e1-196edd335c89
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; x-amz-apigw-id: S2M_VGrVIAMEEPA=
+1 &lt; X-Amzn-Trace-Id: Root=1-68f8c1fb-57b7e64b62f960ff47704f0f;Parent=09b500bfa19638ee;Sampled=0;Lineage=1:d00e293b:0
+{
+  &quot;error&quot;: &quot;The password is incorrect!&quot;,
+  &quot;statusCode&quot;: 401
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.23">
+      <div class="step-ref passed">23</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 401</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.24">
+      <div class="step-ref passed">24</div>
+      
+      <div class="step-cell passed">
+        <span>And</span>&nbsp;<span>match response.error == &#39;The password is incorrect!&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
