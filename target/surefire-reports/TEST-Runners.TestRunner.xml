@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="Runners.TestRunner" time="4.901" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="Runners.TestRunner" time="7.454" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\Test Knight\AppData\Local\Temp\surefire10165713769511857424\surefirebooter-20251022163727102_3.jar C:\Users\Test Knight\AppData\Local\Temp\surefire10165713769511857424 2025-10-22T16-37-26_954-jvmRun1 surefire-20251022163727102_1tmp surefire_0-20251022163727102_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Test Knight\AppData\Local\Temp\surefire860520580061915579\surefirebooter-20251022201733114_3.jar C:\Users\Test Knight\AppData\Local\Temp\surefire860520580061915579 2025-10-22T20-17-32_989-jvmRun1 surefire-20251022201733114_1tmp surefire_0-20251022201733114_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\Test Knight\karate-api-tests\target\test-classes;C:\Users\Test Knight\karate-api-tests\target\classes;C:\Users\Test Knight\.m2\repository\com\intuit\karate\karate-junit5\1.4.1\karate-junit5-1.4.1.jar;C:\Users\Test Knight\.m2\repository\com\intuit\karate\karate-core\1.4.1\karate-core-1.4.1.jar;C:\Users\Test Knight\.m2\repository\org\graalvm\js\js-scriptengine\22.3.3\js-scriptengine-22.3.3.jar;C:\Users\Test Knight\.m2\repository\org\graalvm\sdk\graal-sdk\22.3.3\graal-sdk-22.3.3.jar;C:\Users\Test Knight\.m2\repository\org\graalvm\js\js\22.3.3\js-22.3.3.jar;C:\Users\Test Knight\.m2\repository\org\graalvm\regex\regex\22.3.3\regex-22.3.3.jar;C:\Users\Test Knight\.m2\repository\org\graalvm\truffle\truffle-api\22.3.3\truffle-api-22.3.3.jar;C:\Users\Test Knight\.m2\repository\com\ibm\icu\icu4j\71.1\icu4j-71.1.jar;C:\Users\Test Knight\.m2\repository\org\thymeleaf\thymeleaf\3.1.2.RELEASE\thymeleaf-3.1.2.RELEASE.jar;C:\Users\Test Knight\.m2\repository\ognl\ognl\3.3.4\ognl-3.3.4.jar;C:\Users\Test Knight\.m2\repository\org\javassist\javassist\3.29.0-GA\javassist-3.29.0-GA.jar;C:\Users\Test Knight\.m2\repository\org\attoparser\attoparser\2.0.7.RELEASE\attoparser-2.0.7.RELEASE.jar;C:\Users\Test Knight\.m2\repository\org\unbescape\unbescape\1.1.6.RELEASE\unbescape-1.1.6.RELEASE.jar;C:\Users\Test Knight\.m2\repository\com\linecorp\armeria\armeria\1.25.2\armeria-1.25.2.jar;C:\Users\Test Knight\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar;C:\Users\Test Knight\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar;C:\Users\Test Knight\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar;C:\Users\Test Knight\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.2\jackson-datatype-jdk8-2.15.2.jar;C:\Users\Test Knight\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.2\jackson-datatype-jsr310-2.15.2.jar;C:\Users\Test Knight\.m2\repository\io\micrometer\micrometer-core\1.11.3\micrometer-core-1.11.3.jar;C:\Users\Test Knight\.m2\repository\io\micrometer\micrometer-commons\1.11.3\micrometer-commons-1.11.3.jar;C:\Users\Test Knight\.m2\repository\io\micrometer\micrometer-observation\1.11.3\micrometer-observation-1.11.3.jar;C:\Users\Test Knight\.m2\repository\org\hdrhistogram\HdrHistogram\2.1.12\HdrHistogram-2.1.12.jar;C:\Users\Test Knight\.m2\repository\org\latencyutils\LatencyUtils\2.0.3\LatencyUtils-2.0.3.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-transport\4.1.96.Final\netty-transport-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-common\4.1.96.Final\netty-common-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-buffer\4.1.96.Final\netty-buffer-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-resolver\4.1.96.Final\netty-resolver-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-codec-haproxy\4.1.96.Final\netty-codec-haproxy-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-codec\4.1.96.Final\netty-codec-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-codec-http2\4.1.96.Final\netty-codec-http2-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-handler\4.1.96.Final\netty-handler-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-codec-http\4.1.96.Final\netty-codec-http-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-resolver-dns\4.1.96.Final\netty-resolver-dns-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-codec-dns\4.1.96.Final\netty-codec-dns-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\org\reactivestreams\reactive-streams\1.0.4\reactive-streams-1.0.4.jar;C:\Users\Test Knight\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-handler-proxy\4.1.96.Final\netty-handler-proxy-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-codec-socks\4.1.96.Final\netty-codec-socks-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.96.Final\netty-transport-native-unix-common-4.1.96.Final-linux-x86_64.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-transport-native-epoll\4.1.96.Final\netty-transport-native-epoll-4.1.96.Final-linux-x86_64.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.96.Final\netty-transport-native-unix-common-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-transport-classes-epoll\4.1.96.Final\netty-transport-classes-epoll-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.96.Final\netty-transport-native-unix-common-4.1.96.Final-linux-aarch_64.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-transport-native-epoll\4.1.96.Final\netty-transport-native-epoll-4.1.96.Final-linux-aarch_64.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.96.Final\netty-transport-native-unix-common-4.1.96.Final-osx-x86_64.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-transport-native-kqueue\4.1.96.Final\netty-transport-native-kqueue-4.1.96.Final-osx-x86_64.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-transport-classes-kqueue\4.1.96.Final\netty-transport-classes-kqueue-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-resolver-dns-native-macos\4.1.96.Final\netty-resolver-dns-native-macos-4.1.96.Final-osx-x86_64.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-resolver-dns-classes-macos\4.1.96.Final\netty-resolver-dns-classes-macos-4.1.96.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.96.Final\netty-transport-native-unix-common-4.1.96.Final-osx-aarch_64.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-transport-native-kqueue\4.1.96.Final\netty-transport-native-kqueue-4.1.96.Final-osx-aarch_64.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-resolver-dns-native-macos\4.1.96.Final\netty-resolver-dns-native-macos-4.1.96.Final-osx-aarch_64.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-tcnative-boringssl-static\2.0.61.Final\netty-tcnative-boringssl-static-2.0.61.Final-linux-x86_64.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-tcnative-classes\2.0.61.Final\netty-tcnative-classes-2.0.61.Final.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-tcnative-boringssl-static\2.0.61.Final\netty-tcnative-boringssl-static-2.0.61.Final-linux-aarch_64.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-tcnative-boringssl-static\2.0.61.Final\netty-tcnative-boringssl-static-2.0.61.Final-osx-x86_64.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-tcnative-boringssl-static\2.0.61.Final\netty-tcnative-boringssl-static-2.0.61.Final-osx-aarch_64.jar;C:\Users\Test Knight\.m2\repository\io\netty\netty-tcnative-boringssl-static\2.0.61.Final\netty-tcnative-boringssl-static-2.0.61.Final-windows-x86_64.jar;C:\Users\Test Knight\.m2\repository\com\aayushatharva\brotli4j\brotli4j\1.12.0\brotli4j-1.12.0.jar;C:\Users\Test Knight\.m2\repository\com\aayushatharva\brotli4j\service\1.12.0\service-1.12.0.jar;C:\Users\Test Knight\.m2\repository\com\aayushatharva\brotli4j\native-windows-x86_64\1.12.0\native-windows-x86_64-1.12.0.jar;C:\Users\Test Knight\.m2\repository\org\apache\httpcomponents\httpclient\4.5.14\httpclient-4.5.14.jar;C:\Users\Test Knight\.m2\repository\org\apache\httpcomponents\httpcore\4.4.16\httpcore-4.4.16.jar;C:\Users\Test Knight\.m2\repository\commons-codec\commons-codec\1.16.0\commons-codec-1.16.0.jar;C:\Users\Test Knight\.m2\repository\ch\qos\logback\logback-classic\1.4.11\logback-classic-1.4.11.jar;C:\Users\Test Knight\.m2\repository\ch\qos\logback\logback-core\1.4.11\logback-core-1.4.11.jar;C:\Users\Test Knight\.m2\repository\org\slf4j\jcl-over-slf4j\2.0.9\jcl-over-slf4j-2.0.9.jar;C:\Users\Test Knight\.m2\repository\org\antlr\antlr4-runtime\4.11.1\antlr4-runtime-4.11.1.jar;C:\Users\Test Knight\.m2\repository\com\jayway\jsonpath\json-path\2.8.0\json-path-2.8.0.jar;C:\Users\Test Knight\.m2\repository\net\minidev\json-smart\2.4.10\json-smart-2.4.10.jar;C:\Users\Test Knight\.m2\repository\net\minidev\accessors-smart\2.4.9\accessors-smart-2.4.9.jar;C:\Users\Test Knight\.m2\repository\org\ow2\asm\asm\9.3\asm-9.3.jar;C:\Users\Test Knight\.m2\repository\org\yaml\snakeyaml\2.0\snakeyaml-2.0.jar;C:\Users\Test Knight\.m2\repository\de\siegmar\fastcsv\2.2.1\fastcsv-2.2.1.jar;C:\Users\Test Knight\.m2\repository\info\picocli\picocli\4.7.1\picocli-4.7.1.jar;C:\Users\Test Knight\.m2\repository\io\github\classgraph\classgraph\4.8.160\classgraph-4.8.160.jar;C:\Users\Test Knight\.m2\repository\io\github\t12y\resemble\1.0.2\resemble-1.0.2.jar;C:\Users\Test Knight\.m2\repository\io\github\t12y\ssim\1.0.0\ssim-1.0.0.jar;C:\Users\Test Knight\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.3\junit-jupiter-api-5.9.3.jar;C:\Users\Test Knight\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Test Knight\.m2\repository\org\junit\platform\junit-platform-commons\1.9.3\junit-platform-commons-1.9.3.jar;C:\Users\Test Knight\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Test Knight\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.3\junit-jupiter-engine-5.9.3.jar;C:\Users\Test Knight\.m2\repository\org\junit\platform\junit-platform-engine\1.9.3\junit-platform-engine-1.9.3.jar;C:\Users\Test Knight\.m2\repository\org\slf4j\slf4j-simple\2.0.13\slf4j-simple-2.0.13.jar;C:\Users\Test Knight\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Test Knight\AppData\Local\Temp\surefire10165713769511857424\surefirebooter-20251022163727102_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Test Knight\AppData\Local\Temp\surefire860520580061915579\surefirebooter-20251022201733114_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.2+13-LTS-58"/>
@@ -58,32 +58,32 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="[1:8] Successful login" classname="features/login" time="2.414">
-    <system-out><![CDATA[16:37:28.580 [main] DEBUG com.intuit.karate.Suite -- [config] classpath:karate-config.js
-16:37:29.747 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath -- Evaluating path: $
-16:37:29.770 [main] DEBUG io.netty.util.internal.logging.InternalLoggerFactory -- Using SLF4J as the default logging framework
-16:37:29.775 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- -Dio.netty.noUnsafe: false
-16:37:29.775 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- Java version: 21
-16:37:29.776 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- sun.misc.Unsafe.theUnsafe: available
-16:37:29.776 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- sun.misc.Unsafe.copyMemory: available
-16:37:29.777 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- sun.misc.Unsafe.storeFence: available
-16:37:29.777 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- java.nio.Buffer.address: available
-16:37:29.778 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- direct buffer constructor: unavailable: Reflective setAccessible(true) disabled
-16:37:29.778 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- java.nio.Bits.unaligned: available, true
-16:37:29.779 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable: class io.netty.util.internal.PlatformDependent0$7 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @710726a3
-16:37:29.781 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- java.nio.DirectByteBuffer.<init>(long, {int,long}): unavailable
-16:37:29.781 [main] DEBUG io.netty.util.internal.PlatformDependent -- sun.misc.Unsafe: available
-16:37:29.781 [main] DEBUG io.netty.util.internal.PlatformDependent -- maxDirectMemory: 8497659904 bytes (maybe)
-16:37:29.781 [main] DEBUG io.netty.util.internal.PlatformDependent -- -Dio.netty.tmpdir: C:\Users\TESTKN~1\AppData\Local\Temp (java.io.tmpdir)
-16:37:29.781 [main] DEBUG io.netty.util.internal.PlatformDependent -- -Dio.netty.bitMode: 64 (sun.arch.data.model)
-16:37:29.782 [main] DEBUG io.netty.util.internal.PlatformDependent -- Platform: Windows
-16:37:29.782 [main] DEBUG io.netty.util.internal.PlatformDependent -- -Dio.netty.maxDirectMemory: -1 bytes
-16:37:29.782 [main] DEBUG io.netty.util.internal.PlatformDependent -- -Dio.netty.uninitializedArrayAllocationThreshold: -1
-16:37:29.783 [main] DEBUG io.netty.util.internal.CleanerJava9 -- java.nio.ByteBuffer.cleaner(): available
-16:37:29.783 [main] DEBUG io.netty.util.internal.PlatformDependent -- -Dio.netty.noPreferDirect: false
-16:37:29.858 [main] DEBUG org.apache.http.client.protocol.RequestAddCookies -- CookieSpec selected: karate
-16:37:29.862 [main] DEBUG org.apache.http.client.protocol.RequestAuthCache -- Auth cache not set in the context
-16:37:29.864 [main] DEBUG com.intuit.karate -- request:
+  <testcase name="[1:8] Successful login" classname="features/login" time="5.13">
+    <system-out><![CDATA[20:17:34.458 [main] DEBUG com.intuit.karate.Suite -- [config] classpath:karate-config.js
+20:17:35.730 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath -- Evaluating path: $
+20:17:35.765 [main] DEBUG io.netty.util.internal.logging.InternalLoggerFactory -- Using SLF4J as the default logging framework
+20:17:35.771 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- -Dio.netty.noUnsafe: false
+20:17:35.771 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- Java version: 21
+20:17:35.771 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- sun.misc.Unsafe.theUnsafe: available
+20:17:35.771 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- sun.misc.Unsafe.copyMemory: available
+20:17:35.771 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- sun.misc.Unsafe.storeFence: available
+20:17:35.771 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- java.nio.Buffer.address: available
+20:17:35.771 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- direct buffer constructor: unavailable: Reflective setAccessible(true) disabled
+20:17:35.776 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- java.nio.Bits.unaligned: available, true
+20:17:35.776 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable: class io.netty.util.internal.PlatformDependent0$7 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @710726a3
+20:17:35.776 [main] DEBUG io.netty.util.internal.PlatformDependent0 -- java.nio.DirectByteBuffer.<init>(long, {int,long}): unavailable
+20:17:35.776 [main] DEBUG io.netty.util.internal.PlatformDependent -- sun.misc.Unsafe: available
+20:17:35.778 [main] DEBUG io.netty.util.internal.PlatformDependent -- maxDirectMemory: 8497659904 bytes (maybe)
+20:17:35.778 [main] DEBUG io.netty.util.internal.PlatformDependent -- -Dio.netty.tmpdir: C:\Users\TESTKN~1\AppData\Local\Temp (java.io.tmpdir)
+20:17:35.778 [main] DEBUG io.netty.util.internal.PlatformDependent -- -Dio.netty.bitMode: 64 (sun.arch.data.model)
+20:17:35.778 [main] DEBUG io.netty.util.internal.PlatformDependent -- Platform: Windows
+20:17:35.780 [main] DEBUG io.netty.util.internal.PlatformDependent -- -Dio.netty.maxDirectMemory: -1 bytes
+20:17:35.780 [main] DEBUG io.netty.util.internal.PlatformDependent -- -Dio.netty.uninitializedArrayAllocationThreshold: -1
+20:17:35.780 [main] DEBUG io.netty.util.internal.CleanerJava9 -- java.nio.ByteBuffer.cleaner(): available
+20:17:35.780 [main] DEBUG io.netty.util.internal.PlatformDependent -- -Dio.netty.noPreferDirect: false
+20:17:35.868 [main] DEBUG org.apache.http.client.protocol.RequestAddCookies -- CookieSpec selected: karate
+20:17:35.878 [main] DEBUG org.apache.http.client.protocol.RequestAuthCache -- Auth cache not set in the context
+20:17:35.882 [main] DEBUG com.intuit.karate -- request:
 1 > POST https://api.effportal.com/login
 1 > Accept: application/json
 1 > Content-Type: application/json; charset=UTF-8
@@ -98,87 +98,87 @@
 }
 
 
-16:37:29.866 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection request: [route: {s}->https://api.effportal.com:443][total available: 0; route allocated: 0 of 5; total allocated: 0 of 10]
-16:37:29.873 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection leased: [id: 0][route: {s}->https://api.effportal.com:443][total available: 0; route allocated: 1 of 5; total allocated: 1 of 10]
-16:37:29.876 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Opening connection {s}->https://api.effportal.com:443
-16:37:29.932 [main] DEBUG org.apache.http.impl.conn.DefaultHttpClientConnectionOperator -- Connecting to api.effportal.com/3.228.42.214:443
-16:37:29.932 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Connecting socket to api.effportal.com/3.228.42.214:443 with timeout 30000
-16:37:30.204 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Enabled protocols: [TLSv1.3, TLSv1.2]
-16:37:30.204 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Enabled cipher suites:[TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_DHE_DSS_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_256_CBC_SHA256, TLS_DHE_DSS_WITH_AES_256_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_GCM_SHA384, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
-16:37:30.205 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Starting handshake
-16:37:30.524 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Secure session established
-16:37:30.525 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  negotiated protocol: TLSv1.3
-16:37:30.525 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  negotiated cipher suite: TLS_AES_128_GCM_SHA256
-16:37:30.526 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  peer principal: CN=*.effportal.com
-16:37:30.526 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  peer alternative names: [*.effportal.com, api.effportal.com, www.effportal.com, effportal.com]
-16:37:30.526 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  issuer principal: CN=Amazon RSA 2048 M03, O=Amazon, C=US
-16:37:30.527 [main] DEBUG org.apache.http.impl.conn.DefaultHttpClientConnectionOperator -- Connection established 192.168.100.11:53110<->3.228.42.214:443
-16:37:30.527 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-0: set socket timeout to 30000
-16:37:30.527 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Executing request POST /login HTTP/1.1
-16:37:30.527 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Target auth state: UNCHALLENGED
-16:37:30.528 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Proxy auth state: UNCHALLENGED
-16:37:30.529 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> POST /login HTTP/1.1
-16:37:30.529 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Accept: application/json
-16:37:30.529 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Content-Type: application/json; charset=UTF-8
-16:37:30.529 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Content-Length: 62
-16:37:30.529 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Host: api.effportal.com
-16:37:30.530 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Connection: Keep-Alive
-16:37:30.530 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
-16:37:30.530 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Accept-Encoding: gzip,deflate
-16:37:30.530 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "POST /login HTTP/1.1[\r][\n]"
-16:37:30.530 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Accept: application/json[\r][\n]"
-16:37:30.530 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
-16:37:30.530 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Content-Length: 62[\r][\n]"
-16:37:30.530 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Host: api.effportal.com[\r][\n]"
-16:37:30.530 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
-16:37:30.530 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)[\r][\n]"
-16:37:30.530 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
-16:37:30.530 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "[\r][\n]"
-16:37:30.530 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "{"email":"temesgen.tiruneh@toptal.com","password":"Temu@1234"}"
-16:37:30.953 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
-16:37:30.953 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Date: Wed, 22 Oct 2025 11:37:30 GMT[\r][\n]"
-16:37:30.954 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Content-Type: application/json[\r][\n]"
-16:37:30.954 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Content-Length: 1314[\r][\n]"
-16:37:30.954 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Connection: keep-alive[\r][\n]"
-16:37:30.954 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "x-amzn-RequestId: c13bd0c2-a8a0-4d1d-8afe-e302c63b0019[\r][\n]"
-16:37:30.954 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Access-Control-Allow-Origin: *[\r][\n]"
-16:37:30.954 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "x-amz-apigw-id: S2M_MEnVIAMEbCg=[\r][\n]"
-16:37:30.954 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "X-Amzn-Trace-Id: Root=1-68f8c1fa-17906a9e2f4f8986047f5c47;Parent=2f745e76c306002f;Sampled=0;Lineage=1:d00e293b:0[\r][\n]"
-16:37:30.954 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "[\r][\n]"
-16:37:30.954 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "{"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InRlbWVzZ2VuLnRpcnVuZWhAdG9wdGFsLmNvbSIsImV4cCI6MTc2MTEzNjY1MH0.KJgPxnE0L9hH-vIxbx5OF8FAnrqNTStMx7VLCnG70Sg", "refreshToken": "gAAAAABo-MH6MsJmBdYAIWfpj_yxZH-2acqkgRKPAZEZglDY5uWejW5tKkTi3Se_FCQTaJaqzRuZRu0IO19JgUfTeO3EwpFm-hwN2Ep5G8kOotHMwHdeT_X9KhZo0-3qZpIjsZMYVwnW", "user": {"sys_userCreatedName": "", "address": "456 Down Street, Chicago", "last_login": 1761132382, "last_name": "Tiruneh", "profile_picture": "", "subscription": {"sys_userModifiedName": "drea@123go.io", "sys_userCreatedName": "drea@123go.io", "sys_dateModified": 1754170453, "price": 0, "sys_userModified_id": 3, "name": "Rookie", "description": "Rookie Tier Subscription", "_id": 1, "sys_deleted": false, "sys_userCreated_id": 3, "sys_dateCreated": 1754170134}, "sys_deleted": "", "sys_userCreated_id": "", "sys_userModifiedName": "temesgen.tiruneh@toptal.com", "password": "gAAAAABo9ciqog35ubpMq17rDdIXweaLC49nhvi7Hwv4id47sloc4jAOESCmNqx1Y8uY4GFbFojOPVI0q7XbzwIetE57_D9Teg==", "sys_dateModified": 1761129398, "phone": "+12339112233", "dob": "1996-06-12", "sys_userModified_id": 41, "details": "{}", "mfa_enabled": "", "created_date": "", "_id": 41, "first_name": "Temesgen", "email": "temesgen.tiruneh@toptal.com", "username": "", "sys_dateCreated": ""}, "statusCode": 200}"
-16:37:30.958 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << HTTP/1.1 200 OK
-16:37:30.958 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Date: Wed, 22 Oct 2025 11:37:30 GMT
-16:37:30.958 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Content-Type: application/json
-16:37:30.958 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Content-Length: 1314
-16:37:30.958 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Connection: keep-alive
-16:37:30.958 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << x-amzn-RequestId: c13bd0c2-a8a0-4d1d-8afe-e302c63b0019
-16:37:30.958 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Access-Control-Allow-Origin: *
-16:37:30.958 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << x-amz-apigw-id: S2M_MEnVIAMEbCg=
-16:37:30.958 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << X-Amzn-Trace-Id: Root=1-68f8c1fa-17906a9e2f4f8986047f5c47;Parent=2f745e76c306002f;Sampled=0;Lineage=1:d00e293b:0
-16:37:30.963 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Connection can be kept alive indefinitely
-16:37:30.970 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection [id: 0][route: {s}->https://api.effportal.com:443] can be kept alive indefinitely
-16:37:30.970 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-0: set socket timeout to 0
-16:37:30.970 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection released: [id: 0][route: {s}->https://api.effportal.com:443][total available: 1; route allocated: 1 of 5; total allocated: 1 of 10]
-16:37:30.970 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection manager is shutting down
-16:37:30.971 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-0: Close connection
-16:37:30.974 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection manager shut down
-16:37:30.975 [main] DEBUG com.intuit.karate -- response time in milliseconds: 1105
+20:17:35.885 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection request: [route: {s}->https://api.effportal.com:443][total available: 0; route allocated: 0 of 5; total allocated: 0 of 10]
+20:17:35.894 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection leased: [id: 0][route: {s}->https://api.effportal.com:443][total available: 0; route allocated: 1 of 5; total allocated: 1 of 10]
+20:17:35.896 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Opening connection {s}->https://api.effportal.com:443
+20:17:36.250 [main] DEBUG org.apache.http.impl.conn.DefaultHttpClientConnectionOperator -- Connecting to api.effportal.com/34.232.33.114:443
+20:17:36.250 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Connecting socket to api.effportal.com/34.232.33.114:443 with timeout 30000
+20:17:36.514 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Enabled protocols: [TLSv1.3, TLSv1.2]
+20:17:36.514 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Enabled cipher suites:[TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_DHE_DSS_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_256_CBC_SHA256, TLS_DHE_DSS_WITH_AES_256_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_GCM_SHA384, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
+20:17:36.514 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Starting handshake
+20:17:36.841 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Secure session established
+20:17:36.841 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  negotiated protocol: TLSv1.3
+20:17:36.841 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  negotiated cipher suite: TLS_AES_128_GCM_SHA256
+20:17:36.841 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  peer principal: CN=*.effportal.com
+20:17:36.841 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  peer alternative names: [*.effportal.com, api.effportal.com, www.effportal.com, effportal.com]
+20:17:36.841 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  issuer principal: CN=Amazon RSA 2048 M03, O=Amazon, C=US
+20:17:36.841 [main] DEBUG org.apache.http.impl.conn.DefaultHttpClientConnectionOperator -- Connection established 192.168.100.11:58511<->34.232.33.114:443
+20:17:36.841 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-0: set socket timeout to 30000
+20:17:36.841 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Executing request POST /login HTTP/1.1
+20:17:36.841 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Target auth state: UNCHALLENGED
+20:17:36.841 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Proxy auth state: UNCHALLENGED
+20:17:36.854 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> POST /login HTTP/1.1
+20:17:36.854 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Accept: application/json
+20:17:36.854 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Content-Type: application/json; charset=UTF-8
+20:17:36.854 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Content-Length: 62
+20:17:36.854 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Host: api.effportal.com
+20:17:36.854 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Connection: Keep-Alive
+20:17:36.854 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+20:17:36.854 [main] DEBUG org.apache.http.headers -- http-outgoing-0 >> Accept-Encoding: gzip,deflate
+20:17:36.854 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "POST /login HTTP/1.1[\r][\n]"
+20:17:36.854 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Accept: application/json[\r][\n]"
+20:17:36.855 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+20:17:36.855 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Content-Length: 62[\r][\n]"
+20:17:36.855 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Host: api.effportal.com[\r][\n]"
+20:17:36.855 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Connection: Keep-Alive[\r][\n]"
+20:17:36.855 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)[\r][\n]"
+20:17:36.855 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+20:17:36.855 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "[\r][\n]"
+20:17:36.855 [main] DEBUG org.apache.http.wire -- http-outgoing-0 >> "{"email":"temesgen.tiruneh@toptal.com","password":"Temu@1234"}"
+20:17:39.559 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "HTTP/1.1 200 OK[\r][\n]"
+20:17:39.559 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Date: Wed, 22 Oct 2025 15:17:39 GMT[\r][\n]"
+20:17:39.559 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Content-Type: application/json[\r][\n]"
+20:17:39.559 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Content-Length: 1326[\r][\n]"
+20:17:39.559 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Connection: keep-alive[\r][\n]"
+20:17:39.559 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "x-amzn-RequestId: 21ac12ed-d43e-4102-aa4e-d78738f91cae[\r][\n]"
+20:17:39.559 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "Access-Control-Allow-Origin: *[\r][\n]"
+20:17:39.559 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "x-amz-apigw-id: S2tOrFWOoAMEiOQ=[\r][\n]"
+20:17:39.559 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "X-Amzn-Trace-Id: Root=1-68f8f590-6b1184ff546292aa26bba123;Parent=55ab53373df0b36e;Sampled=0;Lineage=1:d00e293b:0[\r][\n]"
+20:17:39.559 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "[\r][\n]"
+20:17:39.559 [main] DEBUG org.apache.http.wire -- http-outgoing-0 << "{"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InRlbWVzZ2VuLnRpcnVuZWhAdG9wdGFsLmNvbSIsImV4cCI6MTc2MTE0OTg1OX0.BsA5UJjn7W79uO_0JJjoy1ercRYPIt2tiYMzq39_vxw", "refreshToken": "gAAAAABo-PWTySBY2l3RoAp-lV9n4QYiXKWv2-6zd_-zdScGeFOqAhSvOr9t0beODtJrG3_ev6ZtsmPxKaF122S_Sw3rZhtMlBQlpEEYw17bmUWDssfdpeRalyay4tSfqrnFGpEuCDfA", "user": {"sys_userCreatedName": "", "address": "456 Down Street, Chicago, IL, 34441", "last_login": 1761146258, "last_name": "Tiruneh", "profile_picture": "", "subscription": {"sys_userModifiedName": "drea@123go.io", "sys_userCreatedName": "drea@123go.io", "sys_dateModified": 1754170453, "price": 0, "sys_userModified_id": 3, "name": "Rookie", "description": "Rookie Tier Subscription", "_id": 1, "sys_deleted": false, "sys_userCreated_id": 3, "sys_dateCreated": 1754170134}, "sys_deleted": "", "sys_userCreated_id": "", "sys_userModifiedName": "temesgen.tiruneh@@toptal.com", "password": "gAAAAABo9ciqog35ubpMq17rDdIXweaLC49nhvi7Hwv4id47sloc4jAOESCmNqx1Y8uY4GFbFojOPVI0q7XbzwIetE57_D9Teg==", "sys_dateModified": 1761145348, "phone": "+12339112233", "dob": "1996-06-12", "sys_userModified_id": 41, "details": "{}", "mfa_enabled": "", "created_date": "", "_id": 41, "first_name": "Temesgen", "email": "temesgen.tiruneh@toptal.com", "username": "", "sys_dateCreated": ""}, "statusCode": 200}"
+20:17:39.559 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << HTTP/1.1 200 OK
+20:17:39.559 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Date: Wed, 22 Oct 2025 15:17:39 GMT
+20:17:39.559 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Content-Type: application/json
+20:17:39.559 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Content-Length: 1326
+20:17:39.559 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Connection: keep-alive
+20:17:39.559 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << x-amzn-RequestId: 21ac12ed-d43e-4102-aa4e-d78738f91cae
+20:17:39.559 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << Access-Control-Allow-Origin: *
+20:17:39.559 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << x-amz-apigw-id: S2tOrFWOoAMEiOQ=
+20:17:39.559 [main] DEBUG org.apache.http.headers -- http-outgoing-0 << X-Amzn-Trace-Id: Root=1-68f8f590-6b1184ff546292aa26bba123;Parent=55ab53373df0b36e;Sampled=0;Lineage=1:d00e293b:0
+20:17:39.559 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Connection can be kept alive indefinitely
+20:17:39.572 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection [id: 0][route: {s}->https://api.effportal.com:443] can be kept alive indefinitely
+20:17:39.572 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-0: set socket timeout to 0
+20:17:39.572 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection released: [id: 0][route: {s}->https://api.effportal.com:443][total available: 1; route allocated: 1 of 5; total allocated: 1 of 10]
+20:17:39.572 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection manager is shutting down
+20:17:39.572 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-0: Close connection
+20:17:39.572 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection manager shut down
+20:17:39.572 [main] DEBUG com.intuit.karate -- response time in milliseconds: 3690
 1 < 200
-1 < Date: Wed, 22 Oct 2025 11:37:30 GMT
+1 < Date: Wed, 22 Oct 2025 15:17:39 GMT
 1 < Content-Type: application/json
-1 < Content-Length: 1314
+1 < Content-Length: 1326
 1 < Connection: keep-alive
-1 < x-amzn-RequestId: c13bd0c2-a8a0-4d1d-8afe-e302c63b0019
+1 < x-amzn-RequestId: 21ac12ed-d43e-4102-aa4e-d78738f91cae
 1 < Access-Control-Allow-Origin: *
-1 < x-amz-apigw-id: S2M_MEnVIAMEbCg=
-1 < X-Amzn-Trace-Id: Root=1-68f8c1fa-17906a9e2f4f8986047f5c47;Parent=2f745e76c306002f;Sampled=0;Lineage=1:d00e293b:0
+1 < x-amz-apigw-id: S2tOrFWOoAMEiOQ=
+1 < X-Amzn-Trace-Id: Root=1-68f8f590-6b1184ff546292aa26bba123;Parent=55ab53373df0b36e;Sampled=0;Lineage=1:d00e293b:0
 {
-  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InRlbWVzZ2VuLnRpcnVuZWhAdG9wdGFsLmNvbSIsImV4cCI6MTc2MTEzNjY1MH0.KJgPxnE0L9hH-vIxbx5OF8FAnrqNTStMx7VLCnG70Sg",
-  "refreshToken": "gAAAAABo-MH6MsJmBdYAIWfpj_yxZH-2acqkgRKPAZEZglDY5uWejW5tKkTi3Se_FCQTaJaqzRuZRu0IO19JgUfTeO3EwpFm-hwN2Ep5G8kOotHMwHdeT_X9KhZo0-3qZpIjsZMYVwnW",
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InRlbWVzZ2VuLnRpcnVuZWhAdG9wdGFsLmNvbSIsImV4cCI6MTc2MTE0OTg1OX0.BsA5UJjn7W79uO_0JJjoy1ercRYPIt2tiYMzq39_vxw",
+  "refreshToken": "gAAAAABo-PWTySBY2l3RoAp-lV9n4QYiXKWv2-6zd_-zdScGeFOqAhSvOr9t0beODtJrG3_ev6ZtsmPxKaF122S_Sw3rZhtMlBQlpEEYw17bmUWDssfdpeRalyay4tSfqrnFGpEuCDfA",
   "user": {
     "sys_userCreatedName": "",
-    "address": "456 Down Street, Chicago",
-    "last_login": 1761132382,
+    "address": "456 Down Street, Chicago, IL, 34441",
+    "last_login": 1761146258,
     "last_name": "Tiruneh",
     "profile_picture": "",
     "subscription": {
@@ -196,9 +196,9 @@
     },
     "sys_deleted": "",
     "sys_userCreated_id": "",
-    "sys_userModifiedName": "temesgen.tiruneh@toptal.com",
+    "sys_userModifiedName": "temesgen.tiruneh@@toptal.com",
     "password": "gAAAAABo9ciqog35ubpMq17rDdIXweaLC49nhvi7Hwv4id47sloc4jAOESCmNqx1Y8uY4GFbFojOPVI0q7XbzwIetE57_D9Teg==",
-    "sys_dateModified": 1761129398,
+    "sys_dateModified": 1761145348,
     "phone": "+12339112233",
     "dob": "1996-06-12",
     "sys_userModified_id": 41,
@@ -215,13 +215,13 @@
 }
 
 
-16:37:30.992 [main] INFO com.intuit.karate -- [print] 🔹 Response: {
-  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InRlbWVzZ2VuLnRpcnVuZWhAdG9wdGFsLmNvbSIsImV4cCI6MTc2MTEzNjY1MH0.KJgPxnE0L9hH-vIxbx5OF8FAnrqNTStMx7VLCnG70Sg",
-  "refreshToken": "gAAAAABo-MH6MsJmBdYAIWfpj_yxZH-2acqkgRKPAZEZglDY5uWejW5tKkTi3Se_FCQTaJaqzRuZRu0IO19JgUfTeO3EwpFm-hwN2Ep5G8kOotHMwHdeT_X9KhZo0-3qZpIjsZMYVwnW",
+20:17:39.597 [main] INFO com.intuit.karate -- [print] 🔹 Response: {
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InRlbWVzZ2VuLnRpcnVuZWhAdG9wdGFsLmNvbSIsImV4cCI6MTc2MTE0OTg1OX0.BsA5UJjn7W79uO_0JJjoy1ercRYPIt2tiYMzq39_vxw",
+  "refreshToken": "gAAAAABo-PWTySBY2l3RoAp-lV9n4QYiXKWv2-6zd_-zdScGeFOqAhSvOr9t0beODtJrG3_ev6ZtsmPxKaF122S_Sw3rZhtMlBQlpEEYw17bmUWDssfdpeRalyay4tSfqrnFGpEuCDfA",
   "user": {
     "sys_userCreatedName": "",
-    "address": "456 Down Street, Chicago",
-    "last_login": 1761132382,
+    "address": "456 Down Street, Chicago, IL, 34441",
+    "last_login": 1761146258,
     "last_name": "Tiruneh",
     "profile_picture": "",
     "subscription": {
@@ -239,9 +239,9 @@
     },
     "sys_deleted": "",
     "sys_userCreated_id": "",
-    "sys_userModifiedName": "temesgen.tiruneh@toptal.com",
+    "sys_userModifiedName": "temesgen.tiruneh@@toptal.com",
     "password": "gAAAAABo9ciqog35ubpMq17rDdIXweaLC49nhvi7Hwv4id47sloc4jAOESCmNqx1Y8uY4GFbFojOPVI0q7XbzwIetE57_D9Teg==",
-    "sys_dateModified": 1761129398,
+    "sys_dateModified": 1761145348,
     "phone": "+12339112233",
     "dob": "1996-06-12",
     "sys_userModified_id": 41,
@@ -257,11 +257,11 @@
   "statusCode": 200
 }
  
-16:37:31.000 [main] INFO com.intuit.karate -- [print] 🔹 Access Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InRlbWVzZ2VuLnRpcnVuZWhAdG9wdGFsLmNvbSIsImV4cCI6MTc2MTEzNjY1MH0.KJgPxnE0L9hH-vIxbx5OF8FAnrqNTStMx7VLCnG70Sg 
-16:37:31.001 [main] INFO com.intuit.karate -- [print] 🔹 User Email: temesgen.tiruneh@toptal.com 
-16:37:31.007 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath -- Evaluating path: $
-16:37:31.019 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath -- Evaluating path: $['user']
-16:37:31.019 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath -- Evaluating path: $
+20:17:39.607 [main] INFO com.intuit.karate -- [print] 🔹 Access Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InRlbWVzZ2VuLnRpcnVuZWhAdG9wdGFsLmNvbSIsImV4cCI6MTc2MTE0OTg1OX0.BsA5UJjn7W79uO_0JJjoy1ercRYPIt2tiYMzq39_vxw 
+20:17:39.607 [main] INFO com.intuit.karate -- [print] 🔹 User Email: temesgen.tiruneh@toptal.com 
+20:17:39.607 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath -- Evaluating path: $
+20:17:39.624 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath -- Evaluating path: $['user']
+20:17:39.624 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath -- Evaluating path: $
 ]]></system-out>
     <system-err><![CDATA[SLF4J(W): Class path contains multiple SLF4J providers.
 SLF4J(W): Found provider [ch.qos.logback.classic.spi.LogbackServiceProvider@34e9fd99]
@@ -270,11 +270,11 @@ SLF4J(W): See https://www.slf4j.org/codes.html#multiple_bindings for an explanat
 SLF4J(I): Actual provider is of type [ch.qos.logback.classic.spi.LogbackServiceProvider@34e9fd99]
 ]]></system-err>
   </testcase>
-  <testcase name="[2:19] Invalid login" classname="features/login" time="1.781">
-    <system-out><![CDATA[16:37:31.043 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath -- Evaluating path: $
-16:37:31.044 [main] DEBUG org.apache.http.client.protocol.RequestAddCookies -- CookieSpec selected: karate
-16:37:31.044 [main] DEBUG org.apache.http.client.protocol.RequestAuthCache -- Auth cache not set in the context
-16:37:31.044 [main] DEBUG com.intuit.karate -- request:
+  <testcase name="[2:19] Invalid login" classname="features/login" time="1.621">
+    <system-out><![CDATA[20:17:39.645 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath -- Evaluating path: $
+20:17:39.648 [main] DEBUG org.apache.http.client.protocol.RequestAddCookies -- CookieSpec selected: karate
+20:17:39.648 [main] DEBUG org.apache.http.client.protocol.RequestAuthCache -- Auth cache not set in the context
+20:17:39.648 [main] DEBUG com.intuit.karate -- request:
 1 > POST https://api.effportal.com/login
 1 > Accept: application/json
 1 > Content-Type: application/json; charset=UTF-8
@@ -289,92 +289,92 @@ SLF4J(I): Actual provider is of type [ch.qos.logback.classic.spi.LogbackServiceP
 }
 
 
-16:37:31.044 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection request: [route: {s}->https://api.effportal.com:443][total available: 0; route allocated: 0 of 5; total allocated: 0 of 10]
-16:37:31.045 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection leased: [id: 1][route: {s}->https://api.effportal.com:443][total available: 0; route allocated: 1 of 5; total allocated: 1 of 10]
-16:37:31.045 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Opening connection {s}->https://api.effportal.com:443
-16:37:31.045 [main] DEBUG org.apache.http.impl.conn.DefaultHttpClientConnectionOperator -- Connecting to api.effportal.com/3.228.42.214:443
-16:37:31.045 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Connecting socket to api.effportal.com/3.228.42.214:443 with timeout 30000
-16:37:31.255 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Enabled protocols: [TLSv1.3, TLSv1.2]
-16:37:31.255 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Enabled cipher suites:[TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_DHE_DSS_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_256_CBC_SHA256, TLS_DHE_DSS_WITH_AES_256_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_GCM_SHA384, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
-16:37:31.255 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Starting handshake
-16:37:31.495 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Secure session established
-16:37:31.495 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  negotiated protocol: TLSv1.3
-16:37:31.495 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  negotiated cipher suite: TLS_AES_128_GCM_SHA256
-16:37:31.495 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  peer principal: CN=*.effportal.com
-16:37:31.495 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  peer alternative names: [*.effportal.com, api.effportal.com, www.effportal.com, effportal.com]
-16:37:31.495 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  issuer principal: CN=Amazon RSA 2048 M03, O=Amazon, C=US
-16:37:31.495 [main] DEBUG org.apache.http.impl.conn.DefaultHttpClientConnectionOperator -- Connection established 192.168.100.11:53112<->3.228.42.214:443
-16:37:31.495 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-1: set socket timeout to 30000
-16:37:31.496 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Executing request POST /login HTTP/1.1
-16:37:31.496 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Target auth state: UNCHALLENGED
-16:37:31.496 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Proxy auth state: UNCHALLENGED
-16:37:31.496 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> POST /login HTTP/1.1
-16:37:31.496 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> Accept: application/json
-16:37:31.496 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> Content-Type: application/json; charset=UTF-8
-16:37:31.496 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> Content-Length: 61
-16:37:31.496 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> Host: api.effportal.com
-16:37:31.496 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> Connection: Keep-Alive
-16:37:31.496 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
-16:37:31.496 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> Accept-Encoding: gzip,deflate
-16:37:31.496 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "POST /login HTTP/1.1[\r][\n]"
-16:37:31.496 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "Accept: application/json[\r][\n]"
-16:37:31.496 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
-16:37:31.496 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "Content-Length: 61[\r][\n]"
-16:37:31.496 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "Host: api.effportal.com[\r][\n]"
-16:37:31.496 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "Connection: Keep-Alive[\r][\n]"
-16:37:31.496 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)[\r][\n]"
-16:37:31.496 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "Accept-Encoding: gzip,deflate[\r][\n]"
-16:37:31.496 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "[\r][\n]"
-16:37:31.496 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "{"email":"temesgen.tiruneh@toptal.com","password":"Temu@123"}"
-16:37:31.831 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "HTTP/1.1 401 Unauthorized[\r][\n]"
-16:37:31.831 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "Date: Wed, 22 Oct 2025 11:37:31 GMT[\r][\n]"
-16:37:31.831 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "Content-Type: application/json[\r][\n]"
-16:37:31.831 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "Content-Length: 58[\r][\n]"
-16:37:31.831 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "Connection: keep-alive[\r][\n]"
-16:37:31.831 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "x-amzn-RequestId: 16f2eb81-4f60-4118-83e1-196edd335c89[\r][\n]"
-16:37:31.831 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "Access-Control-Allow-Origin: *[\r][\n]"
-16:37:31.831 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "x-amz-apigw-id: S2M_VGrVIAMEEPA=[\r][\n]"
-16:37:31.832 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "X-Amzn-Trace-Id: Root=1-68f8c1fb-57b7e64b62f960ff47704f0f;Parent=09b500bfa19638ee;Sampled=0;Lineage=1:d00e293b:0[\r][\n]"
-16:37:31.832 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "[\r][\n]"
-16:37:31.832 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "{"error": "The password is incorrect!", "statusCode": 401}"
-16:37:31.832 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << HTTP/1.1 401 Unauthorized
-16:37:31.832 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << Date: Wed, 22 Oct 2025 11:37:31 GMT
-16:37:31.832 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << Content-Type: application/json
-16:37:31.832 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << Content-Length: 58
-16:37:31.832 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << Connection: keep-alive
-16:37:31.832 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << x-amzn-RequestId: 16f2eb81-4f60-4118-83e1-196edd335c89
-16:37:31.832 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << Access-Control-Allow-Origin: *
-16:37:31.832 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << x-amz-apigw-id: S2M_VGrVIAMEEPA=
-16:37:31.832 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << X-Amzn-Trace-Id: Root=1-68f8c1fb-57b7e64b62f960ff47704f0f;Parent=09b500bfa19638ee;Sampled=0;Lineage=1:d00e293b:0
-16:37:31.833 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Connection can be kept alive indefinitely
-16:37:31.833 [main] DEBUG org.apache.http.impl.auth.HttpAuthenticator -- Authentication required
-16:37:31.833 [main] DEBUG org.apache.http.impl.auth.HttpAuthenticator -- api.effportal.com:443 requested authentication
-16:37:31.833 [main] DEBUG org.apache.http.impl.auth.HttpAuthenticator -- Response contains no authentication challenges
-16:37:31.833 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection [id: 1][route: {s}->https://api.effportal.com:443] can be kept alive indefinitely
-16:37:31.833 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-1: set socket timeout to 0
-16:37:31.833 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection released: [id: 1][route: {s}->https://api.effportal.com:443][total available: 1; route allocated: 1 of 5; total allocated: 1 of 10]
-16:37:31.833 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection manager is shutting down
-16:37:31.833 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-1: Close connection
-16:37:31.833 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection manager shut down
-16:37:31.834 [main] DEBUG com.intuit.karate -- response time in milliseconds: 789
+20:17:39.648 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection request: [route: {s}->https://api.effportal.com:443][total available: 0; route allocated: 0 of 5; total allocated: 0 of 10]
+20:17:39.648 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection leased: [id: 1][route: {s}->https://api.effportal.com:443][total available: 0; route allocated: 1 of 5; total allocated: 1 of 10]
+20:17:39.648 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Opening connection {s}->https://api.effportal.com:443
+20:17:39.648 [main] DEBUG org.apache.http.impl.conn.DefaultHttpClientConnectionOperator -- Connecting to api.effportal.com/34.232.33.114:443
+20:17:39.648 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Connecting socket to api.effportal.com/34.232.33.114:443 with timeout 30000
+20:17:39.854 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Enabled protocols: [TLSv1.3, TLSv1.2]
+20:17:39.854 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Enabled cipher suites:[TLS_AES_256_GCM_SHA384, TLS_AES_128_GCM_SHA256, TLS_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_DHE_DSS_WITH_AES_256_GCM_SHA384, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_DSS_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_256_CBC_SHA256, TLS_DHE_DSS_WITH_AES_256_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_DSS_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_GCM_SHA384, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_EMPTY_RENEGOTIATION_INFO_SCSV]
+20:17:39.854 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Starting handshake
+20:17:40.084 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory -- Secure session established
+20:17:40.084 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  negotiated protocol: TLSv1.3
+20:17:40.084 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  negotiated cipher suite: TLS_AES_128_GCM_SHA256
+20:17:40.084 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  peer principal: CN=*.effportal.com
+20:17:40.084 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  peer alternative names: [*.effportal.com, api.effportal.com, www.effportal.com, effportal.com]
+20:17:40.084 [main] DEBUG org.apache.http.conn.ssl.LenientSslConnectionSocketFactory --  issuer principal: CN=Amazon RSA 2048 M03, O=Amazon, C=US
+20:17:40.084 [main] DEBUG org.apache.http.impl.conn.DefaultHttpClientConnectionOperator -- Connection established 192.168.100.11:58512<->34.232.33.114:443
+20:17:40.084 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-1: set socket timeout to 30000
+20:17:40.084 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Executing request POST /login HTTP/1.1
+20:17:40.084 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Target auth state: UNCHALLENGED
+20:17:40.084 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Proxy auth state: UNCHALLENGED
+20:17:40.085 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> POST /login HTTP/1.1
+20:17:40.085 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> Accept: application/json
+20:17:40.085 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> Content-Type: application/json; charset=UTF-8
+20:17:40.085 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> Content-Length: 61
+20:17:40.085 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> Host: api.effportal.com
+20:17:40.085 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> Connection: Keep-Alive
+20:17:40.085 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+20:17:40.085 [main] DEBUG org.apache.http.headers -- http-outgoing-1 >> Accept-Encoding: gzip,deflate
+20:17:40.085 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "POST /login HTTP/1.1[\r][\n]"
+20:17:40.085 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "Accept: application/json[\r][\n]"
+20:17:40.085 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "Content-Type: application/json; charset=UTF-8[\r][\n]"
+20:17:40.085 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "Content-Length: 61[\r][\n]"
+20:17:40.085 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "Host: api.effportal.com[\r][\n]"
+20:17:40.085 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "Connection: Keep-Alive[\r][\n]"
+20:17:40.085 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)[\r][\n]"
+20:17:40.085 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+20:17:40.085 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "[\r][\n]"
+20:17:40.085 [main] DEBUG org.apache.http.wire -- http-outgoing-1 >> "{"email":"temesgen.tiruneh@toptal.com","password":"Temu@123"}"
+20:17:40.410 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "HTTP/1.1 401 Unauthorized[\r][\n]"
+20:17:40.426 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "Date: Wed, 22 Oct 2025 15:17:40 GMT[\r][\n]"
+20:17:40.426 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "Content-Type: application/json[\r][\n]"
+20:17:40.426 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "Content-Length: 58[\r][\n]"
+20:17:40.426 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "Connection: keep-alive[\r][\n]"
+20:17:40.426 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "x-amzn-RequestId: f0729108-3e75-4bab-b1a4-1d01fa31a8a7[\r][\n]"
+20:17:40.426 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "Access-Control-Allow-Origin: *[\r][\n]"
+20:17:40.426 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "x-amz-apigw-id: S2tPLGXuoAMENXA=[\r][\n]"
+20:17:40.426 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "X-Amzn-Trace-Id: Root=1-68f8f593-258ea93932b9bc4c400d05ac;Parent=6eb57565bcacb1cc;Sampled=0;Lineage=1:d00e293b:0[\r][\n]"
+20:17:40.426 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "[\r][\n]"
+20:17:40.426 [main] DEBUG org.apache.http.wire -- http-outgoing-1 << "{"error": "The password is incorrect!", "statusCode": 401}"
+20:17:40.426 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << HTTP/1.1 401 Unauthorized
+20:17:40.426 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << Date: Wed, 22 Oct 2025 15:17:40 GMT
+20:17:40.426 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << Content-Type: application/json
+20:17:40.426 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << Content-Length: 58
+20:17:40.426 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << Connection: keep-alive
+20:17:40.426 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << x-amzn-RequestId: f0729108-3e75-4bab-b1a4-1d01fa31a8a7
+20:17:40.426 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << Access-Control-Allow-Origin: *
+20:17:40.426 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << x-amz-apigw-id: S2tPLGXuoAMENXA=
+20:17:40.426 [main] DEBUG org.apache.http.headers -- http-outgoing-1 << X-Amzn-Trace-Id: Root=1-68f8f593-258ea93932b9bc4c400d05ac;Parent=6eb57565bcacb1cc;Sampled=0;Lineage=1:d00e293b:0
+20:17:40.426 [main] DEBUG org.apache.http.impl.execchain.MainClientExec -- Connection can be kept alive indefinitely
+20:17:40.426 [main] DEBUG org.apache.http.impl.auth.HttpAuthenticator -- Authentication required
+20:17:40.426 [main] DEBUG org.apache.http.impl.auth.HttpAuthenticator -- api.effportal.com:443 requested authentication
+20:17:40.426 [main] DEBUG org.apache.http.impl.auth.HttpAuthenticator -- Response contains no authentication challenges
+20:17:40.426 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection [id: 1][route: {s}->https://api.effportal.com:443] can be kept alive indefinitely
+20:17:40.426 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-1: set socket timeout to 0
+20:17:40.426 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection released: [id: 1][route: {s}->https://api.effportal.com:443][total available: 1; route allocated: 1 of 5; total allocated: 1 of 10]
+20:17:40.426 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection manager is shutting down
+20:17:40.426 [main] DEBUG org.apache.http.impl.conn.DefaultManagedHttpClientConnection -- http-outgoing-1: Close connection
+20:17:40.426 [main] DEBUG org.apache.http.impl.conn.PoolingHttpClientConnectionManager -- Connection manager shut down
+20:17:40.426 [main] DEBUG com.intuit.karate -- response time in milliseconds: 778
 1 < 401
-1 < Date: Wed, 22 Oct 2025 11:37:31 GMT
+1 < Date: Wed, 22 Oct 2025 15:17:40 GMT
 1 < Content-Type: application/json
 1 < Content-Length: 58
 1 < Connection: keep-alive
-1 < x-amzn-RequestId: 16f2eb81-4f60-4118-83e1-196edd335c89
+1 < x-amzn-RequestId: f0729108-3e75-4bab-b1a4-1d01fa31a8a7
 1 < Access-Control-Allow-Origin: *
-1 < x-amz-apigw-id: S2M_VGrVIAMEEPA=
-1 < X-Amzn-Trace-Id: Root=1-68f8c1fb-57b7e64b62f960ff47704f0f;Parent=09b500bfa19638ee;Sampled=0;Lineage=1:d00e293b:0
+1 < x-amz-apigw-id: S2tPLGXuoAMENXA=
+1 < X-Amzn-Trace-Id: Root=1-68f8f593-258ea93932b9bc4c400d05ac;Parent=6eb57565bcacb1cc;Sampled=0;Lineage=1:d00e293b:0
 {
   "error": "The password is incorrect!",
   "statusCode": 401
 }
 
 
-16:37:31.837 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath -- Evaluating path: $['error']
-16:37:31.873 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] INITIALIZING TEMPLATE ENGINE
-16:37:32.009 [main] DEBUG org.thymeleaf.TemplateEngine.CONFIG -- Initializing Thymeleaf Template engine configuration...
+20:17:40.432 [main] DEBUG com.jayway.jsonpath.internal.path.CompiledPath -- Evaluating path: $['error']
+20:17:40.489 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] INITIALIZING TEMPLATE ENGINE
+20:17:40.607 [main] DEBUG org.thymeleaf.TemplateEngine.CONFIG -- Initializing Thymeleaf Template engine configuration...
 [THYMELEAF] TEMPLATE ENGINE CONFIGURATION:
 [THYMELEAF] * Thymeleaf version: 3.1.2.RELEASE (built 2023-07-30T19:25:50+0000)
 [THYMELEAF] * Cache Manager implementation: org.thymeleaf.cache.StandardCacheManager
@@ -756,20 +756,20 @@ SLF4J(I): Actual provider is of type [ch.qos.logback.classic.spi.LogbackServiceP
 [THYMELEAF]             * [{script} {ka:scope,data-ka-scope}] [1000]: com.intuit.karate.template.KaScriptElemProcessor
 [THYMELEAF]             * [* {ka:set,data-ka-set}] [1000]: com.intuit.karate.template.KaSetElemProcessor
 [THYMELEAF] TEMPLATE ENGINE CONFIGURED OK
-16:37:32.010 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] TEMPLATE ENGINE INITIALIZED
+20:17:40.608 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] TEMPLATE ENGINE INITIALIZED
 ---------------------------------------------------------
 feature: classpath:features/login.feature
-scenarios:  2 | passed:  2 | failed:  0 | time: 2.0929
+scenarios:  2 | passed:  2 | failed:  0 | time: 4.7048
 ---------------------------------------------------------
 
 Karate version: 1.4.1
 ======================================================
-elapsed:   4.39 | threads:    1 | thread time: 2.09 
-features:     1 | skipped:    0 | efficiency: 0.48
+elapsed:   7.00 | threads:    1 | thread time: 4.71 
+features:     1 | skipped:    0 | efficiency: 0.67
 scenarios:    2 | passed:     2 | failed: 0
 ======================================================
-16:37:32.600 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] INITIALIZING TEMPLATE ENGINE
-16:37:32.627 [main] DEBUG org.thymeleaf.TemplateEngine.CONFIG -- Initializing Thymeleaf Template engine configuration...
+20:17:41.091 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] INITIALIZING TEMPLATE ENGINE
+20:17:41.106 [main] DEBUG org.thymeleaf.TemplateEngine.CONFIG -- Initializing Thymeleaf Template engine configuration...
 [THYMELEAF] TEMPLATE ENGINE CONFIGURATION:
 [THYMELEAF] * Thymeleaf version: 3.1.2.RELEASE (built 2023-07-30T19:25:50+0000)
 [THYMELEAF] * Cache Manager implementation: org.thymeleaf.cache.StandardCacheManager
@@ -1151,9 +1151,9 @@ scenarios:    2 | passed:     2 | failed: 0
 [THYMELEAF]             * [{script} {ka:scope,data-ka-scope}] [1000]: com.intuit.karate.template.KaScriptElemProcessor
 [THYMELEAF]             * [* {ka:set,data-ka-set}] [1000]: com.intuit.karate.template.KaSetElemProcessor
 [THYMELEAF] TEMPLATE ENGINE CONFIGURED OK
-16:37:32.627 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] TEMPLATE ENGINE INITIALIZED
-16:37:32.681 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] INITIALIZING TEMPLATE ENGINE
-16:37:32.692 [main] DEBUG org.thymeleaf.TemplateEngine.CONFIG -- Initializing Thymeleaf Template engine configuration...
+20:17:41.106 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] TEMPLATE ENGINE INITIALIZED
+20:17:41.122 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] INITIALIZING TEMPLATE ENGINE
+20:17:41.134 [main] DEBUG org.thymeleaf.TemplateEngine.CONFIG -- Initializing Thymeleaf Template engine configuration...
 [THYMELEAF] TEMPLATE ENGINE CONFIGURATION:
 [THYMELEAF] * Thymeleaf version: 3.1.2.RELEASE (built 2023-07-30T19:25:50+0000)
 [THYMELEAF] * Cache Manager implementation: org.thymeleaf.cache.StandardCacheManager
@@ -1535,9 +1535,9 @@ scenarios:    2 | passed:     2 | failed: 0
 [THYMELEAF]             * [{script} {ka:scope,data-ka-scope}] [1000]: com.intuit.karate.template.KaScriptElemProcessor
 [THYMELEAF]             * [* {ka:set,data-ka-set}] [1000]: com.intuit.karate.template.KaSetElemProcessor
 [THYMELEAF] TEMPLATE ENGINE CONFIGURED OK
-16:37:32.692 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] TEMPLATE ENGINE INITIALIZED
-16:37:32.727 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] INITIALIZING TEMPLATE ENGINE
-16:37:32.752 [main] DEBUG org.thymeleaf.TemplateEngine.CONFIG -- Initializing Thymeleaf Template engine configuration...
+20:17:41.135 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] TEMPLATE ENGINE INITIALIZED
+20:17:41.176 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] INITIALIZING TEMPLATE ENGINE
+20:17:41.206 [main] DEBUG org.thymeleaf.TemplateEngine.CONFIG -- Initializing Thymeleaf Template engine configuration...
 [THYMELEAF] TEMPLATE ENGINE CONFIGURATION:
 [THYMELEAF] * Thymeleaf version: 3.1.2.RELEASE (built 2023-07-30T19:25:50+0000)
 [THYMELEAF] * Cache Manager implementation: org.thymeleaf.cache.StandardCacheManager
@@ -1919,7 +1919,7 @@ scenarios:    2 | passed:     2 | failed: 0
 [THYMELEAF]             * [{script} {ka:scope,data-ka-scope}] [1000]: com.intuit.karate.template.KaScriptElemProcessor
 [THYMELEAF]             * [* {ka:set,data-ka-set}] [1000]: com.intuit.karate.template.KaSetElemProcessor
 [THYMELEAF] TEMPLATE ENGINE CONFIGURED OK
-16:37:32.753 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] TEMPLATE ENGINE INITIALIZED
+20:17:41.207 [main] DEBUG org.thymeleaf.TemplateEngine -- [THYMELEAF] TEMPLATE ENGINE INITIALIZED
 
 HTML report: (paste into browser to view) | Karate version: 1.4.1
 file:///C:/Users/Test%20Knight/karate-api-tests/target/karate-reports/karate-summary.html
