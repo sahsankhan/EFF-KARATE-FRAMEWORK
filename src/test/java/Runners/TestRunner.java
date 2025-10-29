@@ -6,6 +6,6 @@ class TestRunner {
 
     @Karate.Test
     Karate runLoginTests() {
-        return Karate.run("classpath:features/login.feature");
+        return Karate.run("classpath:features/signup.feature");
     }
 }
