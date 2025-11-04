@@ -38,7 +38,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
       <img src="karate-labs-logo-ring.svg" alt="Karate Labs"/>
     </a>
     <div class="nav-count">
-      <div id="nav-pass" class="bg-success">3</div>
+      <div id="nav-pass" class="bg-success">12</div>
       <div id="nav-fail" class="bg-danger">0</div>
     </div>
   </div>
@@ -49,19 +49,46 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
     <div>Scenarios</div>
   </div>
   <div id="nav-date">
-    <div>2025-10-29 09:45:30 PM</div>
+    <div>2025-11-04 06:25:47 PM</div>
   </div>
 </div>
 
         <div class="nav-container">
           <div class="nav-item passed">
-            <a href="#[1:41]"><span>[1:41]</span> <span>Successful registration of a new user</span></a>
+            <a href="#[1:34]"><span>[1:34]</span> <span>Successful registration of a new user</span></a>
           </div>
           <div class="nav-item passed">
-            <a href="#[2:69]"><span>[2:69]</span> <span>Registration fails when email already exists</span></a>
+            <a href="#[2:64]"><span>[2:64]</span> <span>Registration fails when email already exists</span></a>
           </div>
           <div class="nav-item passed">
-            <a href="#[3:97]"><span>[3:97]</span> <span>Registration fails when required fields are missing</span></a>
+            <a href="#[3:92]"><span>[3:92]</span> <span>Registration fails when required first_name and last_name fields are missing</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[4:118]"><span>[4:118]</span> <span>Registration fails when required email field is missing</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[5:145]"><span>[5:145]</span> <span>Registration fails when required address field is missing</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[6:166]"><span>[6:166]</span> <span>Registration fails when required dob field is missing</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[7:193]"><span>[7:193]</span> <span>Registration fails when first_name, last_name fields are containing invalid values</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[8:221]"><span>[8:221]</span> <span>Registration fails when email is invalid</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[9:249]"><span>[9:249]</span> <span>Registration fails when phone number is invalid</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[10:277]"><span>[10:277]</span> <span>Registration fails when postal code is invalid</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[11:305]"><span>[11:305]</span> <span>Registration fails when dob is invalid</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[12:333]"><span>[12:333]</span> <span>Registration fails when city is invalid</span></a>
           </div>
         </div>
       </div>
@@ -72,45 +99,45 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
           <span class="feature-label">Feature:</span>
           <span class="feature-path">features/signup.feature</span><span class="feature-label">|</span>
           <span class="feature-name">Sign-Up API Automation</span>
-          <span class="feature-description">Purpose: Register a new user by securely storing details, validating inputs, and handling duplicate records.</span>
+          <span class="feature-description"></span>
         </div>
         <div class="scenario">
-          <div class="scenario-heading" id="[1:41]">
+          <div class="scenario-heading" id="[1:34]">
             <div class="heading-container">
               <div class="scenario-tags">
                 
               </div>
               <div class="scenario-keyword">
-                Scenario: <span>[1:41]</span>
+                Scenario: <span>[1:34]</span>
                 <span class="scenario-name">Successful registration of a new user</span>
                 <span></span>
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>2686</span>
+              <span>ms:</span>&nbsp;<span>1462</span>
             </div>
           </div>
           <div class="step-row">
-            <div class="step-container" id="[1:41]bg">
+            <div class="step-container" id="[1:34]bg">
               <div class="step-ref bg-step">&gt;&gt;</div>
               <div class="step-cell passed">Background:</div>
             </div>
             <div class="time-cell passed"></div>
           </div>
-          <div data-parent="[1:41]bg"><div>
+          <div data-parent="[1:34]bg"><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.5">
-      <div class="step-ref bg-step">5</div>
+    <div class="step-container" id="0.4">
+      <div class="step-ref bg-step">4</div>
       
       <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>url &#39;https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql&#39;</span>
+        <span>*</span>&nbsp;<span>url baseUrl</span>
       </div>
     </div>
-    <div class="time-cell passed">2</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -125,14 +152,14 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
 </div>
 </div>
-          <div data-parent="[1:41]bg"><div>
+          <div data-parent="[1:34]bg"><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.6">
-      <div class="step-ref bg-step">6</div>
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
@@ -153,14 +180,14 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
 </div>
 </div>
-          <div data-parent="[1:41]bg"><div>
+          <div data-parent="[1:34]bg"><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.7">
-      <div class="step-ref bg-step">7</div>
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
@@ -181,20 +208,20 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
 </div>
 </div>
-          <div data-parent="[1:41]bg"><div>
+          <div data-parent="[1:34]bg"><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.8">
-      <div class="step-ref bg-step">8</div>
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
       
       <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>header x-api-key = &#39;da2-ly43dxgsljaohkedp3qi5ze5ba&#39;</span>
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -209,14 +236,14 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
 </div>
 </div>
-          <div data-parent="[1:41]bg"><div>
+          <div data-parent="[1:34]bg"><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.9">
-      <div class="step-ref bg-step">9</div>
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>text signUpQuery =</span>
@@ -227,7 +254,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
    
   
-  <div class="preformatted" data-parent="0.9">mutation SignUp(
+  <div class="preformatted" data-parent="0.8">mutation SignUp(
   $first_name: String,
   $last_name: String,
   $email: String,
@@ -245,15 +272,8 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
     phone: $phone,
     test_bypass: $test_bypass
   ) {
-    ... on SignUpResponse {
-      message
-      email
-      statusCode
-    }
-    ... on ErrorResponse {
-      message
-      statusCode
-    }
+    ... on SignUpResponse { message email statusCode }
+    ... on ErrorResponse { message statusCode }
   }
 }</div>
 
@@ -271,24 +291,81 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.42">
-      <div class="step-ref passed">42</div>
+    <div class="step-container" id="0.35">
+      <div class="step-ref passed">35</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def randomEmail = &#39;userexample&#39; + java.util.UUID.randomUUID() + &#39;@gmail.com&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">24</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.36">
+      <div class="step-ref passed">36</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print &#39;Generated email:&#39;, randomEmail</span>
+      </div>
+    </div>
+    <div class="time-cell passed">5</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.36">18:25:38.898 [print] Generated email: userexample7850aa43-4cac-4091-ba00-5b9005d1b4ed@gmail.com 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.37">
+      <div class="step-ref passed">37</div>
       
       <div class="step-cell passed">
         <span>Given</span>&nbsp;<span>request</span>
       </div>
     </div>
-    <div class="time-cell passed">28</div>
+    <div class="time-cell passed">43</div>
   </div>
 
    
   
-  <div class="preformatted" data-parent="0.42">{
+  <div class="preformatted" data-parent="0.37">{
   &quot;query&quot;: &quot;#(signUpQuery)&quot;,
   &quot;variables&quot;: {
     &quot;first_name&quot;: &quot;User&quot;,
     &quot;last_name&quot;: &quot;Example&quot;,
-    &quot;email&quot;: &quot;userexample_#(karate.randomInt(10000,99999))@gmail.com&quot;,
+    &quot;email&quot;: #(randomEmail),
     &quot;address&quot;: {
       &quot;street&quot;: &quot;123 Main Street&quot;,
       &quot;suite&quot;: &quot;3A&quot;,
@@ -316,14 +393,14 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.63">
-      <div class="step-ref passed">63</div>
+    <div class="step-container" id="0.58">
+      <div class="step-ref passed">58</div>
       
       <div class="step-cell passed">
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">2620</div>
+    <div class="time-cell passed">1340</div>
   </div>
 
    
@@ -332,22 +409,22 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="0.63">21:45:26.567 request:
+  <div class="preformatted" data-parent="0.58">18:25:39.066 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
 1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
-1 &gt; Content-Length: 820
+1 &gt; Content-Length: 778
 1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
 1 &gt; Connection: Keep-Alive
 1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
 1 &gt; Accept-Encoding: gzip,deflate
 {
-  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse {\n      message\n      email\n      statusCode\n    }\n    ... on ErrorResponse {\n      message\n      statusCode\n    }\n  }\n}&quot;,
+  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse { message email statusCode }\n    ... on ErrorResponse { message statusCode }\n  }\n}&quot;,
   &quot;variables&quot;: {
     &quot;first_name&quot;: &quot;User&quot;,
     &quot;last_name&quot;: &quot;Example&quot;,
-    &quot;email&quot;: &quot;userexample_#(karate.randomInt(10000,99999))@gmail.com&quot;,
+    &quot;email&quot;: &quot;userexample7850aa43-4cac-4091-ba00-5b9005d1b4ed@gmail.com&quot;,
     &quot;address&quot;: {
       &quot;street&quot;: &quot;123 Main Street&quot;,
       &quot;suite&quot;: &quot;3A&quot;,
@@ -362,23 +439,23 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:45:29.053 response time in milliseconds: 2483
+18:25:40.274 response time in milliseconds: 1205
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
-1 &lt; Content-Length: 180
+1 &lt; Content-Length: 183
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 29 Oct 2025 16:45:28 GMT
-1 &lt; x-amzn-appsync-TokensConsumed: 5
-1 &lt; x-amzn-RequestId: 3ee21bf7-fc96-486c-8018-9b4ebe15f456
+1 &lt; Date: Tue, 04 Nov 2025 13:25:40 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: 147b3099-a7ef-41a9-b59a-8f02542de4c7
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 07a3e23b3cebb2b0f6c0c49c0ecf7588.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 30ba03bbc32ec47395df2ab3758fd5a2.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: rzpTy8VVn7KnJOiN3tMFzJlY9d9-oZyXCaQR43wOgcm9uLZFbLOn_A==
+1 &lt; X-Amz-Cf-Id: 2X1mhi9vSfm9TFf3VOIcvVZY2Z7_0rpoFo3Lx3CAqQnNZj3w31-gXw==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: {
       &quot;message&quot;: &quot;Signup successful. Please check your email to set your password.&quot;,
-      &quot;email&quot;: &quot;userexample_#(karate.randomint(10000,99999))@gmail.com&quot;,
+      &quot;email&quot;: &quot;userexample7850aa43-4cac-4091-ba00-5b9005d1b4ed@gmail.com&quot;,
       &quot;statusCode&quot;: 200
     }
   }
@@ -397,19 +474,298 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.64">
-      <div class="step-ref passed">64</div>
+    <div class="step-container" id="0.59">
+      <div class="step-ref passed">59</div>
       
       <div class="step-cell passed">
         <span>Then</span>&nbsp;<span>status 200</span>
       </div>
     </div>
-    <div class="time-cell passed">3</div>
+    <div class="time-cell passed">6</div>
   </div>
 
    
   
   
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.60">
+      <div class="step-ref passed">60</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">10</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.60">18:25:40.290 [print] {
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Signup successful. Please check your email to set your password.&quot;,
+      &quot;email&quot;: &quot;userexample7850aa43-4cac-4091-ba00-5b9005d1b4ed@gmail.com&quot;,
+      &quot;statusCode&quot;: 200
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.61">
+      <div class="step-ref passed">61</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.statusCode == 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">28</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.62">
+      <div class="step-ref passed">62</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.message contains &#39;Signup successful&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[2:64]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[2:64]</span>
+                <span class="scenario-name">Registration fails when email already exists</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>400</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[2:64]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[2:64]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.4">
+      <div class="step-ref bg-step">4</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[2:64]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[2:64]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[2:64]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[2:64]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text signUpQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">mutation SignUp(
+  $first_name: String,
+  $last_name: String,
+  $email: String,
+  $address: AddressInput,
+  $dob: String,
+  $phone: String,
+  $test_bypass: Boolean
+) {
+  signUp(
+    first_name: $first_name,
+    last_name: $last_name,
+    email: $email,
+    address: $address,
+    dob: $dob,
+    phone: $phone,
+    test_bypass: $test_bypass
+  ) {
+    ... on SignUpResponse { message email statusCode }
+    ... on ErrorResponse { message statusCode }
+  }
+}</div>
 
   
 
@@ -429,292 +785,6 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
       <div class="step-ref passed">65</div>
       
       <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>print response</span>
-      </div>
-    </div>
-    <div class="time-cell passed">10</div>
-  </div>
-
-   
-  
-  
-
-  
-
-  <div class="preformatted" data-parent="0.65">21:45:29.068 [print] {
-  &quot;data&quot;: {
-    &quot;signUp&quot;: {
-      &quot;message&quot;: &quot;Signup successful. Please check your email to set your password.&quot;,
-      &quot;email&quot;: &quot;userexample_#(karate.randomint(10000,99999))@gmail.com&quot;,
-      &quot;statusCode&quot;: 200
-    }
-  }
-}
- 
-</div>   
-
-  
-
-</div>
-</div>
-          <div><div>
-  
-
-  
-
-  <div class="step-row">
-    <div class="step-container" id="0.66">
-      <div class="step-ref passed">66</div>
-      
-      <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>match response.data.signUp.statusCode == 200</span>
-      </div>
-    </div>
-    <div class="time-cell passed">19</div>
-  </div>
-
-   
-  
-  
-
-  
-
-     
-
-  
-
-</div>
-</div>
-          <div><div>
-  
-
-  
-
-  <div class="step-row">
-    <div class="step-container" id="0.67">
-      <div class="step-ref passed">67</div>
-      
-      <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>match response.data.signUp.message contains &#39;Signup successful. Please check your email to set your password.&#39;</span>
-      </div>
-    </div>
-    <div class="time-cell passed">2</div>
-  </div>
-
-   
-  
-  
-
-  
-
-     
-
-  
-
-</div>
-</div>
-        </div>
-        <div class="scenario">
-          <div class="scenario-heading" id="[2:69]">
-            <div class="heading-container">
-              <div class="scenario-tags">
-                
-              </div>
-              <div class="scenario-keyword">
-                Scenario: <span>[2:69]</span>
-                <span class="scenario-name">Registration fails when email already exists</span>
-                <span></span>
-              </div>
-            </div>
-            <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>875</span>
-            </div>
-          </div>
-          <div class="step-row">
-            <div class="step-container" id="[2:69]bg">
-              <div class="step-ref bg-step">&gt;&gt;</div>
-              <div class="step-cell passed">Background:</div>
-            </div>
-            <div class="time-cell passed"></div>
-          </div>
-          <div data-parent="[2:69]bg"><div>
-  
-
-  
-
-  <div class="step-row">
-    <div class="step-container" id="0.5">
-      <div class="step-ref bg-step">5</div>
-      
-      <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>url &#39;https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql&#39;</span>
-      </div>
-    </div>
-    <div class="time-cell passed">1</div>
-  </div>
-
-   
-  
-  
-
-  
-
-     
-
-  
-
-</div>
-</div>
-          <div data-parent="[2:69]bg"><div>
-  
-
-  
-
-  <div class="step-row">
-    <div class="step-container" id="0.6">
-      <div class="step-ref bg-step">6</div>
-      
-      <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
-      </div>
-    </div>
-    <div class="time-cell passed">1</div>
-  </div>
-
-   
-  
-  
-
-  
-
-     
-
-  
-
-</div>
-</div>
-          <div data-parent="[2:69]bg"><div>
-  
-
-  
-
-  <div class="step-row">
-    <div class="step-container" id="0.7">
-      <div class="step-ref bg-step">7</div>
-      
-      <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
-      </div>
-    </div>
-    <div class="time-cell passed">0</div>
-  </div>
-
-   
-  
-  
-
-  
-
-     
-
-  
-
-</div>
-</div>
-          <div data-parent="[2:69]bg"><div>
-  
-
-  
-
-  <div class="step-row">
-    <div class="step-container" id="0.8">
-      <div class="step-ref bg-step">8</div>
-      
-      <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>header x-api-key = &#39;da2-ly43dxgsljaohkedp3qi5ze5ba&#39;</span>
-      </div>
-    </div>
-    <div class="time-cell passed">0</div>
-  </div>
-
-   
-  
-  
-
-  
-
-     
-
-  
-
-</div>
-</div>
-          <div data-parent="[2:69]bg"><div>
-  
-
-  
-
-  <div class="step-row">
-    <div class="step-container" id="0.9">
-      <div class="step-ref bg-step">9</div>
-      
-      <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>text signUpQuery =</span>
-      </div>
-    </div>
-    <div class="time-cell passed">0</div>
-  </div>
-
-   
-  
-  <div class="preformatted" data-parent="0.9">mutation SignUp(
-  $first_name: String,
-  $last_name: String,
-  $email: String,
-  $address: AddressInput,
-  $dob: String,
-  $phone: String,
-  $test_bypass: Boolean
-) {
-  signUp(
-    first_name: $first_name,
-    last_name: $last_name,
-    email: $email,
-    address: $address,
-    dob: $dob,
-    phone: $phone,
-    test_bypass: $test_bypass
-  ) {
-    ... on SignUpResponse {
-      message
-      email
-      statusCode
-    }
-    ... on ErrorResponse {
-      message
-      statusCode
-    }
-  }
-}</div>
-
-  
-
-     
-
-  
-
-</div>
-</div>
-          <div><div>
-  
-
-  
-
-  <div class="step-row">
-    <div class="step-container" id="0.70">
-      <div class="step-ref passed">70</div>
-      
-      <div class="step-cell passed">
         <span>Given</span>&nbsp;<span>request</span>
       </div>
     </div>
@@ -723,7 +793,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
    
   
-  <div class="preformatted" data-parent="0.70">{
+  <div class="preformatted" data-parent="0.65">{
   &quot;query&quot;: &quot;#(signUpQuery)&quot;,
   &quot;variables&quot;: {
     &quot;first_name&quot;: &quot;User&quot;,
@@ -756,14 +826,14 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.91">
-      <div class="step-ref passed">91</div>
+    <div class="step-container" id="0.86">
+      <div class="step-ref passed">86</div>
       
       <div class="step-cell passed">
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">866</div>
+    <div class="time-cell passed">392</div>
   </div>
 
    
@@ -772,18 +842,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="0.91">21:45:29.113 request:
+  <div class="preformatted" data-parent="0.86">18:25:40.347 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
 1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
-1 &gt; Content-Length: 788
+1 &gt; Content-Length: 743
 1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
 1 &gt; Connection: Keep-Alive
 1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
 1 &gt; Accept-Encoding: gzip,deflate
 {
-  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse {\n      message\n      email\n      statusCode\n    }\n    ... on ErrorResponse {\n      message\n      statusCode\n    }\n  }\n}&quot;,
+  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse { message email statusCode }\n    ... on ErrorResponse { message statusCode }\n  }\n}&quot;,
   &quot;variables&quot;: {
     &quot;first_name&quot;: &quot;User&quot;,
     &quot;last_name&quot;: &quot;Example&quot;,
@@ -802,18 +872,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:45:29.975 response time in milliseconds: 860
+18:25:40.737 response time in milliseconds: 388
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 72
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 29 Oct 2025 16:45:29 GMT
+1 &lt; Date: Tue, 04 Nov 2025 13:25:40 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: f2ac5507-c2cc-4672-b77f-c158e7848c05
+1 &lt; x-amzn-RequestId: f1ceac9f-e755-404d-bd5b-d20ae8b45df7
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 5fb58436caa45fca86fd79fa77ad0570.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 4c2c73e12e6b04bb19bcf1bb6541e120.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: Kc6vi_EnQGFMfTrJkDw5XixJze1fQPOrz4MRKljhR8SRw4__Dum5IQ==
+1 &lt; X-Amz-Cf-Id: Wpc1J2Hoou-VvhZxrBheFOWBUF3_A5ZXsB2oZ4s5iuzSHHJw4yMq1A==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: {
@@ -836,8 +906,8 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.92">
-      <div class="step-ref passed">92</div>
+    <div class="step-container" id="0.87">
+      <div class="step-ref passed">87</div>
       
       <div class="step-cell passed">
         <span>Then</span>&nbsp;<span>status 200</span>
@@ -864,14 +934,14 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.93">
-      <div class="step-ref passed">93</div>
+    <div class="step-container" id="0.88">
+      <div class="step-ref passed">88</div>
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>print response</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -880,7 +950,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="0.93">21:45:29.979 [print] {
+  <div class="preformatted" data-parent="0.88">18:25:40.741 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: {
       &quot;message&quot;: &quot;Email already exists!&quot;,
@@ -901,8 +971,8 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.94">
-      <div class="step-ref passed">94</div>
+    <div class="step-container" id="0.89">
+      <div class="step-ref passed">89</div>
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>match response.data.signUp.statusCode == 409</span>
@@ -929,8 +999,8 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.95">
-      <div class="step-ref passed">95</div>
+    <div class="step-container" id="0.90">
+      <div class="step-ref passed">90</div>
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>match response.data.signUp.message contains &#39;Email already exists!&#39;</span>
@@ -953,39 +1023,39 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 </div>
         </div>
         <div class="scenario">
-          <div class="scenario-heading" id="[3:97]">
+          <div class="scenario-heading" id="[3:92]">
             <div class="heading-container">
               <div class="scenario-tags">
                 
               </div>
               <div class="scenario-keyword">
-                Scenario: <span>[3:97]</span>
-                <span class="scenario-name">Registration fails when required fields are missing</span>
+                Scenario: <span>[3:92]</span>
+                <span class="scenario-name">Registration fails when required first_name and last_name fields are missing</span>
                 <span></span>
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>821</span>
+              <span>ms:</span>&nbsp;<span>1008</span>
             </div>
           </div>
           <div class="step-row">
-            <div class="step-container" id="[3:97]bg">
+            <div class="step-container" id="[3:92]bg">
               <div class="step-ref bg-step">&gt;&gt;</div>
               <div class="step-cell passed">Background:</div>
             </div>
             <div class="time-cell passed"></div>
           </div>
-          <div data-parent="[3:97]bg"><div>
+          <div data-parent="[3:92]bg"><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.5">
-      <div class="step-ref bg-step">5</div>
+    <div class="step-container" id="0.4">
+      <div class="step-ref bg-step">4</div>
       
       <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>url &#39;https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql&#39;</span>
+        <span>*</span>&nbsp;<span>url baseUrl</span>
       </div>
     </div>
     <div class="time-cell passed">0</div>
@@ -1003,14 +1073,14 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
 </div>
 </div>
-          <div data-parent="[3:97]bg"><div>
+          <div data-parent="[3:92]bg"><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.6">
-      <div class="step-ref bg-step">6</div>
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
@@ -1031,14 +1101,14 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
 </div>
 </div>
-          <div data-parent="[3:97]bg"><div>
+          <div data-parent="[3:92]bg"><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.7">
-      <div class="step-ref bg-step">7</div>
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
@@ -1059,17 +1129,17 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
 </div>
 </div>
-          <div data-parent="[3:97]bg"><div>
+          <div data-parent="[3:92]bg"><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.8">
-      <div class="step-ref bg-step">8</div>
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
       
       <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>header x-api-key = &#39;da2-ly43dxgsljaohkedp3qi5ze5ba&#39;</span>
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
       </div>
     </div>
     <div class="time-cell passed">0</div>
@@ -1087,14 +1157,14 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
 </div>
 </div>
-          <div data-parent="[3:97]bg"><div>
+          <div data-parent="[3:92]bg"><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.9">
-      <div class="step-ref bg-step">9</div>
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>text signUpQuery =</span>
@@ -1105,7 +1175,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
    
   
-  <div class="preformatted" data-parent="0.9">mutation SignUp(
+  <div class="preformatted" data-parent="0.8">mutation SignUp(
   $first_name: String,
   $last_name: String,
   $email: String,
@@ -1123,15 +1193,8 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
     phone: $phone,
     test_bypass: $test_bypass
   ) {
-    ... on SignUpResponse {
-      message
-      email
-      statusCode
-    }
-    ... on ErrorResponse {
-      message
-      statusCode
-    }
+    ... on SignUpResponse { message email statusCode }
+    ... on ErrorResponse { message statusCode }
   }
 }</div>
 
@@ -1149,19 +1212,19 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.98">
-      <div class="step-ref passed">98</div>
+    <div class="step-container" id="0.93">
+      <div class="step-ref passed">93</div>
       
       <div class="step-cell passed">
         <span>Given</span>&nbsp;<span>request</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
   
-  <div class="preformatted" data-parent="0.98">{
+  <div class="preformatted" data-parent="0.93">{
   &quot;query&quot;: &quot;#(signUpQuery)&quot;,
   &quot;variables&quot;: {
     &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
@@ -1192,14 +1255,14 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.117">
-      <div class="step-ref passed">117</div>
+    <div class="step-container" id="0.112">
+      <div class="step-ref passed">112</div>
       
       <div class="step-cell passed">
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">813</div>
+    <div class="time-cell passed">1004</div>
   </div>
 
    
@@ -1208,18 +1271,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="0.117">21:45:29.999 request:
+  <div class="preformatted" data-parent="0.112">18:25:40.771 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
 1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
-1 &gt; Content-Length: 746
+1 &gt; Content-Length: 701
 1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
 1 &gt; Connection: Keep-Alive
 1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
 1 &gt; Accept-Encoding: gzip,deflate
 {
-  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse {\n      message\n      email\n      statusCode\n    }\n    ... on ErrorResponse {\n      message\n      statusCode\n    }\n  }\n}&quot;,
+  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse { message email statusCode }\n    ... on ErrorResponse { message statusCode }\n  }\n}&quot;,
   &quot;variables&quot;: {
     &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
     &quot;address&quot;: {
@@ -1236,18 +1299,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:45:30.808 response time in milliseconds: 807
+18:25:41.772 response time in milliseconds: 1001
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 75
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 29 Oct 2025 16:45:30 GMT
+1 &lt; Date: Tue, 04 Nov 2025 13:25:41 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 37b688cd-be52-4826-bea3-0fc3f6446822
+1 &lt; x-amzn-RequestId: 7fa05784-8ec5-4b98-97bb-0462314e923f
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 75c7bd551167fd85669c596619dca276.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 fdb3cc4dd091ca7a53ccba98811615ac.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: etwlanAzScqDHIVLdsHHUVkaC_GlS8tQWO0m7GC40VezikWBqMmNHA==
+1 &lt; X-Amz-Cf-Id: pQPBa3HMB8Lr564C_azP6fkDe9CoczvQ6eRRMfPX6XJBNypJdZco2Q==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: {
@@ -1270,8 +1333,8 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.118">
-      <div class="step-ref passed">118</div>
+    <div class="step-container" id="0.113">
+      <div class="step-ref passed">113</div>
       
       <div class="step-cell passed">
         <span>Then</span>&nbsp;<span>status 200</span>
@@ -1298,8 +1361,8 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.119">
-      <div class="step-ref passed">119</div>
+    <div class="step-container" id="0.114">
+      <div class="step-ref passed">114</div>
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>print response</span>
@@ -1314,7 +1377,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="0.119">21:45:30.812 [print] {
+  <div class="preformatted" data-parent="0.114">18:25:41.774 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: {
       &quot;message&quot;: &quot;Missing required fields!&quot;,
@@ -1335,8 +1398,1283 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.120">
-      <div class="step-ref passed">120</div>
+    <div class="step-container" id="0.115">
+      <div class="step-ref passed">115</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.statusCode == 400</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.116">
+      <div class="step-ref passed">116</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.message contains &#39;Missing required fields!&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[4:118]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[4:118]</span>
+                <span class="scenario-name">Registration fails when required email field is missing</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>379</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[4:118]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[4:118]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.4">
+      <div class="step-ref bg-step">4</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[4:118]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[4:118]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[4:118]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[4:118]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text signUpQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">mutation SignUp(
+  $first_name: String,
+  $last_name: String,
+  $email: String,
+  $address: AddressInput,
+  $dob: String,
+  $phone: String,
+  $test_bypass: Boolean
+) {
+  signUp(
+    first_name: $first_name,
+    last_name: $last_name,
+    email: $email,
+    address: $address,
+    dob: $dob,
+    phone: $phone,
+    test_bypass: $test_bypass
+  ) {
+    ... on SignUpResponse { message email statusCode }
+    ... on ErrorResponse { message statusCode }
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.119">
+      <div class="step-ref passed">119</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>request</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.119">{
+  &quot;query&quot;: &quot;#(signUpQuery)&quot;,
+  &quot;variables&quot;: {
+   &quot;first_name&quot;: &quot;User&quot;,
+   &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;New York&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;103044&quot;
+    },
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.139">
+      <div class="step-ref passed">139</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">376</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.139">18:25:41.788 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 710
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse { message email statusCode }\n    ... on ErrorResponse { message statusCode }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;first_name&quot;: &quot;User&quot;,
+    &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;New York&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;103044&quot;
+    },
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}
+
+
+18:25:42.162 response time in milliseconds: 372
+1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 75
+1 &lt; Connection: keep-alive
+1 &lt; Date: Tue, 04 Nov 2025 13:25:42 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: 36116cb3-a427-4551-a92e-bc93af26eb85
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 99c08a8b82db9520a20caa8000e3b050.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P3
+1 &lt; X-Amz-Cf-Id: Q-tdNwmQ4z5nesosE3Ed10Im0ZA-LunZ61Ujj_Pw8ldaGq6EKQvidw==
+{
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Missing required fields!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.140">
+      <div class="step-ref passed">140</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.141">
+      <div class="step-ref passed">141</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.141">18:25:42.162 [print] {
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Missing required fields!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.142">
+      <div class="step-ref passed">142</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.statusCode == 400</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.143">
+      <div class="step-ref passed">143</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.message contains &#39;Missing required fields!&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[5:145]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[5:145]</span>
+                <span class="scenario-name">Registration fails when required address field is missing</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>403</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[5:145]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[5:145]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.4">
+      <div class="step-ref bg-step">4</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[5:145]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[5:145]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[5:145]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[5:145]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text signUpQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">mutation SignUp(
+  $first_name: String,
+  $last_name: String,
+  $email: String,
+  $address: AddressInput,
+  $dob: String,
+  $phone: String,
+  $test_bypass: Boolean
+) {
+  signUp(
+    first_name: $first_name,
+    last_name: $last_name,
+    email: $email,
+    address: $address,
+    dob: $dob,
+    phone: $phone,
+    test_bypass: $test_bypass
+  ) {
+    ... on SignUpResponse { message email statusCode }
+    ... on ErrorResponse { message statusCode }
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.146">
+      <div class="step-ref passed">146</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>request</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.146">{
+  &quot;query&quot;: &quot;#(signUpQuery)&quot;,
+  &quot;variables&quot;: {
+   &quot;first_name&quot;: &quot;User&quot;,
+   &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.160">
+      <div class="step-ref passed">160</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">400</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.160">18:25:42.182 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 637
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse { message email statusCode }\n    ... on ErrorResponse { message statusCode }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;first_name&quot;: &quot;User&quot;,
+    &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}
+
+
+18:25:42.574 response time in milliseconds: 392
+1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 75
+1 &lt; Connection: keep-alive
+1 &lt; Date: Tue, 04 Nov 2025 13:25:42 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: b9127e95-17a4-4306-ba19-21bcdb796632
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 7916a11620a8773cef3fe5a5deddb33c.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P3
+1 &lt; X-Amz-Cf-Id: uoX5Wdj5fR-MuoUa_YQ8_uOcOrMNfbCB5VwZXWRjs8Zit5BfRCJuwA==
+{
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Missing required fields!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.161">
+      <div class="step-ref passed">161</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.162">
+      <div class="step-ref passed">162</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.162">18:25:42.574 [print] {
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Missing required fields!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.163">
+      <div class="step-ref passed">163</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.statusCode == 400</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.164">
+      <div class="step-ref passed">164</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.message contains &#39;Missing required fields!&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[6:166]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[6:166]</span>
+                <span class="scenario-name">Registration fails when required dob field is missing</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>778</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[6:166]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[6:166]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.4">
+      <div class="step-ref bg-step">4</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[6:166]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[6:166]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[6:166]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[6:166]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text signUpQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">mutation SignUp(
+  $first_name: String,
+  $last_name: String,
+  $email: String,
+  $address: AddressInput,
+  $dob: String,
+  $phone: String,
+  $test_bypass: Boolean
+) {
+  signUp(
+    first_name: $first_name,
+    last_name: $last_name,
+    email: $email,
+    address: $address,
+    dob: $dob,
+    phone: $phone,
+    test_bypass: $test_bypass
+  ) {
+    ... on SignUpResponse { message email statusCode }
+    ... on ErrorResponse { message statusCode }
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.167">
+      <div class="step-ref passed">167</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>request</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.167">{
+  &quot;query&quot;: &quot;#(signUpQuery)&quot;,
+  &quot;variables&quot;: {
+   &quot;first_name&quot;: &quot;User&quot;,
+   &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;New York&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;103044&quot;
+    },
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.187">
+      <div class="step-ref passed">187</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">771</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.187">18:25:42.607 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 724
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse { message email statusCode }\n    ... on ErrorResponse { message statusCode }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;first_name&quot;: &quot;User&quot;,
+    &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;New York&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;103044&quot;
+    },
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}
+
+
+18:25:43.367 response time in milliseconds: 760
+1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 75
+1 &lt; Connection: keep-alive
+1 &lt; Date: Tue, 04 Nov 2025 13:25:43 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: 65931d11-39f4-448c-ab79-f1d4ea8923f8
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 9842af6c6c3451d36cb6d7b0569cf03c.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P3
+1 &lt; X-Amz-Cf-Id: QwAib3b_VEDt8EOK4r8yRnhB4h2fduWvrxwbCFav8Wbv7w29IGqG0w==
+{
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Missing required fields!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.188">
+      <div class="step-ref passed">188</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.189">
+      <div class="step-ref passed">189</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.189">18:25:43.367 [print] {
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Missing required fields!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.190">
+      <div class="step-ref passed">190</div>
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>match response.data.signUp.statusCode == 400</span>
@@ -1363,14 +2701,2600 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.121">
-      <div class="step-ref passed">121</div>
+    <div class="step-container" id="0.191">
+      <div class="step-ref passed">191</div>
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>match response.data.signUp.message contains &#39;Missing required fields!&#39;</span>
       </div>
     </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[7:193]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[7:193]</span>
+                <span class="scenario-name">Registration fails when first_name, last_name fields are containing invalid values</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>787</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[7:193]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[7:193]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.4">
+      <div class="step-ref bg-step">4</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[7:193]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[7:193]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[7:193]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[7:193]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text signUpQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">mutation SignUp(
+  $first_name: String,
+  $last_name: String,
+  $email: String,
+  $address: AddressInput,
+  $dob: String,
+  $phone: String,
+  $test_bypass: Boolean
+) {
+  signUp(
+    first_name: $first_name,
+    last_name: $last_name,
+    email: $email,
+    address: $address,
+    dob: $dob,
+    phone: $phone,
+    test_bypass: $test_bypass
+  ) {
+    ... on SignUpResponse { message email statusCode }
+    ... on ErrorResponse { message statusCode }
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.194">
+      <div class="step-ref passed">194</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>request</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.194">{
+  &quot;query&quot;: &quot;#(signUpQuery)&quot;,
+  &quot;variables&quot;: {
+   &quot;first_name&quot;: &quot;-&quot;,
+   &quot;last_name&quot;: &quot;-&quot;,
+    &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;New York&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;103044&quot;
+    },
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.215">
+      <div class="step-ref passed">215</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">781</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.215">18:25:43.388 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 734
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse { message email statusCode }\n    ... on ErrorResponse { message statusCode }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;first_name&quot;: &quot;-&quot;,
+    &quot;last_name&quot;: &quot;-&quot;,
+    &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;New York&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;103044&quot;
+    },
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}
+
+
+18:25:44.172 response time in milliseconds: 782
+1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 137
+1 &lt; Connection: keep-alive
+1 &lt; Date: Tue, 04 Nov 2025 13:25:44 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: c5c74212-cbbe-4f73-8aea-1d8322ba2960
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 323bc183f4087fabf6b0ea8f47b4ad58.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P3
+1 &lt; X-Amz-Cf-Id: Z-1ONY4zQA-ihQLkXCz4ZTuaKXBwN0D8Aw1rFk5BXO2tqRz1FJ99jg==
+{
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Invalid first name! Must contain at least 2 letters and may include spaces or hyphens.&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.216">
+      <div class="step-ref passed">216</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.217">
+      <div class="step-ref passed">217</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.217">18:25:44.174 [print] {
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Invalid first name! Must contain at least 2 letters and may include spaces or hyphens.&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.218">
+      <div class="step-ref passed">218</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.statusCode == 400</span>
+      </div>
+    </div>
     <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.219">
+      <div class="step-ref passed">219</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.message contains &#39;Invalid first name! Must contain at least 2 letters and may include spaces or hyphens.&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[8:221]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[8:221]</span>
+                <span class="scenario-name">Registration fails when email is invalid</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>984</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[8:221]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[8:221]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.4">
+      <div class="step-ref bg-step">4</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[8:221]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[8:221]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[8:221]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[8:221]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text signUpQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">mutation SignUp(
+  $first_name: String,
+  $last_name: String,
+  $email: String,
+  $address: AddressInput,
+  $dob: String,
+  $phone: String,
+  $test_bypass: Boolean
+) {
+  signUp(
+    first_name: $first_name,
+    last_name: $last_name,
+    email: $email,
+    address: $address,
+    dob: $dob,
+    phone: $phone,
+    test_bypass: $test_bypass
+  ) {
+    ... on SignUpResponse { message email statusCode }
+    ... on ErrorResponse { message statusCode }
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.222">
+      <div class="step-ref passed">222</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>request</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.222">{
+  &quot;query&quot;: &quot;#(signUpQuery)&quot;,
+  &quot;variables&quot;: {
+   &quot;first_name&quot;: &quot;User&quot;,
+   &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;a@b&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;New York&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;103044&quot;
+    },
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.243">
+      <div class="step-ref passed">243</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">981</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.243">18:25:44.193 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 724
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse { message email statusCode }\n    ... on ErrorResponse { message statusCode }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;first_name&quot;: &quot;User&quot;,
+    &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;a@b&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;New York&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;103044&quot;
+    },
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}
+
+
+18:25:45.169 response time in milliseconds: 976
+1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 72
+1 &lt; Connection: keep-alive
+1 &lt; Date: Tue, 04 Nov 2025 13:25:45 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: 0859d684-494e-45c7-a555-1504597b07d4
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 760430836935a4d8c7a31f717fa46d44.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P3
+1 &lt; X-Amz-Cf-Id: pt2vYEYfc3Bf3Xx3cz2j4dg6Pu6mHE3lesb1m8pNHushLCbM58f8tQ==
+{
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Invalid email format!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.244">
+      <div class="step-ref passed">244</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.245">
+      <div class="step-ref passed">245</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.245">18:25:45.169 [print] {
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Invalid email format!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.246">
+      <div class="step-ref passed">246</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.statusCode == 400</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.247">
+      <div class="step-ref passed">247</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.message contains &#39;Invalid email format!&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[9:249]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[9:249]</span>
+                <span class="scenario-name">Registration fails when phone number is invalid</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>788</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[9:249]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[9:249]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.4">
+      <div class="step-ref bg-step">4</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[9:249]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[9:249]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[9:249]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[9:249]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text signUpQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">mutation SignUp(
+  $first_name: String,
+  $last_name: String,
+  $email: String,
+  $address: AddressInput,
+  $dob: String,
+  $phone: String,
+  $test_bypass: Boolean
+) {
+  signUp(
+    first_name: $first_name,
+    last_name: $last_name,
+    email: $email,
+    address: $address,
+    dob: $dob,
+    phone: $phone,
+    test_bypass: $test_bypass
+  ) {
+    ... on SignUpResponse { message email statusCode }
+    ... on ErrorResponse { message statusCode }
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.250">
+      <div class="step-ref passed">250</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>request</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.250">{
+  &quot;query&quot;: &quot;#(signUpQuery)&quot;,
+  &quot;variables&quot;: {
+   &quot;first_name&quot;: &quot;User&quot;,
+   &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;New York&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;103044&quot;
+    },
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.271">
+      <div class="step-ref passed">271</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">783</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.271">18:25:45.200 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 737
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse { message email statusCode }\n    ... on ErrorResponse { message statusCode }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;first_name&quot;: &quot;User&quot;,
+    &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;New York&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;103044&quot;
+    },
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}
+
+
+18:25:45.976 response time in milliseconds: 776
+1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 79
+1 &lt; Connection: keep-alive
+1 &lt; Date: Tue, 04 Nov 2025 13:25:45 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: 09d4b71c-498d-4728-bc6d-93184334f69a
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 e72271b7c8cb777dcacd6e49dcfab458.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P3
+1 &lt; X-Amz-Cf-Id: hKurBeSl0Nv41uwRJSq8Yx1OI0v1RpDzRgbZNnJ4QJm7uo84eXF7Dg==
+{
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Invalid phone number format!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.272">
+      <div class="step-ref passed">272</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.273">
+      <div class="step-ref passed">273</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.273">18:25:45.976 [print] {
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Invalid phone number format!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.274">
+      <div class="step-ref passed">274</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.statusCode == 400</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.275">
+      <div class="step-ref passed">275</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.message contains &#39;Invalid phone number format!&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[10:277]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[10:277]</span>
+                <span class="scenario-name">Registration fails when postal code is invalid</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>987</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[10:277]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[10:277]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.4">
+      <div class="step-ref bg-step">4</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[10:277]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[10:277]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[10:277]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[10:277]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text signUpQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">mutation SignUp(
+  $first_name: String,
+  $last_name: String,
+  $email: String,
+  $address: AddressInput,
+  $dob: String,
+  $phone: String,
+  $test_bypass: Boolean
+) {
+  signUp(
+    first_name: $first_name,
+    last_name: $last_name,
+    email: $email,
+    address: $address,
+    dob: $dob,
+    phone: $phone,
+    test_bypass: $test_bypass
+  ) {
+    ... on SignUpResponse { message email statusCode }
+    ... on ErrorResponse { message statusCode }
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.278">
+      <div class="step-ref passed">278</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>request</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.278">{
+  &quot;query&quot;: &quot;#(signUpQuery)&quot;,
+  &quot;variables&quot;: {
+   &quot;first_name&quot;: &quot;User&quot;,
+   &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;New York&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;abc&quot;
+    },
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.299">
+      <div class="step-ref passed">299</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">983</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.299">18:25:45.994 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 740
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse { message email statusCode }\n    ... on ErrorResponse { message statusCode }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;first_name&quot;: &quot;User&quot;,
+    &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;New York&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;abc&quot;
+    },
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}
+
+
+18:25:46.973 response time in milliseconds: 978
+1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 71
+1 &lt; Connection: keep-alive
+1 &lt; Date: Tue, 04 Nov 2025 13:25:46 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: de94dbd0-a59f-4417-a144-5bdd8b5f9a8f
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 2273216c05fd9d7013acb3800822a1ae.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P3
+1 &lt; X-Amz-Cf-Id: Czhi0oLrNbiqbd8i6q636Rn56AONPxM9TaM8EFXxby0jCwZdIpKCrg==
+{
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Invalid postal code!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.300">
+      <div class="step-ref passed">300</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.301">
+      <div class="step-ref passed">301</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.301">18:25:46.976 [print] {
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Invalid postal code!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.302">
+      <div class="step-ref passed">302</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.statusCode == 400</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.303">
+      <div class="step-ref passed">303</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.message contains &#39;Invalid postal code!&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[11:305]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[11:305]</span>
+                <span class="scenario-name">Registration fails when dob is invalid</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>394</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[11:305]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[11:305]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.4">
+      <div class="step-ref bg-step">4</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[11:305]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[11:305]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[11:305]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[11:305]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text signUpQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">mutation SignUp(
+  $first_name: String,
+  $last_name: String,
+  $email: String,
+  $address: AddressInput,
+  $dob: String,
+  $phone: String,
+  $test_bypass: Boolean
+) {
+  signUp(
+    first_name: $first_name,
+    last_name: $last_name,
+    email: $email,
+    address: $address,
+    dob: $dob,
+    phone: $phone,
+    test_bypass: $test_bypass
+  ) {
+    ... on SignUpResponse { message email statusCode }
+    ... on ErrorResponse { message statusCode }
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.306">
+      <div class="step-ref passed">306</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>request</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.306">{
+  &quot;query&quot;: &quot;#(signUpQuery)&quot;,
+  &quot;variables&quot;: {
+   &quot;first_name&quot;: &quot;User&quot;,
+   &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;New York&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;103044&quot;
+    },
+    &quot;dob&quot;: &quot;1999/05/14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.327">
+      <div class="step-ref passed">327</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">388</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.327">18:25:46.998 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 745
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse { message email statusCode }\n    ... on ErrorResponse { message statusCode }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;first_name&quot;: &quot;User&quot;,
+    &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;New York&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;103044&quot;
+    },
+    &quot;dob&quot;: &quot;1999/05/14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}
+
+
+18:25:47.384 response time in milliseconds: 376
+1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 98
+1 &lt; Connection: keep-alive
+1 &lt; Date: Tue, 04 Nov 2025 13:25:47 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: 795a142a-9f2d-4939-937c-1234b11a70c9
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 a110a5ce023164a6c9f8ba17a079c52e.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P3
+1 &lt; X-Amz-Cf-Id: t8kBehKXneXJIDy28bcJtmFzwXrCi0upLloqWmMYMGMpH9possq-1A==
+{
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Invalid date format! Expected YYYY-MM-DD format&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.328">
+      <div class="step-ref passed">328</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.329">
+      <div class="step-ref passed">329</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.329">18:25:47.384 [print] {
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Invalid date format! Expected YYYY-MM-DD format&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.330">
+      <div class="step-ref passed">330</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.statusCode == 400</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.331">
+      <div class="step-ref passed">331</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.message contains &#39;Invalid date format! Expected YYYY-MM-DD format&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[12:333]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[12:333]</span>
+                <span class="scenario-name">Registration fails when city is invalid</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>375</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[12:333]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[12:333]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.4">
+      <div class="step-ref bg-step">4</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[12:333]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[12:333]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[12:333]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[12:333]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text signUpQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.8">mutation SignUp(
+  $first_name: String,
+  $last_name: String,
+  $email: String,
+  $address: AddressInput,
+  $dob: String,
+  $phone: String,
+  $test_bypass: Boolean
+) {
+  signUp(
+    first_name: $first_name,
+    last_name: $last_name,
+    email: $email,
+    address: $address,
+    dob: $dob,
+    phone: $phone,
+    test_bypass: $test_bypass
+  ) {
+    ... on SignUpResponse { message email statusCode }
+    ... on ErrorResponse { message statusCode }
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.334">
+      <div class="step-ref passed">334</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>request</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.334">{
+  &quot;query&quot;: &quot;#(signUpQuery)&quot;,
+  &quot;variables&quot;: {
+   &quot;first_name&quot;: &quot;User&quot;,
+   &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;12345&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;103044&quot;
+    },
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.355">
+      <div class="step-ref passed">355</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">372</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.355">18:25:47.410 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 740
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;query&quot;: &quot;mutation SignUp(\n  $first_name: String,\n  $last_name: String,\n  $email: String,\n  $address: AddressInput,\n  $dob: String,\n  $phone: String,\n  $test_bypass: Boolean\n) {\n  signUp(\n    first_name: $first_name,\n    last_name: $last_name,\n    email: $email,\n    address: $address,\n    dob: $dob,\n    phone: $phone,\n    test_bypass: $test_bypass\n  ) {\n    ... on SignUpResponse { message email statusCode }\n    ... on ErrorResponse { message statusCode }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;first_name&quot;: &quot;User&quot;,
+    &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;userexample9@gmail.com&quot;,
+    &quot;address&quot;: {
+      &quot;street&quot;: &quot;123 Main Street&quot;,
+      &quot;suite&quot;: &quot;3A&quot;,
+      &quot;city&quot;: &quot;12345&quot;,
+      &quot;state&quot;: &quot;NY&quot;,
+      &quot;postal_code&quot;: &quot;103044&quot;
+    },
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;test_bypass&quot;: true
+  }
+}
+
+
+18:25:47.775 response time in milliseconds: 365
+1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 125
+1 &lt; Connection: keep-alive
+1 &lt; Date: Tue, 04 Nov 2025 13:25:47 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: be196e06-a12d-46de-82a7-9ddf0a8a67ae
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 a110a5ce023164a6c9f8ba17a079c52e.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P3
+1 &lt; X-Amz-Cf-Id: kNPl1asdcUEBPrxsd9ec2JrSFbahgjFtgzpXIzWeI-I6p2hofFxTXw==
+{
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Invalid city! Only alphabetic characters, spaces, and hyphens are allowed.&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.356">
+      <div class="step-ref passed">356</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.357">
+      <div class="step-ref passed">357</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.357">18:25:47.779 [print] {
+  &quot;data&quot;: {
+    &quot;signUp&quot;: {
+      &quot;message&quot;: &quot;Invalid city! Only alphabetic characters, spaces, and hyphens are allowed.&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.358">
+      <div class="step-ref passed">358</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.statusCode == 400</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.359">
+      <div class="step-ref passed">359</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp.message contains &#39;Invalid city! Only alphabetic characters, spaces, and hyphens are allowed.&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
   </div>
 
    

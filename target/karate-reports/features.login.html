@@ -38,7 +38,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
       <img src="karate-labs-logo-ring.svg" alt="Karate Labs"/>
     </a>
     <div class="nav-count">
-      <div id="nav-pass" class="bg-success">2</div>
+      <div id="nav-pass" class="bg-success">6</div>
       <div id="nav-fail" class="bg-danger">0</div>
     </div>
   </div>
@@ -49,16 +49,28 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
     <div>Scenarios</div>
   </div>
   <div id="nav-date">
-    <div>2025-10-24 07:56:15 PM</div>
+    <div>2025-11-04 05:16:36 PM</div>
   </div>
 </div>
 
         <div class="nav-container">
           <div class="nav-item passed">
-            <a href="#[1:28]"><span>[1:28]</span> <span>Fetch details of a country</span></a>
+            <a href="#[1:67]"><span>[1:67]</span> <span>Successful Login with Valid Credentials</span></a>
           </div>
           <div class="nav-item passed">
-            <a href="#[2:37]"><span>[2:37]</span> <span>Fetch all continents</span></a>
+            <a href="#[2:88]"><span>[2:88]</span> <span>Login fails when email does not exist</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[3:105]"><span>[3:105]</span> <span>Login fails with incorrect password</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[4:124]"><span>[4:124]</span> <span>Login fails when email field is empty</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[5:141]"><span>[5:141]</span> <span>Login fails when password field is empty</span></a>
+          </div>
+          <div class="nav-item passed">
+            <a href="#[6:158]"><span>[6:158]</span> <span>Login fails when both email and password fields are empty</span></a>
           </div>
         </div>
       </div>
@@ -68,43 +80,71 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
           <a href="karate-tags.html">Tags</a><span class="feature-label">|</span>
           <span class="feature-label">Feature:</span>
           <span class="feature-path">features/login.feature</span><span class="feature-label">|</span>
-          <span class="feature-name">GraphQL APIs Automation Testing</span>
-          <span class="feature-description"></span>
+          <span class="feature-name">Login API Automation</span>
+          <span class="feature-description">Purpose: Authenticate users via email and password, and validate login scenarios such as valid credentials, invalid email, wrong password, and missing fields.</span>
         </div>
         <div class="scenario">
-          <div class="scenario-heading" id="[1:28]">
+          <div class="scenario-heading" id="[1:67]">
             <div class="heading-container">
               <div class="scenario-tags">
                 
               </div>
               <div class="scenario-keyword">
-                Scenario: <span>[1:28]</span>
-                <span class="scenario-name">Fetch details of a country</span>
+                Scenario: <span>[1:67]</span>
+                <span class="scenario-name">Successful Login with Valid Credentials</span>
                 <span></span>
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>994</span>
+              <span>ms:</span>&nbsp;<span>992</span>
             </div>
           </div>
           <div class="step-row">
-            <div class="step-container" id="[1:28]bg">
+            <div class="step-container" id="[1:67]bg">
               <div class="step-ref bg-step">&gt;&gt;</div>
               <div class="step-cell passed">Background:</div>
             </div>
             <div class="time-cell passed"></div>
           </div>
-          <div data-parent="[1:28]bg"><div>
+          <div data-parent="[1:67]bg"><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.25">
-      <div class="step-ref bg-step">25</div>
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
       
       <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>url &#39;https://countries.trevorblades.com/&#39;</span>
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[1:67]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
       </div>
     </div>
     <div class="time-cell passed">1</div>
@@ -122,19 +162,184 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
 </div>
 </div>
-          <div data-parent="[1:28]bg"><div>
+          <div data-parent="[1:67]bg"><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.26">
-      <div class="step-ref bg-step">26</div>
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
       </div>
     </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[1:67]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[1:67]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.9">
+      <div class="step-ref bg-step">9</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text loginQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.9">mutation Login($email: String!, $password: String!, $mfaCode: String) {
+  login(email: $email, password: $password, mfaCode: $mfaCode) {
+    ... on LoginResponse {
+      accessToken
+      refreshToken
+      user {
+        _id
+        email
+        username
+        phone
+        first_name
+        last_name
+        dob
+        address {
+          street
+          suite
+          city
+          state
+          postal_code
+        }
+        profile_picture
+        sys_dateCreated
+        sys_dateModified
+        sys_deleted
+        sys_userCreated_id
+        sys_userCreatedName
+        sys_userModified_id
+        sys_userModifiedName
+        details
+        password
+        mfa_enabled
+        last_login
+        subscription {
+          _id
+          name
+          description
+          price
+          sys_dateCreated
+          sys_dateModified
+          sys_deleted
+          sys_userCreated_id
+          sys_userCreatedName
+          sys_userModified_id
+          sys_userModifiedName
+        }
+      }
+      statusCode
+    }
+    ... on ErrorResponse {
+      message
+      statusCode
+    }
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.68">
+      <div class="step-ref passed">68</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def email = karate.read(&#39;file:target/target/email.txt&#39;)</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.69">
+      <div class="step-ref passed">69</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print &#39;📩 Using existing user email:&#39;, email</span>
+      </div>
+    </div>
     <div class="time-cell passed">1</div>
   </div>
 
@@ -144,7 +349,8 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-     
+  <div class="preformatted" data-parent="0.69">17:16:31.690 [print] 📩 Using existing user email: userexample16b6e13b-0678-4cb2-bfc7-fe1a41a1ec2e@gmail.com 
+</div>   
 
   
 
@@ -156,19 +362,25 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.29">
-      <div class="step-ref passed">29</div>
+    <div class="step-container" id="0.70">
+      <div class="step-ref passed">70</div>
       
       <div class="step-cell passed">
-        <span>Given</span>&nbsp;<span>request { query: &#39;query GetCountry { country(code: &quot;PK&quot;) { name native capital emoji currency } }&#39; }</span>
+        <span>Given</span>&nbsp;<span>request</span>
       </div>
     </div>
-    <div class="time-cell passed">28</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
   
-  
+  <div class="preformatted" data-parent="0.70">{
+  &quot;query&quot;: &quot;#(loginQuery)&quot;,
+  &quot;variables&quot;: {
+    &quot;email&quot;: &quot;#(email)&quot;,
+    &quot;password&quot;: &quot;User@12345&quot;
+  }
+}</div>
 
   
 
@@ -184,14 +396,14 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.30">
-      <div class="step-ref passed">30</div>
+    <div class="step-container" id="0.80">
+      <div class="step-ref passed">80</div>
       
       <div class="step-cell passed">
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">940</div>
+    <div class="time-cell passed">983</div>
   </div>
 
    
@@ -200,52 +412,85 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="0.30">19:56:13.838 request:
-1 &gt; POST https://countries.trevorblades.com/
+  <div class="preformatted" data-parent="0.80">17:16:31.694 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
-1 &gt; Content-Length: 93
-1 &gt; Host: countries.trevorblades.com
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 1277
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
 1 &gt; Connection: Keep-Alive
 1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
 1 &gt; Accept-Encoding: gzip,deflate
 {
-  &quot;query&quot;: &quot;query GetCountry { country(code: \&quot;PK\&quot;) { name native capital emoji currency } }&quot;
+  &quot;query&quot;: &quot;mutation Login($email: String!, $password: String!, $mfaCode: String) {\n  login(email: $email, password: $password, mfaCode: $mfaCode) {\n    ... on LoginResponse {\n      accessToken\n      refreshToken\n      user {\n        _id\n        email\n        username\n        phone\n        first_name\n        last_name\n        dob\n        address {\n          street\n          suite\n          city\n          state\n          postal_code\n        }\n        profile_picture\n        sys_dateCreated\n        sys_dateModified\n        sys_deleted\n        sys_userCreated_id\n        sys_userCreatedName\n        sys_userModified_id\n        sys_userModifiedName\n        details\n        password\n        mfa_enabled\n        last_login\n        subscription {\n          _id\n          name\n          description\n          price\n          sys_dateCreated\n          sys_dateModified\n          sys_deleted\n          sys_userCreated_id\n          sys_userCreatedName\n          sys_userModified_id\n          sys_userModifiedName\n        }\n      }\n      statusCode\n    }\n    ... on ErrorResponse {\n      message\n      statusCode\n    }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;email&quot;: &quot;userexample16b6e13b-0678-4cb2-bfc7-fe1a41a1ec2e@gmail.com&quot;,
+    &quot;password&quot;: &quot;User@12345&quot;
+  }
 }
 
 
-19:56:14.625 response time in milliseconds: 684
+17:16:32.673 response time in milliseconds: 979
 1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Transfer-Encoding: chunked
 1 &lt; Connection: keep-alive
-1 &lt; x-served-by: cache-fjr990023-FJR
-1 &lt; accept-ranges: bytes
-1 &lt; date: Fri, 24 Oct 2025 14:56:14 GMT
-1 &lt; content-type: application/json; charset=utf-8
-1 &lt; access-control-max-age: 600
+1 &lt; Date: Tue, 04 Nov 2025 12:16:32 GMT
+1 &lt; x-amzn-RequestId: 9cb722e9-b121-4dfe-ba81-c4f345d1d9be
+1 &lt; x-amzn-appsync-TokensConsumed: 1
 1 &lt; vary: accept-encoding
-1 &lt; access-control-expose-headers: *
-1 &lt; access-control-allow-credentials: true
-1 &lt; access-control-allow-methods: POST, GET, HEAD, OPTIONS
-1 &lt; access-control-allow-headers: *
-1 &lt; alt-svc: h3=&quot;:443&quot;; ma=86400
-1 &lt; access-control-allow-origin: *
-1 &lt; x-powered-by: Stellate
-1 &lt; age: 1
-1 &lt; cache-control: public, s-maxage=2628000, stale-while-revalidate=2628000
-1 &lt; x-cache: MISS
-1 &lt; x-cache-hits: 0
-1 &lt; gcdn-cache: MISS
-1 &lt; stellate-rate-limit-budget-remaining: 49
-1 &lt; stellate-rate-limit-rules: &quot;IP limit&quot;;type=&quot;RequestCount&quot;;budget=50;limited=?0;remaining=49;refill=60
-1 &lt; stellate-rate-limit-decision: pass
-1 &lt; stellate-rate-limit-budget-required: 9
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 0afb38087e0c6c8d354f6117327c17dc.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P2
+1 &lt; X-Amz-Cf-Id: KUp4QfYItwF5T9V6pSvlLLnlw2RQsw3eC0bqOrYWLDKYlCK7k_os-A==
 {
   &quot;data&quot;: {
-    &quot;country&quot;: {
-      &quot;native&quot;: &quot;Pakistan&quot;,
-      &quot;capital&quot;: &quot;Islamabad&quot;,
-      &quot;emoji&quot;: &quot;🇵🇰&quot;,
-      &quot;currency&quot;: &quot;PKR&quot;,
-      &quot;name&quot;: &quot;Pakistan&quot;
+    &quot;login&quot;: {
+      &quot;accessToken&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMTZiNmUxM2ItMDY3OC00Y2IyLWJmYzctZmUxYTQxYTFlYzJlQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzYyMjYyMTkyfQ.NMNVVc0Qk_ut4e2OqkdhjuIIywS-_XaB9cE1W6F-FiM&quot;,
+      &quot;refreshToken&quot;: &quot;gAAAAABpCe6gaiXmswm6AXCwlQyxrLe7QkrelPi8cVpb9ux71RPpWXw6anVYc_FiL0hoGSrhxqhUNjgwzmTL5AkAs-tRzMIteyjFMin22gg6GLPSDUNOoEOCBXZNnjahMy5d5RjA9GRWxO5CzIL2WyCZbLwRe2uL0pnzMZc9OQ9ABwIg0k4dTCE=&quot;,
+      &quot;user&quot;: {
+        &quot;_id&quot;: &quot;289&quot;,
+        &quot;email&quot;: &quot;userexample16b6e13b-0678-4cb2-bfc7-fe1a41a1ec2e@gmail.com&quot;,
+        &quot;username&quot;: &quot;&quot;,
+        &quot;phone&quot;: &quot;+14191000000&quot;,
+        &quot;first_name&quot;: &quot;User&quot;,
+        &quot;last_name&quot;: &quot;Example&quot;,
+        &quot;dob&quot;: &quot;1999-05-14&quot;,
+        &quot;address&quot;: {
+          &quot;street&quot;: &quot;123 Main Street&quot;,
+          &quot;suite&quot;: &quot;3A&quot;,
+          &quot;city&quot;: &quot;New York&quot;,
+          &quot;state&quot;: &quot;NY&quot;,
+          &quot;postal_code&quot;: &quot;103044&quot;
+        },
+        &quot;profile_picture&quot;: &quot;&quot;,
+        &quot;sys_dateCreated&quot;: &quot;2025-11-04T12:16:24+00:00&quot;,
+        &quot;sys_dateModified&quot;: &quot;2025-11-04T12:16:27+00:00&quot;,
+        &quot;sys_deleted&quot;: false,
+        &quot;sys_userCreated_id&quot;: 0,
+        &quot;sys_userCreatedName&quot;: &quot;Self-SignUp&quot;,
+        &quot;sys_userModified_id&quot;: 0,
+        &quot;sys_userModifiedName&quot;: &quot;&quot;,
+        &quot;details&quot;: &quot;{}&quot;,
+        &quot;password&quot;: &quot;gAAAAABpCe6b87O2K8GVkLAJfzGbIG-wlR8mq_ZypxPktqErR5AphLaF6h8C_80DC4ced3g0AcdOwCOWFvIbAFAZ6Hh_LgBsEg==&quot;,
+        &quot;mfa_enabled&quot;: false,
+        &quot;last_login&quot;: &quot;2025-11-04T12:14:01+00:00&quot;,
+        &quot;subscription&quot;: {
+          &quot;_id&quot;: 1,
+          &quot;name&quot;: &quot;Rookie&quot;,
+          &quot;description&quot;: &quot;Rookie Tier Subscription&quot;,
+          &quot;price&quot;: 0.0,
+          &quot;sys_dateCreated&quot;: &quot;2025-08-02T21:28:54+00:00&quot;,
+          &quot;sys_dateModified&quot;: &quot;2025-08-02T21:34:13+00:00&quot;,
+          &quot;sys_deleted&quot;: false,
+          &quot;sys_userCreated_id&quot;: 3,
+          &quot;sys_userCreatedName&quot;: &quot;drea@123go.io&quot;,
+          &quot;sys_userModified_id&quot;: 3,
+          &quot;sys_userModifiedName&quot;: &quot;drea@123go.io&quot;
+        }
+      },
+      &quot;statusCode&quot;: 200
     }
   }
 }
@@ -263,167 +508,11 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.31">
-      <div class="step-ref passed">31</div>
+    <div class="step-container" id="0.81">
+      <div class="step-ref passed">81</div>
       
       <div class="step-cell passed">
         <span>Then</span>&nbsp;<span>status 200</span>
-      </div>
-    </div>
-    <div class="time-cell passed">3</div>
-  </div>
-
-   
-  
-  
-
-  
-
-     
-
-  
-
-</div>
-</div>
-          <div><div>
-  
-
-  
-
-  <div class="step-row">
-    <div class="step-container" id="0.32">
-      <div class="step-ref passed">32</div>
-      
-      <div class="step-cell passed">
-        <span>And</span>&nbsp;<span>match response.data.country.name == &#39;Pakistan&#39;</span>
-      </div>
-    </div>
-    <div class="time-cell passed">14</div>
-  </div>
-
-   
-  
-  
-
-  
-
-     
-
-  
-
-</div>
-</div>
-          <div><div>
-  
-
-  
-
-  <div class="step-row">
-    <div class="step-container" id="0.33">
-      <div class="step-ref passed">33</div>
-      
-      <div class="step-cell passed">
-        <span>And</span>&nbsp;<span>print response.data.country</span>
-      </div>
-    </div>
-    <div class="time-cell passed">6</div>
-  </div>
-
-   
-  
-  
-
-  
-
-  <div class="preformatted" data-parent="0.33">19:56:14.654 [print] {
-  &quot;native&quot;: &quot;Pakistan&quot;,
-  &quot;capital&quot;: &quot;Islamabad&quot;,
-  &quot;emoji&quot;: &quot;🇵🇰&quot;,
-  &quot;currency&quot;: &quot;PKR&quot;,
-  &quot;name&quot;: &quot;Pakistan&quot;
-}
- 
-</div>   
-
-  
-
-</div>
-</div>
-          <div><div>
-  
-
-  
-
-  <div class="step-row">
-    <div class="step-container" id="0.34">
-      <div class="step-ref passed">34</div>
-      
-      <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>print &#39;🔹 Response:&#39;, response</span>
-      </div>
-    </div>
-    <div class="time-cell passed">1</div>
-  </div>
-
-   
-  
-  
-
-  
-
-  <div class="preformatted" data-parent="0.34">19:56:14.657 [print] 🔹 Response: {
-  &quot;data&quot;: {
-    &quot;country&quot;: {
-      &quot;native&quot;: &quot;Pakistan&quot;,
-      &quot;capital&quot;: &quot;Islamabad&quot;,
-      &quot;emoji&quot;: &quot;🇵🇰&quot;,
-      &quot;currency&quot;: &quot;PKR&quot;,
-      &quot;name&quot;: &quot;Pakistan&quot;
-    }
-  }
-}
- 
-</div>   
-
-  
-
-</div>
-</div>
-        </div>
-        <div class="scenario">
-          <div class="scenario-heading" id="[2:37]">
-            <div class="heading-container">
-              <div class="scenario-tags">
-                
-              </div>
-              <div class="scenario-keyword">
-                Scenario: <span>[2:37]</span>
-                <span class="scenario-name">Fetch all continents</span>
-                <span></span>
-              </div>
-            </div>
-            <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>592</span>
-            </div>
-          </div>
-          <div class="step-row">
-            <div class="step-container" id="[2:37]bg">
-              <div class="step-ref bg-step">&gt;&gt;</div>
-              <div class="step-cell passed">Background:</div>
-            </div>
-            <div class="time-cell passed"></div>
-          </div>
-          <div data-parent="[2:37]bg"><div>
-  
-
-  
-
-  <div class="step-row">
-    <div class="step-container" id="0.25">
-      <div class="step-ref bg-step">25</div>
-      
-      <div class="step-cell passed">
-        <span>*</span>&nbsp;<span>url &#39;https://countries.trevorblades.com/&#39;</span>
       </div>
     </div>
     <div class="time-cell passed">0</div>
@@ -441,14 +530,285 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
 </div>
 </div>
-          <div data-parent="[2:37]bg"><div>
+          <div><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.26">
-      <div class="step-ref bg-step">26</div>
+    <div class="step-container" id="0.82">
+      <div class="step-ref passed">82</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print &#39;Successful Login Response:&#39;, response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.82">17:16:32.676 [print] Successful Login Response: {
+  &quot;data&quot;: {
+    &quot;login&quot;: {
+      &quot;accessToken&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMTZiNmUxM2ItMDY3OC00Y2IyLWJmYzctZmUxYTQxYTFlYzJlQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzYyMjYyMTkyfQ.NMNVVc0Qk_ut4e2OqkdhjuIIywS-_XaB9cE1W6F-FiM&quot;,
+      &quot;refreshToken&quot;: &quot;gAAAAABpCe6gaiXmswm6AXCwlQyxrLe7QkrelPi8cVpb9ux71RPpWXw6anVYc_FiL0hoGSrhxqhUNjgwzmTL5AkAs-tRzMIteyjFMin22gg6GLPSDUNOoEOCBXZNnjahMy5d5RjA9GRWxO5CzIL2WyCZbLwRe2uL0pnzMZc9OQ9ABwIg0k4dTCE=&quot;,
+      &quot;user&quot;: {
+        &quot;_id&quot;: &quot;289&quot;,
+        &quot;email&quot;: &quot;userexample16b6e13b-0678-4cb2-bfc7-fe1a41a1ec2e@gmail.com&quot;,
+        &quot;username&quot;: &quot;&quot;,
+        &quot;phone&quot;: &quot;+14191000000&quot;,
+        &quot;first_name&quot;: &quot;User&quot;,
+        &quot;last_name&quot;: &quot;Example&quot;,
+        &quot;dob&quot;: &quot;1999-05-14&quot;,
+        &quot;address&quot;: {
+          &quot;street&quot;: &quot;123 Main Street&quot;,
+          &quot;suite&quot;: &quot;3A&quot;,
+          &quot;city&quot;: &quot;New York&quot;,
+          &quot;state&quot;: &quot;NY&quot;,
+          &quot;postal_code&quot;: &quot;103044&quot;
+        },
+        &quot;profile_picture&quot;: &quot;&quot;,
+        &quot;sys_dateCreated&quot;: &quot;2025-11-04T12:16:24+00:00&quot;,
+        &quot;sys_dateModified&quot;: &quot;2025-11-04T12:16:27+00:00&quot;,
+        &quot;sys_deleted&quot;: false,
+        &quot;sys_userCreated_id&quot;: 0,
+        &quot;sys_userCreatedName&quot;: &quot;Self-SignUp&quot;,
+        &quot;sys_userModified_id&quot;: 0,
+        &quot;sys_userModifiedName&quot;: &quot;&quot;,
+        &quot;details&quot;: &quot;{}&quot;,
+        &quot;password&quot;: &quot;gAAAAABpCe6b87O2K8GVkLAJfzGbIG-wlR8mq_ZypxPktqErR5AphLaF6h8C_80DC4ced3g0AcdOwCOWFvIbAFAZ6Hh_LgBsEg==&quot;,
+        &quot;mfa_enabled&quot;: false,
+        &quot;last_login&quot;: &quot;2025-11-04T12:14:01+00:00&quot;,
+        &quot;subscription&quot;: {
+          &quot;_id&quot;: 1,
+          &quot;name&quot;: &quot;Rookie&quot;,
+          &quot;description&quot;: &quot;Rookie Tier Subscription&quot;,
+          &quot;price&quot;: 0.0,
+          &quot;sys_dateCreated&quot;: &quot;2025-08-02T21:28:54+00:00&quot;,
+          &quot;sys_dateModified&quot;: &quot;2025-08-02T21:34:13+00:00&quot;,
+          &quot;sys_deleted&quot;: false,
+          &quot;sys_userCreated_id&quot;: 3,
+          &quot;sys_userCreatedName&quot;: &quot;drea@123go.io&quot;,
+          &quot;sys_userModified_id&quot;: 3,
+          &quot;sys_userModifiedName&quot;: &quot;drea@123go.io&quot;
+        }
+      },
+      &quot;statusCode&quot;: 200
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.83">
+      <div class="step-ref passed">83</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.login.statusCode == 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.84">
+      <div class="step-ref passed">84</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.login.accessToken != null</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.85">
+      <div class="step-ref passed">85</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.login.refreshToken != null</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.86">
+      <div class="step-ref passed">86</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.login.user.email == email</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[2:88]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[2:88]</span>
+                <span class="scenario-name">Login fails when email does not exist</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>829</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[2:88]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[2:88]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[2:88]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[2:88]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
@@ -469,17 +829,17 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
 </div>
 </div>
-          <div><div>
+          <div data-parent="[2:88]bg"><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.38">
-      <div class="step-ref passed">38</div>
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
       
       <div class="step-cell passed">
-        <span>Given</span>&nbsp;<span>request { query: &#39;query GetContinents { continents { code name } }&#39; }</span>
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
       </div>
     </div>
     <div class="time-cell passed">0</div>
@@ -497,20 +857,135 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
 </div>
 </div>
+          <div data-parent="[2:88]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.9">
+      <div class="step-ref bg-step">9</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text loginQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.9">mutation Login($email: String!, $password: String!, $mfaCode: String) {
+  login(email: $email, password: $password, mfaCode: $mfaCode) {
+    ... on LoginResponse {
+      accessToken
+      refreshToken
+      user {
+        _id
+        email
+        username
+        phone
+        first_name
+        last_name
+        dob
+        address {
+          street
+          suite
+          city
+          state
+          postal_code
+        }
+        profile_picture
+        sys_dateCreated
+        sys_dateModified
+        sys_deleted
+        sys_userCreated_id
+        sys_userCreatedName
+        sys_userModified_id
+        sys_userModifiedName
+        details
+        password
+        mfa_enabled
+        last_login
+        subscription {
+          _id
+          name
+          description
+          price
+          sys_dateCreated
+          sys_dateModified
+          sys_deleted
+          sys_userCreated_id
+          sys_userCreatedName
+          sys_userModified_id
+          sys_userModifiedName
+        }
+      }
+      statusCode
+    }
+    ... on ErrorResponse {
+      message
+      statusCode
+    }
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
           <div><div>
   
 
   
 
   <div class="step-row">
-    <div class="step-container" id="0.39">
-      <div class="step-ref passed">39</div>
+    <div class="step-container" id="0.89">
+      <div class="step-ref passed">89</div>
       
       <div class="step-cell passed">
-        <span>When</span>&nbsp;<span>method POST</span>
+        <span>Given</span>&nbsp;<span>request</span>
       </div>
     </div>
-    <div class="time-cell passed">581</div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.89">{
+  &quot;query&quot;: &quot;#(loginQuery)&quot;,
+  &quot;variables&quot;: {
+    &quot;email&quot;: &quot;nonexistentuser@gmail.com&quot;,
+    &quot;password&quot;: &quot;User@12345&quot;
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.99">
+      <div class="step-ref passed">99</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">824</div>
   </div>
 
    
@@ -519,76 +994,43 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="0.39">19:56:14.676 request:
-1 &gt; POST https://countries.trevorblades.com/
+  <div class="preformatted" data-parent="0.99">17:16:32.689 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
-1 &gt; Content-Length: 60
-1 &gt; Host: countries.trevorblades.com
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 1245
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
 1 &gt; Connection: Keep-Alive
 1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
 1 &gt; Accept-Encoding: gzip,deflate
 {
-  &quot;query&quot;: &quot;query GetContinents { continents { code name } }&quot;
+  &quot;query&quot;: &quot;mutation Login($email: String!, $password: String!, $mfaCode: String) {\n  login(email: $email, password: $password, mfaCode: $mfaCode) {\n    ... on LoginResponse {\n      accessToken\n      refreshToken\n      user {\n        _id\n        email\n        username\n        phone\n        first_name\n        last_name\n        dob\n        address {\n          street\n          suite\n          city\n          state\n          postal_code\n        }\n        profile_picture\n        sys_dateCreated\n        sys_dateModified\n        sys_deleted\n        sys_userCreated_id\n        sys_userCreatedName\n        sys_userModified_id\n        sys_userModifiedName\n        details\n        password\n        mfa_enabled\n        last_login\n        subscription {\n          _id\n          name\n          description\n          price\n          sys_dateCreated\n          sys_dateModified\n          sys_deleted\n          sys_userCreated_id\n          sys_userCreatedName\n          sys_userModified_id\n          sys_userModifiedName\n        }\n      }\n      statusCode\n    }\n    ... on ErrorResponse {\n      message\n      statusCode\n    }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;email&quot;: &quot;nonexistentuser@gmail.com&quot;,
+    &quot;password&quot;: &quot;User@12345&quot;
+  }
 }
 
 
-19:56:15.252 response time in milliseconds: 474
+17:16:33.510 response time in milliseconds: 820
 1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 71
 1 &lt; Connection: keep-alive
-1 &lt; x-served-by: cache-fjr990028-FJR
-1 &lt; accept-ranges: bytes
-1 &lt; date: Fri, 24 Oct 2025 14:54:34 GMT
-1 &lt; content-type: application/json; charset=utf-8
-1 &lt; access-control-max-age: 600
-1 &lt; vary: accept-encoding
-1 &lt; access-control-expose-headers: *
-1 &lt; access-control-allow-credentials: true
-1 &lt; access-control-allow-methods: POST, GET, HEAD, OPTIONS
-1 &lt; access-control-allow-headers: *
-1 &lt; alt-svc: h3=&quot;:443&quot;; ma=86400
-1 &lt; access-control-allow-origin: *
-1 &lt; x-powered-by: Stellate
-1 &lt; age: 101
-1 &lt; cache-control: public, s-maxage=2628000, stale-while-revalidate=2628000
-1 &lt; x-cache: HIT
-1 &lt; x-cache-hits: 1
-1 &lt; gcdn-cache: HIT
-1 &lt; stellate-rate-limit-budget-remaining: 48
-1 &lt; stellate-rate-limit-rules: &quot;IP limit&quot;;type=&quot;RequestCount&quot;;budget=50;limited=?0;remaining=48;refill=60
-1 &lt; stellate-rate-limit-decision: pass
-1 &lt; stellate-rate-limit-budget-required: 6
+1 &lt; Date: Tue, 04 Nov 2025 12:16:33 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: 9c9ac090-56a0-4a32-aae1-8f13ab8bce89
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 1087909a5d6fedaefb98ef351c83b212.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P2
+1 &lt; X-Amz-Cf-Id: cJwgRvwGq-GNkIYoZpOWECjXFYyK_CjTo52yyUZ06S8AZ1RP-ciK0Q==
 {
   &quot;data&quot;: {
-    &quot;continents&quot;: [
-      {
-        &quot;code&quot;: &quot;AF&quot;,
-        &quot;name&quot;: &quot;Africa&quot;
-      },
-      {
-        &quot;code&quot;: &quot;AN&quot;,
-        &quot;name&quot;: &quot;Antarctica&quot;
-      },
-      {
-        &quot;code&quot;: &quot;AS&quot;,
-        &quot;name&quot;: &quot;Asia&quot;
-      },
-      {
-        &quot;code&quot;: &quot;EU&quot;,
-        &quot;name&quot;: &quot;Europe&quot;
-      },
-      {
-        &quot;code&quot;: &quot;NA&quot;,
-        &quot;name&quot;: &quot;North America&quot;
-      },
-      {
-        &quot;code&quot;: &quot;OC&quot;,
-        &quot;name&quot;: &quot;Oceania&quot;
-      },
-      {
-        &quot;code&quot;: &quot;SA&quot;,
-        &quot;name&quot;: &quot;South America&quot;
-      }
-    ]
+    &quot;login&quot;: {
+      &quot;message&quot;: &quot;Email does not exist!&quot;,
+      &quot;statusCode&quot;: 404
+    }
   }
 }
 
@@ -605,8 +1047,8 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.40">
-      <div class="step-ref passed">40</div>
+    <div class="step-container" id="0.100">
+      <div class="step-ref passed">100</div>
       
       <div class="step-cell passed">
         <span>Then</span>&nbsp;<span>status 200</span>
@@ -633,14 +1075,51 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.41">
-      <div class="step-ref passed">41</div>
+    <div class="step-container" id="0.101">
+      <div class="step-ref passed">101</div>
       
       <div class="step-cell passed">
-        <span>And</span>&nbsp;<span>match response.data.continents[*].code contains &#39;AS&#39;</span>
+        <span>*</span>&nbsp;<span>print &#39;Email Does Not Exist Response:&#39;, response</span>
       </div>
     </div>
-    <div class="time-cell passed">3</div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.101">17:16:33.513 [print] Email Does Not Exist Response: {
+  &quot;data&quot;: {
+    &quot;login&quot;: {
+      &quot;message&quot;: &quot;Email does not exist!&quot;,
+      &quot;statusCode&quot;: 404
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.102">
+      <div class="step-ref passed">102</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.login.statusCode == 404</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -661,14 +1140,14 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   
 
   <div class="step-row">
-    <div class="step-container" id="0.42">
-      <div class="step-ref passed">42</div>
+    <div class="step-container" id="0.103">
+      <div class="step-ref passed">103</div>
       
       <div class="step-cell passed">
-        <span>And</span>&nbsp;<span>print response.data.continents</span>
+        <span>*</span>&nbsp;<span>match response.data.login.message contains &#39;Email does not exist!&#39;</span>
       </div>
     </div>
-    <div class="time-cell passed">7</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -677,38 +1156,1828 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="0.42">19:56:15.266 [print] [
-  {
-    &quot;code&quot;: &quot;AF&quot;,
-    &quot;name&quot;: &quot;Africa&quot;
-  },
-  {
-    &quot;code&quot;: &quot;AN&quot;,
-    &quot;name&quot;: &quot;Antarctica&quot;
-  },
-  {
-    &quot;code&quot;: &quot;AS&quot;,
-    &quot;name&quot;: &quot;Asia&quot;
-  },
-  {
-    &quot;code&quot;: &quot;EU&quot;,
-    &quot;name&quot;: &quot;Europe&quot;
-  },
-  {
-    &quot;code&quot;: &quot;NA&quot;,
-    &quot;name&quot;: &quot;North America&quot;
-  },
-  {
-    &quot;code&quot;: &quot;OC&quot;,
-    &quot;name&quot;: &quot;Oceania&quot;
-  },
-  {
-    &quot;code&quot;: &quot;SA&quot;,
-    &quot;name&quot;: &quot;South America&quot;
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[3:105]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[3:105]</span>
+                <span class="scenario-name">Login fails with incorrect password</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>855</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[3:105]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[3:105]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[3:105]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[3:105]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[3:105]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[3:105]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.9">
+      <div class="step-ref bg-step">9</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text loginQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.9">mutation Login($email: String!, $password: String!, $mfaCode: String) {
+  login(email: $email, password: $password, mfaCode: $mfaCode) {
+    ... on LoginResponse {
+      accessToken
+      refreshToken
+      user {
+        _id
+        email
+        username
+        phone
+        first_name
+        last_name
+        dob
+        address {
+          street
+          suite
+          city
+          state
+          postal_code
+        }
+        profile_picture
+        sys_dateCreated
+        sys_dateModified
+        sys_deleted
+        sys_userCreated_id
+        sys_userCreatedName
+        sys_userModified_id
+        sys_userModifiedName
+        details
+        password
+        mfa_enabled
+        last_login
+        subscription {
+          _id
+          name
+          description
+          price
+          sys_dateCreated
+          sys_dateModified
+          sys_deleted
+          sys_userCreated_id
+          sys_userCreatedName
+          sys_userModified_id
+          sys_userModifiedName
+        }
+      }
+      statusCode
+    }
+    ... on ErrorResponse {
+      message
+      statusCode
+    }
   }
-]
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.106">
+      <div class="step-ref passed">106</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def email = karate.read(&#39;file:target/target/email.txt&#39;)</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.107">
+      <div class="step-ref passed">107</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print &#39;📩 Using existing user email:&#39;, email</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.107">17:16:33.535 [print] 📩 Using existing user email: userexample16b6e13b-0678-4cb2-bfc7-fe1a41a1ec2e@gmail.com 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.108">
+      <div class="step-ref passed">108</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>request</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.108">{
+  &quot;query&quot;: &quot;#(loginQuery)&quot;,
+  &quot;variables&quot;: {
+    &quot;email&quot;: &quot;#(email)&quot;,
+    &quot;password&quot;: &quot;User@1234&quot;
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.118">
+      <div class="step-ref passed">118</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">849</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.118">17:16:33.539 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 1276
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;query&quot;: &quot;mutation Login($email: String!, $password: String!, $mfaCode: String) {\n  login(email: $email, password: $password, mfaCode: $mfaCode) {\n    ... on LoginResponse {\n      accessToken\n      refreshToken\n      user {\n        _id\n        email\n        username\n        phone\n        first_name\n        last_name\n        dob\n        address {\n          street\n          suite\n          city\n          state\n          postal_code\n        }\n        profile_picture\n        sys_dateCreated\n        sys_dateModified\n        sys_deleted\n        sys_userCreated_id\n        sys_userCreatedName\n        sys_userModified_id\n        sys_userModifiedName\n        details\n        password\n        mfa_enabled\n        last_login\n        subscription {\n          _id\n          name\n          description\n          price\n          sys_dateCreated\n          sys_dateModified\n          sys_deleted\n          sys_userCreated_id\n          sys_userCreatedName\n          sys_userModified_id\n          sys_userModifiedName\n        }\n      }\n      statusCode\n    }\n    ... on ErrorResponse {\n      message\n      statusCode\n    }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;email&quot;: &quot;userexample16b6e13b-0678-4cb2-bfc7-fe1a41a1ec2e@gmail.com&quot;,
+    &quot;password&quot;: &quot;User@1234&quot;
+  }
+}
+
+
+17:16:34.384 response time in milliseconds: 845
+1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 76
+1 &lt; Connection: keep-alive
+1 &lt; Date: Tue, 04 Nov 2025 12:16:34 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: b4f53304-3f4b-4401-a0a5-084ca19b7bf6
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 275fbf1308f95967ec30a4805579885c.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P2
+1 &lt; X-Amz-Cf-Id: WgRNEis-hJSgZ5H2HvFJBgAIr4APhI8DKxpVDIPlIXVRG_17sfVOjg==
+{
+  &quot;data&quot;: {
+    &quot;login&quot;: {
+      &quot;message&quot;: &quot;The password is incorrect!&quot;,
+      &quot;statusCode&quot;: 401
+    }
+  }
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.119">
+      <div class="step-ref passed">119</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.120">
+      <div class="step-ref passed">120</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print &#39;Incorrect Password Response:&#39;, response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.120">17:16:34.386 [print] Incorrect Password Response: {
+  &quot;data&quot;: {
+    &quot;login&quot;: {
+      &quot;message&quot;: &quot;The password is incorrect!&quot;,
+      &quot;statusCode&quot;: 401
+    }
+  }
+}
  
 </div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.121">
+      <div class="step-ref passed">121</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.login.statusCode == 401</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.122">
+      <div class="step-ref passed">122</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.login.message contains &#39;The password is incorrect!&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[4:124]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[4:124]</span>
+                <span class="scenario-name">Login fails when email field is empty</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>990</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[4:124]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[4:124]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[4:124]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[4:124]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[4:124]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[4:124]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.9">
+      <div class="step-ref bg-step">9</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text loginQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.9">mutation Login($email: String!, $password: String!, $mfaCode: String) {
+  login(email: $email, password: $password, mfaCode: $mfaCode) {
+    ... on LoginResponse {
+      accessToken
+      refreshToken
+      user {
+        _id
+        email
+        username
+        phone
+        first_name
+        last_name
+        dob
+        address {
+          street
+          suite
+          city
+          state
+          postal_code
+        }
+        profile_picture
+        sys_dateCreated
+        sys_dateModified
+        sys_deleted
+        sys_userCreated_id
+        sys_userCreatedName
+        sys_userModified_id
+        sys_userModifiedName
+        details
+        password
+        mfa_enabled
+        last_login
+        subscription {
+          _id
+          name
+          description
+          price
+          sys_dateCreated
+          sys_dateModified
+          sys_deleted
+          sys_userCreated_id
+          sys_userCreatedName
+          sys_userModified_id
+          sys_userModifiedName
+        }
+      }
+      statusCode
+    }
+    ... on ErrorResponse {
+      message
+      statusCode
+    }
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.125">
+      <div class="step-ref passed">125</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>request</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.125">{
+  &quot;query&quot;: &quot;#(loginQuery)&quot;,
+  &quot;variables&quot;: {
+    &quot;email&quot;: &quot;&quot;,
+    &quot;password&quot;: &quot;User@1234&quot;
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.135">
+      <div class="step-ref passed">135</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">987</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.135">17:16:34.397 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 1219
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;query&quot;: &quot;mutation Login($email: String!, $password: String!, $mfaCode: String) {\n  login(email: $email, password: $password, mfaCode: $mfaCode) {\n    ... on LoginResponse {\n      accessToken\n      refreshToken\n      user {\n        _id\n        email\n        username\n        phone\n        first_name\n        last_name\n        dob\n        address {\n          street\n          suite\n          city\n          state\n          postal_code\n        }\n        profile_picture\n        sys_dateCreated\n        sys_dateModified\n        sys_deleted\n        sys_userCreated_id\n        sys_userCreatedName\n        sys_userModified_id\n        sys_userModifiedName\n        details\n        password\n        mfa_enabled\n        last_login\n        subscription {\n          _id\n          name\n          description\n          price\n          sys_dateCreated\n          sys_dateModified\n          sys_deleted\n          sys_userCreated_id\n          sys_userCreatedName\n          sys_userModified_id\n          sys_userModifiedName\n        }\n      }\n      statusCode\n    }\n    ... on ErrorResponse {\n      message\n      statusCode\n    }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;email&quot;: &quot;&quot;,
+    &quot;password&quot;: &quot;User@1234&quot;
+  }
+}
+
+
+17:16:35.380 response time in milliseconds: 983
+1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 68
+1 &lt; Connection: keep-alive
+1 &lt; Date: Tue, 04 Nov 2025 12:16:35 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: 4bf272e7-df49-4e46-a4b4-856886c05e22
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 13681eeb27466281e564f9bbd59b4c8c.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P2
+1 &lt; X-Amz-Cf-Id: hQHfEcWwb_UxeUs-mt4HgatjK1B-zOpZGlYEzKFdwrTrUqGH6T1bGg==
+{
+  &quot;data&quot;: {
+    &quot;login&quot;: {
+      &quot;message&quot;: &quot;Email is required!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.136">
+      <div class="step-ref passed">136</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.137">
+      <div class="step-ref passed">137</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print &#39;Missing Fields Response:&#39;, response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.137">17:16:35.382 [print] Missing Fields Response: {
+  &quot;data&quot;: {
+    &quot;login&quot;: {
+      &quot;message&quot;: &quot;Email is required!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.138">
+      <div class="step-ref passed">138</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.login.statusCode == 400</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.139">
+      <div class="step-ref passed">139</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.login.message contains &#39;Email is required!&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[5:141]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[5:141]</span>
+                <span class="scenario-name">Login fails when password field is empty</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>771</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[5:141]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[5:141]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[5:141]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[5:141]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[5:141]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[5:141]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.9">
+      <div class="step-ref bg-step">9</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text loginQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.9">mutation Login($email: String!, $password: String!, $mfaCode: String) {
+  login(email: $email, password: $password, mfaCode: $mfaCode) {
+    ... on LoginResponse {
+      accessToken
+      refreshToken
+      user {
+        _id
+        email
+        username
+        phone
+        first_name
+        last_name
+        dob
+        address {
+          street
+          suite
+          city
+          state
+          postal_code
+        }
+        profile_picture
+        sys_dateCreated
+        sys_dateModified
+        sys_deleted
+        sys_userCreated_id
+        sys_userCreatedName
+        sys_userModified_id
+        sys_userModifiedName
+        details
+        password
+        mfa_enabled
+        last_login
+        subscription {
+          _id
+          name
+          description
+          price
+          sys_dateCreated
+          sys_dateModified
+          sys_deleted
+          sys_userCreated_id
+          sys_userCreatedName
+          sys_userModified_id
+          sys_userModifiedName
+        }
+      }
+      statusCode
+    }
+    ... on ErrorResponse {
+      message
+      statusCode
+    }
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.142">
+      <div class="step-ref passed">142</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>request</span>
+      </div>
+    </div>
+    <div class="time-cell passed">9</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.142">{
+  &quot;query&quot;: &quot;#(loginQuery)&quot;,
+  &quot;variables&quot;: {
+    &quot;email&quot;: &quot;#(email)&quot;,
+    &quot;password&quot;: &quot;&quot;
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.152">
+      <div class="step-ref passed">152</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">760</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.152">17:16:35.400 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 1218
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;query&quot;: &quot;mutation Login($email: String!, $password: String!, $mfaCode: String) {\n  login(email: $email, password: $password, mfaCode: $mfaCode) {\n    ... on LoginResponse {\n      accessToken\n      refreshToken\n      user {\n        _id\n        email\n        username\n        phone\n        first_name\n        last_name\n        dob\n        address {\n          street\n          suite\n          city\n          state\n          postal_code\n        }\n        profile_picture\n        sys_dateCreated\n        sys_dateModified\n        sys_deleted\n        sys_userCreated_id\n        sys_userCreatedName\n        sys_userModified_id\n        sys_userModifiedName\n        details\n        password\n        mfa_enabled\n        last_login\n        subscription {\n          _id\n          name\n          description\n          price\n          sys_dateCreated\n          sys_dateModified\n          sys_deleted\n          sys_userCreated_id\n          sys_userCreatedName\n          sys_userModified_id\n          sys_userModifiedName\n        }\n      }\n      statusCode\n    }\n    ... on ErrorResponse {\n      message\n      statusCode\n    }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;email&quot;: &quot;#(email)&quot;,
+    &quot;password&quot;: &quot;&quot;
+  }
+}
+
+
+17:16:36.159 response time in milliseconds: 758
+1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 71
+1 &lt; Connection: keep-alive
+1 &lt; Date: Tue, 04 Nov 2025 12:16:35 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: 5ec101d9-3a02-4df6-8093-a59758920c60
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 13681eeb27466281e564f9bbd59b4c8c.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P2
+1 &lt; X-Amz-Cf-Id: dWUyGk3HXLJLl12KCK9axYM2Ov0xw4lAKko4BOD9yXcq8nHwq-51JQ==
+{
+  &quot;data&quot;: {
+    &quot;login&quot;: {
+      &quot;message&quot;: &quot;Password is required!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.153">
+      <div class="step-ref passed">153</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.154">
+      <div class="step-ref passed">154</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print &#39;Missing Fields Response:&#39;, response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.154">17:16:36.160 [print] Missing Fields Response: {
+  &quot;data&quot;: {
+    &quot;login&quot;: {
+      &quot;message&quot;: &quot;Password is required!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.155">
+      <div class="step-ref passed">155</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.login.statusCode == 400</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.156">
+      <div class="step-ref passed">156</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.login.message contains &#39;Password is required!&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[6:158]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[6:158]</span>
+                <span class="scenario-name">Login fails when both email and password fields are empty</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>368</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[6:158]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[6:158]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[6:158]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[6:158]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[6:158]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[6:158]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.9">
+      <div class="step-ref bg-step">9</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>text loginQuery =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.9">mutation Login($email: String!, $password: String!, $mfaCode: String) {
+  login(email: $email, password: $password, mfaCode: $mfaCode) {
+    ... on LoginResponse {
+      accessToken
+      refreshToken
+      user {
+        _id
+        email
+        username
+        phone
+        first_name
+        last_name
+        dob
+        address {
+          street
+          suite
+          city
+          state
+          postal_code
+        }
+        profile_picture
+        sys_dateCreated
+        sys_dateModified
+        sys_deleted
+        sys_userCreated_id
+        sys_userCreatedName
+        sys_userModified_id
+        sys_userModifiedName
+        details
+        password
+        mfa_enabled
+        last_login
+        subscription {
+          _id
+          name
+          description
+          price
+          sys_dateCreated
+          sys_dateModified
+          sys_deleted
+          sys_userCreated_id
+          sys_userCreatedName
+          sys_userModified_id
+          sys_userModifiedName
+        }
+      }
+      statusCode
+    }
+    ... on ErrorResponse {
+      message
+      statusCode
+    }
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.159">
+      <div class="step-ref passed">159</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>request</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="0.159">{
+  &quot;query&quot;: &quot;#(loginQuery)&quot;,
+  &quot;variables&quot;: {
+    &quot;email&quot;: &quot;&quot;,
+    &quot;password&quot;: &quot;&quot;
+  }
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.169">
+      <div class="step-ref passed">169</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">367</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.169">17:16:36.172 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 1210
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/21.0.2)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;query&quot;: &quot;mutation Login($email: String!, $password: String!, $mfaCode: String) {\n  login(email: $email, password: $password, mfaCode: $mfaCode) {\n    ... on LoginResponse {\n      accessToken\n      refreshToken\n      user {\n        _id\n        email\n        username\n        phone\n        first_name\n        last_name\n        dob\n        address {\n          street\n          suite\n          city\n          state\n          postal_code\n        }\n        profile_picture\n        sys_dateCreated\n        sys_dateModified\n        sys_deleted\n        sys_userCreated_id\n        sys_userCreatedName\n        sys_userModified_id\n        sys_userModifiedName\n        details\n        password\n        mfa_enabled\n        last_login\n        subscription {\n          _id\n          name\n          description\n          price\n          sys_dateCreated\n          sys_dateModified\n          sys_deleted\n          sys_userCreated_id\n          sys_userCreatedName\n          sys_userModified_id\n          sys_userModifiedName\n        }\n      }\n      statusCode\n    }\n    ... on ErrorResponse {\n      message\n      statusCode\n    }\n  }\n}&quot;,
+  &quot;variables&quot;: {
+    &quot;email&quot;: &quot;&quot;,
+    &quot;password&quot;: &quot;&quot;
+  }
+}
+
+
+17:16:36.537 response time in milliseconds: 363
+1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 68
+1 &lt; Connection: keep-alive
+1 &lt; Date: Tue, 04 Nov 2025 12:16:36 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: dc768d28-c5ce-4ba8-a85c-4859095c281b
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 7a5a9cbff8efff0c4235d21c177dcb88.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P2
+1 &lt; X-Amz-Cf-Id: tyG0M4NLAPovFYJr31rckbVBigO5i9LOlAvAle-uI372GSOxtO3Uxw==
+{
+  &quot;data&quot;: {
+    &quot;login&quot;: {
+      &quot;message&quot;: &quot;Email is required!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.170">
+      <div class="step-ref passed">170</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.171">
+      <div class="step-ref passed">171</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print &#39;Missing Fields Response:&#39;, response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="0.171">17:16:36.537 [print] Missing Fields Response: {
+  &quot;data&quot;: {
+    &quot;login&quot;: {
+      &quot;message&quot;: &quot;Email is required!&quot;,
+      &quot;statusCode&quot;: 400
+    }
+  }
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.172">
+      <div class="step-ref passed">172</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.login.statusCode == 400</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="0.173">
+      <div class="step-ref passed">173</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.login.message contains &#39;Email is required!&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
 
   
 
