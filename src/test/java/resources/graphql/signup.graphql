@@ -1,0 +1,23 @@
+mutation SignUp(
+  $first_name: String,
+  $last_name: String,
+  $email: String,
+  $address: AddressInput,
+  $dob: String,
+  $phone: String,
+  $test_bypass: Boolean
+) {
+  signUp(
+    first_name: $first_name,
+    last_name: $last_name,
+    email: $email,
+    address: $address,
+    dob: $dob,
+    phone: $phone,
+    test_bypass: $test_bypass
+  ) {
+    ... on SignUpResponse { message email statusCode }
+    ... on ErrorResponse { message statusCode }
+  }
+}
+
