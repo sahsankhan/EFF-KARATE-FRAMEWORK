@@ -6,7 +6,7 @@ class TestRunner {
 
     @Karate.Test
     Karate runLoginTests() {
-        return Karate.run( "classpath:features/signup.feature" , "classpath:features/setpassword.feature")
+        return Karate.run( "classpath:Features/signup.feature" , "classpath:Features/setpassword.feature","classpath:Features/verifyEmail.feature", "classpath:Features/login.feature")
         .configDir("file:src/test"); 
     }
 }

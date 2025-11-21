@@ -1,0 +1,7 @@
+mutation VerifyEmail($verifyKey: String) {
+  verifyEmail(verifyKey: $verifyKey) {
+    statusCode
+    message
+  }
+}
+

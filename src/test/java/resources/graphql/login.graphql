@@ -1,0 +1,45 @@
+mutation Login(
+  $email: String,
+  $password: String,
+  $mfaCode: String
+) {
+  login(
+    email: $email,
+    password: $password,
+    mfaCode: $mfaCode
+  ) {
+    statusCode
+    accessToken
+    refreshToken
+    user {
+      _id
+      email
+      username
+      phone
+      first_name
+      last_name
+      dob
+      address {
+        street
+        suite
+        city
+        state
+        postal_code
+      }
+      favorite_teams
+      heard_about_us
+      profile_picture
+      sys_dateCreated
+      sys_dateModified
+      sys_deleted
+      sys_userCreated_id
+      sys_userCreatedName
+      sys_userModified_id
+      sys_userModifiedName
+      mfa_enabled
+      last_login
+      role
+    }
+  }
+}
+

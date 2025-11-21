@@ -5,7 +5,8 @@ mutation SignUp(
   $address: AddressInput,
   $dob: String,
   $phone: String,
-  $test_bypass: Boolean
+  $favorite_teams: [String],
+  $heard_about_us: String
 ) {
   signUp(
     first_name: $first_name,
@@ -14,10 +15,12 @@ mutation SignUp(
     address: $address,
     dob: $dob,
     phone: $phone,
-    test_bypass: $test_bypass
+    favorite_teams: $favorite_teams,
+    heard_about_us: $heard_about_us
   ) {
-    ... on SignUpResponse { message email statusCode }
-    ... on ErrorResponse { message statusCode }
+    statusCode
+    message
+    email
+    temporarySignupKey
   }
 }
-
