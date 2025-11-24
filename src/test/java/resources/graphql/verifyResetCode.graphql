@@ -1,0 +1,9 @@
+mutation VerifyResetCode($email: String, $code: String) {
+  verifyResetCode(email: $email, code: $code) {
+    statusCode
+    message
+    temporaryResetKey
+    email
+  }
+}
+

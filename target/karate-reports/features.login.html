@@ -49,7 +49,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
     <div>Scenarios</div>
   </div>
   <div id="nav-date">
-    <div>2025-11-21 04:52:23 PM</div>
+    <div>2025-11-24 05:03:10 PM</div>
   </div>
 </div>
 
@@ -96,7 +96,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>2107</span>
+              <span>ms:</span>&nbsp;<span>2600</span>
             </div>
           </div>
           <div class="step-row">
@@ -231,7 +231,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def loginQuery = read(&#39;classpath:resources/graphql/login.graphql&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -287,7 +287,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def signUpInfo = JSON.parse(rawSignUpInfo)</span>
       </div>
     </div>
-    <div class="time-cell passed">4</div>
+    <div class="time-cell passed">3</div>
   </div>
 
    
@@ -315,7 +315,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def existingEmail = signUpInfo.email</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -371,7 +371,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def isVerified = signUpInfo.isVerified</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -427,7 +427,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def buildLoginData =</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -473,7 +473,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>if (!isVerified || !passwordSet) karate.fail(&#39;Test data not ready: Run signup.feature, setpassword.feature, and verifyEmail.feature first&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -641,7 +641,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">2091</div>
+    <div class="time-cell passed">2581</div>
   </div>
 
    
@@ -650,7 +650,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.42">16:52:17.314 request:
+  <div class="preformatted" data-parent="1.42">17:03:03.800 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -663,60 +663,60 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 {
   &quot;query&quot;: &quot;mutation Login(\r\n  $email: String,\r\n  $password: String,\r\n  $mfaCode: String\r\n) {\r\n  login(\r\n    email: $email,\r\n    password: $password,\r\n    mfaCode: $mfaCode\r\n  ) {\r\n    statusCode\r\n    accessToken\r\n    refreshToken\r\n    user {\r\n      _id\r\n      email\r\n      username\r\n      phone\r\n      first_name\r\n      last_name\r\n      dob\r\n      address {\r\n        street\r\n        suite\r\n        city\r\n        state\r\n        postal_code\r\n      }\r\n      favorite_teams\r\n      heard_about_us\r\n      profile_picture\r\n      sys_dateCreated\r\n      sys_dateModified\r\n      sys_deleted\r\n      sys_userCreated_id\r\n      sys_userCreatedName\r\n      sys_userModified_id\r\n      sys_userModifiedName\r\n      mfa_enabled\r\n      last_login\r\n      role\r\n    }\r\n  }\r\n}\r\n\r\n&quot;,
   &quot;variables&quot;: {
-    &quot;email&quot;: &quot;userexample49975@gmail.com&quot;,
+    &quot;email&quot;: &quot;userexample72457@gmail.com&quot;,
     &quot;password&quot;: &quot;User@12345&quot;
   }
 }
 
 
-16:52:19.403 response time in milliseconds: 2088
+17:03:06.377 response time in milliseconds: 2576
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Transfer-Encoding: chunked
 1 &lt; Connection: keep-alive
-1 &lt; Date: Fri, 21 Nov 2025 11:52:20 GMT
-1 &lt; x-amzn-RequestId: 66185bd9-365e-48c8-94f4-23c3f3e3bb5a
-1 &lt; x-amzn-appsync-TokensConsumed: 8
+1 &lt; Date: Mon, 24 Nov 2025 12:03:06 GMT
+1 &lt; x-amzn-RequestId: 4a2982ef-589c-4672-be01-2947e5a31c0b
+1 &lt; x-amzn-appsync-TokensConsumed: 10
 1 &lt; vary: accept-encoding
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 e72271b7c8cb777dcacd6e49dcfab458.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 72ae65bb135034d78c3262798d17fbe0.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: YAD8fGwHZMTu9A-Nh2Ade2lsf83VuDONiD-9IrIwVLZ-ddA8o_UZeA==
+1 &lt; X-Amz-Cf-Id: KmOsLeLT3s9vtMHdjimRDSF58e3UbzemF7_l4VBGWVnLkWPgVbFF8A==
 {
   &quot;data&quot;: {
     &quot;login&quot;: {
       &quot;statusCode&quot;: 200,
-      &quot;accessToken&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlNDk5NzVAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJleHAiOjE3NjM3Mjk1NDB9.vwZEFQqnWCH2Q2Zj2ZL2FTzmeq8v3VeJ_vhO7-FiRQs&quot;,
-      &quot;refreshToken&quot;: &quot;gAAAAABpIFJ0BVaGy4vEbhsc_5q4YXWiBFnNI0A81CnX95JKECa3q23X2G2tgzUhA3wLB_sXAymLIswh0Ky5WMbIr7MWiRYabZ8dTGR4Z0qx0syVl98nUwglKB8Cav_aHYpLx3zrXpoQ&quot;,
+      &quot;accessToken&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlNzI0NTdAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJleHAiOjE3NjM5ODkzODZ9.OQvgbsegd6tlv9pBpjupuZoOk_eHlWVbS70cz5zoLDA&quot;,
+      &quot;refreshToken&quot;: &quot;gAAAAABpJEl6QxFrkHTO1tb3R75jEC9yo8iQ7ZgGxRu7nqwKn68jsKtkuA0otiIW0s9w2RJH-GOW3kBi4EPYFYtyp3H8a6Vw9cQ4qydePGEwsMGVctKso6MU7pDnb4GUm7x0-tqnFStV&quot;,
       &quot;user&quot;: {
-        &quot;_id&quot;: &quot;477&quot;,
-        &quot;email&quot;: &quot;userexample49975@gmail.com&quot;,
+        &quot;_id&quot;: &quot;500&quot;,
+        &quot;email&quot;: &quot;userexample72457@gmail.com&quot;,
         &quot;username&quot;: &quot;&quot;,
         &quot;phone&quot;: &quot;+14191000000&quot;,
         &quot;first_name&quot;: &quot;User&quot;,
         &quot;last_name&quot;: &quot;Example&quot;,
         &quot;dob&quot;: &quot;1999-05-14&quot;,
         &quot;address&quot;: {
-          &quot;street&quot;: &quot;123 Main Street&quot;,
-          &quot;suite&quot;: &quot;3A&quot;,
-          &quot;city&quot;: &quot;New York&quot;,
+          &quot;street&quot;: null,
+          &quot;suite&quot;: null,
+          &quot;city&quot;: null,
           &quot;state&quot;: &quot;NY&quot;,
-          &quot;postal_code&quot;: &quot;103044&quot;
+          &quot;postal_code&quot;: null
         },
         &quot;favorite_teams&quot;: [
           &quot;[\&quot;DAL\&quot;]&quot;
         ],
         &quot;heard_about_us&quot;: &quot;Google&quot;,
         &quot;profile_picture&quot;: &quot;&quot;,
-        &quot;sys_dateCreated&quot;: &quot;2025-11-21T11:51:54+00:00&quot;,
-        &quot;sys_dateModified&quot;: &quot;2025-11-21T11:52:15+00:00&quot;,
+        &quot;sys_dateCreated&quot;: &quot;2025-11-24T12:02:39+00:00&quot;,
+        &quot;sys_dateModified&quot;: &quot;2025-11-24T12:03:01+00:00&quot;,
         &quot;sys_deleted&quot;: false,
         &quot;sys_userCreated_id&quot;: 0,
         &quot;sys_userCreatedName&quot;: &quot;Self-SignUp&quot;,
         &quot;sys_userModified_id&quot;: null,
         &quot;sys_userModifiedName&quot;: &quot;&quot;,
         &quot;mfa_enabled&quot;: false,
-        &quot;last_login&quot;: &quot;2025-11-21T11:52:19+00:00&quot;,
+        &quot;last_login&quot;: &quot;2025-11-24T12:03:06+00:00&quot;,
         &quot;role&quot;: &quot;user&quot;
       }
     }
@@ -780,41 +780,41 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.44">16:52:19.405 [print] Login API Response: {
+  <div class="preformatted" data-parent="1.44">17:03:06.380 [print] Login API Response: {
   &quot;data&quot;: {
     &quot;login&quot;: {
       &quot;statusCode&quot;: 200,
-      &quot;accessToken&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlNDk5NzVAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJleHAiOjE3NjM3Mjk1NDB9.vwZEFQqnWCH2Q2Zj2ZL2FTzmeq8v3VeJ_vhO7-FiRQs&quot;,
-      &quot;refreshToken&quot;: &quot;gAAAAABpIFJ0BVaGy4vEbhsc_5q4YXWiBFnNI0A81CnX95JKECa3q23X2G2tgzUhA3wLB_sXAymLIswh0Ky5WMbIr7MWiRYabZ8dTGR4Z0qx0syVl98nUwglKB8Cav_aHYpLx3zrXpoQ&quot;,
+      &quot;accessToken&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlNzI0NTdAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJleHAiOjE3NjM5ODkzODZ9.OQvgbsegd6tlv9pBpjupuZoOk_eHlWVbS70cz5zoLDA&quot;,
+      &quot;refreshToken&quot;: &quot;gAAAAABpJEl6QxFrkHTO1tb3R75jEC9yo8iQ7ZgGxRu7nqwKn68jsKtkuA0otiIW0s9w2RJH-GOW3kBi4EPYFYtyp3H8a6Vw9cQ4qydePGEwsMGVctKso6MU7pDnb4GUm7x0-tqnFStV&quot;,
       &quot;user&quot;: {
-        &quot;_id&quot;: &quot;477&quot;,
-        &quot;email&quot;: &quot;userexample49975@gmail.com&quot;,
+        &quot;_id&quot;: &quot;500&quot;,
+        &quot;email&quot;: &quot;userexample72457@gmail.com&quot;,
         &quot;username&quot;: &quot;&quot;,
         &quot;phone&quot;: &quot;+14191000000&quot;,
         &quot;first_name&quot;: &quot;User&quot;,
         &quot;last_name&quot;: &quot;Example&quot;,
         &quot;dob&quot;: &quot;1999-05-14&quot;,
         &quot;address&quot;: {
-          &quot;street&quot;: &quot;123 Main Street&quot;,
-          &quot;suite&quot;: &quot;3A&quot;,
-          &quot;city&quot;: &quot;New York&quot;,
+          &quot;street&quot;: null,
+          &quot;suite&quot;: null,
+          &quot;city&quot;: null,
           &quot;state&quot;: &quot;NY&quot;,
-          &quot;postal_code&quot;: &quot;103044&quot;
+          &quot;postal_code&quot;: null
         },
         &quot;favorite_teams&quot;: [
           &quot;[\&quot;DAL\&quot;]&quot;
         ],
         &quot;heard_about_us&quot;: &quot;Google&quot;,
         &quot;profile_picture&quot;: &quot;&quot;,
-        &quot;sys_dateCreated&quot;: &quot;2025-11-21T11:51:54+00:00&quot;,
-        &quot;sys_dateModified&quot;: &quot;2025-11-21T11:52:15+00:00&quot;,
+        &quot;sys_dateCreated&quot;: &quot;2025-11-24T12:02:39+00:00&quot;,
+        &quot;sys_dateModified&quot;: &quot;2025-11-24T12:03:01+00:00&quot;,
         &quot;sys_deleted&quot;: false,
         &quot;sys_userCreated_id&quot;: 0,
         &quot;sys_userCreatedName&quot;: &quot;Self-SignUp&quot;,
         &quot;sys_userModified_id&quot;: null,
         &quot;sys_userModifiedName&quot;: &quot;&quot;,
         &quot;mfa_enabled&quot;: false,
-        &quot;last_login&quot;: &quot;2025-11-21T11:52:19+00:00&quot;,
+        &quot;last_login&quot;: &quot;2025-11-24T12:03:06+00:00&quot;,
         &quot;role&quot;: &quot;user&quot;
       }
     }
@@ -896,7 +896,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.data.login.refreshToken == &#39;#present&#39;</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -953,7 +953,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>930</span>
+              <span>ms:</span>&nbsp;<span>1025</span>
             </div>
           </div>
           <div class="step-row">
@@ -1088,7 +1088,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def loginQuery = read(&#39;classpath:resources/graphql/login.graphql&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -1116,7 +1116,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def rawSignUpInfo = karate.read(&#39;file:target/target/email.txt&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -1414,7 +1414,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def userData = karate.toJson(build.userData)</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -1498,7 +1498,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">924</div>
+    <div class="time-cell passed">1018</div>
   </div>
 
    
@@ -1507,7 +1507,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.65">16:52:19.419 request:
+  <div class="preformatted" data-parent="1.65">17:03:06.402 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -1520,24 +1520,24 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 {
   &quot;query&quot;: &quot;mutation Login(\r\n  $email: String,\r\n  $password: String,\r\n  $mfaCode: String\r\n) {\r\n  login(\r\n    email: $email,\r\n    password: $password,\r\n    mfaCode: $mfaCode\r\n  ) {\r\n    statusCode\r\n    accessToken\r\n    refreshToken\r\n    user {\r\n      _id\r\n      email\r\n      username\r\n      phone\r\n      first_name\r\n      last_name\r\n      dob\r\n      address {\r\n        street\r\n        suite\r\n        city\r\n        state\r\n        postal_code\r\n      }\r\n      favorite_teams\r\n      heard_about_us\r\n      profile_picture\r\n      sys_dateCreated\r\n      sys_dateModified\r\n      sys_deleted\r\n      sys_userCreated_id\r\n      sys_userCreatedName\r\n      sys_userModified_id\r\n      sys_userModifiedName\r\n      mfa_enabled\r\n      last_login\r\n      role\r\n    }\r\n  }\r\n}\r\n\r\n&quot;,
   &quot;variables&quot;: {
-    &quot;email&quot;: &quot;userexample49975@gmail.com&quot;,
+    &quot;email&quot;: &quot;userexample72457@gmail.com&quot;,
     &quot;password&quot;: &quot;WrongPass@1234&quot;
   }
 }
 
 
-16:52:20.341 response time in milliseconds: 922
+17:03:07.416 response time in milliseconds: 1014
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 208
 1 &lt; Connection: keep-alive
-1 &lt; Date: Fri, 21 Nov 2025 11:52:21 GMT
+1 &lt; Date: Mon, 24 Nov 2025 12:03:07 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 2
-1 &lt; x-amzn-RequestId: eb77e46e-79f0-4371-af29-75850c8e4043
+1 &lt; x-amzn-RequestId: 7f8c9e17-0c7e-4663-82ba-12e640a91ca6
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 5572dc113e22c24b0817b27dceac7bdc.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 6bd1dbeef1a634a27b1736d98439b720.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: 9BvSKlCipGMuo8HC72fA7G-_ES2F_Nk2UK9WBooLmS-kTL1XXI1b0Q==
+1 &lt; X-Amz-Cf-Id: 1zaPH_QfzgSBUwJYW3j_VLVQqbSl_Wn8gZ42BCmqaHh1vcH6CTZF1g==
 {
   &quot;data&quot;: {
     &quot;login&quot;: null
@@ -1621,7 +1621,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.67">16:52:20.342 [print] Login API Response: {
+  <div class="preformatted" data-parent="1.67">17:03:07.417 [print] Login API Response: {
   &quot;data&quot;: {
     &quot;login&quot;: null
   },
@@ -1666,7 +1666,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.data.login == null</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -1722,7 +1722,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].message contains &#39;Invalid password!&#39;</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -1751,7 +1751,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>785</span>
+              <span>ms:</span>&nbsp;<span>848</span>
             </div>
           </div>
           <div class="step-row">
@@ -1886,7 +1886,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def loginQuery = read(&#39;classpath:resources/graphql/login.graphql&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -1942,7 +1942,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def signUpInfo = JSON.parse(rawSignUpInfo)</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -2268,7 +2268,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">779</div>
+    <div class="time-cell passed">843</div>
   </div>
 
    
@@ -2277,7 +2277,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.85">16:52:20.361 request:
+  <div class="preformatted" data-parent="1.85">17:03:07.428 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -2296,18 +2296,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-16:52:21.137 response time in milliseconds: 774
+17:03:08.270 response time in milliseconds: 841
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 212
 1 &lt; Connection: keep-alive
-1 &lt; Date: Fri, 21 Nov 2025 11:52:21 GMT
+1 &lt; Date: Mon, 24 Nov 2025 12:03:08 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 5c4072b4-f0b6-4cb3-b2d5-90a61448e88a
+1 &lt; x-amzn-RequestId: 31b38315-a38c-49f9-8bd0-7f571c145185
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 18bde470183af46c66355e96f6bd5e18.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 4c2c73e12e6b04bb19bcf1bb6541e120.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: 9SpoZJLSTYHdCTDTd3M_0Y7sXFOpqiNk6xCKiWtzEot6v6FgQZOKxw==
+1 &lt; X-Amz-Cf-Id: rIbZucNQDMc94upIQthpoARcrnN7kwmCUnFJsmz95Oc25ECVcdc2PQ==
 {
   &quot;data&quot;: {
     &quot;login&quot;: null
@@ -2391,7 +2391,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.87">16:52:21.138 [print] Login API Response: {
+  <div class="preformatted" data-parent="1.87">17:03:08.271 [print] Login API Response: {
   &quot;data&quot;: {
     &quot;login&quot;: null
   },
@@ -2492,7 +2492,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].message contains &#39;Email does not exist!&#39;</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -2521,7 +2521,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>845</span>
+              <span>ms:</span>&nbsp;<span>872</span>
             </div>
           </div>
           <div class="step-row">
@@ -3031,7 +3031,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">841</div>
+    <div class="time-cell passed">867</div>
   </div>
 
    
@@ -3040,7 +3040,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.104">16:52:21.151 request:
+  <div class="preformatted" data-parent="1.104">17:03:08.284 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -3059,18 +3059,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-16:52:21.990 response time in milliseconds: 838
+17:03:09.149 response time in milliseconds: 864
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 212
 1 &lt; Connection: keep-alive
-1 &lt; Date: Fri, 21 Nov 2025 11:52:22 GMT
+1 &lt; Date: Mon, 24 Nov 2025 12:03:09 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: fb36a72a-4e34-4deb-bd24-d60223e91d54
+1 &lt; x-amzn-RequestId: c09e3d2f-53e3-44ab-831c-befe7d5dbc43
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 6f281b06deeb9e1c5cfc8c0e3a12ebfc.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 ce0c5417f9c67a91d03d0ead184635a2.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: F9et-fbGRInZJPNxIH9OW4aZi_WM5DxsbS0lpIEWR3BqXcVBcAU5dQ==
+1 &lt; X-Amz-Cf-Id: 5Q_GZQiyBjqY9fVfHQG3XW8sf1bn8Gnk28qe4Jg2E2al1Sd7y-THjw==
 {
   &quot;data&quot;: {
     &quot;login&quot;: null
@@ -3154,7 +3154,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.106">16:52:21.990 [print] Login API Response: {
+  <div class="preformatted" data-parent="1.106">17:03:09.150 [print] Login API Response: {
   &quot;data&quot;: {
     &quot;login&quot;: null
   },
@@ -3199,7 +3199,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.data.login == null</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -3284,7 +3284,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>380</span>
+              <span>ms:</span>&nbsp;<span>997</span>
             </div>
           </div>
           <div class="step-row">
@@ -3419,7 +3419,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def loginQuery = read(&#39;classpath:resources/graphql/login.graphql&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -3447,7 +3447,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def rawSignUpInfo = karate.read(&#39;file:target/target/email.txt&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -3475,7 +3475,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def signUpInfo = JSON.parse(rawSignUpInfo)</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -3654,7 +3654,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def build = buildLoginData(&#39;&#39;, &#39;existing&#39;, existingEmail, existingPassword)</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -3710,7 +3710,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def userData = karate.toJson(build.userData)</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -3738,7 +3738,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def payload = { query: &#39;#(loginQuery)&#39;, variables: &#39;#(userData)&#39; }</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -3794,7 +3794,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">376</div>
+    <div class="time-cell passed">988</div>
   </div>
 
    
@@ -3803,7 +3803,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.123">16:52:22.001 request:
+  <div class="preformatted" data-parent="1.123">17:03:09.175 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -3822,18 +3822,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-16:52:22.376 response time in milliseconds: 373
+17:03:10.160 response time in milliseconds: 984
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 209
 1 &lt; Connection: keep-alive
-1 &lt; Date: Fri, 21 Nov 2025 11:52:23 GMT
+1 &lt; Date: Mon, 24 Nov 2025 12:03:10 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 95651335-b898-4c90-ad52-c6c57206a12b
+1 &lt; x-amzn-RequestId: ea549a00-1511-4800-88d1-f4420de4a496
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 7916a11620a8773cef3fe5a5deddb33c.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 5b610e97437c0e8323bc7ff9d5aeade0.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: I2Vs9huorOgtjGGTeSX1UWkV0MtdlMi2jEqgQp6XDDzmIDT4dHAFYQ==
+1 &lt; X-Amz-Cf-Id: ukyDMHgH3NtbOEKbopdwY9ow963x4UYoxACllzuqBEeJnMOIxWWS_A==
 {
   &quot;data&quot;: {
     &quot;login&quot;: null
@@ -3917,7 +3917,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.125">16:52:22.376 [print] Login API Response: {
+  <div class="preformatted" data-parent="1.125">17:03:10.161 [print] Login API Response: {
   &quot;data&quot;: {
     &quot;login&quot;: null
   },
@@ -4047,7 +4047,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>779</span>
+              <span>ms:</span>&nbsp;<span>773</span>
             </div>
           </div>
           <div class="step-row">
@@ -4473,7 +4473,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def userData = karate.toJson(build.userData)</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -4557,7 +4557,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">775</div>
+    <div class="time-cell passed">767</div>
   </div>
 
    
@@ -4566,7 +4566,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.142">16:52:22.388 request:
+  <div class="preformatted" data-parent="1.142">17:03:10.175 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -4579,24 +4579,24 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 {
   &quot;query&quot;: &quot;mutation Login(\r\n  $email: String,\r\n  $password: String,\r\n  $mfaCode: String\r\n) {\r\n  login(\r\n    email: $email,\r\n    password: $password,\r\n    mfaCode: $mfaCode\r\n  ) {\r\n    statusCode\r\n    accessToken\r\n    refreshToken\r\n    user {\r\n      _id\r\n      email\r\n      username\r\n      phone\r\n      first_name\r\n      last_name\r\n      dob\r\n      address {\r\n        street\r\n        suite\r\n        city\r\n        state\r\n        postal_code\r\n      }\r\n      favorite_teams\r\n      heard_about_us\r\n      profile_picture\r\n      sys_dateCreated\r\n      sys_dateModified\r\n      sys_deleted\r\n      sys_userCreated_id\r\n      sys_userCreatedName\r\n      sys_userModified_id\r\n      sys_userModifiedName\r\n      mfa_enabled\r\n      last_login\r\n      role\r\n    }\r\n  }\r\n}\r\n\r\n&quot;,
   &quot;variables&quot;: {
-    &quot;email&quot;: &quot;userexample49975@gmail.com&quot;,
+    &quot;email&quot;: &quot;userexample72457@gmail.com&quot;,
     &quot;password&quot;: &quot;&quot;
   }
 }
 
 
-16:52:23.161 response time in milliseconds: 772
+17:03:10.939 response time in milliseconds: 763
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 212
 1 &lt; Connection: keep-alive
-1 &lt; Date: Fri, 21 Nov 2025 11:52:23 GMT
+1 &lt; Date: Mon, 24 Nov 2025 12:03:10 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 27e25b4a-8d8e-411d-ad77-e6655fafac78
+1 &lt; x-amzn-RequestId: 4c57f529-9fba-4871-807d-b2b93b2e8f17
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 75c7bd551167fd85669c596619dca276.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 07a3e23b3cebb2b0f6c0c49c0ecf7588.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: z4e39PyCTcW3wTQjl1QycaWxkU9epGUmiHiuISYQMFhYCAwJZAoFMw==
+1 &lt; X-Amz-Cf-Id: 40U48r_NBR64T2yKztYPnaVKOPSz-SXkJPLvlUDNVOwsC4BsqhDhmA==
 {
   &quot;data&quot;: {
     &quot;login&quot;: null
@@ -4680,7 +4680,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.144">16:52:23.162 [print] Login API Response: {
+  <div class="preformatted" data-parent="1.144">17:03:10.940 [print] Login API Response: {
   &quot;data&quot;: {
     &quot;login&quot;: null
   },
@@ -4781,7 +4781,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].message contains &#39;Password is required!&#39;</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
