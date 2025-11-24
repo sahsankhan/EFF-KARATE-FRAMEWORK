@@ -30,8 +30,25 @@
             <version>3.0.0</version>
         </dependency>
     </dependencies>
+    
 
     <build>
+        <testResources>
+            <testResource>
+                <directory>src/test/java/resources</directory>
+                <targetPath>resources</targetPath>
+            </testResource>
+            <testResource>
+                <directory>src/test/java/Features</directory>
+                <targetPath>Features</targetPath>
+                <includes>
+                    <include>**/*.feature</include>
+                </includes>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
