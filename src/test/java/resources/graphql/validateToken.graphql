@@ -1,0 +1,12 @@
+query Validate {
+  validate {
+    statusCode
+    valid
+    data
+    role
+    expiration
+    message
+  }
+}
+
+

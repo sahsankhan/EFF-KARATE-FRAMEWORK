@@ -40,7 +40,7 @@ Feature: Sign-Up API Automation
     * print response
     * match response.data.signUp.statusCode == <expectedStatus>
     * match response.data.signUp.message contains <expectedMessage>
-    * if ("<email>" == "random" && response.data.signUp.statusCode == 200) karate.write({email: dynamicEmail, resetKey: response.data.signUp.temporarySignupKey, isVerified: false, passwordSet: false}, 'target/email.txt')
+    * if ("<email>" == "random" && response.data.signUp.statusCode == 200) karate.write({email: dynamicEmail, resetKey: response.data.signUp.temporarySignupKey, isVerified: false, passwordSet: false}, 'target/info.txt')
 
     Examples:
       Examples:

@@ -6,7 +6,7 @@ Feature: Login API Automation
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
     * def loginQuery = read('classpath:resources/graphql/login.graphql')
-    * def rawSignUpInfo = karate.read('file:target/target/email.txt')
+    * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingEmail = signUpInfo.email
     * def existingPassword = signUpInfo.password
@@ -46,7 +46,8 @@ Feature: Login API Automation
     * match response.data.login.accessToken == '#present'
     * match response.data.login.refreshToken == '#present'
     * match response.data.login.user.email == userEmail
-    
+    * if (response.data.login.statusCode == 200) karate.write({email: existingEmail, resetKey: signUpInfo.resetKey, password: existingPassword, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: response.data.login.refreshToken, accessToken: response.data.login.accessToken}, 'target/info.txt')
+
     Examples:
       | email    | password | expectedStatus |
       | existing | existing | 200            |

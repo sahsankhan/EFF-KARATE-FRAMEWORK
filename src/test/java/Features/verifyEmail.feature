@@ -6,7 +6,7 @@ Feature: Verify Email API Automation
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
     * def verifyEmailQuery = read('classpath:resources/graphql/verifyEmail.graphql')
-    * def rawSignUpInfo = karate.read('file:target/target/email.txt')
+    * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingEmail = signUpInfo.email
     * def existingResetKey = signUpInfo.resetKey
@@ -35,7 +35,7 @@ Feature: Verify Email API Automation
     * match response.data.verifyEmail.message == '<expectedMessage>'
     # Update test data file to mark email as verified (preserve password if it exists)
     * def dataToSave = existingPassword != null ? {email: existingEmail, resetKey: existingResetKey, password: existingPassword, isVerified: true, passwordSet: passwordSet} : {email: existingEmail, resetKey: existingResetKey, isVerified: true, passwordSet: passwordSet}
-    * if (response.data.verifyEmail.statusCode == 200) karate.write(dataToSave, 'target/email.txt')
+    * if (response.data.verifyEmail.statusCode == 200) karate.write(dataToSave, 'target/info.txt')
 
     Examples:
       | verifyKey | expectedStatus | expectedMessage              |

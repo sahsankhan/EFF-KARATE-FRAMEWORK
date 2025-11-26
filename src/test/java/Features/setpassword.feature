@@ -6,7 +6,7 @@ Feature: Set or Reset Password API Automation
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
     * def setPasswordQuery = read('classpath:resources/graphql/setpassword.graphql')
-    * def rawSignUpInfo = karate.read('file:target/target/email.txt')
+    * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingEmail = signUpInfo.email
     * def existingResetKey = signUpInfo.resetKey
@@ -44,7 +44,7 @@ Feature: Set or Reset Password API Automation
     * match response.data.setPassword.statusCode == <expectedStatus>
     * match response.data.setPassword.message contains <expectedMessage>
     * if (<expectedEmailCheck> == true) karate.match(response.data.setPassword.email, userEmail)
-    * if (response.data.setPassword.statusCode == 200) karate.write({email: existingEmail, resetKey: existingResetKey, password: userPassword, isVerified: false, passwordSet: true}, 'target/email.txt')
+    * if (response.data.setPassword.statusCode == 200) karate.write({email: existingEmail, resetKey: existingResetKey, password: userPassword, isVerified: false, passwordSet: true}, 'target/info.txt')
 
     Examples:
       | email      | resetKey | password | expectedStatus | expectedMessage                 | expectedEmailCheck |

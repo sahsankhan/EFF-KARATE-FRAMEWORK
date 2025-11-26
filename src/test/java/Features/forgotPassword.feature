@@ -6,7 +6,7 @@ Feature: Forgot Password API Automation
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
     * def forgotPasswordQuery = read('classpath:resources/graphql/forgotPassword.graphql')
-    * def rawSignUpInfo = karate.read('file:target/target/email.txt')
+    * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingEmail = signUpInfo.email
     * def buildForgotPasswordData =
