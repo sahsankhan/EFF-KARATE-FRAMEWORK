@@ -38,7 +38,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
       <img src="karate-labs-logo-ring.svg" alt="Karate Labs"/>
     </a>
     <div class="nav-count">
-      <div id="nav-pass" class="bg-success">16</div>
+      <div id="nav-pass" class="bg-success">17</div>
       <div id="nav-fail" class="bg-danger">0</div>
     </div>
   </div>
@@ -49,7 +49,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
     <div>Scenarios</div>
   </div>
   <div id="nav-date">
-    <div>2025-11-26 09:05:52 PM</div>
+    <div>2025-12-02 04:54:32 PM</div>
   </div>
 </div>
 
@@ -102,6 +102,9 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
           <div class="nav-item passed">
             <a href="#[14.1:288]"><span>[14.1:288]</span> <span>Sign-Up fails when date format invalid</span></a>
           </div>
+          <div class="nav-item passed">
+            <a href="#[15.1:311]"><span>[15.1:311]</span> <span>Sign-Up fails when unverified email already exists</span></a>
+          </div>
         </div>
       </div>
       <div id="content">
@@ -126,7 +129,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>3898</span>
+              <span>ms:</span>&nbsp;<span>3574</span>
             </div>
           </div>
           <div class="step-row">
@@ -149,7 +152,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>url baseUrl</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -233,7 +236,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">4</div>
   </div>
 
    
@@ -261,7 +264,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def signUpQuery = read(&#39;classpath:resources/graphql/signup.graphql&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">5</div>
+    <div class="time-cell passed">6</div>
   </div>
 
    
@@ -289,7 +292,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def random = function() { return java.lang.Math.floor(java.lang.Math.random() * 100000); }</span>
       </div>
     </div>
-    <div class="time-cell passed">5</div>
+    <div class="time-cell passed">6</div>
   </div>
 
    
@@ -317,7 +320,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def buildSignUpData =</span>
       </div>
     </div>
-    <div class="time-cell passed">9</div>
+    <div class="time-cell passed">14</div>
   </div>
 
    
@@ -361,7 +364,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def build = buildSignUpData(&#39;User&#39;, &#39;Example&#39;, &#39;random&#39;, &#39;NY&#39;, &#39;1999-05-14&#39;, &#39;+14191000000&#39;, &#39;[&quot;DAL&quot;]&#39;, &#39;Google&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">31</div>
+    <div class="time-cell passed">45</div>
   </div>
 
    
@@ -417,7 +420,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def userData = karate.toJson(build.userData)</span>
       </div>
     </div>
-    <div class="time-cell passed">38</div>
+    <div class="time-cell passed">37</div>
   </div>
 
    
@@ -445,7 +448,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def payload = { query: &#39;#(signUpQuery)&#39;, variables: &#39;#(userData)&#39; }</span>
       </div>
     </div>
-    <div class="time-cell passed">4</div>
+    <div class="time-cell passed">3</div>
   </div>
 
    
@@ -473,7 +476,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>Given</span>&nbsp;<span>request payload</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -501,7 +504,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">3751</div>
+    <div class="time-cell passed">3414</div>
   </div>
 
    
@@ -510,7 +513,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.38">21:05:38.195 request:
+  <div class="preformatted" data-parent="1.38">16:54:19.484 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -525,7 +528,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   &quot;variables&quot;: {
     &quot;first_name&quot;: &quot;User&quot;,
     &quot;last_name&quot;: &quot;Example&quot;,
-    &quot;email&quot;: &quot;userexample78513@gmail.com&quot;,
+    &quot;email&quot;: &quot;userexample38026@gmail.com&quot;,
     &quot;address&quot;: {
       &quot;state&quot;: &quot;NY&quot;
     },
@@ -538,25 +541,25 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:41.847 response time in milliseconds: 3645
+16:54:22.813 response time in milliseconds: 3324
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 373
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:42 GMT
-1 &lt; x-amzn-appsync-TokensConsumed: 13
-1 &lt; x-amzn-RequestId: 26289b62-329e-4960-8109-8cc25578feca
+1 &lt; Date: Tue, 02 Dec 2025 11:54:22 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 14
+1 &lt; x-amzn-RequestId: 0bc5c071-ef29-4d87-95e9-e564faa168a1
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 7a1ed83df71b28dfe7f53f35a2d18d36.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 d845af9ba03273bc83e63771abdebb06.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: I0vvEaqwJ8eRJE8xnY5C7r6uTM9bMCeOmTY9VumCUzVVHThKAOTtVA==
+1 &lt; X-Amz-Cf-Id: CdSwISn-z9Cl9EYlTfNw4-rgdSHustxr_vXbozbLvFi5NPDvqsDwpQ==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: {
       &quot;statusCode&quot;: 200,
       &quot;message&quot;: &quot;Signup successful. Please verify your email and set your password in the app.&quot;,
-      &quot;email&quot;: &quot;userexample78513@gmail.com&quot;,
-      &quot;temporarySignupKey&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InNpZ251cDo6dXNlcmV4YW1wbGU3ODUxM0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTc2NDE3Njc0Mn0.-MBunrsBsH8E5gKJg6D5zgbW8tuYUsd9z1-py6upr34&quot;
+      &quot;email&quot;: &quot;userexample38026@gmail.com&quot;,
+      &quot;temporarySignupKey&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InNpZ251cDo6dXNlcmV4YW1wbGUzODAyNkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTc2NDY4MDA2MX0.1QA7_TEPXP7w1KoHra2Q0LuiL65wTkj6eqqq3PzDcbg&quot;
     }
   }
 }
@@ -609,7 +612,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>print response</span>
       </div>
     </div>
-    <div class="time-cell passed">5</div>
+    <div class="time-cell passed">3</div>
   </div>
 
    
@@ -618,13 +621,13 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.40">21:05:41.853 [print] {
+  <div class="preformatted" data-parent="1.40">16:54:22.818 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: {
       &quot;statusCode&quot;: 200,
       &quot;message&quot;: &quot;Signup successful. Please verify your email and set your password in the app.&quot;,
-      &quot;email&quot;: &quot;userexample78513@gmail.com&quot;,
-      &quot;temporarySignupKey&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InNpZ251cDo6dXNlcmV4YW1wbGU3ODUxM0BnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTc2NDE3Njc0Mn0.-MBunrsBsH8E5gKJg6D5zgbW8tuYUsd9z1-py6upr34&quot;
+      &quot;email&quot;: &quot;userexample38026@gmail.com&quot;,
+      &quot;temporarySignupKey&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InNpZ251cDo6dXNlcmV4YW1wbGUzODAyNkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTc2NDY4MDA2MX0.1QA7_TEPXP7w1KoHra2Q0LuiL65wTkj6eqqq3PzDcbg&quot;
     }
   }
 }
@@ -648,7 +651,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.data.signUp.statusCode == 200</span>
       </div>
     </div>
-    <div class="time-cell passed">14</div>
+    <div class="time-cell passed">11</div>
   </div>
 
    
@@ -676,7 +679,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.data.signUp.message contains &#39;Signup successful. Please verify your email and set your password in the app.&#39;</span>
       </div>
     </div>
-    <div class="time-cell passed">2</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -704,7 +707,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>if (&quot;random&quot; == &quot;random&quot; &amp;&amp; response.data.signUp.statusCode == 200) karate.write({email: dynamicEmail, resetKey: response.data.signUp.temporarySignupKey, isVerified: false, passwordSet: false}, &#39;target/info.txt&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">27</div>
+    <div class="time-cell passed">22</div>
   </div>
 
    
@@ -713,7 +716,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.43">21:05:41.897 write to file: target\target\info.txt
+  <div class="preformatted" data-parent="1.43">16:54:22.853 write to file: target\target\info.txt
 </div>   
 
   
@@ -734,7 +737,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>832</span>
+              <span>ms:</span>&nbsp;<span>408</span>
             </div>
           </div>
           <div class="step-row">
@@ -925,7 +928,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def buildSignUpData =</span>
       </div>
     </div>
-    <div class="time-cell passed">4</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -997,7 +1000,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def dynamicEmail = build.dynamicEmail</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -1053,7 +1056,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def payload = { query: &#39;#(signUpQuery)&#39;, variables: &#39;#(userData)&#39; }</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -1109,7 +1112,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">808</div>
+    <div class="time-cell passed">391</div>
   </div>
 
    
@@ -1118,7 +1121,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.57">21:05:41.935 request:
+  <div class="preformatted" data-parent="1.57">16:54:22.881 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -1146,18 +1149,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:42.736 response time in milliseconds: 801
+16:54:23.270 response time in milliseconds: 387
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 218
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:43 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:22 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 7bf77fff-4080-4bbe-a94a-e2d78ea60f9c
+1 &lt; x-amzn-RequestId: b1a5757c-c141-4de1-9a01-27357f579df9
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 a60404fd2f3474346aa3e32d019ad5c0.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 8039af47b0886512eb4a6ca022fa9b0e.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: pA-VP-d4TR2JXBrwQTNynjXAvGN1q1V7SddN4UeGzd5K10bAxCcrMA==
+1 &lt; X-Amz-Cf-Id: 3XNsX9nvYsND93l5GWhgzFvqm1GuGMgMRsPU7u_lGQrNOMs-4UakAw==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -1241,7 +1244,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.59">21:05:42.743 [print] {
+  <div class="preformatted" data-parent="1.59">16:54:23.271 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
   },
@@ -1286,7 +1289,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.data.signUp == null</span>
       </div>
     </div>
-    <div class="time-cell passed">3</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -1314,7 +1317,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].errorInfo.statusCode == 400</span>
       </div>
     </div>
-    <div class="time-cell passed">3</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -1342,7 +1345,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].message contains &#39;Missing required fields!&#39;</span>
       </div>
     </div>
-    <div class="time-cell passed">3</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -1371,7 +1374,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>817</span>
+              <span>ms:</span>&nbsp;<span>793</span>
             </div>
           </div>
           <div class="step-row">
@@ -1534,7 +1537,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def random = function() { return java.lang.Math.floor(java.lang.Math.random() * 100000); }</span>
       </div>
     </div>
-    <div class="time-cell passed">2</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -1562,7 +1565,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def buildSignUpData =</span>
       </div>
     </div>
-    <div class="time-cell passed">3</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -1746,7 +1749,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">800</div>
+    <div class="time-cell passed">783</div>
   </div>
 
    
@@ -1755,7 +1758,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.75">21:05:42.792 request:
+  <div class="preformatted" data-parent="1.75">16:54:23.305 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -1783,18 +1786,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:43.590 response time in milliseconds: 795
+16:54:24.084 response time in milliseconds: 778
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 218
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:44 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:23 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: c966ab76-89a5-49e2-978d-1bd58ee1beaa
+1 &lt; x-amzn-RequestId: 0970070d-b0b7-4429-8e5d-a7eef43f8171
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 a110a5ce023164a6c9f8ba17a079c52e.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 f73ce3a187e67c6b948cce90833d065c.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: KUAf3V0ulEeVAhDT9B2wfREbGdX_9T8EXcMwPADB8SqElntvgnuByw==
+1 &lt; X-Amz-Cf-Id: wPLiDJunf6UoTsFNPvNalDPHgPcYMyM1eYLioljccHV2YzMq_T5t8A==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -1878,7 +1881,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.77">21:05:43.593 [print] {
+  <div class="preformatted" data-parent="1.77">16:54:24.086 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
   },
@@ -2008,7 +2011,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>808</span>
+              <span>ms:</span>&nbsp;<span>806</span>
             </div>
           </div>
           <div class="step-row">
@@ -2115,7 +2118,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -2143,7 +2146,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def signUpQuery = read(&#39;classpath:resources/graphql/signup.graphql&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">2</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -2171,7 +2174,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def random = function() { return java.lang.Math.floor(java.lang.Math.random() * 100000); }</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -2243,7 +2246,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def build = buildSignUpData(&#39;User&#39;, &#39;Example&#39;, &#39;&#39;, &#39;NY&#39;, &#39;1999-05-14&#39;, &#39;+14191000000&#39;, &#39;[&quot;DAL&quot;]&#39;, &#39;Google&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">3</div>
   </div>
 
    
@@ -2327,7 +2330,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def payload = { query: &#39;#(signUpQuery)&#39;, variables: &#39;#(userData)&#39; }</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -2383,7 +2386,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">797</div>
+    <div class="time-cell passed">793</div>
   </div>
 
    
@@ -2392,7 +2395,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.93">21:05:43.626 request:
+  <div class="preformatted" data-parent="1.93">16:54:24.111 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -2420,18 +2423,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:44.420 response time in milliseconds: 792
+16:54:24.900 response time in milliseconds: 788
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 218
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:45 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:24 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: ca3aef0d-a3ee-475f-a67d-af27b372cc9a
+1 &lt; x-amzn-RequestId: 071435c5-a633-46b7-87cb-a78838dc7ec5
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 4a8fb870b61c2bf0b1fc4aeb5437cb42.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 75c7bd551167fd85669c596619dca276.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: pek0RLfJzwr95yuazrC-1vZQwJolVuH-p1bnXmVoeei1EVdWZtiuZw==
+1 &lt; X-Amz-Cf-Id: BC1VQ_Oz026mVWoI-9b6IWvyQphXha0QMGz_J-GjdXzdgoTxgW4bqg==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -2506,7 +2509,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>print response</span>
       </div>
     </div>
-    <div class="time-cell passed">2</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -2515,7 +2518,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.95">21:05:44.424 [print] {
+  <div class="preformatted" data-parent="1.95">16:54:24.902 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
   },
@@ -2645,7 +2648,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>819</span>
+              <span>ms:</span>&nbsp;<span>773</span>
             </div>
           </div>
           <div class="step-row">
@@ -2780,7 +2783,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def signUpQuery = read(&#39;classpath:resources/graphql/signup.graphql&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -2936,7 +2939,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def userData = karate.toJson(build.userData)</span>
       </div>
     </div>
-    <div class="time-cell passed">2</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -2964,7 +2967,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def payload = { query: &#39;#(signUpQuery)&#39;, variables: &#39;#(userData)&#39; }</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -3020,7 +3023,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">807</div>
+    <div class="time-cell passed">767</div>
   </div>
 
    
@@ -3029,7 +3032,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.111">21:05:44.464 request:
+  <div class="preformatted" data-parent="1.111">16:54:24.937 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -3057,18 +3060,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:45.268 response time in milliseconds: 803
+16:54:25.702 response time in milliseconds: 764
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 212
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:46 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:24 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 86ec5269-a7df-448b-b957-f8fe3e848820
+1 &lt; x-amzn-RequestId: cfd83615-3801-4739-aa89-1de4ed83b0b7
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 e3fda5fc7a025092460f7616efb95390.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 6bd1dbeef1a634a27b1736d98439b720.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: JFcE-nyuaR8aVzxFZNiT62sYxOMHq43m3HKzfgR2juf6lrSYjuLyOA==
+1 &lt; X-Amz-Cf-Id: h5fk6FcNU9tv1bK0KUhlFSDjXHYsTD5f2b14J88W46TFwqQeE4NhRA==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -3152,7 +3155,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.113">21:05:45.271 [print] {
+  <div class="preformatted" data-parent="1.113">16:54:25.703 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
   },
@@ -3197,7 +3200,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.data.signUp == null</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -3225,7 +3228,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].errorInfo.statusCode == 400</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -3282,7 +3285,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>797</span>
+              <span>ms:</span>&nbsp;<span>739</span>
             </div>
           </div>
           <div class="step-row">
@@ -3517,7 +3520,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def build = buildSignUpData(&#39;User&#39;, &#39;Example&#39;, &#39;userexample9@gmail.com&#39;, &#39;NY&#39;, &#39;&#39;, &#39;+14191000000&#39;, &#39;[&quot;DAL&quot;]&#39;, &#39;Google&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">2</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -3601,7 +3604,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def payload = { query: &#39;#(signUpQuery)&#39;, variables: &#39;#(userData)&#39; }</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -3657,7 +3660,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">789</div>
+    <div class="time-cell passed">732</div>
   </div>
 
    
@@ -3666,7 +3669,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.129">21:05:45.302 request:
+  <div class="preformatted" data-parent="1.129">16:54:25.722 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -3694,18 +3697,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:46.088 response time in milliseconds: 786
+16:54:26.450 response time in milliseconds: 727
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 218
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:46 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:25 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 416b45f6-8e23-40e0-815f-c9725cc7b002
+1 &lt; x-amzn-RequestId: f20cbf5b-d116-4ba6-a3b3-5bec78029fbe
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 e72271b7c8cb777dcacd6e49dcfab458.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 4047517acf8202f7765289cda91e20c8.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: blckXsOmWEowY09Gw3i77h0ga9sIPdurZqKZiFUuqbRFQd1tOqZhSQ==
+1 &lt; X-Amz-Cf-Id: bixZJdh4lOvU_WDFH-NnRA5UxtF4QrhEYVpW8eWi_w96KkOY6g1uTA==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -3789,7 +3792,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.131">21:05:46.090 [print] {
+  <div class="preformatted" data-parent="1.131">16:54:26.451 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
   },
@@ -3862,7 +3865,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].errorInfo.statusCode == 400</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -3919,7 +3922,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>811</span>
+              <span>ms:</span>&nbsp;<span>410</span>
             </div>
           </div>
           <div class="step-row">
@@ -4054,7 +4057,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def signUpQuery = read(&#39;classpath:resources/graphql/signup.graphql&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -4082,7 +4085,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def random = function() { return java.lang.Math.floor(java.lang.Math.random() * 100000); }</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -4110,7 +4113,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def buildSignUpData =</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -4294,7 +4297,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">794</div>
+    <div class="time-cell passed">388</div>
   </div>
 
    
@@ -4303,7 +4306,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.148">21:05:46.116 request:
+  <div class="preformatted" data-parent="1.148">16:54:26.488 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -4318,7 +4321,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   &quot;variables&quot;: {
     &quot;first_name&quot;: &quot;User&quot;,
     &quot;last_name&quot;: &quot;Example&quot;,
-    &quot;email&quot;: &quot;userexample52604@gmail.com&quot;,
+    &quot;email&quot;: &quot;userexample53886@gmail.com&quot;,
     &quot;address&quot;: {
       &quot;state&quot;: &quot;NY&quot;
     },
@@ -4333,18 +4336,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:46.897 response time in milliseconds: 781
+16:54:26.873 response time in milliseconds: 384
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 218
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:47 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:26 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: f03d61af-0133-4d16-86fc-5f90689c9646
+1 &lt; x-amzn-RequestId: 4985cad5-7c12-4623-af90-f239bb2a69f1
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 180def226b6b9dd27ad7bda349bd8ba4.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 dafb32dbb07d624edbdce98b82d043e6.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: TIVVYpzWt0PURqc5ahJJTTyQbPo4mrP96Kg_bG1BfiF_QjS4E1oI_w==
+1 &lt; X-Amz-Cf-Id: WZGNy3TymXhwlTdiIYfJORysPpA-oZo2pVEXPeGl_DYQKMWQ-ZjwtQ==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -4428,7 +4431,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.150">21:05:46.897 [print] {
+  <div class="preformatted" data-parent="1.150">16:54:26.875 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
   },
@@ -4558,7 +4561,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>806</span>
+              <span>ms:</span>&nbsp;<span>803</span>
             </div>
           </div>
           <div class="step-row">
@@ -4693,7 +4696,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def signUpQuery = read(&#39;classpath:resources/graphql/signup.graphql&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">2</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -4793,7 +4796,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def build = buildSignUpData(&#39;User&#39;, &#39;Example&#39;, &#39;random&#39;, &#39;NY&#39;, &#39;1999-05-14&#39;, &#39;+14191000000&#39;, [], &#39;&quot;Google&quot;&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">11</div>
+    <div class="time-cell passed">6</div>
   </div>
 
    
@@ -4821,7 +4824,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def dynamicEmail = build.dynamicEmail</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -4877,7 +4880,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def payload = { query: &#39;#(signUpQuery)&#39;, variables: &#39;#(userData)&#39; }</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -4933,7 +4936,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">783</div>
+    <div class="time-cell passed">788</div>
   </div>
 
    
@@ -4942,7 +4945,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.167">21:05:46.952 request:
+  <div class="preformatted" data-parent="1.167">16:54:26.914 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -4957,7 +4960,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   &quot;variables&quot;: {
     &quot;first_name&quot;: &quot;User&quot;,
     &quot;last_name&quot;: &quot;Example&quot;,
-    &quot;email&quot;: &quot;userexample35239@gmail.com&quot;,
+    &quot;email&quot;: &quot;userexample98439@gmail.com&quot;,
     &quot;address&quot;: {
       &quot;state&quot;: &quot;NY&quot;
     },
@@ -4971,18 +4974,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:47.731 response time in milliseconds: 778
+16:54:27.699 response time in milliseconds: 784
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 227
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:48 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:26 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 9c23431a-868b-4839-a841-7dbe8aae00bc
+1 &lt; x-amzn-RequestId: a9a1b1c3-f6c4-4601-93f0-a7921d8d6f1b
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 ce0c5417f9c67a91d03d0ead184635a2.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 760430836935a4d8c7a31f717fa46d44.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: m7iKyxGtcjieFF3bXdmfjgt2qc0lpyHA5031pDvd4XLQdrPbUFa-wA==
+1 &lt; X-Amz-Cf-Id: CJF0PqThkVJiY08cFWoTvHYBDvIQu78XEutLzqoenIzSeFlZklT5cA==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -5066,7 +5069,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.169">21:05:47.734 [print] {
+  <div class="preformatted" data-parent="1.169">16:54:27.702 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
   },
@@ -5196,7 +5199,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>784</span>
+              <span>ms:</span>&nbsp;<span>785</span>
             </div>
           </div>
           <div class="step-row">
@@ -5331,7 +5334,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def signUpQuery = read(&#39;classpath:resources/graphql/signup.graphql&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -5431,7 +5434,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def build = buildSignUpData(&#39;User&#39;, &#39;Example&#39;, &#39;userexample9@gmail.com&#39;, &#39;&quot;abc&quot;&#39;, &#39;1999-05-14&#39;, &#39;+14191000000&#39;, &#39;[&quot;DAL&quot;]&#39;, &#39;Google&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -5487,7 +5490,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def userData = karate.toJson(build.userData)</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -5571,7 +5574,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">778</div>
+    <div class="time-cell passed">776</div>
   </div>
 
    
@@ -5580,7 +5583,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.186">21:05:47.758 request:
+  <div class="preformatted" data-parent="1.186">16:54:27.730 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -5608,18 +5611,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:48.535 response time in milliseconds: 777
+16:54:28.502 response time in milliseconds: 771
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 257
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:49 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:27 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 3dcba1f9-243e-46f2-962e-cbc241806549
+1 &lt; x-amzn-RequestId: d3c6d4be-6175-4301-854a-35af4b52a607
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 18bde470183af46c66355e96f6bd5e18.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 d845af9ba03273bc83e63771abdebb06.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: otNrDuUCDWQc2ODObK6E-PuQ83GQfHVcmPb9d2U4-GyCDJpRbIR6bQ==
+1 &lt; X-Amz-Cf-Id: bDkzqJahMcPKs8IXCmE4kqbTzJhlGYXQM1oj3Q4TKOSn2F2zhFn05Q==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -5703,7 +5706,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.188">21:05:48.538 [print] {
+  <div class="preformatted" data-parent="1.188">16:54:28.505 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
   },
@@ -5833,7 +5836,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>395</span>
+              <span>ms:</span>&nbsp;<span>381</span>
             </div>
           </div>
           <div class="step-row">
@@ -5884,7 +5887,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -5996,7 +5999,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def random = function() { return java.lang.Math.floor(java.lang.Math.random() * 100000); }</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -6024,7 +6027,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def buildSignUpData =</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -6068,7 +6071,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def build = buildSignUpData(&#39;User&#39;, &#39;Example&#39;, &#39;userexample9@gmail.com&#39;, &#39;123&#39;, &#39;1999-05-14&#39;, &#39;+14191000000&#39;, &#39;[&quot;DAL&quot;]&#39;, &#39;Google&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">3</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -6096,7 +6099,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def dynamicEmail = build.dynamicEmail</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -6124,7 +6127,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def userData = karate.toJson(build.userData)</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -6152,7 +6155,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def payload = { query: &#39;#(signUpQuery)&#39;, variables: &#39;#(userData)&#39; }</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -6208,7 +6211,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">383</div>
+    <div class="time-cell passed">373</div>
   </div>
 
    
@@ -6217,7 +6220,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="2.186">21:05:48.569 request:
+  <div class="preformatted" data-parent="2.186">16:54:28.538 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -6245,18 +6248,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:48.942 response time in milliseconds: 373
+16:54:28.908 response time in milliseconds: 369
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 257
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:49 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:28 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 9c827567-c658-480a-813d-5882d93fe94e
+1 &lt; x-amzn-RequestId: 2e1e602a-61e7-422d-96e9-6886a06f6117
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 4047517acf8202f7765289cda91e20c8.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 253d6e4259dec57de8742fbba6936b54.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: VtUR3rl30RdKrscmlV66uwPBtE0vWNFmXec7QGzWdf-g1FdIDmiIhg==
+1 &lt; X-Amz-Cf-Id: uxzROA9u2MM5NyFrJOO1LbZDjXaOh89KhQd2sGX3VQDxQ3FrmqpYsg==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -6340,7 +6343,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="2.188">21:05:48.942 [print] {
+  <div class="preformatted" data-parent="2.188">16:54:28.910 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
   },
@@ -6441,7 +6444,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].message contains &#39;Invalid U.S. state. Must be a valid state name or abbreviation.&#39;</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -6470,7 +6473,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>437</span>
+              <span>ms:</span>&nbsp;<span>325</span>
             </div>
           </div>
           <div class="step-row">
@@ -6605,7 +6608,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def signUpQuery = read(&#39;classpath:resources/graphql/signup.graphql&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -6661,7 +6664,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def buildSignUpData =</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -6705,7 +6708,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def build = buildSignUpData(&#39;User&#39;, &#39;Example&#39;, &#39;userexample9@gmail.com&#39;, &#39;&quot;Puerto Rico&quot;&#39;, &#39;1999-05-14&#39;, &#39;+14191000000&#39;, &#39;[&quot;DAL&quot;]&#39;, &#39;Google&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">4</div>
+    <div class="time-cell passed">2</div>
   </div>
 
    
@@ -6733,7 +6736,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def dynamicEmail = build.dynamicEmail</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -6845,7 +6848,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">425</div>
+    <div class="time-cell passed">317</div>
   </div>
 
    
@@ -6854,7 +6857,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="3.186">21:05:48.986 request:
+  <div class="preformatted" data-parent="3.186">16:54:28.930 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -6882,18 +6885,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:49.406 response time in milliseconds: 419
+16:54:29.243 response time in milliseconds: 313
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 257
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:50 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:28 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 025accf5-4cd5-4b2c-956f-caead0de3448
+1 &lt; x-amzn-RequestId: 02fcdc08-db54-4fdd-9caf-06b13055fd9b
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 dafb32dbb07d624edbdce98b82d043e6.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 6f281b06deeb9e1c5cfc8c0e3a12ebfc.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: Wq3Af3itnustgRL73X601FJN6zG_myebDfG3e8B40w_zvBZfbuxq-g==
+1 &lt; X-Amz-Cf-Id: w_-EIwR3VZ8AZsw5tFmQUZtCcwnB0TSBlCEPtvcIjbmzsnI75QcxkA==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -6968,7 +6971,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>print response</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -6977,7 +6980,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="3.188">21:05:49.408 [print] {
+  <div class="preformatted" data-parent="3.188">16:54:29.244 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
   },
@@ -7022,7 +7025,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.data.signUp == null</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -7050,7 +7053,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].errorInfo.statusCode == 400</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -7078,7 +7081,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].message contains &#39;Invalid U.S. state. Must be a valid state name or abbreviation.&#39;</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -7107,7 +7110,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>380</span>
+              <span>ms:</span>&nbsp;<span>786</span>
             </div>
           </div>
           <div class="step-row">
@@ -7342,7 +7345,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def build = buildSignUpData(&#39;User&#39;, &#39;Example&#39;, &#39;random&#39;, &#39;NY&#39;, &#39;1999-05-14&#39;, &#39;+14191000000&#39;, [&quot;DAL&quot;], &#39;123&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">3</div>
+    <div class="time-cell passed">5</div>
   </div>
 
    
@@ -7482,7 +7485,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">372</div>
+    <div class="time-cell passed">775</div>
   </div>
 
    
@@ -7491,12 +7494,12 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.207">21:05:49.427 request:
+  <div class="preformatted" data-parent="1.207">16:54:29.268 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
 1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
-1 &gt; Content-Length: 803
+1 &gt; Content-Length: 801
 1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
 1 &gt; Connection: Keep-Alive
 1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/20)
@@ -7506,7 +7509,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
   &quot;variables&quot;: {
     &quot;first_name&quot;: &quot;User&quot;,
     &quot;last_name&quot;: &quot;Example&quot;,
-    &quot;email&quot;: &quot;userexample13821@gmail.com&quot;,
+    &quot;email&quot;: &quot;userexample942@gmail.com&quot;,
     &quot;address&quot;: {
       &quot;state&quot;: &quot;NY&quot;
     },
@@ -7521,18 +7524,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:49.794 response time in milliseconds: 366
+16:54:30.041 response time in milliseconds: 772
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 222
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:50 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:29 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 0717e9df-fb58-4fb2-8d11-f4b67768d33c
+1 &lt; x-amzn-RequestId: c95d7ea7-d424-46bf-adc2-e8484679428a
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 fdb3cc4dd091ca7a53ccba98811615ac.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 8dd746184895b782ccc160a21809c2d8.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: GFGICl7eUevhcFtrCDCe-Tki1Zl7F60xrBNA_1Zgj8TZHdE2Wm1P0g==
+1 &lt; X-Amz-Cf-Id: s8XEF7JRVacuKY8Goqb9N-5dT6LBfl4t-dGGA6Mj-CoN3SWWjkiRHw==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -7635,7 +7638,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].errorInfo.statusCode == 400</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -7692,7 +7695,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>821</span>
+              <span>ms:</span>&nbsp;<span>377</span>
             </div>
           </div>
           <div class="step-row">
@@ -7715,7 +7718,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>url baseUrl</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -7827,7 +7830,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def signUpQuery = read(&#39;classpath:resources/graphql/signup.graphql&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -7855,7 +7858,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def random = function() { return java.lang.Math.floor(java.lang.Math.random() * 100000); }</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -7883,7 +7886,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def buildSignUpData =</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -7927,7 +7930,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def build = buildSignUpData(&#39;-&#39;, &#39;-&#39;, &#39;userexample9@gmail.com&#39;, &#39;NY&#39;, &#39;1999-05-14&#39;, &#39;+14191000000&#39;, &#39;[&quot;DAL&quot;]&#39;, &#39;Google&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">3</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -7955,7 +7958,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def dynamicEmail = build.dynamicEmail</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -8011,7 +8014,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def payload = { query: &#39;#(signUpQuery)&#39;, variables: &#39;#(userData)&#39; }</span>
       </div>
     </div>
-    <div class="time-cell passed">2</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -8067,7 +8070,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">807</div>
+    <div class="time-cell passed">372</div>
   </div>
 
    
@@ -8076,7 +8079,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.225">21:05:49.831 request:
+  <div class="preformatted" data-parent="1.225">16:54:30.055 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -8104,18 +8107,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:50.635 response time in milliseconds: 803
+16:54:30.426 response time in milliseconds: 371
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 280
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:51 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:29 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 5ef24b86-0303-4157-9ac2-c5fe1436a01a
+1 &lt; x-amzn-RequestId: 55326bfb-93e6-4df5-aeea-ce3c75971890
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 4c2c73e12e6b04bb19bcf1bb6541e120.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 e9f6d75c5f5c637bb463d318f72b3fde.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: V2Dg5ak4JhP36tin4n-jGYj1UcVulh0AhcVxK80bsJYJFT5L3dEXPg==
+1 &lt; X-Amz-Cf-Id: RgjyoxTl8OwMo3eMWQzGVvkNZfduORt7p2h90Eal0WyV9kgsFIPQXg==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -8190,7 +8193,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>print response</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -8199,7 +8202,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.227">21:05:50.636 [print] {
+  <div class="preformatted" data-parent="1.227">16:54:30.427 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
   },
@@ -8244,7 +8247,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.data.signUp == null</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -8272,7 +8275,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].errorInfo.statusCode == 400</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -8300,7 +8303,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].message contains &#39;Invalid first name!&#39;</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -8329,7 +8332,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>389</span>
+              <span>ms:</span>&nbsp;<span>781</span>
             </div>
           </div>
           <div class="step-row">
@@ -8464,7 +8467,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def signUpQuery = read(&#39;classpath:resources/graphql/signup.graphql&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -8564,7 +8567,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def build = buildSignUpData(&#39;User&#39;, &#39;Example&#39;, &#39;a@b&#39;, &#39;NY&#39;, &#39;1999-05-14&#39;, &#39;+14191000000&#39;, &#39;[&quot;DAL&quot;]&#39;, &#39;Google&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">3</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -8592,7 +8595,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def dynamicEmail = build.dynamicEmail</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -8648,7 +8651,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def payload = { query: &#39;#(signUpQuery)&#39;, variables: &#39;#(userData)&#39; }</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -8704,7 +8707,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">380</div>
+    <div class="time-cell passed">774</div>
   </div>
 
    
@@ -8713,7 +8716,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.243">21:05:50.665 request:
+  <div class="preformatted" data-parent="1.243">16:54:30.441 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -8741,18 +8744,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:51.042 response time in milliseconds: 377
+16:54:31.212 response time in milliseconds: 769
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 215
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:51 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:30 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 2e7f933b-3f29-4c14-a7b3-1e1d2311eb5d
+1 &lt; x-amzn-RequestId: 97917eb2-6cff-4d00-be3d-03f1b9261e14
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 d845af9ba03273bc83e63771abdebb06.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 180def226b6b9dd27ad7bda349bd8ba4.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: VFC23yRyvDScZR57dC5kegG7-HrhPOSkQzjZUYzMTi5aXk03uFD69Q==
+1 &lt; X-Amz-Cf-Id: pDrp2a6Kh0ddG4Z0knG6cf8Sxyg_EksQmKMb_ldqcTpmejFpTpcRUw==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -8827,7 +8830,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>print response</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -8836,7 +8839,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.245">21:05:51.042 [print] {
+  <div class="preformatted" data-parent="1.245">16:54:31.213 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
   },
@@ -8881,7 +8884,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.data.signUp == null</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -8909,7 +8912,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].errorInfo.statusCode == 400</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -8937,7 +8940,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].message contains &#39;Invalid email format!&#39;</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -8966,7 +8969,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>807</span>
+              <span>ms:</span>&nbsp;<span>379</span>
             </div>
           </div>
           <div class="step-row">
@@ -9101,7 +9104,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def signUpQuery = read(&#39;classpath:resources/graphql/signup.graphql&#39;)</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -9257,7 +9260,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def userData = karate.toJson(build.userData)</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -9285,7 +9288,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def payload = { query: &#39;#(signUpQuery)&#39;, variables: &#39;#(userData)&#39; }</span>
       </div>
     </div>
-    <div class="time-cell passed">0</div>
+    <div class="time-cell passed">1</div>
   </div>
 
    
@@ -9341,7 +9344,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">801</div>
+    <div class="time-cell passed">373</div>
   </div>
 
    
@@ -9350,7 +9353,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.261">21:05:51.052 request:
+  <div class="preformatted" data-parent="1.261">16:54:31.231 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -9378,18 +9381,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:51.853 response time in milliseconds: 800
+16:54:31.602 response time in milliseconds: 369
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 222
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:52 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:30 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 2fb9654c-a535-4e52-8646-370dd8248872
+1 &lt; x-amzn-RequestId: a5902285-9def-4b9b-8170-b806643d080c
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 d845af9ba03273bc83e63771abdebb06.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 760430836935a4d8c7a31f717fa46d44.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: uEF2XAv_D__adXq9KGuOqX-GD6MuykWllr5FWQTrI0LrvSVCz4XS_A==
+1 &lt; X-Amz-Cf-Id: poaZaoQAEkLcAAlhpXAYklo7T4pJ0JW7S6mDS_OJdN77d5XqQjVipQ==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -9464,7 +9467,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>print response</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -9473,7 +9476,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.263">21:05:51.854 [print] {
+  <div class="preformatted" data-parent="1.263">16:54:31.603 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
   },
@@ -9518,7 +9521,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.data.signUp == null</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -9546,7 +9549,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].errorInfo.statusCode == 400</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -9603,7 +9606,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
               </div>
             </div>
             <div class="scenario-time passed">
-              <span>ms:</span>&nbsp;<span>785</span>
+              <span>ms:</span>&nbsp;<span>804</span>
             </div>
           </div>
           <div class="step-row">
@@ -9922,7 +9925,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>def payload = { query: &#39;#(signUpQuery)&#39;, variables: &#39;#(userData)&#39; }</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -9978,7 +9981,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>When</span>&nbsp;<span>method post</span>
       </div>
     </div>
-    <div class="time-cell passed">778</div>
+    <div class="time-cell passed">800</div>
   </div>
 
    
@@ -9987,7 +9990,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.279">21:05:51.875 request:
+  <div class="preformatted" data-parent="1.279">16:54:31.614 request:
 1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
 1 &gt; Accept: application/json
 1 &gt; Content-Type: application/json; charset=UTF-8
@@ -10015,18 +10018,18 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 }
 
 
-21:05:52.642 response time in milliseconds: 766
+16:54:32.412 response time in milliseconds: 798
 1 &lt; 200
 1 &lt; Content-Type: application/json; charset=UTF-8
 1 &lt; Content-Length: 241
 1 &lt; Connection: keep-alive
-1 &lt; Date: Wed, 26 Nov 2025 16:05:53 GMT
+1 &lt; Date: Tue, 02 Dec 2025 11:54:31 GMT
 1 &lt; x-amzn-appsync-TokensConsumed: 1
-1 &lt; x-amzn-RequestId: 81e7b3ab-d12c-4c4e-b823-3e7485f2a28b
+1 &lt; x-amzn-RequestId: 8ab0e173-226e-46cb-8ae9-87dca4ab73d3
 1 &lt; X-Cache: Miss from cloudfront
-1 &lt; Via: 1.1 7a1ed83df71b28dfe7f53f35a2d18d36.cloudfront.net (CloudFront)
+1 &lt; Via: 1.1 e3fda5fc7a025092460f7616efb95390.cloudfront.net (CloudFront)
 1 &lt; X-Amz-Cf-Pop: MCT50-P3
-1 &lt; X-Amz-Cf-Id: WfOBMZCPX-wxtdRGe7VKM4hiFxfGn_q2wXuPXba32-S7VYCH1LjDIw==
+1 &lt; X-Amz-Cf-Id: wa8S5P2ZHknKJKBCihYUg7h9JMbCr4axh8i7OXJCEbiKxftEnBZ3yQ==
 {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
@@ -10101,7 +10104,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>print response</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -10110,7 +10113,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
 
   
 
-  <div class="preformatted" data-parent="1.281">21:05:52.642 [print] {
+  <div class="preformatted" data-parent="1.281">16:54:32.413 [print] {
   &quot;data&quot;: {
     &quot;signUp&quot;: null
   },
@@ -10155,7 +10158,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.data.signUp == null</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -10183,7 +10186,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         <span>*</span>&nbsp;<span>match response.errors[0].errorInfo.statusCode == 400</span>
       </div>
     </div>
-    <div class="time-cell passed">1</div>
+    <div class="time-cell passed">0</div>
   </div>
 
    
@@ -10209,6 +10212,727 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
       
       <div class="step-cell passed">
         <span>*</span>&nbsp;<span>match response.errors[0].message contains &#39;Invalid date format!&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+        </div>
+        <div class="scenario">
+          <div class="scenario-heading" id="[15.1:311]">
+            <div class="heading-container">
+              <div class="scenario-tags">
+                <a class="badge badge-primary" href="karate-tags.html">unverified_email_exists</a>
+              </div>
+              <div class="scenario-keyword">
+                Scenario: <span>[15.1:311]</span>
+                <span class="scenario-name">Sign-Up fails when unverified email already exists</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="scenario-time passed">
+              <span>ms:</span>&nbsp;<span>426</span>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-container" id="[15.1:311]bg">
+              <div class="step-ref bg-step">&gt;&gt;</div>
+              <div class="step-cell passed">Background:</div>
+            </div>
+            <div class="time-cell passed"></div>
+          </div>
+          <div data-parent="[15.1:311]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.4">
+      <div class="step-ref bg-step">4</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>url baseUrl</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[15.1:311]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.5">
+      <div class="step-ref bg-step">5</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Accept = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[15.1:311]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.6">
+      <div class="step-ref bg-step">6</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header Content-Type = &#39;application/json&#39;</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[15.1:311]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.7">
+      <div class="step-ref bg-step">7</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>header x-api-key = apiKey</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[15.1:311]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.8">
+      <div class="step-ref bg-step">8</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def signUpQuery = read(&#39;classpath:resources/graphql/signup.graphql&#39;)</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[15.1:311]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.9">
+      <div class="step-ref bg-step">9</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def random = function() { return java.lang.Math.floor(java.lang.Math.random() * 100000); }</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div data-parent="[15.1:311]bg"><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.10">
+      <div class="step-ref bg-step">10</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def buildSignUpData =</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  <div class="preformatted" data-parent="1.10">function(first_name, last_name, email, state, dob, phone, favorite_teams, heard_about_us, test_bypass) {
+  var dynamicEmail = email == &#39;random&#39; ? &#39;userexample&#39; + random() + &#39;@gmail.com&#39; : email;
+  var userData = {
+    first_name: first_name,
+    last_name: last_name,
+    email: dynamicEmail,
+    address: {
+      state: state
+    },
+    dob: dob,
+    phone: phone,
+    favorite_teams: favorite_teams,
+    heard_about_us: heard_about_us,
+    test_bypass: test_bypass
+  };
+  return { dynamicEmail: dynamicEmail, userData: userData };
+}</div>
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.292">
+      <div class="step-ref passed">292</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def rawSignUpInfo = karate.read(&#39;file:target/target/info.txt&#39;)</span>
+      </div>
+    </div>
+    <div class="time-cell passed">17</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.293">
+      <div class="step-ref passed">293</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def signUpInfo = JSON.parse(rawSignUpInfo)</span>
+      </div>
+    </div>
+    <div class="time-cell passed">7</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.294">
+      <div class="step-ref passed">294</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def existingEmail = signUpInfo.email</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.296">
+      <div class="step-ref passed">296</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def build = buildSignUpData(&#39;User&#39;, &#39;Example&#39;, existingEmail, &#39;NY&#39;, &#39;1999-05-14&#39;, &#39;+14191000000&#39;, &#39;[&quot;DAL&quot;]&#39;, &#39;Google&#39;)</span>
+      </div>
+    </div>
+    <div class="time-cell passed">2</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.297">
+      <div class="step-ref passed">297</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def dynamicEmail = build.dynamicEmail</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.298">
+      <div class="step-ref passed">298</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def userData = karate.toJson(build.userData)</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.299">
+      <div class="step-ref passed">299</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>def payload = { query: &#39;#(signUpQuery)&#39;, variables: &#39;#(userData)&#39; }</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.301">
+      <div class="step-ref passed">301</div>
+      
+      <div class="step-cell passed">
+        <span>Given</span>&nbsp;<span>request payload</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.302">
+      <div class="step-ref passed">302</div>
+      
+      <div class="step-cell passed">
+        <span>When</span>&nbsp;<span>method post</span>
+      </div>
+    </div>
+    <div class="time-cell passed">392</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="1.302">16:54:32.456 request:
+1 &gt; POST https://5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com/graphql
+1 &gt; Accept: application/json
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; x-api-key: da2-ly43dxgsljaohkedp3qi5ze5ba
+1 &gt; Content-Length: 810
+1 &gt; Host: 5uu6v5eh2vbvdjjzzhzrt7ewdi.appsync-api.us-east-1.amazonaws.com
+1 &gt; Connection: Keep-Alive
+1 &gt; User-Agent: Apache-HttpClient/4.5.14 (Java/20)
+1 &gt; Accept-Encoding: gzip,deflate
+{
+  &quot;query&quot;: &quot;mutation SignUp(\r\n  $first_name: String,\r\n  $last_name: String,\r\n  $email: String,\r\n  $address: AddressInput,\r\n  $dob: String,\r\n  $phone: String,\r\n  $favorite_teams: [String],\r\n  $heard_about_us: String\r\n) {\r\n  signUp(\r\n    first_name: $first_name,\r\n    last_name: $last_name,\r\n    email: $email,\r\n    address: $address,\r\n    dob: $dob,\r\n    phone: $phone,\r\n    favorite_teams: $favorite_teams,\r\n    heard_about_us: $heard_about_us\r\n  ) {\r\n    statusCode\r\n    message\r\n    email\r\n    temporarySignupKey\r\n  }\r\n}\r\n&quot;,
+  &quot;variables&quot;: {
+    &quot;first_name&quot;: &quot;User&quot;,
+    &quot;last_name&quot;: &quot;Example&quot;,
+    &quot;email&quot;: &quot;userexample38026@gmail.com&quot;,
+    &quot;address&quot;: {
+      &quot;state&quot;: &quot;NY&quot;
+    },
+    &quot;dob&quot;: &quot;1999-05-14&quot;,
+    &quot;phone&quot;: &quot;+14191000000&quot;,
+    &quot;favorite_teams&quot;: &quot;[\&quot;DAL\&quot;]&quot;,
+    &quot;heard_about_us&quot;: &quot;Google&quot;,
+    &quot;test_bypass&quot;: null
+  }
+}
+
+
+16:54:32.846 response time in milliseconds: 389
+1 &lt; 200
+1 &lt; Content-Type: application/json; charset=UTF-8
+1 &lt; Content-Length: 249
+1 &lt; Connection: keep-alive
+1 &lt; Date: Tue, 02 Dec 2025 11:54:32 GMT
+1 &lt; x-amzn-appsync-TokensConsumed: 1
+1 &lt; x-amzn-RequestId: 837d29a7-460c-4f1d-beef-f666f6ac8734
+1 &lt; X-Cache: Miss from cloudfront
+1 &lt; Via: 1.1 dafb32dbb07d624edbdce98b82d043e6.cloudfront.net (CloudFront)
+1 &lt; X-Amz-Cf-Pop: MCT50-P3
+1 &lt; X-Amz-Cf-Id: MPOICNnL_PaYwOZi-rQQOHclVYj8xTsaG6hxU8wIA0ociCtVGktnYA==
+{
+  &quot;data&quot;: {
+    &quot;signUp&quot;: null
+  },
+  &quot;errors&quot;: [
+    {
+      &quot;path&quot;: [
+        &quot;signUp&quot;
+      ],
+      &quot;data&quot;: null,
+      &quot;errorType&quot;: &quot;ErrorResponse&quot;,
+      &quot;errorInfo&quot;: {
+        &quot;statusCode&quot;: 403
+      },
+      &quot;locations&quot;: [
+        {
+          &quot;line&quot;: 11,
+          &quot;column&quot;: 3,
+          &quot;sourceName&quot;: null
+        }
+      ],
+      &quot;message&quot;: &quot;Activation email already sent. Please check your inbox.&quot;
+    }
+  ]
+}
+
+
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.303">
+      <div class="step-ref passed">303</div>
+      
+      <div class="step-cell passed">
+        <span>Then</span>&nbsp;<span>status 200</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.304">
+      <div class="step-ref passed">304</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>print response</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+  <div class="preformatted" data-parent="1.304">16:54:32.847 [print] {
+  &quot;data&quot;: {
+    &quot;signUp&quot;: null
+  },
+  &quot;errors&quot;: [
+    {
+      &quot;path&quot;: [
+        &quot;signUp&quot;
+      ],
+      &quot;data&quot;: null,
+      &quot;errorType&quot;: &quot;ErrorResponse&quot;,
+      &quot;errorInfo&quot;: {
+        &quot;statusCode&quot;: 403
+      },
+      &quot;locations&quot;: [
+        {
+          &quot;line&quot;: 11,
+          &quot;column&quot;: 3,
+          &quot;sourceName&quot;: null
+        }
+      ],
+      &quot;message&quot;: &quot;Activation email already sent. Please check your inbox.&quot;
+    }
+  ]
+}
+ 
+</div>   
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.305">
+      <div class="step-ref passed">305</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.data.signUp == null</span>
+      </div>
+    </div>
+    <div class="time-cell passed">0</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.306">
+      <div class="step-ref passed">306</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.errors[0].errorInfo.statusCode == 403</span>
+      </div>
+    </div>
+    <div class="time-cell passed">1</div>
+  </div>
+
+   
+  
+  
+
+  
+
+     
+
+  
+
+</div>
+</div>
+          <div><div>
+  
+
+  
+
+  <div class="step-row">
+    <div class="step-container" id="1.307">
+      <div class="step-ref passed">307</div>
+      
+      <div class="step-cell passed">
+        <span>*</span>&nbsp;<span>match response.errors[0].message contains &#39;Activation email already sent. Please check your inbox.&#39;</span>
       </div>
     </div>
     <div class="time-cell passed">1</div>

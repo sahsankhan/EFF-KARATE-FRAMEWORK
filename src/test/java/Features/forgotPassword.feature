@@ -38,8 +38,8 @@ Feature: Forgot Password API Automation
     * match response.data.forgotPassword.email == userEmail
 
     Examples:
-      | email    | expectedStatus | expectedMessage                                    |
-      | existing | 200            | A verification code has been sent to your email. |
+      | email                             | expectedStatus | expectedMessage                                  |
+      | testing.automation.4127@gmail.com | 200            | A verification code has been sent to your email. |
 
   @missing_email
   Scenario Outline: Verify forgot password with missing email

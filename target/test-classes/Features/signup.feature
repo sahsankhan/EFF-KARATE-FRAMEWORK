@@ -286,3 +286,26 @@ Feature: Sign-Up API Automation
     Examples:
       | first_name | last_name | email                 | state | dob        | phone        | favorite_teams | heard_about_us | expectedStatus | expectedMessage                                         |
       | User       | Example   | userexample9@gmail.com | NY    | 1999/05/14 | +14191000000 | ["DAL"]        | Google         | 400            | 'Invalid date format!'       |
+
+  @unverified_email_exists
+  Scenario Outline: Sign-Up fails when unverified email already exists
+    * def rawSignUpInfo = karate.read('file:target/target/info.txt')
+    * def signUpInfo = JSON.parse(rawSignUpInfo)
+    * def existingEmail = signUpInfo.email
+    
+    * def build = buildSignUpData('<first_name>', '<last_name>', existingEmail, '<state>', '<dob>', '<phone>', '<favorite_teams>', '<heard_about_us>')
+    * def dynamicEmail = build.dynamicEmail
+    * def userData = karate.toJson(build.userData)
+    * def payload = { query: '#(signUpQuery)', variables: '#(userData)' }
+
+    Given request payload
+    When method post
+    Then status 200
+    * print response
+    * match response.data.signUp == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains <expectedMessage>
+
+    Examples:
+      | first_name | last_name | email         | state | dob        | phone        | favorite_teams | heard_about_us | expectedStatus | expectedMessage                             |
+      | User       | Example   | existingEmail | NY    | 1999-05-14 | +14191000000 | ["DAL"]        | Google         | 403           | 'Activation email already sent. Please check your inbox.'          |

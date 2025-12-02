@@ -21,7 +21,50 @@ Feature: Verify Reset Code API Automation
         return { userEmail: userEmail, userData: userData };
       }
       """
-  
+
+  @wrong_code
+  Scenario Outline: Verify wrong reset code
+    * def build = buildVerifyResetCodeData('<email>', '<code>', existingEmail)
+    * def userEmail = build.userEmail
+    * def userData = karate.toJson(build.userData)
+    * def payload = { query: '#(verifyResetCodeQuery)', variables: '#(userData)' }
+
+    Given request payload
+    When method post
+    Then status 200
+    * print 'VerifyResetCode API Response:', response
+    * match response.data.verifyResetCode == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message == '<expectedMessage>'
+
+    Examples:
+      | email                             | code   | expectedStatus | expectedMessage            |
+      | testing.automation.4127@gmail.com | 000000 | 401            | Wrong verification code    |
+      | testing.automation.4127@gmail.com | 999999 | 401            | Wrong verification code    |
+
+  @happy_path
+  Scenario Outline: Verify reset code success using Gmail
+    * java.lang.Thread.sleep(360000)
+    # STEP 2 — Fetch OTP from Gmail
+    * def otpResponse = call read('classpath:helpers/gmailhelper.feature')
+    * def resetCode = otpResponse.result.code
+    * print 'Fetched OTP Code:', resetCode
+
+    * def verifyData = { email: '<email>', code: '#(resetCode)' } 
+    * def verifyPayload = { query: '#(verifyResetCodeQuery)', variables: '#(verifyData)' }
+
+    Given request verifyPayload
+    When method post
+    Then status 200
+
+    * print response
+    * match response.data.verifyResetCode.statusCode == <expectedStatus>
+    * match response.data.verifyResetCode.message == '<expectedMessage>'
+
+      Examples:
+        | email                             | expectedStatus | expectedMessage            |
+        | testing.automation.4127@gmail.com | 200            | Code verified successfully |
+
   @invalid_email
   Scenario Outline: Verify reset code for invalid email
     * def build = buildVerifyResetCodeData('<email>', '<code>', existingEmail)
@@ -100,23 +143,5 @@ Feature: Verify Reset Code API Automation
       | email                   | code   | expectedStatus | expectedMessage |
       | nonexisting@example.com | 806456 | 404            | User not found  |
 
-  @wrong_code
-  Scenario Outline: Verify wrong reset code
-    * def build = buildVerifyResetCodeData('<email>', '<code>', existingEmail)
-    * def userEmail = build.userEmail
-    * def userData = karate.toJson(build.userData)
-    * def payload = { query: '#(verifyResetCodeQuery)', variables: '#(userData)' }
-
-    Given request payload
-    When method post
-    Then status 200
-    * print 'VerifyResetCode API Response:', response
-    * match response.data.verifyResetCode == null
-    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
-
-    Examples:
-      | email    | code   | expectedStatus | expectedMessage            |
-      | existing | 000000 | 401            | Wrong verification code    |
-      | existing | 999999 | 401            | Wrong verification code    |
+  
 
