@@ -1,12 +1,10 @@
 mutation Login(
   $email: String,
-  $password: String,
-  $mfaCode: String
+  $password: String
 ) {
   login(
     email: $email,
-    password: $password,
-    mfaCode: $mfaCode
+    password: $password
   ) {
     statusCode
     accessToken
@@ -14,17 +12,11 @@ mutation Login(
     user {
       _id
       email
-      username
+      nickname
       phone
-      first_name
-      last_name
       dob
       address {
-        street
-        suite
-        city
         state
-        postal_code
       }
       favorite_teams
       heard_about_us
@@ -42,4 +34,3 @@ mutation Login(
     }
   }
 }
-
