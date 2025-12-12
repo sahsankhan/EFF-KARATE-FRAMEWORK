@@ -5,7 +5,7 @@ Feature: Login API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def loginQuery = read('classpath:resources/graphql/login.graphql')
+    * def loginQuery = read('classpath:resources/graphql/auth/login.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingEmail = signUpInfo.email
@@ -71,8 +71,8 @@ Feature: Login API Automation
     * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | email    | password       | expectedStatus | expectedMessage                 |
-      | existing | WrongPass@1234 | 401            | 'Invalid password!' |
+      | email    | password       | expectedStatus | expectedMessage              |
+      | existing | WrongPass@1234 | 401            | 'The password is incorrect!' |
 
   @unverified_email
   Scenario Outline: Login fails with unverified email

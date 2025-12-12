@@ -5,7 +5,7 @@ Feature: Refresh Token API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def refreshTokenQuery = read('classpath:resources/graphql/refreshToken.graphql')
+    * def refreshTokenQuery = read('classpath:resources/graphql/auth/refreshToken.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingRefreshToken = karate.get('signUpInfo.refreshToken', null)

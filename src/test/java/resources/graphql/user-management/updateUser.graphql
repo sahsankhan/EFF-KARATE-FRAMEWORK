@@ -1,0 +1,38 @@
+mutation UpdateUser($first_name: String, $last_name: String, $username: String, $address: AddressInput, $dob: String, $phone: String, $profile_picture: String) {
+  updateUser(
+    first_name: $first_name
+    last_name: $last_name
+    username: $username
+    address: $address
+    dob: $dob
+    phone: $phone
+    profile_picture: $profile_picture
+  ) {
+    statusCode
+    message
+    user {
+      _id
+      email
+      first_name
+      last_name
+      username
+      phone
+      dob
+      address {
+        state
+      }
+      heard_about_us
+      profile_picture
+      sys_dateCreated
+      sys_dateModified
+      sys_deleted
+      sys_userCreated_id
+      sys_userCreatedName
+      sys_userModified_id
+      sys_userModifiedName
+      last_login
+      role
+    }
+  }
+}
+

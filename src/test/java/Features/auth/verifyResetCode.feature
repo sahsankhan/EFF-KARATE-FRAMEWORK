@@ -5,7 +5,7 @@ Feature: Verify Reset Code API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def verifyResetCodeQuery = read('classpath:resources/graphql/verifyResetCode.graphql')
+    * def verifyResetCodeQuery = read('classpath:resources/graphql/auth/verifyResetCode.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingEmail = signUpInfo.email

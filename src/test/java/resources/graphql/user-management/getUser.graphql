@@ -1,24 +1,14 @@
-mutation Login(
-  $email: String,
-  $password: String
-) {
-  login(
-    email: $email,
-    password: $password
-  ) {
+query GetUser {
+  getUser {
     statusCode
-    accessToken
-    refreshToken
     user {
       _id
       email
-      nickname
       phone
       dob
       address {
         state
       }
-      favorite_teams
       heard_about_us
       profile_picture
       sys_dateCreated
@@ -28,9 +18,10 @@ mutation Login(
       sys_userCreatedName
       sys_userModified_id
       sys_userModifiedName
-      mfa_enabled
       last_login
       role
     }
   }
 }
+
+

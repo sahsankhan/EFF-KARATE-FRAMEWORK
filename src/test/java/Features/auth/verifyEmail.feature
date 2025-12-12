@@ -5,7 +5,7 @@ Feature: Verify Email API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def verifyEmailQuery = read('classpath:resources/graphql/verifyEmail.graphql')
+    * def verifyEmailQuery = read('classpath:resources/graphql/auth/verifyEmail.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingEmail = signUpInfo.email
@@ -75,7 +75,7 @@ Feature: Verify Email API Automation
 
     Examples:
       | verifyKey                                | expectedStatus | expectedMessage                    |
-      | TEST_BYPASS::alreadyverified@example.com | 404            | User not found or already verified.|
+      | TEST_BYPASS::userexample@gmail.com       | 404            | User not found or already verified.|
 
   @user_not_found
   Scenario Outline: Email verification fails when user is not found
@@ -92,6 +92,6 @@ Feature: Verify Email API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | verifyKey                                | expectedStatus | expectedMessage                    |
-      | TEST_BYPASS::nonexistinguser@example.com | 404            | User not found or already verified.|
+      | verifyKey                                | expectedStatus | expectedMessage   |
+      | TEST_BYPASS::nonexistinguser@example.com | 404            | User not found.   |
 

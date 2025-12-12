@@ -5,8 +5,23 @@ import com.intuit.karate.junit5.Karate;
 class TestRunner {
 
     @Karate.Test
-    Karate runLoginTests() {
-        return Karate.run( "classpath:Features/signup.feature" , "classpath:Features/setpassword.feature","classpath:Features/verifyEmail.feature", "classpath:Features/login.feature", "classpath:Features/forgotPassword.feature", "classpath:Features/verifyResetCode.feature", "classpath:Features/refreshToken.feature", "classpath:Features/validateToken.feature")
+    Karate runAllTests() {
+        return Karate.run(
+            // Auth Module Tests (Run First)
+            "classpath:Features/auth/checkUsername.feature",
+            "classpath:Features/auth/signup.feature",
+            "classpath:Features/auth/setpassword.feature",
+            "classpath:Features/auth/verifyEmail.feature",
+            "classpath:Features/auth/login.feature",
+            "classpath:Features/auth/forgotPassword.feature",
+            "classpath:Features/auth/verifyResetCode.feature",
+            "classpath:Features/auth/validateToken.feture",
+            "classpath:Features/auth/refreshToken.feature",
+            
+            // User Management Module Tests (Run After Auth)
+            "classpath:Features/user-management/getUser.feature",
+            "classpath:Features/user-management/updateUser.feature"
+        )
         .configDir("file:src/test"); 
     }
 }
