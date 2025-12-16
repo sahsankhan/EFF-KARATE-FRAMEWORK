@@ -22,8 +22,8 @@
       <img src="karate-labs-logo-ring.svg" alt="Karate Labs"/>
     </a>
     <div class="nav-count">
-      <div id="nav-pass" class="bg-success">40</div>
-      <div id="nav-fail" class="bg-danger">6</div>
+      <div id="nav-pass" class="bg-success">42</div>
+      <div id="nav-fail" class="bg-danger">3</div>
     </div>
   </div>
   <div id="nav-env">
@@ -33,7 +33,7 @@
     <div>Tags</div>
   </div>
   <div id="nav-date">
-    <div>2025-12-15 08:51:13 PM</div>
+    <div>2025-12-16 05:53:29 PM</div>
   </div>
 </div>
 
@@ -48,28 +48,25 @@
               <th class="feature-cell">Feature</th>
               <th classapend="failed">already_verified</th>
               <th classapend="passed">expired_token</th>
-              <th classapend="passed">happy_path</th>
+              <th classapend="failed">happy_path</th>
               <th classapend="passed">happy_path_available</th>
               <th classapend="passed">invalid_address_structure</th>
               <th classapend="passed">invalid_date_format</th>
               <th classapend="passed">invalid_dob_structure</th>
               <th classapend="passed">invalid_email</th>
               <th classapend="passed">invalid_email_format</th>
-              <th classapend="passed">invalid_first_name</th>
               <th classapend="passed">invalid_heard_about_us</th>
-              <th classapend="passed">invalid_last_name</th>
               <th classapend="passed">invalid_phone</th>
-              <th classapend="failed">invalid_profile_picture_structure</th>
+              <th classapend="passed">invalid_profile_picture_structure</th>
               <th classapend="passed">invalid_reset_key</th>
               <th classapend="passed">invalid_state</th>
               <th classapend="passed">invalid_token</th>
               <th classapend="passed">invalid_username</th>
               <th classapend="passed">invalid_username_characters</th>
-              <th classapend="failed">invalid_username_format</th>
               <th classapend="passed">missing_authorization_header</th>
               <th classapend="passed">missing_code</th>
               <th classapend="passed">missing_dob</th>
-              <th classapend="failed">missing_email</th>
+              <th classapend="passed">missing_email</th>
               <th classapend="passed">missing_first_name</th>
               <th classapend="passed">missing_heard_about_us</th>
               <th classapend="passed">missing_key</th>
@@ -81,6 +78,7 @@
               <th classapend="passed">missing_token</th>
               <th classapend="passed">missing_username</th>
               <th classapend="passed">non_existing_email</th>
+              <th classapend="passed">null_token</th>
               <th classapend="passed">partial_update_address</th>
               <th classapend="passed">partial_update_dob</th>
               <th classapend="passed">partial_update_profile_picture</th>
@@ -88,14 +86,15 @@
               <th classapend="passed">unverified_email</th>
               <th classapend="passed">unverified_email_exists</th>
               <th classapend="passed">user_not_found</th>
-              <th classapend="failed">username_taken_verified_user</th>
+              <th classapend="passed">username_taken_verified_user</th>
               <th classapend="passed">username_too_short</th>
+              <th classapend="passed">username_without_alphanumeric</th>
               <th classapend="passed">wrong_code</th>
               <th classapend="passed">wrong_password</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="failed">
+            <tr class="passed">
               <td class="feature-cell">
                 <a href="Features.auth.checkUsername.html">Features/auth/checkUsername.feature</a>
               </td>
@@ -115,10 +114,7 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
-              <td classapend="passed"></td>
-              <td classapend="passed"></td>
               <td classapend="passed">X</td>
-              <td classapend="failed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
@@ -141,18 +137,20 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
-              <td classapend="failed">X</td>
+              <td classapend="passed"></td>
+              <td classapend="passed">X</td>
+              <td classapend="passed">X</td>
               <td classapend="passed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
             </tr>
-            <tr class="passed">
+            <tr class="failed">
               <td class="feature-cell">
                 <a href="Features.auth.forgotPassword.html">Features/auth/forgotPassword.feature</a>
               </td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
-              <td classapend="passed">X</td>
+              <td classapend="failed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
@@ -170,9 +168,6 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
-              <td classapend="passed"></td>
-              <td classapend="passed"></td>
-              <td classapend="passed"></td>
               <td classapend="passed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
@@ -191,7 +186,9 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
+              <td classapend="passed"></td>
               <td classapend="passed">X</td>
+              <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
@@ -221,9 +218,6 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
-              <td classapend="passed"></td>
-              <td classapend="passed"></td>
-              <td classapend="passed"></td>
               <td classapend="passed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
@@ -240,7 +234,9 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
+              <td classapend="passed"></td>
               <td classapend="passed">X</td>
+              <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
@@ -266,8 +262,6 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
-              <td classapend="passed"></td>
-              <td classapend="passed"></td>
               <td classapend="passed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
@@ -283,9 +277,10 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
-              <td classapend="passed"></td>
               <td classapend="passed">X</td>
               <td classapend="passed"></td>
+              <td classapend="passed"></td>
+              <td classapend="passed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
@@ -315,10 +310,7 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
-              <td classapend="passed"></td>
-              <td classapend="passed"></td>
               <td classapend="passed">X</td>
-              <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
@@ -344,13 +336,15 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
+              <td classapend="passed"></td>
               <td classapend="passed">X</td>
+              <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
             </tr>
-            <tr class="failed">
+            <tr class="passed">
               <td class="feature-cell">
                 <a href="Features.auth.signup.html">Features/auth/signup.feature</a>
               </td>
@@ -365,8 +359,6 @@
               <td classapend="passed">X</td>
               <td classapend="passed">X</td>
               <td classapend="passed">X</td>
-              <td classapend="passed">X</td>
-              <td classapend="passed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed">X</td>
@@ -375,9 +367,8 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
-              <td classapend="passed"></td>
               <td classapend="passed">X</td>
-              <td classapend="failed">X</td>
+              <td classapend="passed">X</td>
               <td classapend="passed">X</td>
               <td classapend="passed">X</td>
               <td classapend="passed"></td>
@@ -394,7 +385,9 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
+              <td classapend="passed"></td>
               <td classapend="passed">X</td>
+              <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
@@ -428,9 +421,6 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
-              <td classapend="passed"></td>
-              <td classapend="passed"></td>
-              <td classapend="passed"></td>
               <td classapend="passed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
@@ -446,27 +436,26 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
+              <td classapend="passed"></td>
               <td classapend="passed">X</td>
+              <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
             </tr>
-            <tr class="passed">
+            <tr class="failed">
               <td class="feature-cell">
                 <a href="Features.auth.verifyResetCode.html">Features/auth/verifyResetCode.feature</a>
               </td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
-              <td classapend="passed">X</td>
+              <td classapend="failed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed">X</td>
-              <td classapend="passed"></td>
-              <td classapend="passed"></td>
-              <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
@@ -497,7 +486,9 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
+              <td classapend="passed"></td>
               <td classapend="passed">X</td>
+              <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed">X</td>
@@ -521,13 +512,12 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
+              <td classapend="passed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
-              <td classapend="passed"></td>
-              <td classapend="passed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
@@ -569,16 +559,14 @@
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
-              <td classapend="passed"></td>
-              <td classapend="passed"></td>
-              <td classapend="failed">X</td>
+              <td classapend="passed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed">X</td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
-              <td classapend="passed"></td>
               <td classapend="passed">X</td>
+              <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
@@ -597,6 +585,7 @@
               <td classapend="passed">X</td>
               <td classapend="passed">X</td>
               <td classapend="failed">X</td>
+              <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>
               <td classapend="passed"></td>

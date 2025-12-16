@@ -76,7 +76,7 @@ Feature: Forgot Password API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | email      | expectedStatus | expectedMessage         |
+      | email       | expectedStatus | expectedMessage         |
       | invalid     | 400            | Invalid email format!   |
       | a@b         | 400            | Invalid email format!   |
       | test@       | 400            | Invalid email format!   |
@@ -97,6 +97,6 @@ Feature: Forgot Password API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | email                      | expectedStatus | expectedMessage   |
-      | nonexisting@example.com   | 404            | User not found   |
+      | email                     | expectedStatus | expectedMessage   |
+      | nonexisting@example.com   | 404            | User not found    |
 

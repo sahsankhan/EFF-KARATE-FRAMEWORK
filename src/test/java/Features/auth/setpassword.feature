@@ -48,7 +48,7 @@ Feature: Set or Reset Password API Automation
 
     Examples:
       | email      | resetKey | password | expectedStatus | expectedMessage                 | expectedEmailCheck |
-      | existing   | existing | default  | 200            | 'Password set successfully.' | true               |
+      | existing   | existing | default  | 200            | 'Password set successfully.'    | true               |
 
   @user_not_found
   Scenario Outline: Set-Password fails when user not found
@@ -87,8 +87,8 @@ Feature: Set or Reset Password API Automation
     * if (<expectedEmailCheck> == true) karate.match(response.data.setPassword.email, userEmail)
 
     Examples:
-      | email    | resetKey          | password | expectedStatus | expectedMessage                      | expectedEmailCheck |
-      | existing |                   | default  | 400            | 'Reset key is required!'             | false
+      | email    | resetKey      | password | expectedStatus | expectedMessage             | expectedEmailCheck |
+      | existing |               | default  | 400            | 'Reset key is required!'    | false              |
 
   @invalid_reset_key
   Scenario Outline: Set-Password fails when reset key invalid
@@ -107,8 +107,8 @@ Feature: Set or Reset Password API Automation
     * if (<expectedEmailCheck> == true) karate.match(response.data.setPassword.email, userEmail)
 
     Examples:
-      | email    | resetKey          | password | expectedStatus | expectedMessage                      | expectedEmailCheck |
-      | existing | invalid-reset-key | default  | 401            | 'Invalid or expired reset key!'      | false              |
+      | email    | resetKey          | password | expectedStatus | expectedMessage                 |         | expectedEmailCheck |
+      | existing | invalid-reset-key | default  | 401            | 'Invalid or expired reset key!' |     | false              |
 
   @missing_email
   Scenario Outline: Set-Password fails when email missing
@@ -128,7 +128,7 @@ Feature: Set or Reset Password API Automation
 
     Examples:
       | email | resetKey | password | expectedStatus | expectedMessage         | expectedEmailCheck |
-      |       | existing | default  | 400            | 'Email is required!' | false              |
+      |       | existing | default  | 400            | 'Email is required!'    | false              |
 
   @missing_password
   Scenario Outline: Set-Password fails when password missing

@@ -91,8 +91,8 @@ Feature: Login API Automation
     * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | email                        | password   | expectedStatus | expectedMessage                         |
-      | unverified@example.com       | User@12345 | 404           | 'Email does not exist!' |
+      | email                        | password   | expectedStatus | expectedMessage         |                      
+      | unverified@example.com       | User@12345 | 404            | 'Email does not exist!' |
 
   @non_existing_email
   Scenario Outline: Login fails with non-existing email
@@ -111,7 +111,7 @@ Feature: Login API Automation
 
     Examples:
       | email                      | password | expectedStatus | expectedMessage            |
-      | nonexisting@example.com    | existing | 404            | 'Email does not exist!' |
+      | nonexisting@example.com    | existing | 404            | 'Email does not exist!'    |
 
   @missing_email
   Scenario Outline: Login fails when email is missing
@@ -130,7 +130,7 @@ Feature: Login API Automation
 
     Examples:
       | email | password | expectedStatus | expectedMessage         |
-      |       | existing | 400            | 'Email is required!' |
+      |       | existing | 400            | 'Email is required!'    |
 
   @missing_password
   Scenario Outline: Login fails when password is missing
@@ -149,5 +149,5 @@ Feature: Login API Automation
 
     Examples:
       | email    | password | expectedStatus | expectedMessage            |
-      | existing |          | 400            | 'Password is required!' |
+      | existing |          | 400            | 'Password is required!'    |
 

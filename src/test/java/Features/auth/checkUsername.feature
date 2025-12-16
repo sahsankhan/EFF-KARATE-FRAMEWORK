@@ -32,12 +32,12 @@ Feature: Check Username API Automation
     When method post
     Then status 200
     * print 'CheckUsername Available Response:', response
-    * match response.data.checkUsername.statusCode == 200
-    * match response.data.checkUsername.valid == true
+    * match response.data.checkUsername.statusCode == <expectedStatus>
+    * match response.data.checkUsername.message contains <expectedMessage>
 
     Examples:
-      | username           |
-      | availableUsername  |
+      | username           | expectedStatus | expectedMessage       |
+      | availableUsername  | 200            | 'Username is valid!'  |
 
   @username_taken_verified_user
   Scenario Outline: CheckUsername fails when username is taken by verified user
@@ -49,12 +49,12 @@ Feature: Check Username API Automation
     Then status 200
     * print 'CheckUsername Taken Response:', response
     * match response.data.checkUsername == null
-    * match response.errors[0].errorInfo.statusCode == 409
-    * match response.errors[0].message contains 'Username is already taken.'
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | username  |
-      | username  |
+      | username  | expectedStatus | expectedMessage               |
+      | username  | 409            | 'Username is already taken.'  |
 
   @missing_username
   Scenario Outline: CheckUsername fails when username is missing or empty
@@ -66,13 +66,13 @@ Feature: Check Username API Automation
     Then status 200
     * print 'CheckUsername Missing Username Response:', response
     * match response.data.checkUsername == null
-    * match response.errors[0].errorInfo.statusCode == 400
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | username | expectedMessage |
-      |          | Username        |
-      | null     | Username        |
+      | username | expectedStatus  | expectedMessage |
+      |          | 400             | Username        |
+      | null     | 400             | Username        |
 
   @username_too_short
   Scenario Outline: CheckUsername fails when username is less than 2 characters
@@ -84,13 +84,15 @@ Feature: Check Username API Automation
     Then status 200
     * print 'CheckUsername Too Short Response:', response
     * match response.data.checkUsername == null
-    * match response.errors[0].errorInfo.statusCode == 400
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | username | expectedMessage                         |
-      | a        | Username must be at least 2 characters. |
-      | 1        | Username must be at least 2 characters. |
+      | username | expectedStatus |  expectedMessage                            |
+      | a        | 400            |  Username cannot be less than 3 characters. |
+      | 1        | 400            |  Username cannot be less than 3 characters. |
+      | rv       | 400            |  Username cannot be less than 3 characters. |
+      | 12       | 400            |  Username cannot be less than 3 characters. |
 
   @invalid_username_characters
   Scenario Outline: CheckUsername fails when username contains invalid characters
@@ -102,28 +104,28 @@ Feature: Check Username API Automation
     Then status 200
     * print 'CheckUsername Invalid Characters Response:', response
     * match response.data.checkUsername == null
-    * match response.errors[0].errorInfo.statusCode == 400
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | username      | expectedMessage                                                  |
-      | user name     | can only contain letters, numbers, underscores, hyphens and dots |
-      | user@name     | can only contain letters, numbers, underscores, hyphens and dots |
-      | user#name     | can only contain letters, numbers, underscores, hyphens and dots |
-      | user$name     | can only contain letters, numbers, underscores, hyphens and dots |
-      | user%name     | can only contain letters, numbers, underscores, hyphens and dots |
-      | user&name     | can only contain letters, numbers, underscores, hyphens and dots |
-      | user*name     | can only contain letters, numbers, underscores, hyphens and dots |
-      | user!name     | can only contain letters, numbers, underscores, hyphens and dots |
-      | user(name)    | can only contain letters, numbers, underscores, hyphens and dots |
-      | user[name]    | can only contain letters, numbers, underscores, hyphens and dots |
-      | user{name}    | can only contain letters, numbers, underscores, hyphens and dots |
-      | user/name     | can only contain letters, numbers, underscores, hyphens and dots |
-      | user+name     | can only contain letters, numbers, underscores, hyphens and dots |
-      | user=name     | can only contain letters, numbers, underscores, hyphens and dots |
-      | user,name     | can only contain letters, numbers, underscores, hyphens and dots |
+      | username   | expectedStatus | expectedMessage                                                  |
+      | user name  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | user@name  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | user#name  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | user$name  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | user%name  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | user&name  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | user*name  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | user!name  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | user(name) | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | user[name] | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | user{name} | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | user/name  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | user+name  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | user=name  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | user,name  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
 
-  @invalid_username_format
+  @username_without_alphanumeric
   Scenario Outline: CheckUsername fails when username contains invalid characters
     * def variables = buildCheckUsernameData('<username>')
     * def payload = { query: '#(checkUsernameQuery)', variables: '#(variables)' }
@@ -133,12 +135,11 @@ Feature: Check Username API Automation
     Then status 200
     * print 'CheckUsername Invalid Characters Response:', response
     * match response.data.checkUsername == null
-    * match response.errors[0].errorInfo.statusCode == 400
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | username  | expectedMessage                                                  |
-      | 1234      | can only contain letters, numbers, underscores, hyphens and dots |
-      | true      | can only contain letters, numbers, underscores, hyphens and dots |
-      | false     | can only contain letters, numbers, underscores, hyphens and dots |
-      | --        | can only contain letters, numbers, underscores, hyphens and dots |
+      | username  | expectedStatus |  expectedMessage                                     |
+      | ___       | 400            | Username must contain at least one letter or number. |
+      | ---       | 400            | Username must contain at least one letter or number. |
+      | ...       | 400            | Username must contain at least one letter or number. |

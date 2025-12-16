@@ -1,13 +1,13 @@
 mutation SignUp(
-  $first_name: String,
-  $last_name: String,
-  $username: String,
-  $email: String,
-  $address: AddressInput,
-  $dob: String,
+  $first_name: String!,
+  $last_name: String!,
+  $username: String!,
+  $email: String!,
+  $address: AddressInput!,
+  $dob: String!,
   $phone: String,
-  $heard_about_us: String,
-  $profile_picture: String
+  $heard_about_us: String!,
+  $profile_picture: String!
   ) {
   signUp(
     first_name: $first_name,

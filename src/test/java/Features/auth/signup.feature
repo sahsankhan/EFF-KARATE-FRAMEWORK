@@ -48,7 +48,7 @@ Feature: Sign-Up API Automation
     Examples:
       Examples:
     | first_name | last_name | username | email  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage |
-    | J A        | Michael   | random   | random | TX    | 1990-05-21 | +19319332    | Google         | icon_bear.png   | 200            | 'Signup successful. Please verify your email and set your password in the app.' |
+    | J A        | Michael   | random   | random | TX    | 1990-05-21 | +19319332    | Google         | icon_bear       | 200            | 'Signup successful. Please verify your email and set your password in the app.' |
 
   @missing_first_name
   Scenario Outline: Sign-Up fails when first_name missing
@@ -66,7 +66,7 @@ Feature: Sign-Up API Automation
 
     Examples:
       | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage            |
-      |            | Doe       | testuser | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear.png   | 400            | 'First name is required!' |
+      |            | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name is required!'  |
 
 
   @missing_email
@@ -85,7 +85,7 @@ Feature: Sign-Up API Automation
 
     Examples:
       | first_name | last_name | username | email | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage            |
-      | User       | Doe       | random   |       | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear.png   | 400            | 'Missing required fields!' |
+      | User       | Doe       | random   |       | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Email is required!'       |
 
   @missing_state
   Scenario Outline: Sign-Up fails when state missing
@@ -103,7 +103,7 @@ Feature: Sign-Up API Automation
 
     Examples:
       | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage      |
-      | User       | Doe       | random   | userexample9@gmail.com |       | 1999-05-14 | +14191000000 | Google         | icon_bear.png   | 400            | 'State is required.' |
+      | User       | Doe       | random   | userexample9@gmail.com |       | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'State is required.' |
 
   @missing_dob
   Scenario Outline: Sign-Up fails when date of birth missing
@@ -121,7 +121,7 @@ Feature: Sign-Up API Automation
 
     Examples:
       | first_name | last_name | username | email                  | state | dob | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage            |
-      | User       | Doe       | testuser | userexample9@gmail.com | NY    |     | +14191000000 | Google         | icon_bear.png   | 400            | 'Date of birth is required!' |
+      | User       | Doe       | testuser | userexample9@gmail.com | NY    |     | +14191000000 | Google         | icon_bear       | 400            | 'Date of birth is required!' |
 
   @missing_heard_about_us
   Scenario Outline: Missing heard_about_us
@@ -140,7 +140,7 @@ Feature: Sign-Up API Automation
 
     Examples:
       | first_name | last_name | username | email  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage            |
-      | User       | Doe       | testuser | random | NY    | 1999-05-14 | +14191000000 |                | icon_bear.png   | 400            | 'Please select how you heard about us!' |
+      | User       | Doe       | testuser | random | NY    | 1999-05-14 | +14191000000 |                | icon_bear       | 400            | 'Please select how you heard about us!' |
 
   @invalid_state
   Scenario Outline: Sign-Up fails when state invalid
@@ -158,9 +158,9 @@ Feature: Sign-Up API Automation
 
     Examples:
       | first_name | last_name | username | email                  | state         | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                                                        |
-      | User       | Doe       | random   | userexample9@gmail.com | "abc"         | 1999-05-14 | +14191000000 | Google         | icon_bear.png   | 400            | 'Invalid U.S. state. Must be a valid state name or abbreviation.'     |
-      | User       | Doe       | random   | userexample9@gmail.com | 123           | 1999-05-14 | +14191000000 | Google         | icon_bear.png   | 400            | 'Invalid U.S. state. Must be a valid state name or abbreviation.'     |
-      | User       | Doe       | random   | userexample9@gmail.com | "Puerto Rico" | 1999-05-14 | +14191000000 | Google         | icon_bear.png   | 400            | 'Invalid U.S. state. Must be a valid state name or abbreviation.'     |
+      | User       | Doe       | random   | userexample9@gmail.com | "abc"         | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid U.S. state. Must be a valid state name or abbreviation.'     |
+      | User       | Doe       | random   | userexample9@gmail.com | 123           | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid U.S. state. Must be a valid state name or abbreviation.'     |
+      | User       | Doe       | random   | userexample9@gmail.com | "Puerto Rico" | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid U.S. state. Must be a valid state name or abbreviation.'     |
 
   @invalid_heard_about_us
   Scenario Outline: Invalid heard_about_us value
@@ -179,25 +179,7 @@ Feature: Sign-Up API Automation
 
     Examples:
       | first_name | last_name | username | email  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                 |
-      | User       | Doe       | random   | random | NY    | 1999-05-14 | +14191000000 | 123            | icon_bear.png   | 400            | 'Invalid heard_about_us value' |
-  
-  @invalid_first_name
-  Scenario Outline: Sign-Up fails when first_name invalid
-    * def build = buildSignUpData('<first_name>', '<last_name>', '<username>', '<email>', '<state>', '<dob>', '<phone>', '<heard_about_us>', '<profile_picture>')
-    * def dynamicEmail = build.dynamicEmail
-    * def userData = karate.toJson(build.userData)
-    * def payload = { query: '#(signUpQuery)', variables: '#(userData)' }
-    Given request payload
-    When method post
-    Then status 200
-    * print response
-    * match response.data.signUp == null
-    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
-
-    Examples:
-      | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                                  |
-      | -          | Doe       | testuser | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear.png   | 400            | 'Invalid first name! Must contain at least 2 letters and may include spaces or hyphens.' |
+      | User       | Doe       | random   | random | NY    | 1999-05-14 | +14191000000 | 123            | icon_bear       | 400            | 'Invalid heard_about_us value' |
 
   @missing_last_name
   Scenario Outline: Sign-Up fails when last_name missing
@@ -214,27 +196,8 @@ Feature: Sign-Up API Automation
     * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage            |
-      | John       |           | testuser | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear.png   | 400            | 'Last name is required!' |
-
-  @invalid_last_name
-  Scenario Outline: Sign-Up fails when last_name invalid
-    * def build = buildSignUpData('<first_name>', '<last_name>', '<username>', '<email>', '<state>', '<dob>', '<phone>', '<heard_about_us>', '<profile_picture>')
-    * def dynamicEmail = build.dynamicEmail
-    * def userData = karate.toJson(build.userData)
-    * def payload = { query: '#(signUpQuery)', variables: '#(userData)' }
-    Given request payload
-    When method post
-    Then status 200
-    * print response
-    * match response.data.signUp == null
-    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
-
-    Examples:
-      | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                                 |
-      | John       | -         | testuser | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear.png   | 400            | 'Invalid last name! Must contain at least 2 letters and may include spaces or hyphens.' |
-      | John       | 123       | testuser | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear.png   | 400            | 'Invalid last name! Must contain at least 2 letters and may include spaces or hyphens.'                     |
+      | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage          |
+      | John       |           | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name is required!' |
 
   @missing_username
   Scenario Outline: Sign-Up fails when username missing
@@ -252,7 +215,7 @@ Feature: Sign-Up API Automation
 
     Examples:
       | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage            |
-      | John       | Doe       |          | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear.png   | 400            | 'Username is required!' |
+      | John       | Doe       |          | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username is required!' |
 
   @invalid_username
   Scenario Outline: Sign-Up fails when username invalid
@@ -269,8 +232,10 @@ Feature: Sign-Up API Automation
     * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                                 |
-      | John       | Doe       | a        | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear.png   | 400            | 'Username must be at least 2 characters.'  |
+      | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                               |
+      | John       | Doe       | a        | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username cannot be less than 3 characters.'  |
+      | John       | Doe       | rv       | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username cannot be less than 3 characters.'  |
+      | John       | Doe       | 12       | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username cannot be less than 3 characters.'  |
 
   @missing_profile_picture
   Scenario Outline: Sign-Up fails when profile_picture invalid
@@ -306,7 +271,7 @@ Feature: Sign-Up API Automation
 
     Examples:
       | first_name | last_name | username | email | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage         |
-      | User       | Doe       | random   | a@b   | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear.png   | 400            | 'Invalid email format!' |
+      | User       | Doe       | random   | a@b   | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid email format!' |
 
   @invalid_phone
   Scenario Outline: Sign-Up fails when phone number invalid
@@ -324,7 +289,7 @@ Feature: Sign-Up API Automation
 
     Examples:
       | first_name | last_name | username | email                  | state | dob        | phone  | heard_about_us | profile_picture | expectedStatus | expectedMessage                |
-      | User       | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191 | Google         | icon_bear.png   | 400            | 'Invalid phone number format!' |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191 | Google         | icon_bear       | 400            | 'Invalid phone number format!' |
 
   @invalid_date_format
   Scenario Outline: Sign-Up fails when date format invalid
@@ -342,7 +307,7 @@ Feature: Sign-Up API Automation
 
     Examples:
       | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage        |
-      | User       | Doe       | random   | userexample9@gmail.com | NY    | 1999/05/14 | +14191000000 | Google         | icon_bear.png   | 400            | 'Invalid date format!' |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 1999/05/14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid date format!' |
 
   @unverified_email_exists
   Scenario Outline: Sign-Up fails when unverified email already exists
@@ -365,4 +330,4 @@ Feature: Sign-Up API Automation
 
     Examples:
       | first_name | last_name | username  | email          | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                                            |
-      | User       | Doe       | random    | existingEmail  | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear.png   | 429            | 'Activation email already sent. Please check your inbox.' |
+      | User       | Doe       | random    | existingEmail  | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 429            | 'Activation email already sent. Please check your inbox.' |

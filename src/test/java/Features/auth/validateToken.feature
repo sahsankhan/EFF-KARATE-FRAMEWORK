@@ -29,13 +29,13 @@ Feature: Validate Token API Automation
     When method post
     Then status 200
     * print 'Validate API Response:', response
-    * match response.data.validate.statusCode == 200
+    * match response.data.validate.statusCode == <expectedStatus>
     * match response.data.validate.valid == true
     * match response.data.validate.data == karate.get('signUpInfo.email')
 
     Examples:
-      | token   |
-      | existing|
+      | token    | expectedStatus |
+      | existing | 200            |
 
   @missing_token
   Scenario Outline: Validate fails when token is missing
@@ -48,12 +48,12 @@ Feature: Validate Token API Automation
     Then status 200
     * print 'Validate Missing Token Response:', response
     * match response.data.validate == null
-    * match response.errors[0].errorInfo.statusCode == 400
-    * match response.errors[0].message contains 'Missing token'
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | token |
-      |       |
+      | token | expectedStatus | expectedMessage   |
+      |       | 400            | 'Missing token'   |
 
   @expired_token
   Scenario Outline: Validate fails with expired token
@@ -66,12 +66,12 @@ Feature: Validate Token API Automation
     Then status 200
     * print 'Validate Expired Token Response:', response
     * match response.data.validate == null
-    * match response.errors[0].errorInfo.statusCode == 401
-    * match response.errors[0].message contains 'Expired token'
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | token   |
-      | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo |
+      | token                                                                                                                                                                       | expectedStatus | expectedMessage |      
+      | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | 'Expired token' |
 
   @invalid_token
   Scenario Outline: Validate fails with invalid token
@@ -84,10 +84,10 @@ Feature: Validate Token API Automation
     Then status 200
     * print 'Validate Invalid Token Response:', response
     * match response.data.validate == null
-    * match response.errors[0].errorInfo.statusCode == 401
-    * match response.errors[0].message contains 'Invalid token'
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | token                   |
-      | malformed_or_invalid_token |
+      | token                      | expectedStatus | expectedMessage  |
+      | malformed_or_invalid_token | 401            | 'Invalid token'  |
 

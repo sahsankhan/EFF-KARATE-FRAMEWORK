@@ -117,7 +117,7 @@ Feature: User Management - Update User API Automation
 
     Examples:
       | token    | first_name | last_name | username | dob        | state  | profile_picture | expectedStatus | expectedMessage              |
-      | existing | user       | example   | random   | 1987-05-21 |  IL    | icon_lion.png   | 200            | 'User updated successfully.' | 
+      | existing | user       | example   | random   | 1987-05-21 |  IL    | icon_lion       | 200            | 'User updated successfully.' | 
 
 
   @partial_update_address
@@ -163,8 +163,8 @@ Feature: User Management - Update User API Automation
     * match response.data.updateUser.user.username == '<username>'
 
      Examples:
-     | token     | username         | expectedStatus | expectedMessage              |
-     | existing  | updatedUsername  | 200            | 'User updated successfully.' |
+     | token     | username             | expectedStatus | expectedMessage              |
+     | existing  | ChangedUsername      | 200            | 'User updated successfully.' |
 
   @partial_update_dob
   Scenario Outline: UpdateUser succeeds with partial update - only dob
@@ -210,7 +210,7 @@ Feature: User Management - Update User API Automation
 
     Examples:
      | token     | profile_picture  | expectedStatus | expectedMessage              |
-     | existing  | icon_panda.png   | 200            | 'User updated successfully.' |
+     | existing  | icon_panda       | 200            | 'User updated successfully.' |
 
   @invalid_address_structure
   Scenario Outline: UpdateUser fails with invalid address structure
@@ -282,6 +282,6 @@ Feature: User Management - Update User API Automation
 
     Examples:
      | token     | profile_picture  | expectedStatus | expectedMessage  
-     | existing  |  abc             | 400            | Invalid profile picture
-     | existing  |  1234            | 400            | Invalid profile picture
+     | existing  |  abc             | 400            | "Invalid profile image. Must be a valid icon name like 'icon_tiger' or 'icon_person'."
+     | existing  |  1234            | 400            | "Invalid profile image. Must be a valid icon name like 'icon_tiger' or 'icon_person'."
 

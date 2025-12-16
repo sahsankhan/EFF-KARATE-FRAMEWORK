@@ -35,7 +35,7 @@ Feature: Verify Email API Automation
     * match response.data.verifyEmail.message == '<expectedMessage>'
     # Update test data file to mark email as verified (preserve password if it exists)
     * def dataToSave = existingPassword != null ? {email: existingEmail, resetKey: existingResetKey, password: existingPassword, isVerified: true, passwordSet: passwordSet} : {email: existingEmail, resetKey: existingResetKey, isVerified: true, passwordSet: passwordSet}
-    * if (response.data.verifyEmail.statusCode == 200) karate.write(dataToSave, 'target/info.txt')
+    * if (response.data.verifyEmail.statusCode == <expectedStatus>) karate.write(dataToSave, 'target/info.txt')
 
     Examples:
       | verifyKey | expectedStatus | expectedMessage              |
@@ -74,8 +74,8 @@ Feature: Verify Email API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | verifyKey                                | expectedStatus | expectedMessage                    |
-      | TEST_BYPASS::userexample@gmail.com       | 404            | User not found or already verified.|
+      | verifyKey                            | expectedStatus | expectedMessage                    |
+      | TEST_BYPASS::userexample@gmail.com   | 404            | User not found or already verified.|
 
   @user_not_found
   Scenario Outline: Email verification fails when user is not found

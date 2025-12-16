@@ -1,6 +1,7 @@
-query CheckUsername($username: String) {
+query CheckUsername($username: String!) {
   checkUsername(username: $username) {
     statusCode
+    message
     valid
   }
 }
