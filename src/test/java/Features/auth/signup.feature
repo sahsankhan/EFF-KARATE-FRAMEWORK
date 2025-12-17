@@ -217,6 +217,50 @@ Feature: Sign-Up API Automation
       | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage            |
       | John       | Doe       |          | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username is required!' |
 
+  @invalid_first_name
+  Scenario Outline: Sign-Up fails when first_name invalid
+    * def build = buildSignUpData('<first_name>', '<last_name>', '<username>', '<email>', '<state>', '<dob>', '<phone>', '<heard_about_us>', '<profile_picture>')
+    * def dynamicEmail = build.dynamicEmail
+    * def userData = karate.toJson(build.userData)
+    * def payload = { query: '#(signUpQuery)', variables: '#(userData)' }
+    Given request payload
+    When method post
+    Then status 200
+    * print response
+    * match response.data.signUp == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains <expectedMessage>
+
+    Examples:
+      | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                                                                                       |
+      | 123        | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name must contain at least one letter.'                                                        |
+      | 1          | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name must contain at least one letter.'                                                        |
+      | --         | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name must contain at least one letter.'                                                        |
+      | A@         | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
+      | B!         | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  | 
+
+  @invalid_last_name
+  Scenario Outline: Sign-Up fails when last_name invalid
+    * def build = buildSignUpData('<first_name>', '<last_name>', '<username>', '<email>', '<state>', '<dob>', '<phone>', '<heard_about_us>', '<profile_picture>')
+    * def dynamicEmail = build.dynamicEmail
+    * def userData = karate.toJson(build.userData)
+    * def payload = { query: '#(signUpQuery)', variables: '#(userData)' }
+    Given request payload
+    When method post
+    Then status 200
+    * print response
+    * match response.data.signUp == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains <expectedMessage>
+
+    Examples:
+      | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                                                                                      |
+      | John       | 1         | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name must contain at least one letter.'                                                        |
+      | John       | 123       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name must contain at least one letter.'                                                        |
+      | John       | --        | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name must contain at least one letter.'                                                        |
+      | John       | A@        | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
+      | John       | B!        | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  | 
+
   @invalid_username
   Scenario Outline: Sign-Up fails when username invalid
     * def build = buildSignUpData('<first_name>', '<last_name>', '<username>', '<email>', '<state>', '<dob>', '<phone>', '<heard_about_us>', '<profile_picture>')
@@ -236,24 +280,6 @@ Feature: Sign-Up API Automation
       | John       | Doe       | a        | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username cannot be less than 3 characters.'  |
       | John       | Doe       | rv       | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username cannot be less than 3 characters.'  |
       | John       | Doe       | 12       | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username cannot be less than 3 characters.'  |
-
-  @missing_profile_picture
-  Scenario Outline: Sign-Up fails when profile_picture invalid
-    * def build = buildSignUpData('<first_name>', '<last_name>', '<username>', '<email>', '<state>', '<dob>', '<phone>', '<heard_about_us>', '<profile_picture>')
-    * def dynamicEmail = build.dynamicEmail
-    * def userData = karate.toJson(build.userData)
-    * def payload = { query: '#(signUpQuery)', variables: '#(userData)' }
-    Given request payload
-    When method post
-    Then status 200
-    * print response
-    * match response.data.signUp == null
-    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
-
-    Examples:
-      | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                      |
-      | John       | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         |                 | 400            | 'Profile image is required!'       |
 
   @invalid_email_format
   Scenario Outline: Sign-Up fails when email format invalid

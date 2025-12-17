@@ -150,6 +150,7 @@ Feature: User Management - Update User API Automation
     
     * def build = buildUpdateUserData('<token>', 'skip', 'skip', '<username>', 'skip', 'skip', 'skip', existingAccessToken)
     * def resolvedToken = build.authToken
+    * def dynamicUsername = build.dynamicUsername
     * header Authorization = resolvedToken
     * def userData = karate.toJson(build.userData)
     * def payload = { query: '#(updateUserQuery)', variables: '#(userData)' }
@@ -157,14 +158,14 @@ Feature: User Management - Update User API Automation
     Given request payload
     When method post
     Then status 200
-    * print 'UpdateUser Partial (Address) Response:', response
+    * print 'UpdateUser Partial (Username) Response:', response
     * match response.data.updateUser.statusCode == <expectedStatus>
     * match response.data.updateUser.message == <expectedMessage>
-    * match response.data.updateUser.user.username == '<username>'
+    * match response.data.updateUser.user.username == dynamicUsername
 
      Examples:
      | token     | username             | expectedStatus | expectedMessage              |
-     | existing  | ChangedUsername      | 200            | 'User updated successfully.' |
+     | existing  | random               | 200            | 'User updated successfully.' |
 
   @partial_update_dob
   Scenario Outline: UpdateUser succeeds with partial update - only dob

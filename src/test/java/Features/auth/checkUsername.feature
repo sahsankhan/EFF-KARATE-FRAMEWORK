@@ -125,7 +125,7 @@ Feature: Check Username API Automation
       | user=name  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
       | user,name  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
 
-  @username_without_alphanumeric
+  @username_without_letters
   Scenario Outline: CheckUsername fails when username contains invalid characters
     * def variables = buildCheckUsernameData('<username>')
     * def payload = { query: '#(checkUsernameQuery)', variables: '#(variables)' }
@@ -139,7 +139,9 @@ Feature: Check Username API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | username  | expectedStatus |  expectedMessage                                     |
-      | ___       | 400            | Username must contain at least one letter or number. |
-      | ---       | 400            | Username must contain at least one letter or number. |
-      | ...       | 400            | Username must contain at least one letter or number. |
+      | username  | expectedStatus |  expectedMessage                           |
+      | ___       | 400            | Username must contain at least one letter. |
+      | ---       | 400            | Username must contain at least one letter. |
+      | ...       | 400            | Username must contain at least one letter. |
+      | 123       | 400            | Username must contain at least one letter. |
+      | 1--       | 400            | Username must contain at least one letter. |

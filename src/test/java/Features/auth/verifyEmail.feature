@@ -74,8 +74,8 @@ Feature: Verify Email API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | verifyKey                            | expectedStatus | expectedMessage                    |
-      | TEST_BYPASS::userexample@gmail.com   | 404            | User not found or already verified.|
+      | verifyKey                            | expectedStatus | expectedMessage                      |
+      | TEST_BYPASS::userexample@gmail.com   | 409            | This email has already been verified.|
 
   @user_not_found
   Scenario Outline: Email verification fails when user is not found
