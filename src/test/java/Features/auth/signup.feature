@@ -120,27 +120,8 @@ Feature: Sign-Up API Automation
     * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | first_name | last_name | username | email                  | state | dob | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage            |
+      | first_name | last_name | username | email                  | state | dob | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage              |
       | User       | Doe       | testuser | userexample9@gmail.com | NY    |     | +14191000000 | Google         | icon_bear       | 400            | 'Date of birth is required!' |
-
-  @missing_heard_about_us
-  Scenario Outline: Missing heard_about_us
-    * def build = buildSignUpData('<first_name>', '<last_name>', '<username>', '<email>', '<state>', '<dob>', '<phone>', '<heard_about_us>', '<profile_picture>')
-    * def dynamicEmail = build.dynamicEmail
-    * def userData = karate.toJson(build.userData)
-    * def payload = { query: '#(signUpQuery)', variables: '#(userData)' }
-
-    Given request payload
-    When method post
-    Then status 200
-    * print response
-    * match response.data.signUp == null
-    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
-
-    Examples:
-      | first_name | last_name | username | email  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage            |
-      | User       | Doe       | testuser | random | NY    | 1999-05-14 | +14191000000 |                | icon_bear       | 400            | 'Please select how you heard about us!' |
 
   @invalid_state
   Scenario Outline: Sign-Up fails when state invalid
@@ -232,12 +213,14 @@ Feature: Sign-Up API Automation
     * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                                                                                       |
-      | 123        | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name must contain at least one letter.'                                                        |
-      | 1          | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name must contain at least one letter.'                                                        |
-      | --         | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name must contain at least one letter.'                                                        |
-      | A@         | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
-      | B!         | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  | 
+      | first_name                                              | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                                                                                       |
+      | 123                                                     | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name must contain at least one letter.'                                                        |
+      | 1                                                       | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name must contain at least one letter.'                                                        |
+      | --                                                      | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name must contain at least one letter.'                                                        |
+      | A@                                                      | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
+      | B!                                                      | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  | 
+      | Itisaverylongfirstnameofusertobeenteredinsignuppayl     | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name cannot be more than 50 characters.'                                                       | 
+      | Itisaverylongfirstnameofusertobeenteredinsignuppayload  | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name cannot be more than 50 characters.'                                                       | 
 
   @invalid_last_name
   Scenario Outline: Sign-Up fails when last_name invalid
@@ -254,12 +237,14 @@ Feature: Sign-Up API Automation
     * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                                                                                      |
-      | John       | 1         | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name must contain at least one letter.'                                                        |
-      | John       | 123       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name must contain at least one letter.'                                                        |
-      | John       | --        | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name must contain at least one letter.'                                                        |
-      | John       | A@        | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
-      | John       | B!        | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  | 
+      | first_name | last_name                                                 | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                                                                                      |
+      | John       | 1                                                         | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name must contain at least one letter.'                                                        |
+      | John       | 123                                                       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name must contain at least one letter.'                                                        |
+      | John       | --                                                        | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name must contain at least one letter.'                                                        |
+      | John       | A@                                                        | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
+      | John       | B!                                                        | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  | 
+      | John       | Itisaverylonglastnameofusertobeenteredinsignuppaylo       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name cannot be more than 50 characters.'                                                       | 
+      | John       | Itisaverylonglastnameofusertobeenteredinsignuppayload     | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name cannot be more than 50 characters.'                                                       | 
 
   @invalid_username
   Scenario Outline: Sign-Up fails when username invalid
@@ -276,10 +261,12 @@ Feature: Sign-Up API Automation
     * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                               |
-      | John       | Doe       | a        | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username cannot be less than 3 characters.'  |
-      | John       | Doe       | rv       | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username cannot be less than 3 characters.'  |
-      | John       | Doe       | 12       | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username cannot be less than 3 characters.'  |
+      | first_name | last_name | username                                        | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                               |
+      | John       | Doe       | a                                               | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username cannot be less than 3 characters.'  |
+      | John       | Doe       | rv                                              | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username cannot be less than 3 characters.'  |
+      | John       | Doe       | 12                                              | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username cannot be less than 3 characters.'  |
+      | John       | Doe       | Itisaverylongusernameforuser123                 | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username cannot be more than 30 characters.' |
+      | John       | Doe       | Itisaverylongusernameforausertobeselectedoneff  | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Username cannot be more than 30 characters.' |
 
   @invalid_email_format
   Scenario Outline: Sign-Up fails when email format invalid

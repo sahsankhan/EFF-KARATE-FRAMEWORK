@@ -145,3 +145,21 @@ Feature: Check Username API Automation
       | ...       | 400            | Username must contain at least one letter. |
       | 123       | 400            | Username must contain at least one letter. |
       | 1--       | 400            | Username must contain at least one letter. |
+
+   @username_exceeding_max_characters
+   Scenario Outline: CheckUsername fails when username exceeding maximum characters allowed
+    * def variables = buildCheckUsernameData('<username>')
+    * def payload = { query: '#(checkUsernameQuery)', variables: '#(variables)' }
+    
+    Given request payload
+    When method post
+    Then status 200
+    * print 'CheckUsername Invalid Characters Response:', response
+    * match response.data.checkUsername == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains '<expectedMessage>'
+
+    Examples:
+      | username                                        | expectedStatus |  expectedMessage                            |
+      | Itisaverylongusernameforuser123                 | 400            | Username cannot be more than 30 characters. |
+      | Itisaverylongusernameforausertobeselectedoneff  | 400            | Username cannot be more than 30 characters. |  

@@ -143,6 +143,52 @@ Feature: User Management - Update User API Automation
      | token     | state | expectedStatus | expectedMessage              |
      | existing  | CA    | 200            | 'User updated successfully.' |
 
+  @partial_update_first_name
+  Scenario Outline: UpdateUser succeeds with partial update - only first name
+    # PREREQUISITE CHECK: Ensure access token exists
+    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    
+    * def build = buildUpdateUserData('<token>', '<first_name>', 'skip', 'skip', 'skip', 'skip', 'skip', existingAccessToken)
+    * def resolvedToken = build.authToken
+    * header Authorization = resolvedToken
+    * def userData = karate.toJson(build.userData)
+    * def payload = { query: '#(updateUserQuery)', variables: '#(userData)' }
+    
+    Given request payload
+    When method post
+    Then status 200
+    * print 'UpdateUser Partial (Username) Response:', response
+    * match response.data.updateUser.statusCode == <expectedStatus>
+    * match response.data.updateUser.message == <expectedMessage>
+    * match response.data.updateUser.user.first_name == '<first_name>'
+
+     Examples:
+     | token     | first_name       | expectedStatus | expectedMessage              |
+     | existing  | updatedFirstName | 200            | 'User updated successfully.' |
+
+  @partial_update_last_name
+  Scenario Outline: UpdateUser succeeds with partial update - only last name
+    # PREREQUISITE CHECK: Ensure access token exists
+    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    
+    * def build = buildUpdateUserData('<token>', 'skip', '<last_name>', 'skip', 'skip', 'skip', 'skip', existingAccessToken)
+    * def resolvedToken = build.authToken
+    * header Authorization = resolvedToken
+    * def userData = karate.toJson(build.userData)
+    * def payload = { query: '#(updateUserQuery)', variables: '#(userData)' }
+    
+    Given request payload
+    When method post
+    Then status 200
+    * print 'UpdateUser Partial (Username) Response:', response
+    * match response.data.updateUser.statusCode == <expectedStatus>
+    * match response.data.updateUser.message == <expectedMessage>
+    * match response.data.updateUser.user.last_name == '<last_name>'
+
+     Examples:
+     | token     | last_name          | expectedStatus | expectedMessage              |
+     | existing  | updatedLastName    | 200            | 'User updated successfully.' |
+
   @partial_update_username
   Scenario Outline: UpdateUser succeeds with partial update - only username
     # PREREQUISITE CHECK: Ensure access token exists
@@ -212,6 +258,93 @@ Feature: User Management - Update User API Automation
     Examples:
      | token     | profile_picture  | expectedStatus | expectedMessage              |
      | existing  | icon_panda       | 200            | 'User updated successfully.' |
+
+  @invalid_first_name_structure
+  Scenario Outline: UpdateUser fails with invalid first name structure
+    # PREREQUISITE CHECK: Ensure access token exists
+    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    
+    * def build = buildUpdateUserData('<token>', '<first_name>', 'skip', 'skip', 'skip', 'skip', 'skip', existingAccessToken)
+    * def resolvedToken = build.authToken
+    * header Authorization = resolvedToken
+    * def userData = karate.toJson(build.userData)
+    * def payload = { query: '#(updateUserQuery)', variables: '#(userData)' }
+    
+    Given request payload
+    When method post
+    Then status 200
+    * print 'UpdateUser Invalid Address Response:', response
+    * match response.data.updateUser == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains <expectedMessage>
+
+    Examples:
+     | token     | first_name                                              | expectedStatus | expectedMessage                                                                                       |
+     | existing  | 12345                                                   | 400            | 'First name must contain at least one letter.'                                                        |
+     | existing  | ---                                                     | 400            | 'First name must contain at least one letter.'                                                        |
+     | existing  | A@                                                      | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
+     | existing  | A!                                                      | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
+     | existing  | A.                                                      | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
+     | existing  | Itisaverylongfirstnameofusertobeenteredinsignuppayl     | 400            | 'First name cannot be more than 50 characters.'                                                       |
+     | existing  | Itisaverylongfirstnameofusertobeenteredinsignuppayload  | 400            | 'First name cannot be more than 50 characters.'                                                       |
+
+  @invalid_last_name_structure
+  Scenario Outline: UpdateUser fails with invalid last name structure
+    # PREREQUISITE CHECK: Ensure access token exists
+    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    
+    * def build = buildUpdateUserData('<token>', 'skip', '<last_name>', 'skip', 'skip', 'skip', 'skip', existingAccessToken)
+    * def resolvedToken = build.authToken
+    * header Authorization = resolvedToken
+    * def userData = karate.toJson(build.userData)
+    * def payload = { query: '#(updateUserQuery)', variables: '#(userData)' }
+    
+    Given request payload
+    When method post
+    Then status 200
+    * print 'UpdateUser Invalid Address Response:', response
+    * match response.data.updateUser == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains <expectedMessage>
+
+    Examples:
+     | token     | last_name                                               | expectedStatus | expectedMessage                                                                                      |
+     | existing  | 12345                                                   | 400            | 'Last name must contain at least one letter.'                                                        |
+     | existing  | ---                                                     | 400            | 'Last name must contain at least one letter.'                                                        |
+     | existing  | A@                                                      | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
+     | existing  | A!                                                      | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
+     | existing  | A.                                                      | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
+     | existing  | Itisaverylonglastnameofusertobeenteredinsignuppaylo     | 400            | 'Last name cannot be more than 50 characters.'                                                       |
+     | existing  | Itisaverylonglastnameofusertobeenteredinsignuppayload   | 400            | 'Last name cannot be more than 50 characters.'                                                       |
+
+  @invalid_user_name_structure
+  Scenario Outline: UpdateUser fails with invalid username structure
+    # PREREQUISITE CHECK: Ensure access token exists
+    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    
+    * def build = buildUpdateUserData('<token>', 'skip', 'skip', '<username>', 'skip', 'skip', 'skip', existingAccessToken)
+    * def resolvedToken = build.authToken
+    * header Authorization = resolvedToken
+    * def userData = karate.toJson(build.userData)
+    * def payload = { query: '#(updateUserQuery)', variables: '#(userData)' }
+    
+    Given request payload
+    When method post
+    Then status 200
+    * print 'UpdateUser Invalid Address Response:', response
+    * match response.data.updateUser == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains <expectedMessage>
+
+    Examples:
+     | token     | username                        | expectedStatus | expectedMessage                                                     |
+     | existing  | ab                              | 400            | 'Username cannot be less than 3 characters.'                        |
+     | existing  | 12                              | 400            | 'Username cannot be less than 3 characters.'                        |
+     | existing  | ---                             | 400            | 'Username must contain at least one letter.'                        |
+     | existing  | 123                             | 400            | 'Username must contain at least one letter.'                        |
+     | existing  | A@@                             | 400            | 'can only contain letters, numbers, underscores, hyphens and dots'  |
+     | existing  | A!!                             | 400            | 'can only contain letters, numbers, underscores, hyphens and dots'  |
+     | existing  | Itisaverylongusernameforuser123 | 400            | 'Username cannot be more than 30 characters.'                       |
 
   @invalid_address_structure
   Scenario Outline: UpdateUser fails with invalid address structure
