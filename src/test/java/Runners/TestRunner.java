@@ -23,7 +23,8 @@ class TestRunner {
             "classpath:Features/user-management/updateUser.feature",     
             
              // Eff Data Module Tests (Run After User Management)
-            "classpath:Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature"
+            "classpath:Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature",
+            "classpath:Features/eff-data/exchangeLeagues/checkExchangeLeagueName.feature"
         )
         .configDir("file:src/test"); 
     }
