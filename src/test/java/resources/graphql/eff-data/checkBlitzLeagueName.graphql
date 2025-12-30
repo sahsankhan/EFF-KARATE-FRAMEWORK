@@ -1,0 +1,9 @@
+query CheckBlitzLeagueName($League_Name: String!) {
+  checkBlitzLeagueName(League_Name: $League_Name) {
+    statusCode
+    message
+    valid
+  }
+}
+
+

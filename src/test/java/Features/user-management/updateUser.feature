@@ -87,10 +87,10 @@ Feature: User Management - Update User API Automation
     * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | invalidToken                              | expectedStatus | expectedMessage |
-      | invalid.token.string                      | 401            | 'Invalid'       |
-      | random_corrupted_string_12345             | 401            | 'Invalid'       |
-      | Bearer invalidtoken123                    | 401            | 'Invalid'       |
+      | invalidToken                              | expectedStatus | expectedMessage    |
+      | invalid.token.string                      | 401            | 'Invalid token'    |
+      | random_corrupted_string_12345             | 401            | 'Invalid token'    |
+      | Bearer invalidtoken123                    | 401            | 'Invalid token'    |
 
   @happy_path
   Scenario Outline: UpdateUser succeeds with valid token and valid user profile data update

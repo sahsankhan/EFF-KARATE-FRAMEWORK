@@ -92,11 +92,10 @@ Feature: Forgot Password API Automation
     When method post
     Then status 200
     * print 'ForgotPassword API Response:', response
-    * match response.data.forgotPassword == null
-    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.data.forgotPassword.statusCode == <expectedStatus>
+    * match response.data.forgotPassword.message == '<expectedMessage>'
 
     Examples:
-      | email                     | expectedStatus | expectedMessage   |
-      | nonexisting@example.com   | 404            | User not found    |
+      | email                     | expectedStatus | expectedMessage                                     |
+      | nonexisting@example.com   | 200            | A verification code has been sent to your email.    |
 

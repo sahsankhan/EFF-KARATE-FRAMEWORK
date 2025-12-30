@@ -17,10 +17,13 @@ class TestRunner {
             "classpath:Features/auth/verifyResetCode.feature",
             "classpath:Features/auth/validateToken.feture",
             "classpath:Features/auth/refreshToken.feature",
-            
+
             // User Management Module Tests (Run After Auth)
             "classpath:Features/user-management/getUser.feature",
-            "classpath:Features/user-management/updateUser.feature"
+            "classpath:Features/user-management/updateUser.feature",     
+            
+             // Eff Data Module Tests (Run After User Management)
+            "classpath:Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature"
         )
         .configDir("file:src/test"); 
     }
