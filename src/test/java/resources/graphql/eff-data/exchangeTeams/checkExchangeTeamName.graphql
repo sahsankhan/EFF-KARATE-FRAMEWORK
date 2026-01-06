@@ -1,0 +1,9 @@
+query CheckExchangeTeamName($League_ID: Int!, $Team_Name: String!) {
+  checkExchangeTeamName(League_ID: $League_ID, Team_Name: $Team_Name) {
+    statusCode
+    message
+    valid
+  }
+}
+
+

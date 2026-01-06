@@ -6,6 +6,7 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
     * def checkBlitzLeagueNameQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/checkBlitzLeagueName.graphql')
+    * def createBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/createBlitzLeague.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
@@ -18,7 +19,7 @@ Feature: EFF Data - Check Blitz League Name API Automation
         if (nameValue === 'false') nameValue = false;
         if (!isNaN(nameValue) && nameValue !== '' && nameValue !== null) {
           nameValue = Number(nameValue);
-        }     
+        }
         return { authToken: existingAccessToken, variables: { League_Name: nameValue } };
       }
       """
@@ -59,8 +60,8 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName     | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage |
-      | Valid League   | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired         |
+      | leagueName     | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage   |
+      | Valid League   | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token     |
 
   @invalid_token
   Scenario Outline: CheckBlitzLeagueName fails with invalid or corrupted token
@@ -80,9 +81,9 @@ Feature: EFF Data - Check Blitz League Name API Automation
 
     Examples:
       | leagueName     | invalidToken                              | expectedStatus | expectedMessage   |
-      | Valid League   | invalid.token.string                      | 401            | Invalid           |
-      | Valid League   | random_corrupted_string_12345             | 401            | Invalid           |
-      | Valid League   | Bearer invalidtoken123                    | 401            | Invalid           |
+      | Valid League   | invalid.token.string                      | 401            | Invalid token     |
+      | Valid League   | random_corrupted_string_12345             | 401            | Invalid token     |
+      | Valid League   | Bearer invalidtoken123                    | 401            | Invalid token     |
 
   @happy_path_available
   Scenario Outline: CheckBlitzLeagueName succeeds when league name is available
@@ -108,24 +109,60 @@ Feature: EFF Data - Check Blitz League Name API Automation
 
   @league_name_taken
   Scenario Outline: CheckBlitzLeagueName fails when league name is already taken
-    # PREREQUISITE CHECK: Ensure access token exists
-    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    
-    * def build = buildLeagueNameData('<leagueName>', existingAccessToken)
-    * header Authorization = build.authToken
-    * def payload = { query: '#(checkBlitzLeagueNameQuery)', variables: '#(build.variables)' }
-    
-    Given request payload
+    # PREREQUISITE
+    * if (!existingAccessToken) karate.fail('No access token found. Run login.feature first')
+
+    # STEP 1: Check availability
+    * def checkBuild = buildLeagueNameData('<leagueName>', existingAccessToken)
+    * header Authorization = checkBuild.authToken
+    * def checkPayload = { query: '#(checkBlitzLeagueNameQuery)', variables: '#(checkBuild.variables)' }
+  
+    Given request checkPayload
     When method post
     Then status 200
-    * print 'CheckBlitzLeagueName Taken Response:', response
+    * print 'Availability response:', response
+
+    # Safely read node (prevents "Cannot read property valid from null")
+    * def checkNode = karate.get('response.data.checkBlitzLeagueName')
+    * def isAvailable = checkNode != null && checkNode.valid == true
+
+    * eval
+    """
+    if (!isAvailable) {
+      karate.match(karate.get('response.data.checkBlitzLeagueName'), null);
+      karate.match(karate.get('response.errors[0].errorInfo.statusCode'), expectedStatus);
+      karate.match(karate.get('response.errors[0].message'), expectedMessage);
+      karate.abort();
+    }
+    """
+
+    # PATH 2: AVAILABLE → CREATE
+    * header Authorization = checkBuild.authToken
+    * def createPayload = { query: '#(createBlitzLeagueQuery)', variables: { League_Name: '<leagueName>', League_Image: null }}
+    
+    Given request createPayload
+    When method post
+    Then status 200
+
+    * karate.pause(500)
+
+    # STEP 3: Re-check → must now be taken
+    * def recheckBuild = buildLeagueNameData('<leagueName>', existingAccessToken)
+    * header Authorization = recheckBuild.authToken
+    * def recheckPayload = { query: '#(checkBlitzLeagueNameQuery)', variables: '#(recheckBuild.variables)' }
+
+    Given request recheckPayload
+    When method post
+    Then status 200
+    * print 'Taken response:', response
+
     * match response.data.checkBlitzLeagueName == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | leagueName           | expectedStatus | expectedMessage               |
-      | EFF Blitz League     | 409            | League name is already taken. |
+      | leagueName        | expectedStatus | expectedMessage               |
+      | EFF Blitz League  | 409            | League name is already taken. |
 
   @league_name_too_short
   Scenario Outline: CheckBlitzLeagueName fails when league name is less than 3 characters
@@ -251,13 +288,13 @@ Feature: EFF Data - Check Blitz League Name API Automation
     Then status 200
     * print 'CheckBlitzLeagueName Whitespace Response:', response
     * match response.data.checkBlitzLeagueName == null
-    * match response.data.checkBlitzLeagueName.statusCode == <expectedStatus>
-    * match response.data.checkBlitzLeagueName.message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
      | leagueName                  | expectedStatus | expectedMessage                  | 
-     | EFF    Blitz     League     | 400            | League name is already taken.    |
-     | E F F B l i t z L e a g u e | 400            | League name is already taken.    |
+     | EFF    Blitz     League     | 409            | League name is already taken.    |
+     | E F F B l i t z L e a g u e | 409            | League name is already taken.    |
 
   @case_sensitive_handling
   Scenario Outline: CheckBlitzLeagueName with various whitespace scenarios
@@ -273,10 +310,10 @@ Feature: EFF Data - Check Blitz League Name API Automation
     Then status 200
     * print 'CheckBlitzLeagueName Whitespace Response:', response
     * match response.data.checkBlitzLeagueName == null
-    * match response.data.checkBlitzLeagueName.statusCode == <expectedStatus>
-    * match response.data.checkBlitzLeagueName.message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
      | leagueName         | expectedStatus | expectedMessage                  |
-     | eff blitz league   | 400            | League name is already taken.    |
+     | eff blitz league   | 409            | League name is already taken.    |
   

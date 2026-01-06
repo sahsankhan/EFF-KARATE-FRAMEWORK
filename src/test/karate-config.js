@@ -12,6 +12,10 @@ function fn() {
     karate.configure('ssl', true);
     karate.configure('logPrettyRequest', true);
     karate.configure('logPrettyResponse', true);
+    karate.configure('afterScenario', function () {
+      java.lang.Thread.sleep(200);
+    });
+    karate.configure('retry', { count: 2, interval: 1200 });
     return config;
   }
   

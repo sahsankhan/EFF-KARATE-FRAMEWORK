@@ -67,8 +67,8 @@ Feature: User Management - Update User API Automation
     * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | expiredToken                                                                                                                                                          | first_name | expectedStatus | expectedMessage |
-      | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | User-c     | 401            | 'Expired'       |
+      | expiredToken                                                                                                                                                                | first_name | expectedStatus | expectedMessage       |
+      | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | User-c     | 401            | 'Expired token'       |
 
   @invalid_token
   Scenario Outline: UpdateUser fails with invalid or corrupted token

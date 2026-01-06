@@ -1,0 +1,11 @@
+mutation CreateBlitzLeague($League_Name: String!) {
+  createBlitzLeague(League_Name: $League_Name) {
+    statusCode
+    message
+    league {
+      id
+      name
+    }
+  }
+}
+
