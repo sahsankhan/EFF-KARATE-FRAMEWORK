@@ -7,7 +7,7 @@ class TestRunner {
     @Karate.Test
     Karate runAllTests() {
         return Karate.run(
-             // Auth Module Tests (Run First)
+            // Auth Module Tests (Run First)
             "classpath:Features/auth/checkUsername.feature",
             "classpath:Features/auth/signup.feature",
             "classpath:Features/auth/setpassword.feature",
@@ -24,9 +24,12 @@ class TestRunner {
 
              // Eff Data Module Tests (Run After User Management)
             "classpath:Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature",
+            "classpath:Features/eff-data/exchangeTeams/checkExchangeTeamName.feature",
             "classpath:Features/eff-data/blitzTeams/checkBlitzTeamName.feature",
             "classpath:Features/eff-data/exchangeLeagues/checkExchangeLeagueName.feature",
-            "classpath:Features/eff-data/exchangeTeams/checkExchangeTeamName.feature"
+
+            "classpath:Features/eff-data/blitzLeagues/getPublicBlitzLeagues.feature",
+            "classpath:Features/eff-data/blitzLeagues/getBlitzLeague.feature"
             )
         .configDir("file:src/test"); 
     }

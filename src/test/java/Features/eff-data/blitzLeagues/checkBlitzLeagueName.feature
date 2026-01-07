@@ -294,7 +294,11 @@ Feature: EFF Data - Check Blitz League Name API Automation
     Examples:
      | leagueName                  | expectedStatus | expectedMessage                  | 
      | EFF    Blitz     League     | 409            | League name is already taken.    |
-     | E F F B l i t z L e a g u e | 409            | League name is already taken.    |
+     | E F F B l I T Z L E A G U E | 409            | League name is already taken.    |
+     | EFFBlitzLeague              | 409            | League name is already taken.    |
+     | E f F B l i T z L e a G u E | 409            | League name is already taken.    |
+     | EFFBlitz    League          | 409            | League name is already taken.    |
+     | EFF      BlitzLeague        | 409            | League name is already taken.    |
 
   @case_sensitive_handling
   Scenario Outline: CheckBlitzLeagueName with various whitespace scenarios

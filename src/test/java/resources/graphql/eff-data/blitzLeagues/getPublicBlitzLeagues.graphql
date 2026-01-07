@@ -1,0 +1,31 @@
+query GetPublicBlitzLeagues {
+  getPublicBlitzLeagues {
+    statusCode
+    leagues {
+      _id
+      League_Name
+      League_Type
+      Invite_Code
+      League_Image
+      Members
+      Owner_Email
+      Owner_ID
+      Public
+      Game_Type
+      Game_Week
+      owner {
+        id
+        username
+        profile_picture
+      }
+      sys_dateCreated
+      sys_dateModified
+      sys_deleted
+      sys_userCreated_id
+      sys_userCreatedName
+      sys_userModified_id
+      sys_userModifiedName
+    }
+  }
+}
+

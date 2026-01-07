@@ -294,6 +294,10 @@ Feature: EFF Data - Check Exchange League Name API Automation
      | leagueName                        | expectedStatus | expectedMessage                  | 
      | EFF    Exchange     League        | 409            | League name is already taken.    |
      | E F F E X C H A N G E L e a g u e | 409            | League name is already taken.    |
+     | EFFExchangeLeague                 | 409            | League name is already taken.    |
+     | E f F E x C h a N G e L e a G u E | 409            | League name is already taken.    |
+     | EFFExchange    League             | 409            | League name is already taken.    |
+     | EFF      ExchangeLeague           | 409            | League name is already taken.    |
 
   @case_sensitive_handling
   Scenario Outline: CheckExchangeLeagueName with various whitespace scenarios

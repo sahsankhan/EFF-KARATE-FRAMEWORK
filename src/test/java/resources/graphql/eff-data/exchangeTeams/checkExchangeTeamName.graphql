@@ -1,4 +1,4 @@
-query CheckExchangeTeamName($League_ID: Int!, $Team_Name: String!) {
+query CheckExchangeTeamName($League_ID: ID!, $Team_Name: String!) {
   checkExchangeTeamName(League_ID: $League_ID, Team_Name: $Team_Name) {
     statusCode
     message
