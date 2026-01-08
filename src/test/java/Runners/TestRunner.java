@@ -29,7 +29,9 @@ class TestRunner {
             "classpath:Features/eff-data/exchangeLeagues/checkExchangeLeagueName.feature",
 
             "classpath:Features/eff-data/blitzLeagues/getPublicBlitzLeagues.feature",
-            "classpath:Features/eff-data/blitzLeagues/getBlitzLeague.feature"
+            "classpath:Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature",
+            "classpath:Features/eff-data/blitzLeagues/getBlitzLeague.feature",
+            "classpath:Features/eff-data/blitzLeagues/leaveBlitzLeague.feature"
             )
         .configDir("file:src/test"); 
     }

@@ -1,0 +1,8 @@
+mutation JoinPublicBlitzLeague($League_ID: ID!) {
+  joinPublicBlitzLeague(League_ID: $League_ID) {
+    statusCode
+    message
+    League_ID
+  }
+}
+

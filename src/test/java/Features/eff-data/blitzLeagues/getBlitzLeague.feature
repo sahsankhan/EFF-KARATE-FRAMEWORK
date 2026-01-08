@@ -15,7 +15,7 @@ Feature: EFF Data - Get Blitz League API Automation
       function(leagueId, existingAccessToken) {
         var idValue = leagueId;
         if (idValue === 'null') idValue = null;
-        if (idValue === 'existing') idValue = extremeBlitzLeagueId;
+        if (idValue === 'existingPublicBlitzLeagueId') idValue = extremeBlitzLeagueId;
         if (!isNaN(idValue) && idValue !== '' && idValue !== null) {
           idValue = Number(idValue);
         }
@@ -38,8 +38,8 @@ Feature: EFF Data - Get Blitz League API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId | expectedStatus | expectedMessage         |
-      | 1        | 400            | Missing token in header |
+      | leagueId                     | expectedStatus | expectedMessage         |
+      | existingPublicBlitzLeagueId  | 400            | Missing token in header |
 
   @expired_token
   Scenario Outline: GetBlitzLeague fails with expired token
@@ -57,8 +57,8 @@ Feature: EFF Data - Get Blitz League API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | leagueId | expiredToken                                                                                                                                                            | expectedStatus | expectedMessage |
-      | 1        | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |
+      | leagueId                    | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage |
+      | existingPublicBlitzLeagueId | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |
 
   @invalid_token
   Scenario Outline: GetBlitzLeague fails with invalid or corrupted token
@@ -76,18 +76,18 @@ Feature: EFF Data - Get Blitz League API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | leagueId | invalidToken                      | expectedStatus | expectedMessage |
-      | 1        | invalid.token.string              | 401            | Invalid token   |
-      | 1        | random_corrupted_string_12345     | 401            | Invalid token   |
-      | 1        | Bearer invalidtoken123            | 401            | Invalid token   |
+      | leagueId                     | invalidToken                      | expectedStatus | expectedMessage |
+      | existingPublicBlitzLeagueId  | invalid.token.string              | 401            | Invalid token   |
+      | existingPublicBlitzLeagueId  | random_corrupted_string_12345     | 401            | Invalid token   |
+      | existingPublicBlitzLeagueId  | Bearer invalidtoken123            | 401            | Invalid token   |
 
   @happy_path
-  Scenario: GetBlitzLeague succeeds with valid league ID
+  Scenario Outline: GetBlitzLeague succeeds with valid league ID
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
     * if (extremeBlitzLeagueId == null) karate.fail('No EXTREME league ID found. Run getPublicBlitzLeagues.feature first')
     
-    * def build = buildLeagueData('existing', existingAccessToken)
+    * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
     * def payload = { query: '#(getBlitzLeagueQuery)', variables: '#(build.variables)' }
     
@@ -95,7 +95,7 @@ Feature: EFF Data - Get Blitz League API Automation
     When method post
     Then status 200
     * print 'GetBlitzLeague Valid ID Response:', response
-    * match response.data.getBlitzLeague.statusCode == 200
+    * match response.data.getBlitzLeague.statusCode == <expectedStatus>
     * match response.data.getBlitzLeague.leagues == '#array'
     * match response.data.getBlitzLeague.leagues[0] == '#present'
     
@@ -109,6 +109,10 @@ Feature: EFF Data - Get Blitz League API Automation
     * match league.owner == '#present'
     * match league.owner.id == '#present'
     * match league.owner.username == '#string'
+
+    Examples:
+      | leagueId                     | expectedStatus | 
+      | existingPublicBlitzLeagueId  | 200            | 
 
   @league_id_not_found
   Scenario Outline: GetBlitzLeague fails with invalid league ID
@@ -137,8 +141,9 @@ Feature: EFF Data - Get Blitz League API Automation
     # PREREQUISITE CHECK: Ensure access token exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
     
-    * header Authorization = existingAccessToken
-    * def payload = { query: '#(getBlitzLeagueQuery)', variables: { League_ID: '<leagueId>' } }
+    * def build = buildLeagueData('<leagueId>', existingAccessToken)
+    * header Authorization = build.authToken
+    * def payload = { query: '#(getBlitzLeagueQuery)', variables: '#(build.variables)' }
     
     Given request payload
     When method post
@@ -153,4 +158,5 @@ Feature: EFF Data - Get Blitz League API Automation
       | invalid       | 400            | Invalid League_ID format. Expected numeric ID. |
       | abc123        | 400            | Invalid League_ID format. Expected numeric ID. |
       | league_id     | 400            | Invalid League_ID format. Expected numeric ID. |
-      | -1            | 400            | Invalid League_ID format. Expected numeric ID. |
+      | -999999       | 400            | Invalid League_ID format. Expected numeric ID. |
+      | -100000       | 400            | Invalid League_ID format. Expected numeric ID. |

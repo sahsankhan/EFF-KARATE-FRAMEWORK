@@ -11,7 +11,7 @@ Feature: EFF Data - Get Public Blitz Leagues API Automation
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
 
   @missing_authorization_header
-  Scenario: GetPublicBlitzLeagues fails when Authorization header is missing
+  Scenario Outline: GetPublicBlitzLeagues fails when Authorization header is missing
     # Do not set Authorization header
     * def payload = { query: '#(getPublicBlitzLeaguesQuery)' }
     
@@ -20,8 +20,12 @@ Feature: EFF Data - Get Public Blitz Leagues API Automation
     Then status 200
     * print 'GetPublicBlitzLeagues Missing Token Response:', response
     * match response.data.getPublicBlitzLeagues == null
-    * match response.errors[0].errorInfo.statusCode == 400
-    * match response.errors[0].message contains 'Missing token'
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains '<expectedMessage>'
+
+    Examples:
+      | expectedStatus | expectedMessage         |
+      | 400            | Missing token in header |
 
   @expired_token
   Scenario Outline: GetPublicBlitzLeagues fails with expired token

@@ -1,0 +1,7 @@
+mutation LeaveBlitzLeague($League_ID: ID!) {
+  leaveBlitzLeague(League_ID: $League_ID) {
+    statusCode
+    message
+  }
+}
+

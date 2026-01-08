@@ -1,0 +1,174 @@
+Feature: EFF Data - Join Public Blitz League API Automation
+
+  Background:
+    * url baseUrl
+    * header Accept = 'application/json'
+    * header Content-Type = 'application/json'
+    * header x-api-key = apiKey
+    * def joinPublicBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/joinPublicBlitzLeague.graphql')
+    * def rawSignUpInfo = karate.read('file:target/target/info.txt')
+    * def signUpInfo = JSON.parse(rawSignUpInfo)
+    * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
+    * def extremeBlitzLeagueId = karate.get('signUpInfo.extremeBlitzLeagueId', null)
+    * def buildLeagueData =
+      """
+      function(leagueId, existingAccessToken) {
+        var idValue = leagueId;
+        if (idValue === 'null') idValue = null;
+        if (idValue === 'existingPublicBlitzLeagueId') idValue = extremeBlitzLeagueId;
+        if (!isNaN(idValue) && idValue !== '' && idValue !== null) {
+          idValue = Number(idValue);
+        }
+        return { authToken: existingAccessToken, variables: { League_ID: idValue } };
+      }
+      """
+
+  @missing_authorization_header
+  Scenario Outline: JoinPublicBlitzLeague fails when Authorization header is missing
+    * def build = buildLeagueData('<leagueId>', existingAccessToken)
+    # Do not set Authorization header
+    * def payload = { query: '#(joinPublicBlitzLeagueQuery)', variables: '#(build.variables)' }
+    
+    Given request payload
+    When method post
+    Then status 200
+    * print 'JoinPublicBlitzLeague Missing Token Response:', response
+    * match response.data.joinPublicBlitzLeague == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains '<expectedMessage>'
+
+    Examples:
+      | leagueId                      | expectedStatus | expectedMessage         |
+      | existingPublicBlitzLeagueId   | 400            | Missing token in header |
+
+  @expired_token
+  Scenario Outline: JoinPublicBlitzLeague fails with expired token
+    * def expiredToken = '<expiredToken>'
+    * def build = buildLeagueData('<leagueId>', existingAccessToken)
+    * header Authorization = expiredToken
+    * def payload = { query: '#(joinPublicBlitzLeagueQuery)', variables: '#(build.variables)' }
+    
+    Given request payload
+    When method post
+    Then status 200
+    * print 'JoinPublicBlitzLeague Expired Token Response:', response
+    * match response.data.joinPublicBlitzLeague == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message == '<expectedMessage>'
+
+    Examples:
+      | leagueId                     | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage |
+      | existingPublicBlitzLeagueId  | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |
+
+  @invalid_token
+  Scenario Outline: JoinPublicBlitzLeague fails with invalid or corrupted token
+    * def invalidToken = '<invalidToken>'
+    * def build = buildLeagueData('<leagueId>', existingAccessToken)
+    * header Authorization = invalidToken
+    * def payload = { query: '#(joinPublicBlitzLeagueQuery)', variables: '#(build.variables)' }
+    
+    Given request payload
+    When method post
+    Then status 200
+    * print 'JoinPublicBlitzLeague Invalid Token Response:', response
+    * match response.data.joinPublicBlitzLeague == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message == '<expectedMessage>'
+
+    Examples:
+      | leagueId                      | invalidToken                      | expectedStatus | expectedMessage |
+      | existingPublicBlitzLeagueId   | Bearer invalidtoken123            | 401            | Invalid token   |
+      | existingPublicBlitzLeagueId   | random_corrupted_string_12345     | 401            | Invalid token   |
+      | existingPublicBlitzLeagueId   | invalid.token.string              | 401            | Invalid token   |
+
+  @happy_path
+  Scenario Outline: JoinPublicBlitzLeague succeeds with valid public league ID
+    # PREREQUISITE CHECK: Ensure access token and league ID exist
+    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    * if (extremeBlitzLeagueId == null) karate.fail('No Blitz Extreme league ID found. Run getPublicBlitzLeagues.feature first')
+    
+    * def build = buildLeagueData('<leagueId>', existingAccessToken)
+    * header Authorization = build.authToken
+    * def payload = { query: '#(joinPublicBlitzLeagueQuery)', variables: '#(build.variables)' }
+    
+    Given request payload
+    When method post
+    Then status 200
+    * print 'JoinPublicBlitzLeague Success Response:', response
+    * match response.data.joinPublicBlitzLeague.statusCode == <expectedStatus>
+    * match response.data.joinPublicBlitzLeague.message == '<expectedMessage>'
+    * match response.data.joinPublicBlitzLeague.League_ID == extremeBlitzLeagueId
+
+    Examples:
+      | leagueId                      | expectedStatus | expectedMessage                         |
+      | existingPublicBlitzLeagueId   | 200            | Successfully joined the Blitz league.   |
+
+  @already_member
+  Scenario Outline: JoinPublicBlitzLeague handles already joined league gracefully
+    # PREREQUISITE CHECK: Ensure access token and league ID exist
+    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    * if (extremeBlitzLeagueId == null) karate.fail('No EXTREME league ID found. Run getPublicBlitzLeagues.feature first')
+    
+    * def build = buildLeagueData('<leagueId>', existingAccessToken)
+    * header Authorization = build.authToken
+    * def payload = { query: '#(joinPublicBlitzLeagueQuery)', variables: '#(build.variables)' }
+    
+    # Second join attempt (should handle already member case)
+    Given request payload
+    When method post
+    Then status 200
+    * print 'JoinPublicBlitzLeague Already Member Response:', response
+    * match response.data.joinPublicBlitzLeague == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains '<expectedMessage>'
+
+    Examples:
+      | leagueId                      | expectedStatus | expectedMessage                                                             |
+      | existingPublicBlitzLeagueId   | 409            | You have already joined this league. Please create a team to participate.   |
+
+  @league_not_found
+  Scenario Outline: JoinPublicBlitzLeague fails with non-existent league ID
+    # PREREQUISITE CHECK: Ensure access token exists
+    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    
+    * def build = buildLeagueData('<leagueId>', existingAccessToken)
+    * header Authorization = build.authToken
+    * def payload = { query: '#(joinPublicBlitzLeagueQuery)', variables: '#(build.variables)' }
+    
+    Given request payload
+    When method post
+    Then status 200
+    * print 'JoinPublicBlitzLeague League Not Found Response:', response
+    * match response.data.joinPublicBlitzLeague == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains '<expectedMessage>'
+
+    Examples:
+      | leagueId | expectedStatus | expectedMessage    |
+      | 999999   | 404            | League not found   |
+      | 100000   | 404            | League not found   |
+
+  @invalid_league_id
+  Scenario Outline: JoinPublicBlitzLeague fails with invalid league ID format
+    # PREREQUISITE CHECK: Ensure access token exists
+    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    
+    * def build = buildLeagueData('<leagueId>', existingAccessToken)
+    * header Authorization = build.authToken
+    * def payload = { query: '#(joinPublicBlitzLeagueQuery)', variables: '#(build.variables)' }
+    
+    Given request payload
+    When method post
+    Then status 200
+    * print 'JoinPublicBlitzLeague Invalid League ID Response:', response
+    * match response.data.joinPublicBlitzLeague == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].message contains '<expectedMessage>'
+
+    Examples:
+      | leagueId      | expectedStatus | expectedMessage                                 |
+      | invalid       | 400            | Invalid League_ID format. Expected numeric ID.  |
+      | abc123        | 400            | Invalid League_ID format. Expected numeric ID.  |
+      | league_id     | 400            | Invalid League_ID format. Expected numeric ID.  |
+      | -999999       | 400            | Invalid League_ID format. Expected numeric ID.  |
+      | -100000       | 400            | Invalid League_ID format. Expected numeric ID.  |
