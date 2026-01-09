@@ -26,6 +26,9 @@ Feature: EFF Data - Leave Blitz League API Automation
 
   @missing_authorization_header
   Scenario Outline: LeaveBlitzLeague fails when Authorization header is missing
+    # PREREQUISITE CHECK: Ensure league ID exist
+    * if (extremeBlitzLeagueId == null) karate.abort()
+
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     # Do not set Authorization header
     * def payload = { query: '#(leaveBlitzLeagueQuery)', variables: '#(build.variables)' }
@@ -44,6 +47,9 @@ Feature: EFF Data - Leave Blitz League API Automation
 
   @expired_token
   Scenario Outline: LeaveBlitzLeague fails with expired token
+    # PREREQUISITE CHECK: Ensure league ID exist
+    * if (extremeBlitzLeagueId == null) karate.abort()
+
     * def expiredToken = '<expiredToken>'
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = expiredToken
@@ -63,6 +69,9 @@ Feature: EFF Data - Leave Blitz League API Automation
 
   @invalid_token
   Scenario Outline: LeaveBlitzLeague fails with invalid or corrupted token
+    # PREREQUISITE CHECK: Ensure league ID exist
+    * if (extremeBlitzLeagueId == null) karate.abort()
+
     * def invalidToken = '<invalidToken>'
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = invalidToken
@@ -86,7 +95,7 @@ Feature: EFF Data - Leave Blitz League API Automation
   Scenario Outline: LeaveBlitzLeague succeeds with valid league ID and verifies member is removed
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.fail('No Blitz Extreme league ID found. Run getPublicBlitzLeagues.feature first')
+    * if (extremeBlitzLeagueId == null) karate.abort()
     
     # Step 1: Leave the league
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
@@ -121,9 +130,10 @@ Feature: EFF Data - Leave Blitz League API Automation
 
   @not_league_member
   Scenario Outline: LeaveBlitzLeague fails when user is not a member
-    # PREREQUISITE CHECK: Ensure access token exists
+    # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    
+    * if (extremeBlitzLeagueId == null) karate.abort()
+
     # Attempt to leave the league again (should fail as user already left)
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
@@ -181,9 +191,9 @@ Feature: EFF Data - Leave Blitz League API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId      | expectedStatus | expectedMessage                                 |
-      | invalid       | 400            | Invalid League_ID format. Expected numeric ID.  |
-      | abc123        | 400            | Invalid League_ID format. Expected numeric ID.  |
-      | league_id     | 400            | Invalid League_ID format. Expected numeric ID.  |
-      | -999999       | 400            | Invalid League_ID format. Expected numeric ID.  |
-      | -100000       | 400            | Invalid League_ID format. Expected numeric ID.  |
+      | leagueId      | expectedStatus | expectedMessage                  |
+      | invalid       | 400            | League_ID must be a numeric ID.  |
+      | abc123        | 400            | League_ID must be a numeric ID.  |
+      | league_id     | 400            | League_ID must be a numeric ID.  |
+      | -999999       | 400            | Invalid League_ID format!        |
+      | -100000       | 400            | Invalid League_ID format!        |

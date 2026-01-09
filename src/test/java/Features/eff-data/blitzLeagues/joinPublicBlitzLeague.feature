@@ -25,6 +25,9 @@ Feature: EFF Data - Join Public Blitz League API Automation
 
   @missing_authorization_header
   Scenario Outline: JoinPublicBlitzLeague fails when Authorization header is missing
+    # PREREQUISITE CHECK: Ensure league ID exist
+    * if (extremeBlitzLeagueId == null) karate.abort()
+   
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     # Do not set Authorization header
     * def payload = { query: '#(joinPublicBlitzLeagueQuery)', variables: '#(build.variables)' }
@@ -43,6 +46,9 @@ Feature: EFF Data - Join Public Blitz League API Automation
 
   @expired_token
   Scenario Outline: JoinPublicBlitzLeague fails with expired token
+    # PREREQUISITE CHECK: Ensure league ID exist
+    * if (extremeBlitzLeagueId == null) karate.abort()
+
     * def expiredToken = '<expiredToken>'
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = expiredToken
@@ -62,6 +68,9 @@ Feature: EFF Data - Join Public Blitz League API Automation
 
   @invalid_token
   Scenario Outline: JoinPublicBlitzLeague fails with invalid or corrupted token
+    # PREREQUISITE CHECK: Ensure league ID exist
+    * if (extremeBlitzLeagueId == null) karate.abort()
+
     * def invalidToken = '<invalidToken>'
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = invalidToken
@@ -85,7 +94,7 @@ Feature: EFF Data - Join Public Blitz League API Automation
   Scenario Outline: JoinPublicBlitzLeague succeeds with valid public league ID
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.fail('No Blitz Extreme league ID found. Run getPublicBlitzLeagues.feature first')
+    * if (extremeBlitzLeagueId == null) karate.abort()
     
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
@@ -107,7 +116,7 @@ Feature: EFF Data - Join Public Blitz League API Automation
   Scenario Outline: JoinPublicBlitzLeague handles already joined league gracefully
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.fail('No EXTREME league ID found. Run getPublicBlitzLeagues.feature first')
+    * if (extremeBlitzLeagueId == null) karate.abort()
     
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
@@ -166,9 +175,9 @@ Feature: EFF Data - Join Public Blitz League API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId      | expectedStatus | expectedMessage                                 |
-      | invalid       | 400            | Invalid League_ID format. Expected numeric ID.  |
-      | abc123        | 400            | Invalid League_ID format. Expected numeric ID.  |
-      | league_id     | 400            | Invalid League_ID format. Expected numeric ID.  |
-      | -999999       | 400            | Invalid League_ID format. Expected numeric ID.  |
-      | -100000       | 400            | Invalid League_ID format. Expected numeric ID.  |
+      | leagueId      | expectedStatus | expectedMessage                  |
+      | invalid       | 400            | League_ID must be a numeric ID.  |
+      | abc123        | 400            | League_ID must be a numeric ID.  |
+      | league_id     | 400            | League_ID must be a numeric ID.  |
+      | -999999       | 400            | Invalid League_ID format!        |
+      | -100000       | 400            | Invalid League_ID format!        |
