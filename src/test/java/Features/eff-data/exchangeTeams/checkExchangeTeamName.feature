@@ -104,8 +104,8 @@ Feature: EFF Data - Check Exchange Team Name API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | teamName       | leagueId     | expectedStatus  | expectedMessage        |
-      | Valid Team     | 123456       | 404             | League not found!      |
+      | teamName       | leagueId     | expectedStatus  | expectedMessage              |
+      | Valid Team     | 123456       | 404             | League not found or deleted. |
 
   @happy_path_available
   Scenario Outline: CheckExchangeTeamName succeeds when team name is available

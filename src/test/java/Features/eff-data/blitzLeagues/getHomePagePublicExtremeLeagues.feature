@@ -100,42 +100,49 @@ Feature: EFF Data - Get Home Page Public Extreme Leagues API Automation
     
     # Validate Blitz Leagues Schema (only during active season)
     * def blitzLeagues = isActiveSeason ? response.data.getHomePagePublicExtremeLeagues.blitz_league : []
-    * def isBlitzLeaguesAvailable = isActiveSeason && blitzLeagues.length > 0
-    * eval if (isBlitzLeaguesAvailable) karate.match(blitzLeagues[0]._id, '#present')
-    * eval if (isBlitzLeaguesAvailable) karate.match(blitzLeagues[0].League_Name, '#string')
-    * eval if (isBlitzLeaguesAvailable) karate.match(blitzLeagues[0].owner, '#present')
+    * def isBlitzLeaguesAvailable = isActiveSeason && blitzLeagues != null
+    * eval if (isBlitzLeaguesAvailable) karate.log('Blitz leagues are available')
+    * eval if (isBlitzLeaguesAvailable) karate.match(blitzLeagues._id, '#present')
+    * eval if (isBlitzLeaguesAvailable) karate.match(blitzLeagues.League_Name, '#string')
+    * eval if (isBlitzLeaguesAvailable) karate.match(blitzLeagues.owner, '#present')
 
     # Assert blitz league have Public flag set to true
-    * eval if (isBlitzLeaguesAvailable) karate.match(blitzLeagues[0].public, true)
+    * eval if (isBlitzLeaguesAvailable) karate.match(blitzLeagues.public, true)
     
     # Validate league type for blitz league (should be EXTREME)
-    * eval if (isBlitzLeaguesAvailable) karate.match(blitzLeagues[0].Game_Type, 'EXTREME') 
-    * eval if (isBlitzLeaguesAvailable) karate.match(blitzLeagues[0].League_Type, 'BLITZ')  
+    * eval if (isBlitzLeaguesAvailable) karate.match(blitzLeagues.Game_Type, 'EXTREME') 
+    * eval if (isBlitzLeaguesAvailable) karate.match(blitzLeagues.League_Type, 'BLITZ')  
     
     # Validate Exchange Leagues Schema (only during active season)
     * def exchangeLeagues = isActiveSeason ? response.data.getHomePagePublicExtremeLeagues.exchange_league : []
-    * def isExchangeLeaguesAvailable = isActiveSeason && exchangeLeagues.length > 0
-    * eval if (isExchangeLeaguesAvailable) karate.match(exchangeLeagues[0]._id, '#present')
-    * eval if (isExchangeLeaguesAvailable) karate.match(exchangeLeagues[0].League_Name, '#string')
-    * eval if (isExchangeLeaguesAvailable) karate.match(exchangeLeagues[0].owner, '#present')
+    * def isExchangeLeaguesAvailable = isActiveSeason && exchangeLeagues
+    * eval if (isExchangeLeaguesAvailable) karate.match(exchangeLeagues._id, '#present')
+    * eval if (isExchangeLeaguesAvailable) karate.match(exchangeLeagues.League_Name, '#string')
+    * eval if (isExchangeLeaguesAvailable) karate.match(exchangeLeagues.owner, '#present')
 
     # Assert exchange league have Public flag set to true
-    * eval if (isExchangeLeaguesAvailable) karate.match(exchangeLeagues[0].public, true)
+    * eval if (isExchangeLeaguesAvailable) karate.match(exchangeLeagues.public, true)
     
     # Validate league type for exchange league (should be EXTREME)
-    * eval if (isExchangeLeaguesAvailable) karate.match(exchangeLeagues[0].Game_Type, 'EXTREME') 
-    * eval if (isExchangeLeaguesAvailable) karate.match(exchangeLeagues[0].League_Type, 'EXCHANGE')  
+    * eval if (isExchangeLeaguesAvailable) karate.match(exchangeLeagues.Game_Type, 'EXTREME') 
+    * eval if (isExchangeLeaguesAvailable) karate.match(exchangeLeagues.League_Type, 'EXCHANGE')  
     
     # Save EXTREME Blitz League ID for subsequent tests 
-    * def extremeBlitzLeague = isBlitzLeaguesAvailable ? blitzLeagues[0] : null
+    * def extremeBlitzLeague = isBlitzLeaguesAvailable ? blitzLeagues : null
     * def extremeBlitzLeagueId = extremeBlitzLeague != null ? extremeBlitzLeague._id : null
-    * if (extremeBlitzLeagueId != null) karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremeBlitzLeagueId: extremeBlitzLeagueId}, 'target/info.txt')
     * if (extremeBlitzLeagueId != null) karate.log('Saved EXTREME Blitz League ID:', extremeBlitzLeagueId)
     * if (isActiveSeason && extremeBlitzLeagueId == null) karate.log('No EXTREME blitz league found in public leagues')
     
     # Save EXTREME Exchange League ID for subsequent tests 
-    * def extremeExchangeLeague = isExchangeLeaguesAvailable ? exchangeLeagues[0] : null
+    * def extremeExchangeLeague = isExchangeLeaguesAvailable ? exchangeLeagues : null
     * def extremeExchangeLeagueId = extremeExchangeLeague != null ? extremeExchangeLeague._id : null
-    * if (extremeExchangeLeagueId != null) karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremeExchangeLeagueId: extremeExchangeLeagueId}, 'target/info.txt')
     * if (extremeExchangeLeagueId != null) karate.log(' Found EXTREME Exchange League ID:', extremeExchangeLeagueId)
     * if (isActiveSeason && extremeExchangeLeagueId == null) karate.log('No EXTREME exchange league found in public leagues')
+    
+    # Save BOTH league IDs together in a single write operation
+    # Build object properly by copying signUpInfo and adding new properties
+    * def updatedInfo = signUpInfo
+    * if (extremeBlitzLeagueId != null) updatedInfo.extremeBlitzLeagueId = extremeBlitzLeagueId
+    * if (extremeExchangeLeagueId != null) updatedInfo.extremeExchangeLeagueId = extremeExchangeLeagueId
+    * if (extremeBlitzLeagueId != null || extremeExchangeLeagueId != null) karate.write(updatedInfo, 'target/info.txt')
+    * if (extremeBlitzLeagueId != null || extremeExchangeLeagueId != null) karate.log('Saved league IDs to info file:', updatedInfo)
