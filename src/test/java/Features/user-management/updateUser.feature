@@ -391,10 +391,23 @@ Feature: User Management - Update User API Automation
     * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-     | token     |  dob          | expectedStatus | expectedMessage  
-     | existing  |  1987/05/21   | 400            | 'Invalid date format! Expected YYYY-MM-DD format'
-     | existing  |  20/05/1987   | 400            | 'Invalid date format! Expected YYYY-MM-DD format'
-  
+     | token     |  dob          | expectedStatus | expectedMessage                                                             |
+     | existing  |  1987/05/21   | 400            | 'Invalid date format. Use YYYY-MM-DD'                                       |
+     | existing  |  0000-00-00   | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.'  |
+     | existing  |  0000-05-14   | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.'  |
+     | existing  |  1993-00-14   | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.'  |
+     | existing  |  1993-15-00   | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.'  |
+     | existing  |  2030-05-14   | 400            | 'Date of birth cannot be in the future.'                                    |
+     | existing  |  2010-05-14   | 400            | 'You must be at least 18 years old.'                                        |
+     | existing  |  2000-02-30   | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.'  |
+     | existing  |  2000-02-32   | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.'  |
+     | existing  |  1999-13-30   | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.'  |
+     | existing  |  1999-13-30   | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.'  |
+     | existing  |  13-1999-30   | 400            | 'Invalid date format. Use YYYY-MM-DD.'                                      |
+     | existing  |  13-30-1999   | 400            | 'Invalid date format. Use YYYY-MM-DD.'                                      |
+     | existing  |  abcd-ef-gh   | 400            | 'Invalid date format. Use YYYY-MM-DD.'                                      |
+     | existing  |  20199912     | 400            | 'Invalid date format. Use YYYY-MM-DD.'                                      |
+     | existing  |  20000222     | 400            | 'Invalid date format. Use YYYY-MM-DD.'                                      |
   @invalid_profile_picture_structure
   Scenario Outline: UpdateUser fails with invalid profile picture structure
     # PREREQUISITE CHECK: Ensure access token exists

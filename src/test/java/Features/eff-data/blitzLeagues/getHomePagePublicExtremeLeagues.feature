@@ -139,8 +139,7 @@ Feature: EFF Data - Get Home Page Public Extreme Leagues API Automation
     * if (extremeExchangeLeagueId != null) karate.log(' Found EXTREME Exchange League ID:', extremeExchangeLeagueId)
     * if (isActiveSeason && extremeExchangeLeagueId == null) karate.log('No EXTREME exchange league found in public leagues')
     
-    # Save BOTH league IDs together in a single write operation
-    # Build object properly by copying signUpInfo and adding new properties
+    # Save BOTH league IDs together
     * def updatedInfo = signUpInfo
     * if (extremeBlitzLeagueId != null) updatedInfo.extremeBlitzLeagueId = extremeBlitzLeagueId
     * if (extremeExchangeLeagueId != null) updatedInfo.extremeExchangeLeagueId = extremeExchangeLeagueId

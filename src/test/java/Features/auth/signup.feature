@@ -217,6 +217,7 @@ Feature: Sign-Up API Automation
       | 123                                                     | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name must contain at least one letter.'                                                        |
       | 1                                                       | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name must contain at least one letter.'                                                        |
       | --                                                      | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name must contain at least one letter.'                                                        |
+      | user123                                                 | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
       | A@                                                      | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
       | B!                                                      | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  | 
       | Itisaverylongfirstnameofusertobeenteredinsignuppayl     | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'First name cannot be more than 50 characters.'                                                       | 
@@ -241,6 +242,7 @@ Feature: Sign-Up API Automation
       | John       | 1                                                         | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name must contain at least one letter.'                                                        |
       | John       | 123                                                       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name must contain at least one letter.'                                                        |
       | John       | --                                                        | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name must contain at least one letter.'                                                        |
+      | John       | example123                                                | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
       | John       | A@                                                        | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
       | John       | B!                                                        | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  | 
       | John       | Itisaverylonglastnameofusertobeenteredinsignuppaylo       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Last name cannot be more than 50 characters.'                                                       | 
@@ -304,7 +306,7 @@ Feature: Sign-Up API Automation
       | first_name | last_name | username | email                  | state | dob        | phone  | heard_about_us | profile_picture | expectedStatus | expectedMessage                |
       | User       | Doe       | random   | userexample9@gmail.com | NY    | 1999-05-14 | +14191 | Google         | icon_bear       | 400            | 'Invalid phone number format!' |
 
-  @invalid_date_format
+  @invalid_dob
   Scenario Outline: Sign-Up fails when date format invalid
     * def build = buildSignUpData('<first_name>', '<last_name>', '<username>', '<email>', '<state>', '<dob>', '<phone>', '<heard_about_us>', '<profile_picture>')
     * def dynamicEmail = build.dynamicEmail
@@ -319,8 +321,22 @@ Feature: Sign-Up API Automation
     * match response.errors[0].message contains <expectedMessage>
 
     Examples:
-      | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage        |
-      | User       | Doe       | random   | userexample9@gmail.com | NY    | 1999/05/14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid date format!' |
+      | first_name | last_name | username | email                  | state | dob        | phone        | heard_about_us | profile_picture | expectedStatus | expectedMessage                                                            |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 1999/05/14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid date format. Use YYYY-MM-DD.'                                     |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 0000-00-00 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.' |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 0000-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.' |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 1993-00-14 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.' |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 1993-15-00 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.' |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 2030-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'Date of birth cannot be in the future.'                                   |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 2010-05-14 | +14191000000 | Google         | icon_bear       | 400            | 'You must be at least 18 years old.'                                       |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 2000-02-30 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.' |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 2000-04-32 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.' |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 1999-13-30 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.' |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 13-1999-30 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid date format. Use YYYY-MM-DD.'                                     |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 13-30-1999 | +14191000000 | Google         | icon_bear       | 400            | 'Invalid date format. Use YYYY-MM-DD.'                                     |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | abcd-ef-gh | +14191000000 | Google         | icon_bear       | 400            | 'Invalid date format. Use YYYY-MM-DD.'                                     |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 20199912   | +14191000000 | Google         | icon_bear       | 400            | 'Invalid date format. Use YYYY-MM-DD.'                                     |
+      | User       | Doe       | random   | userexample9@gmail.com | NY    | 20000222   | +14191000000 | Google         | icon_bear       | 400            | 'Invalid date format. Use YYYY-MM-DD.'                                     |
 
   @unverified_email_exists
   Scenario Outline: Sign-Up fails when unverified email already exists
