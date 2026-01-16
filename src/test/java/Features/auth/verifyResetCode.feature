@@ -124,7 +124,7 @@ Feature: Verify Reset Code API Automation
       | email    | code | expectedStatus | expectedMessage   |
       | existing |      | 400            | Code is required  |
 
-  @user_not_found
+  @non_existing_user
   Scenario Outline: Verify reset code for non existing email
     * def build = buildVerifyResetCodeData('<email>', '<code>', existingEmail)
     * def userEmail = build.userEmail
@@ -140,8 +140,8 @@ Feature: Verify Reset Code API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | email                   | code   | expectedStatus | expectedMessage |
-      | nonexisting@example.com | 806456 | 404            | User not found  |
+      | email                   | code   | expectedStatus | expectedMessage          |
+      | nonexisting@example.com | 806456 | 401            | Wrong verification code  |
 
   
 

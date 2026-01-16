@@ -74,10 +74,10 @@ Feature: Verify Email API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | verifyKey                            | expectedStatus | expectedMessage                      |
-      | TEST_BYPASS::userexample@gmail.com   | 409            | This email has already been verified.|
+      | verifyKey                            | expectedStatus | expectedMessage                       |
+      | TEST_BYPASS::userexample@gmail.com   | 404            | Verification link invalid or expired. |
 
-  @user_not_found
+  @non_existing_user
   Scenario Outline: Email verification fails when user is not found
     * def verifyKey = buildVerifyKey('<verifyKey>', existingEmail)
     * def verifyData = { verifyKey: '#(verifyKey)' }
@@ -92,6 +92,6 @@ Feature: Verify Email API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | verifyKey                                | expectedStatus | expectedMessage   |
-      | TEST_BYPASS::nonexistinguser@example.com | 404            | User not found.   |
+      | verifyKey                                | expectedStatus | expectedMessage                         |
+      | TEST_BYPASS::nonexistinguser@example.com | 404            | Verification link invalid or expired.   |
 

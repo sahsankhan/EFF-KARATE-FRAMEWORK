@@ -54,7 +54,7 @@ Feature: Check Username API Automation
 
     Examples:
       | username  | expectedStatus | expectedMessage               |
-      | username  | 409            | 'Username is already taken.'  |
+      | test      | 409            | 'Username is already taken.'  |
 
   @missing_username
   Scenario Outline: CheckUsername fails when username is missing or empty

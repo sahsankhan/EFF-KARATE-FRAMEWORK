@@ -1,0 +1,9 @@
+mutation DeleteUserAccountByEmail($email: String!) {
+  deleteUserAccountByEmail(email: $email) {
+    statusCode
+    message
+    email
+    role
+  }
+}
+
