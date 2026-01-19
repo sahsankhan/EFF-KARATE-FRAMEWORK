@@ -38,9 +38,9 @@ Feature: Verify Reset Code API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | email                             | code   | expectedStatus | expectedMessage            |
-      | testing.automation.4127@gmail.com | 000000 | 401            | Wrong verification code    |
-      | testing.automation.4127@gmail.com | 999999 | 401            | Wrong verification code    |
+      | email                             | code   | expectedStatus | expectedMessage                         |
+      | testing.automation.4127@gmail.com | 000000 | 401            | Invalid or expired verification code    |
+      | testing.automation.4127@gmail.com | 999999 | 401            | Invalid or expired verification code    |
 
   @happy_path
   Scenario Outline: Verify reset code success using Gmail
@@ -140,8 +140,8 @@ Feature: Verify Reset Code API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | email                   | code   | expectedStatus | expectedMessage          |
-      | nonexisting@example.com | 806456 | 401            | Wrong verification code  |
+      | email                   | code   | expectedStatus | expectedMessage                       |
+      | nonexisting@example.com | 806456 | 401            | Invalid or expired verification code  |
 
   
 

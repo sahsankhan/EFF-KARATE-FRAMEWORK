@@ -67,8 +67,8 @@ Feature: Set or Reset Password API Automation
     * if (<expectedEmailCheck> == true) karate.match(response.data.setPassword.email, userEmail)
 
     Examples:
-      | email                 | resetKey | password | expectedStatus | expectedMessage   | expectedEmailCheck |
-      | nouserexists@gmail.com| existing | default  | 404            | 'User not found!' | false              |
+      | email                 | resetKey | password | expectedStatus | expectedMessage                 | expectedEmailCheck |
+      | nouserexists@gmail.com| existing | default  | 401            | 'Invalid or expired reset key!' | false              |
 
   @missing_reset_key
   Scenario Outline: Set-Password fails when reset key invalid

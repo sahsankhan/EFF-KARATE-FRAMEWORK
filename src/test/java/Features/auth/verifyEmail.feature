@@ -75,7 +75,7 @@ Feature: Verify Email API Automation
 
     Examples:
       | verifyKey                            | expectedStatus | expectedMessage                       |
-      | TEST_BYPASS::userexample@gmail.com   | 404            | Verification link invalid or expired. |
+      | TEST_BYPASS::userexample@gmail.com   | 409            | This email has already been verified. |
 
   @non_existing_user
   Scenario Outline: Email verification fails when user is not found
