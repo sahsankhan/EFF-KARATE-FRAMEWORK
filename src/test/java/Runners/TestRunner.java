@@ -35,7 +35,9 @@ class TestRunner {
             "classpath:Features/eff-data/blitzLeagues/leaveBlitzLeague.feature",
 
             // Private Blitz League Module Tests 
-            "classpath:Features/eff-data/blitzLeagues/createBlitzLeague.feature",
+             "classpath:Features/eff-data/blitzLeagues/createBlitzLeague.feature",
+             "classpath:helpers/createSecondUser.feature",
+             "classpath:Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature",
 
             // Cleanup Module (Run Last - Deletes test user and all associated data)
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"

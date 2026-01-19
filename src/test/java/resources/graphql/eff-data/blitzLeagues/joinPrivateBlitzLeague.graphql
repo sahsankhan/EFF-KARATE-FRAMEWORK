@@ -1,0 +1,8 @@
+mutation JoinPrivateBlitzLeague($Invite_Code: String!) {
+  joinPrivateBlitzLeague(Invite_Code: $Invite_Code) {
+    statusCode
+    message
+    League_ID
+  }
+}
+

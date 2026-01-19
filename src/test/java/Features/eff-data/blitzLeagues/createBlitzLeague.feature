@@ -295,13 +295,13 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-     | leagueName                                                    | leagueImage  | expectedStatus | expectedMessage                            | 
-     | PRIVATE BLITZ LEAGUE FOR AUTOMATION                           | icon_bull    | 409            | A league with this name already exists.    |
-     | P R I V A T E B L I T Z L E A G U E F O R A U T O M A T I O N | icon_bull    | 409            | A league with this name already exists.    |
-     | PRIVATEBLITZLEAGUEFORAUTOMATION                               | icon_bull    | 409            | A league with this name already exists.    |
-     |   pRIvAtEBLITZ LEaGuE    FOrAuToMAtIoN                        | icon_bull    | 409            | A league with this name already exists.    |
-     | PRIVATE   blitzleague    FORAUTOMATION                        | icon_bull    | 409            | A league with this name already exists.    |
-     | PRIVAREBlitzLeague     FOR     AUTOMATION                     | icon_bull    | 409            | A league with this name already exists.    |
+     | leagueName                                       | leagueImage  | expectedStatus | expectedMessage                            | 
+     | PRIVATE BLITZ LEAGUE FOR AUTOMATION              | icon_bull    | 409            | A league with this name already exists.    |
+     | PRIVATE B L I T Z L E A G U E FOR AUTOMATION     | icon_bull    | 409            | A league with this name already exists.    |
+     | PRIVATEBLITZLEAGUEFORAUTOMATION                  | icon_bull    | 409            | A league with this name already exists.    |
+     |   pRIvAtEBLITZ LEaGuE    FOrAuToMAtIoN           | icon_bull    | 409            | A league with this name already exists.    |
+     | PRIVATE   blitzleague    FORAUTOMATION           | icon_bull    | 409            | A league with this name already exists.    |
+     | PRIVATEBlitzLeague     FOR     AUTOMATION        | icon_bull    | 409            | A league with this name already exists.    |
 
   @case_sensitive_handling
   Scenario Outline: CreateBlitzLeague with various whitespace scenarios

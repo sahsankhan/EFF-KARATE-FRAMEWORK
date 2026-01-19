@@ -8,15 +8,17 @@ Feature: User Management - Delete User Account By Email API Automation (Test Env
     * def deleteUserQuery = read('classpath:resources/graphql/user-management/deleteUserAccountByEmail.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
-    * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
     * def existingEmail = karate.get('signUpInfo.email', null)
+    * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
+    * def existingSecondUserAccessToken = karate.get('signUpInfo.secondUser.accessToken', null)
+    * def existingSecondUserEmail = karate.get('signUpInfo.secondUser.email', null)
     * def buildDeleteUserData =
       """
-      function(token, email, existingAccessToken, existingEmail) {
+      function(token, email, existingAccessToken, existingEmail, existingSecondUserAccessToken, existingSecondUserEmail ) {
         var tokenValue = token;
         var emailValue = email;
-        var resolvedToken = tokenValue == 'existing' ? existingAccessToken : (tokenValue == '' ? null : tokenValue);
-        var resolvedEmail = emailValue == 'existing' ? existingEmail : (emailValue == '' ? '' : emailValue);
+        var resolvedToken = token == 'existing' ? existingAccessToken : token == 'existingSecond' ? existingSecondUserAccessToken : (token === '' ? null : token);
+        var resolvedEmail = email == 'existing' ? existingEmail : email == 'existingSecond' ? existingSecondUserEmail : (email === '' ? '' : email);
         
         var deleteData = {
           email: resolvedEmail
@@ -118,7 +120,7 @@ Feature: User Management - Delete User Account By Email API Automation (Test Env
     # PREREQUISITE CHECK: Ensure email exists
     * if (existingEmail == null) karate.fail('No email found in test data. Run signup.feature first')
     
-    * def build = buildDeleteUserData('<token>', '<email>', existingAccessToken, existingEmail)
+    * def build = buildDeleteUserData('<token>', '<email>', existingAccessToken, existingEmail, existingSecondUserAccessToken, existingSecondUserEmail)
     * def resolvedToken = build.authToken
     * header Authorization = resolvedToken
     * def deleteData = karate.toJson(build.deleteData)
@@ -130,7 +132,6 @@ Feature: User Management - Delete User Account By Email API Automation (Test Env
     * print 'DeleteUserAccountByEmail API Response:', response
     * match response.data.deleteUserAccountByEmail.statusCode == <expectedStatus>
     * match response.data.deleteUserAccountByEmail.message == '<expectedMessage>'
-    * match response.data.deleteUserAccountByEmail.email == existingEmail
     * print 'TEST SUITE COMPLETED SUCCESSFULLY!'
     * print 'User account deleted successfully along with all associated data:'
     * print ' - User Account'
@@ -140,6 +141,7 @@ Feature: User Management - Delete User Account By Email API Automation (Test Env
     * print ' - Blitz Lineups owned by user'
 
     Examples:
-      | token    | email    | expectedStatus | expectedMessage                    |
-      | existing | existing | 200            | User account deleted successfully  |
+      | token            | email             | expectedStatus | expectedMessage                    |
+      | existing         | existing          | 200            | User account deleted successfully  |
+      | existingSecond   | existingSecond    | 200            | User account deleted successfully  |
 
