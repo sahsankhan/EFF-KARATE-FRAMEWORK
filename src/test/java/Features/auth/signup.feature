@@ -11,7 +11,7 @@ Feature: Sign-Up API Automation
     """
     function(first_name, last_name, username, email, state, dob, phone, heard_about_us, profile_picture, test_bypass) {
       var dynamicEmail = email == 'random' ? 'userexample' + random() + '@gmail.com' : email;
-      var dynamicUsername = username == 'random' ? 'k' + random() : username;
+      var dynamicUsername = username == 'random' ? String.fromCharCode(97 + Math.floor(Math.random() * 26)) + random() : username;
       var userData = {
         first_name: first_name,
         last_name: last_name,

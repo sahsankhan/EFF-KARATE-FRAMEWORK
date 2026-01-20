@@ -16,10 +16,36 @@ Simple Karate/Maven test suite that automates the EFF GraphQL flows such as sign
    ```
 3. (Optional) Clean previous test artifacts: `mvn clean`
 
-## Run All Tests
-Execute the Karate suite through Maven:
+
+## Running Tests
+
+### Run All Tests
+Execute the complete Karate test suite through Maven:
+
 ```
 mvn test
 ```
+
 This uses the JUnit 5 runner at `src/test/java/Runners/TestRunner.java` to execute every feature file in one shot.
+
+### Run Specific Test Flows
+You can run specific test flows using the `-Dtest` parameter:
+
+#### Private League Flow
+Complete end-to-end test for private league functionality (auth → user management → private league creation → second user creation → private league join → cleanup):
+
+```bash
+mvn test -Dtest=PrivateLeagueFlowRunner
+```
+
+#### Public League Flow
+Complete end-to-end test for public league functionality (auth → user management → public league operations → cleanup):
+
+```bash
+mvn test -Dtest=PublicLeagueFlowRunner
+```
+
+## Test Reports
+After running tests, reports are generated in:
+- `target/karate-reports/` - HTML reports
 
