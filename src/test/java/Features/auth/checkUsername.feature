@@ -160,6 +160,9 @@ Feature: Check Username API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | username                                        | expectedStatus |  expectedMessage                            |
-      | Itisaverylongusernameforuser123                 | 400            | Username cannot be more than 30 characters. |
-      | Itisaverylongusernameforausertobeselectedoneff  | 400            | Username cannot be more than 30 characters. |  
+      | username                                        | expectedStatus |  expectedMessage                                                 |
+      | Itisaverylongusernameforuser123                 | 400            | Username cannot be more than 30 characters.                      |
+      | Itisaverylongusernameforausertobeselectedoneff  | 400            | Username cannot be more than 30 characters.                      |
+      | !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  | 400            | can only contain letters, numbers, underscores, hyphens and dots |
+      | ..............................................  | 400            | Username cannot be more than 30 characters.                      |
+      | ----------------------------------------------  | 400            | Username cannot be more than 30 characters.                      |

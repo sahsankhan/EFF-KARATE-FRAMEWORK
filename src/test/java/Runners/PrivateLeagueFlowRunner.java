@@ -5,7 +5,7 @@ import com.intuit.karate.junit5.Karate;
 /**
  * Private League Flow Runner - Complete end-to-end flow for private league testing
  * 
- * Flow: Auth Setup → User Management → Private League Creation → Second User → Private League Join
+ * Flow: Auth Setup → User Management → Private League Creation → Second User → Private League Join → Leave League
  * 
  * Use this runner when you want to test the complete private league journey
  */
@@ -36,7 +36,10 @@ public class PrivateLeagueFlowRunner {
             // Step 6: Private League Join (Second user joins via invite code)
             "classpath:Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature",
 
-            // Step 7: Cleanup (Deletes test user and all associated data)
+            // Step 7: Leave Private League (Second user leaves the private league)
+            "classpath:Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature",
+
+            // Step 8: Cleanup (Deletes test user and all associated data)
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"
         )
         .configDir("file:src/test")

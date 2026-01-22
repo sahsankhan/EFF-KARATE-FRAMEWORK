@@ -206,8 +206,10 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName                                                 | expectedStatus | expectedMessage                           |
-      | This is a very long league name that exceeds fifty chars   | 400            | League name cannot exceed 50 characters   |
+      | leagueName                                                 | expectedStatus | expectedMessage                                                                                  |
+      | This is a very long league name that exceeds fifty chars   | 400            | League name cannot exceed 50 characters                                                          |
+      | !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot.   |
+      | --------------------------------------------------------   | 400            | League name cannot exceed 50 characters                                                          |
 
   @invalid_league_name_characters
   Scenario Outline: CheckBlitzLeagueName fails when league name contains invalid characters
@@ -227,7 +229,7 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | leagueName        | expectedStatus | expectedMessage                                                                              |
+      | leagueName        | expectedStatus | expectedMessage                                                                                |
       | League@Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
       | League#Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
       | League$Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |

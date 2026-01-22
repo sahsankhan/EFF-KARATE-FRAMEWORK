@@ -191,8 +191,10 @@ Feature: EFF Data - Check Exchange Team Name API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | teamName                                               | leagueId      | expectedStatus | expectedMessage                        |
-      | This is a very long team name that exceeds fifty chars | 1             | 400            | Team name cannot exceed 50 characters  |
+      | teamName                                               | leagueId      | expectedStatus | expectedMessage                                                                               |
+      | This is a very long team name that exceeds fifty chars | 1             | 400            | Team name cannot exceed 50 characters                                                         |
+      | !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! | 1             | 400            | Team name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot.  |
+      | ------------------------------------------------------ | 1             | 400            | Team name cannot exceed 50 characters                                                         |
 
   @invalid_team_name_characters
   Scenario Outline: CheckExchangeTeamName fails when team name contains invalid characters
@@ -212,7 +214,7 @@ Feature: EFF Data - Check Exchange Team Name API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | teamName        | leagueId      | expectedStatus | expectedMessage                                                                            |
+      | teamName        | leagueId      | expectedStatus | expectedMessage                                                                              |
       | Team@Name       | 1             | 400            | Team name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
       | Team#Name       | 1             | 400            | Team name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
       | Team$Name       | 1             | 400            | Team name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |

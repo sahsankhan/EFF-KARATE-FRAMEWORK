@@ -31,7 +31,7 @@ public class PublicLeagueFlowRunner {
             "classpath:Features/eff-data/blitzLeagues/getHomePagePublicExtremeLeagues.feature",
             "classpath:Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature",
             "classpath:Features/eff-data/blitzLeagues/getBlitzLeague.feature",
-            "classpath:Features/eff-data/blitzLeagues/leaveBlitzLeague.feature",
+            "classpath:Features/eff-data/blitzLeagues/leavePublicBlitzLeague.feature",
 
             // Step 5: Cleanup (Deletes test user and all associated data)
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"

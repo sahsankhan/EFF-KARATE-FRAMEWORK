@@ -32,12 +32,13 @@ class TestRunner {
             "classpath:Features/eff-data/blitzLeagues/getHomePagePublicExtremeLeagues.feature",
             "classpath:Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature",
             "classpath:Features/eff-data/blitzLeagues/getBlitzLeague.feature",
-            "classpath:Features/eff-data/blitzLeagues/leaveBlitzLeague.feature",
+            "classpath:Features/eff-data/blitzLeagues/leavePublicBlitzLeague.feature",
 
             // Private Blitz League Module Tests 
              "classpath:Features/eff-data/blitzLeagues/createBlitzLeague.feature",
              "classpath:helpers/createSecondUser.feature",
              "classpath:Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature",
+             "classpath:Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature",
 
             // Cleanup Module (Run Last - Deletes test user and all associated data)
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"

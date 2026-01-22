@@ -280,13 +280,14 @@ Feature: User Management - Update User API Automation
 
     Examples:
      | token     | first_name                                              | expectedStatus | expectedMessage                                                                                       |
-     | existing  | 12345                                                   | 400            | 'First name must contain at least one letter.'                                                        |
      | existing  | ---                                                     | 400            | 'First name must contain at least one letter.'                                                        |
-     | existing  | A@                                                      | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
-     | existing  | A!                                                      | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
-     | existing  | A.                                                      | 400            | 'Invalid first name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
+     | existing  | 12345                                                   | 400            | 'Invalid first name! First name can only contain letters, spaces, hyphens or apostrophes.'                                                        |
+     | existing  | A@                                                      | 400            | 'Invalid first name! First name can only contain letters, spaces, hyphens or apostrophes.'            |
+     | existing  | A!                                                      | 400            | 'Invalid first name! First name can only contain letters, spaces, hyphens or apostrophes.'            |
+     | existing  | A.                                                      | 400            | 'Invalid first name! First name can only contain letters, spaces, hyphens or apostrophes.'            |
      | existing  | Itisaverylongfirstnameofusertobeenteredinsignuppayl     | 400            | 'First name cannot be more than 50 characters.'                                                       |
      | existing  | Itisaverylongfirstnameofusertobeenteredinsignuppayload  | 400            | 'First name cannot be more than 50 characters.'                                                       |
+     | existing  | !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  | 400            | 'Invalid first name! First name can only contain letters, spaces, hyphens or apostrophes.'            |
 
   @invalid_last_name_structure
   Scenario Outline: UpdateUser fails with invalid last name structure
@@ -309,13 +310,14 @@ Feature: User Management - Update User API Automation
 
     Examples:
      | token     | last_name                                               | expectedStatus | expectedMessage                                                                                      |
-     | existing  | 12345                                                   | 400            | 'Last name must contain at least one letter.'                                                        |
      | existing  | ---                                                     | 400            | 'Last name must contain at least one letter.'                                                        |
-     | existing  | A@                                                      | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
-     | existing  | A!                                                      | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
-     | existing  | A.                                                      | 400            | 'Invalid last name! Must contain at least 1 letter and may include spaces, hyphens or apostrophes.'  |
+     | existing  | 12345                                                   | 400            | 'Invalid last name! Last name can only contain letters, spaces, hyphens or apostrophes.'             |
+     | existing  | A@                                                      | 400            | 'Invalid last name! Last name can only contain letters, spaces, hyphens or apostrophes.'             |
+     | existing  | A!                                                      | 400            | 'Invalid last name! Last name can only contain letters, spaces, hyphens or apostrophes.'             |
+     | existing  | A.                                                      | 400            | 'Invalid last name! Last name can only contain letters, spaces, hyphens or apostrophes.'             |
      | existing  | Itisaverylonglastnameofusertobeenteredinsignuppaylo     | 400            | 'Last name cannot be more than 50 characters.'                                                       |
      | existing  | Itisaverylonglastnameofusertobeenteredinsignuppayload   | 400            | 'Last name cannot be more than 50 characters.'                                                       |
+     | existing  | !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  | 400            | 'Invalid last name! Last name can only contain letters, spaces, hyphens or apostrophes.'             |
 
   @invalid_user_name_structure
   Scenario Outline: UpdateUser fails with invalid username structure
@@ -345,6 +347,8 @@ Feature: User Management - Update User API Automation
      | existing  | A@@                             | 400            | 'can only contain letters, numbers, underscores, hyphens and dots'  |
      | existing  | A!!                             | 400            | 'can only contain letters, numbers, underscores, hyphens and dots'  |
      | existing  | Itisaverylongusernameforuser123 | 400            | 'Username cannot be more than 30 characters.'                       |
+     | existing  | ............................... | 400            | 'Username cannot be more than 30 characters.'                       |
+     | existing  | !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! | 400            | 'can only contain letters, numbers, underscores, hyphens and dots'  |
 
   @invalid_address_structure
   Scenario Outline: UpdateUser fails with invalid address structure
@@ -408,6 +412,7 @@ Feature: User Management - Update User API Automation
      | existing  |  abcd-ef-gh   | 400            | 'Invalid date format. Use YYYY-MM-DD.'                                      |
      | existing  |  20199912     | 400            | 'Invalid date format. Use YYYY-MM-DD.'                                      |
      | existing  |  20000222     | 400            | 'Invalid date format. Use YYYY-MM-DD.'                                      |
+
   @invalid_profile_picture_structure
   Scenario Outline: UpdateUser fails with invalid profile picture structure
     # PREREQUISITE CHECK: Ensure access token exists
