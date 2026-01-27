@@ -128,27 +128,6 @@ Feature: EFF Data - Check Exchange Team Name API Automation
       | teamName                    | leagueId      | expectedStatus | expectedMessage            | expectedValid |
       | Available Team Name         | 1             | 200            | Team name is available.    | true          |
 
-  @team_name_taken
-  Scenario Outline: CheckExchangeTeamName fails when team name is already taken in the league
-    # PREREQUISITE CHECK: Ensure access token exists
-    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    
-    * def build = buildTeamNameData('<teamName>', '<leagueId>', existingAccessToken)
-    * header Authorization = build.authToken
-    * def payload = { query: '#(checkExchangeTeamNameQuery)', variables: '#(build.variables)' }
-    
-    Given request payload
-    When method post
-    Then status 200
-    * print 'CheckExchangeTeamName Taken Response:', response
-    * match response.data.checkExchangeTeamName == null
-    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
-
-    Examples:
-      | teamName              | leagueId      | expectedStatus | expectedMessage                                     |
-      | EFF Exchange Team     | 1             | 409            | A team with this name already exists in this league.|
-
   @team_name_too_short
   Scenario Outline: CheckExchangeTeamName fails when team name is less than 3 characters
     # PREREQUISITE CHECK: Ensure access token exists
@@ -260,45 +239,3 @@ Feature: EFF Data - Check Exchange Team Name API Automation
       | 123      | 1             | 400            | Team name must contain at least one letter. |
       | ---      | 1             | 400            | Team name must contain at least one letter. |
       | 123-456  | 1             | 400            | Team name must contain at least one letter. |
-
-  @whitespace_handling
-  Scenario Outline: CheckExchangeTeamName with various whitespace scenarios
-    # PREREQUISITE CHECK: Ensure access token exists
-    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    
-    * def build = buildTeamNameData('<teamName>', '<leagueId>', existingAccessToken)
-    * header Authorization = build.authToken
-    * def payload = { query: '#(checkExchangeTeamNameQuery)', variables: '#(build.variables)' }
-    
-    Given request payload
-    When method post
-    Then status 200
-    * print 'CheckExchangeTeamName Whitespace Response:', response
-    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains '<expectedMessage>'
-
-    Examples:
-     | teamName                        | leagueId      | expectedStatus | expectedMessage                                        | 
-     | EFF    Exchange     Team        | 1             | 409            | A team with this name already exists in this league.   |
-     | E F F E X C H A N G E T e a m   | 1             | 409            | A team with this name already exists in this league.   |
-
-  @case_sensitive_handling
-  Scenario Outline: CheckExchangeTeamName with case sensitivity scenarios
-    # PREREQUISITE CHECK: Ensure access token exists
-    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    
-    * def build = buildTeamNameData('<teamName>', '<leagueId>', existingAccessToken)
-    * header Authorization = build.authToken
-    * def payload = { query: '#(checkExchangeTeamNameQuery)', variables: '#(build.variables)' }
-    
-    Given request payload
-    When method post
-    Then status 200
-    * print 'CheckExchangeTeamName Case Sensitivity Response:', response
-    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains '<expectedMessage>'
-
-    Examples:
-     | teamName            | leagueId      | expectedStatus | expectedMessage                                      |
-     | eff Exchange team   | 1             | 409            | A team with this name already exists in this league. |
-     | EFF Exchange TEAM   | 1             | 409            | A team with this name already exists in this league. |

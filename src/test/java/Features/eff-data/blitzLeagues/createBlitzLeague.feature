@@ -209,8 +209,10 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName                                                 | leagueImage  | expectedStatus | expectedMessage                           |
-      | This is a very long league name that exceeds fifty chars   | icon_bull    | 400            | League name cannot exceed 50 characters   |
+      | leagueName                                                 | leagueImage  | expectedStatus | expectedMessage                                                                                  |
+      | This is a very long league name that exceeds fifty chars   | icon_bull    | 400            | League name cannot exceed 50 characters                                                          |
+      | !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot.   |
+      | --------------------------------------------------------   | icon_bull    | 400            | League name cannot exceed 50 characters                                                          |
 
   @invalid_league_name_characters
   Scenario Outline: CreateBlitzLeague fails when league name contains invalid characters
@@ -230,7 +232,7 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | leagueName        | leagueImage  | expectedStatus | expectedMessage                                                                              |
+      | leagueName        | leagueImage  | expectedStatus | expectedMessage                                                                                |
       | League@Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
       | League#Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
       | League$Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |

@@ -30,10 +30,16 @@ public class PublicLeagueFlowRunner {
             // Step 4: Public League Flow (Main Test Focus)
             "classpath:Features/eff-data/blitzLeagues/getHomePagePublicExtremeLeagues.feature",
             "classpath:Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature",
+            
+            // Step 5: Blitz Team Operations
+            "classpath:Features/eff-data/blitzTeams/createBlitzTeam.feature",
+            "classpath:Features/eff-data/blitzTeams/checkBlitzTeamName.feature",
+            
+            // Step 6: Continue League Operations
             "classpath:Features/eff-data/blitzLeagues/getBlitzLeague.feature",
             "classpath:Features/eff-data/blitzLeagues/leavePublicBlitzLeague.feature",
 
-            // Step 5: Cleanup (Deletes test user and all associated data)
+            // Step 7: Cleanup (Deletes test user and all associated data)
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"
         )
         .configDir("file:src/test")

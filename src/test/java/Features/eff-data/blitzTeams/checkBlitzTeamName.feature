@@ -146,8 +146,8 @@ Feature: EFF Data - Check Blitz Team Name API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | teamName              | leagueId      | expectedStatus | expectedMessage                                     |
-      | EFF Blitz Team        | 1             | 409            | A team with this name already exists in this league.|
+      | teamName                                     | leagueId      | expectedStatus | expectedMessage                                     |
+      | Personal Blitz Team For Testing Automation   | 1             | 409            | A team with this name already exists in this league.|
 
   @team_name_too_short
   Scenario Outline: CheckBlitzTeamName fails when team name is less than 3 characters
@@ -278,9 +278,10 @@ Feature: EFF Data - Check Blitz Team Name API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-     | teamName                  | leagueId      | expectedStatus | expectedMessage                                         | 
-     | EFF    Blitz     Team     | 1             | 409            | A team with this name already exists in this league.    |
-     | E F F B l i t z T e a m   | 1             | 409            | A team with this name already exists in this league.    |
+     | teamName                                            | leagueId      | expectedStatus | expectedMessage                                         | 
+     | PERSONALBLITZTEAMFORTESTINGAUTOMATION               | 1             | 409            | A team with this name already exists in this league.    |
+     | PERSONAL    BLITZTEAM FOR    TESTINGAUTOMATION      | 1             | 409            | A team with this name already exists in this league.    |
+     | PER SONAL BLITZ  TEAM FOR  TEST  ING  AUTO  MATION  | 1             | 409            | A team with this name already exists in this league.    |
 
   @case_sensitive_handling
   Scenario Outline: CheckBlitzTeamName with case sensitivity scenarios
@@ -299,6 +300,7 @@ Feature: EFF Data - Check Blitz Team Name API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-     | teamName         | leagueId      | expectedStatus | expectedMessage                                       |
-     | eff blitz team   | 1             | 409            | A team with this name already exists in this league.  |
-     | EFF BLITZ TEAM   | 1             | 409            | A team with this name already exists in this league.  |
+     | teamName                                    | leagueId      | expectedStatus | expectedMessage                                       |
+     | PERSONAL BLITZ TEAM FOR TESTING AUTOMATION  | 1             | 409            | A team with this name already exists in this league.  |
+     | personal blitz team for testing automation  | 1             | 409            | A team with this name already exists in this league.  |
+     | pERsonAl bLiTz tEaM fOr teStiNg auTomAtIoN  | 1             | 409            | A team with this name already exists in this league.  |
