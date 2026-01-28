@@ -1,0 +1,37 @@
+query GetBlitzTeams {
+  getBlitzTeams {
+    statusCode
+    teams {
+      _id
+      Team_Name
+      Team_Image
+      League_ID
+      Owner_Email
+      Owner_ID
+      Rank
+      Total_Points
+      Total_Wins
+      Weekly_Points
+      Weekly_Wins
+      owner {
+        id
+        username
+        profile_picture
+      }
+      league_details {
+        League_Name
+        Game_Type
+        League_Type
+        Public
+        Members
+      }
+      sys_dateCreated
+      sys_dateModified
+      sys_deleted
+      sys_userCreated_id
+      sys_userCreatedName
+      sys_userModified_id
+      sys_userModifiedName
+    }
+  }
+}

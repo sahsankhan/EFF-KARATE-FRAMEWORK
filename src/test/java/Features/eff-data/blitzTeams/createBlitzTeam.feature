@@ -130,9 +130,10 @@ Feature: EFF Data - Create Blitz Team API Automation
     * match response.data.createBlitzTeam.Team_ID == '#present'
     * match response.data.createBlitzTeam.Team_ID == '#notnull'
     
-    # Save Team_ID to info file for subsequent tests
+    # Save Team_ID and Team_Name to info file for subsequent tests
     * def createdTeamId = response.data.createBlitzTeam.Team_ID
-    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremeBlitzLeagueId: signUpInfo.extremeBlitzLeagueId, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzTeamId: createdTeamId }, 'target/info.txt')
+    * def createdTeamName = '<teamName>'
+    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremeBlitzLeagueId: signUpInfo.extremeBlitzLeagueId, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzTeamId: createdTeamId, privateBlitzTeamName: createdTeamName }, 'target/info.txt')
 
     Examples:
       | teamName                                      | teamImage     | leagueId                      | expectedStatus | expectedMessage                       |

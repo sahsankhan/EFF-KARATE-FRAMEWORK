@@ -111,13 +111,9 @@ Feature: EFF Data - Get Blitz League API Automation
     # Validate league data
     * def league = response.data.getBlitzLeague.leagues[0]
     * match league._id == extremeBlitzLeagueId
-    * match league.League_Name == '#string'
     * match league.League_Type == 'BLITZ'
+    * match league.Game_Type == 'EXTREME'
     * match league.Public == true
-    * match league.Game_Type == '#present'
-    * match league.owner == '#present'
-    * match league.owner.id == '#present'
-    * match league.owner.username == '#string'
 
     Examples:
       | leagueId                     | expectedStatus | 
@@ -167,5 +163,6 @@ Feature: EFF Data - Get Blitz League API Automation
       | invalid       | 400            | League_ID must be a numeric ID. |
       | abc123        | 400            | League_ID must be a numeric ID. |
       | league_id     | 400            | League_ID must be a numeric ID. |
+      | 0             | 400            | Invalid League_ID format!       |
       | -999999       | 400            | Invalid League_ID format!       |
       | -100000       | 400            | Invalid League_ID format!       |

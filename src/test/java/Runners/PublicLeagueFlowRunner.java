@@ -34,6 +34,8 @@ public class PublicLeagueFlowRunner {
             // Step 5: Blitz Team Operations
             "classpath:Features/eff-data/blitzTeams/createBlitzTeam.feature",
             "classpath:Features/eff-data/blitzTeams/checkBlitzTeamName.feature",
+            "classpath:Features/eff-data/blitzTeams/getBlitzTeam.feature",
+            "classpath:Features/eff-data/blitzTeams/getBlitzTeams.feature",
             
             // Step 6: Continue League Operations
             "classpath:Features/eff-data/blitzLeagues/getBlitzLeague.feature",
