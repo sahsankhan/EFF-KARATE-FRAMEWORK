@@ -7,10 +7,12 @@ Feature: EFF Data - Leave Blitz League API Automation
     * header x-api-key = apiKey
     * def leaveBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/leaveBlitzLeague.graphql')
     * def getBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/getBlitzLeague.graphql')
+    * def getHomePagePublicExtremeLeaguesQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/getHomePagePublicExtremeLeagues.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
     * def extremeBlitzLeagueId = karate.get('signUpInfo.extremeBlitzLeagueId', null)
+    * def currentBlitzMemberCount = karate.get('signUpInfo.currentBlitzMemberCount', null)
     * def buildLeagueData =
       """
       function(leagueId, existingAccessToken) {
@@ -92,10 +94,14 @@ Feature: EFF Data - Leave Blitz League API Automation
       | existingPublicBlitzLeagueId   | invalid.token.string              | 401            | Invalid token   |
 
   @happy_path
-  Scenario Outline: LeaveBlitzLeague succeeds with valid league ID and verifies member is removed
+  Scenario Outline: LeaveBlitzLeague complete flow - leave, verify permissions removed, and member count decreased
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
     * if (extremeBlitzLeagueId == null) karate.abort()
+    
+    # Log member count before leaving for tracking
+    * if (currentBlitzMemberCount != null) karate.log('Member count before leaving:', currentBlitzMemberCount)
+    * if (currentBlitzMemberCount != null) karate.log('Expected member count after leaving:', currentBlitzMemberCount - 1)
     
     # Step 1: Leave the league
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
@@ -123,6 +129,35 @@ Feature: EFF Data - Leave Blitz League API Automation
     * match response.data.getBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == 403
     * match response.errors[0].message contains 'You do not have permission to view this league'
+
+    # Step 3: Verify member count is decremented by fetching public leagues again
+    * def getLeaguesPayload = { query: '#(getHomePagePublicExtremeLeaguesQuery)' }
+    * header Accept = 'application/json'
+    * header Content-Type = 'application/json'
+    * header x-api-key = apiKey
+    * header Authorization = build.authToken
+
+    Given request getLeaguesPayload
+    When method post
+    Then status 200
+    * print 'GetHomePagePublicExtremeLeagues After Leave Response:', response
+    
+    # Validate response structure
+    * match response.data.getHomePagePublicExtremeLeagues.statusCode == 200
+    * match response.data.getHomePagePublicExtremeLeagues.blitz_league == '#present'
+    
+    # Find the league user just left and verify member count decreased
+    * def blitzLeague = response.data.getHomePagePublicExtremeLeagues.blitz_league
+    * match blitzLeague._id == extremeBlitzLeagueId
+    * match blitzLeague.Members == '#number'
+    
+    * def memberCountAfterLeave = blitzLeague.Members
+    * print 'Member count after leaving:', memberCountAfterLeave
+    
+    # Verify member count decreased by exactly 1
+    * if (currentBlitzMemberCount != null) karate.log('Before leave:', currentBlitzMemberCount)
+    * if (currentBlitzMemberCount != null) karate.log('After leave:', memberCountAfterLeave)
+    * if (currentBlitzMemberCount != null && memberCountAfterLeave != currentBlitzMemberCount - 1) karate.fail('Member count should have decreased by 1 after leaving. Before=' + currentBlitzMemberCount + ', After=' + memberCountAfterLeave)
 
     Examples:
       | leagueId                      | expectedStatus | expectedMessage                                 |

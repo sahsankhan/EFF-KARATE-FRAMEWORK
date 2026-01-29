@@ -1,43 +1,49 @@
-Feature: EFF Data - Get Blitz League API Automation
+Feature: EFF Data - Get Blitz Teams by League API Automation
 
   Background:
     * url baseUrl
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def getBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/getBlitzLeague.graphql')
+    * def getBlitzTeamsByLeagueQuery = read('classpath:resources/graphql/eff-data/blitzTeams/getBlitzTeamsByLeague.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
     * def extremeBlitzLeagueId = karate.get('signUpInfo.extremeBlitzLeagueId', null)
-    * def initialBlitzMemberCount = karate.get('signUpInfo.initialBlitzMemberCount', null)
+    * def privateBlitzTeamId = karate.get('signUpInfo.privateBlitzTeamId', null)
+    * def privateBlitzTeamName = karate.get('signUpInfo.privateBlitzTeamName', null)
     * def buildLeagueData =
       """
       function(leagueId, existingAccessToken) {
         var idValue = leagueId;
+        
+        // Handle special keywords for dynamic values
         if (idValue === 'null') idValue = null;
         if (idValue === 'existingPublicBlitzLeagueId') idValue = extremeBlitzLeagueId;
+        
+        // Convert numeric strings to numbers
         if (!isNaN(idValue) && idValue !== '' && idValue !== null) {
           idValue = Number(idValue);
         }
+        
         return { authToken: existingAccessToken, variables: { League_ID: idValue } };
       }
       """
 
   @missing_authorization_header
-  Scenario Outline: GetBlitzLeague fails when Authorization header is missing
-    # PREREQUISITE CHECK: Ensure league ID exist
+  Scenario Outline: GetBlitzTeamsByLeague fails when Authorization header is missing
+    # PREREQUISITE CHECK: Ensure league ID exists
     * if (extremeBlitzLeagueId == null) karate.abort()
 
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     # Do not set Authorization header
-    * def payload = { query: '#(getBlitzLeagueQuery)', variables: '#(build.variables)' }
+    * def payload = { query: '#(getBlitzTeamsByLeagueQuery)', variables: '#(build.variables)' }
     
     Given request payload
     When method post
     Then status 200
-    * print 'GetBlitzLeague Missing Token Response:', response
-    * match response.data.getBlitzLeague == null
+    * print 'GetBlitzTeamsByLeague Missing Token Response:', response
+    * match response.data.getBlitzTeamsByLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
     * match response.errors[0].message contains '<expectedMessage>'
 
@@ -46,20 +52,21 @@ Feature: EFF Data - Get Blitz League API Automation
       | existingPublicBlitzLeagueId  | 400            | Missing token in header |
 
   @expired_token
-  Scenario Outline: GetBlitzLeague fails with expired token
-    # PREREQUISITE CHECK: Ensure league ID exist
+  Scenario Outline: GetBlitzTeamsByLeague fails with expired token
+    # PREREQUISITE CHECK: Ensure league ID exists
     * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (privateBlitzTeamId == null) karate.abort()
 
     * def expiredToken = '<expiredToken>'
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = expiredToken
-    * def payload = { query: '#(getBlitzLeagueQuery)', variables: '#(build.variables)' }
+    * def payload = { query: '#(getBlitzTeamsByLeagueQuery)', variables: '#(build.variables)' }
     
     Given request payload
     When method post
     Then status 200
-    * print 'GetBlitzLeague Expired Token Response:', response
-    * match response.data.getBlitzLeague == null
+    * print 'GetBlitzTeamsByLeague Expired Token Response:', response
+    * match response.data.getBlitzTeamsByLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
     * match response.errors[0].message == '<expectedMessage>'
 
@@ -68,20 +75,21 @@ Feature: EFF Data - Get Blitz League API Automation
       | existingPublicBlitzLeagueId | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |
 
   @invalid_token
-  Scenario Outline: GetBlitzLeague fails with invalid or corrupted token
-    # PREREQUISITE CHECK: Ensure league ID exist
+  Scenario Outline: GetBlitzTeamsByLeague fails with invalid or corrupted token
+    # PREREQUISITE CHECK: Ensure league ID exists
     * if (extremeBlitzLeagueId == null) karate.abort()
+    * if(privateBlitzTeamId == null) karate.abort()
 
     * def invalidToken = '<invalidToken>'
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = invalidToken
-    * def payload = { query: '#(getBlitzLeagueQuery)', variables: '#(build.variables)' }
+    * def payload = { query: '#(getBlitzTeamsByLeagueQuery)', variables: '#(build.variables)' }
     
     Given request payload
     When method post
     Then status 200
-    * print 'GetBlitzLeague Invalid Token Response:', response
-    * match response.data.getBlitzLeague == null
+    * print 'GetBlitzTeamsByLeague Invalid Token Response:', response
+    * match response.data.getBlitzTeamsByLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
     * match response.errors[0].message == '<expectedMessage>'
 
@@ -92,59 +100,64 @@ Feature: EFF Data - Get Blitz League API Automation
       | existingPublicBlitzLeagueId  | Bearer invalidtoken123            | 401            | Invalid token   |
 
   @happy_path
-  Scenario Outline: GetBlitzLeague succeeds with valid league ID and verifies member count increment
-    # PREREQUISITE CHECK: Ensure access token and league ID exist
+  Scenario Outline: GetBlitzTeamsByLeague successfully retrieves all teams in the league
+    # PREREQUISITE CHECK: Ensure access token, league ID, and team ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
     * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (privateBlitzTeamId == null) karate.abort()
     
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
-    * def payload = { query: '#(getBlitzLeagueQuery)', variables: '#(build.variables)' }
+    * def payload = { query: '#(getBlitzTeamsByLeagueQuery)', variables: '#(build.variables)' }
     
     Given request payload
     When method post
     Then status 200
-    * print 'GetBlitzLeague Valid ID Response:', response
-    * match response.data.getBlitzLeague.statusCode == <expectedStatus>
-    * match response.data.getBlitzLeague.leagues == '#array'
-    * match response.data.getBlitzLeague.leagues[0] == '#present'
+    * print 'GetBlitzTeamsByLeague Success Response:', response
+    * match response.data.getBlitzTeamsByLeague.statusCode == <expectedStatus>
+    * match response.data.getBlitzTeamsByLeague.teams == '#array'
+    * match response.data.getBlitzTeamsByLeague.teams == '#notnull'
     
-    # Validate league data
-    * def league = response.data.getBlitzLeague.leagues[0]
-    * match league._id == extremeBlitzLeagueId
-    * match league.League_Type == 'BLITZ'
-    * match league.Game_Type == 'EXTREME'
-    * match league.Public == true
+    # Validate that teams array is not empty
+    * def teamsCount = response.data.getBlitzTeamsByLeague.teams.length
+    * assert teamsCount > 0
+    * print 'Total Teams in League:', teamsCount
     
-    # Verify member count increased after user joined and created team
-    * def currentMemberCount = league.Members
-    * print 'Current Member Count:', currentMemberCount
+    # Find the user's created team in the league results
+    * def userTeam = karate.filter(response.data.getBlitzTeamsByLeague.teams, function(team){ return team._id == privateBlitzTeamId + '' })
+    * assert userTeam.length == 1
+    * print 'Found User Created Team in League:', userTeam[0]
     
-    * if (initialBlitzMemberCount != null && currentMemberCount <= initialBlitzMemberCount) karate.fail('Member count should have increased after joining. Before=' + initialBlitzMemberCount + ', After=' + currentMemberCount)
+    # Validate the user's team data
+    * def team = userTeam[0]
+    * match team._id == privateBlitzTeamId + ''
+    * match team.Team_Name == privateBlitzTeamName
+    * match team.League_ID == extremeBlitzLeagueId
+    * match team.Owner_Email == signUpInfo.email
     
-    # Save current member count for leave verification
-    * def updatedInfo = signUpInfo
-    * updatedInfo.currentBlitzMemberCount = currentMemberCount
-    * karate.write(updatedInfo, 'target/info.txt')
+    # Validate league details
+    * match team.league_details == '#present'
+    * match team.league_details.Game_Type == 'EXTREME'
+    * match team.league_details.League_Type == 'BLITZ'
 
     Examples:
       | leagueId                     | expectedStatus | 
       | existingPublicBlitzLeagueId  | 200            | 
 
-  @league_id_not_found
-  Scenario Outline: GetBlitzLeague fails with invalid league ID
+  @league_not_found
+  Scenario Outline: GetBlitzTeamsByLeague fails when league ID does not exist
     # PREREQUISITE CHECK: Ensure access token exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
     
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
-    * def payload = { query: '#(getBlitzLeagueQuery)', variables: '#(build.variables)' }
+    * def payload = { query: '#(getBlitzTeamsByLeagueQuery)', variables: '#(build.variables)' }
     
     Given request payload
     When method post
     Then status 200
-    * print 'GetBlitzLeague Invalid ID Response:', response
-    * match response.data.getBlitzLeague == null
+    * print 'GetBlitzTeamsByLeague League Not Found Response:', response
+    * match response.data.getBlitzTeamsByLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
     * match response.errors[0].message contains '<expectedMessage>'
 
@@ -152,29 +165,30 @@ Feature: EFF Data - Get Blitz League API Automation
       | leagueId | expectedStatus | expectedMessage                 |
       | 999999   | 404            | League not found or deleted     |
       | 100000   | 404            | League not found or deleted     |
+      | 888888   | 404            | League not found or deleted     |
 
   @invalid_league_id
-  Scenario Outline: GetBlitzLeague with string league ID
+  Scenario Outline: GetBlitzTeamsByLeague fails with invalid league ID format
     # PREREQUISITE CHECK: Ensure access token exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
     
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
-    * def payload = { query: '#(getBlitzLeagueQuery)', variables: '#(build.variables)' }
+    * def payload = { query: '#(getBlitzTeamsByLeagueQuery)', variables: '#(build.variables)' }
     
     Given request payload
     When method post
     Then status 200
-    * print 'GetBlitzLeague String ID Response:', response
-    * match response.data.getBlitzLeague == null
+    * print 'GetBlitzTeamsByLeague Invalid League ID Response:', response
+    * match response.data.getBlitzTeamsByLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
       | leagueId      | expectedStatus | expectedMessage                 |
-      | invalid       | 400            | League_ID must be a numeric ID. |
-      | abc123        | 400            | League_ID must be a numeric ID. |
-      | league_id     | 400            | League_ID must be a numeric ID. |
-      | 0             | 400            | Invalid League_ID format!       |
-      | -999999       | 400            | Invalid League_ID format!       |
-      | -100000       | 400            | Invalid League_ID format!       |
+      | invalid       | 400            | League_ID must be a numeric ID  |
+      | abc123        | 400            | League_ID must be a numeric ID  |
+      | league_id     | 400            | League_ID must be a numeric ID  |
+      | 0             | 400            | Invalid League_ID format        |
+      | -999999       | 400            | Invalid League_ID format        |
+      | -100000       | 400            | Invalid League_ID format        |

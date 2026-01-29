@@ -127,10 +127,12 @@ Feature: EFF Data - Get Home Page Public Extreme Leagues API Automation
     * eval if (isExchangeLeaguesAvailable) karate.match(exchangeLeagues.Game_Type, 'EXTREME') 
     * eval if (isExchangeLeaguesAvailable) karate.match(exchangeLeagues.League_Type, 'EXCHANGE')  
     
-    # Save EXTREME Blitz League ID for subsequent tests 
+    # Save EXTREME Blitz League ID and initial member count for subsequent tests 
     * def extremeBlitzLeague = isBlitzLeaguesAvailable ? blitzLeagues : null
     * def extremeBlitzLeagueId = extremeBlitzLeague != null ? extremeBlitzLeague._id : null
+    * def initialBlitzMemberCount = extremeBlitzLeague != null && extremeBlitzLeague.Members != null ? extremeBlitzLeague.Members : null
     * if (extremeBlitzLeagueId != null) karate.log('Saved EXTREME Blitz League ID:', extremeBlitzLeagueId)
+    * if (initialBlitzMemberCount != null) karate.log('Initial Blitz League Member Count:', initialBlitzMemberCount)
     * if (isActiveSeason && extremeBlitzLeagueId == null) karate.log('No EXTREME blitz league found in public leagues')
     
     # Save EXTREME Exchange League ID for subsequent tests 
@@ -139,9 +141,10 @@ Feature: EFF Data - Get Home Page Public Extreme Leagues API Automation
     * if (extremeExchangeLeagueId != null) karate.log(' Found EXTREME Exchange League ID:', extremeExchangeLeagueId)
     * if (isActiveSeason && extremeExchangeLeagueId == null) karate.log('No EXTREME exchange league found in public leagues')
     
-    # Save BOTH league IDs together
+    # Save league IDs and initial member count together
     * def updatedInfo = signUpInfo
     * if (extremeBlitzLeagueId != null) updatedInfo.extremeBlitzLeagueId = extremeBlitzLeagueId
+    * if (initialBlitzMemberCount != null) updatedInfo.initialBlitzMemberCount = initialBlitzMemberCount
     * if (extremeExchangeLeagueId != null) updatedInfo.extremeExchangeLeagueId = extremeExchangeLeagueId
     * if (extremeBlitzLeagueId != null || extremeExchangeLeagueId != null) karate.write(updatedInfo, 'target/info.txt')
-    * if (extremeBlitzLeagueId != null || extremeExchangeLeagueId != null) karate.log('Saved league IDs to info file:', updatedInfo)
+    * if (extremeBlitzLeagueId != null || extremeExchangeLeagueId != null) karate.log('Saved league IDs and member count to info file:', updatedInfo)

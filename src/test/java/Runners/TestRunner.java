@@ -36,6 +36,7 @@ class TestRunner {
             "classpath:Features/eff-data/blitzTeams/checkBlitzTeamName.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeam.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeams.feature",
+            "classpath:Features/eff-data/blitzTeams/getBlitzTeamsByLeague.feature",
 
             // Continue League Operations
             "classpath:Features/eff-data/blitzLeagues/getBlitzLeague.feature",
