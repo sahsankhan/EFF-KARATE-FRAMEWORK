@@ -5,6 +5,7 @@ Feature: Verify Email API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
+    * def errorCodes = read('classpath:resources/common/error-codes.json')
     * def verifyEmailQuery = read('classpath:resources/graphql/auth/verifyEmail.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
@@ -53,11 +54,13 @@ Feature: Verify Email API Automation
     * print 'VerifyEmail API Response:', response
     * match response.data.verifyEmail == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | verifyKey | expectedStatus | expectedMessage             |
-      |           | 400            | Missing verification key.   |
+      | verifyKey | expectedStatus | expectedMessage             | expectedErrorCode   |
+      |           | 400            | Missing verification key.   | MISSING_VERIFY_KEY  |
 
   @already_verified
   Scenario Outline: Email verification fails when user is already verified
@@ -71,11 +74,13 @@ Feature: Verify Email API Automation
     * print 'VerifyEmail API Response:', response
     * match response.data.verifyEmail == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | verifyKey                            | expectedStatus | expectedMessage                       |
-      | TEST_BYPASS::userexample@gmail.com   | 409            | This email has already been verified. |
+      | verifyKey                            | expectedStatus | expectedMessage                       | expectedErrorCode     |
+      | TEST_BYPASS::userexample@gmail.com   | 409            | This email has already been verified. | USER_ALREADY_VERIFIED |
 
   @non_existing_user
   Scenario Outline: Email verification fails when user is not found
@@ -89,9 +94,11 @@ Feature: Verify Email API Automation
     * print 'VerifyEmail API Response:', response
     * match response.data.verifyEmail == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | verifyKey                                | expectedStatus | expectedMessage                         |
-      | TEST_BYPASS::nonexistinguser@example.com | 404            | Verification link invalid or expired.   |
+      | verifyKey                                | expectedStatus | expectedMessage                         | expectedErrorCode     |
+      | TEST_BYPASS::nonexistinguser@example.com | 404            | Verification link invalid or expired.   | INVALID_VERIFY_KEY    |
 

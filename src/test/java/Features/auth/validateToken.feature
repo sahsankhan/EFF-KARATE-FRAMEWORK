@@ -5,6 +5,7 @@ Feature: Validate Token API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
+    * def errorCodes = read('classpath:resources/common/error-codes.json')
     * def validateQuery = read('classpath:resources/graphql/auth/validateToken.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
@@ -49,11 +50,14 @@ Feature: Validate Token API Automation
     * print 'Validate Missing Token Response:', response
     * match response.data.validate == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
+
 
     Examples:
-      | token | expectedStatus | expectedMessage   |
-      |       | 400            | 'Missing token'   |
+      | token | expectedStatus | expectedMessage   | expectedErrorCode   |     
+      |       | 400            | Missing token     | MISSING_TOKEN       |
 
   @expired_token
   Scenario Outline: Validate fails with expired token
@@ -67,11 +71,14 @@ Feature: Validate Token API Automation
     * print 'Validate Expired Token Response:', response
     * match response.data.validate == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
+
 
     Examples:
-      | token                                                                                                                                                                       | expectedStatus | expectedMessage |      
-      | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | 'Expired token' |
+      | token                                                                                                                                                                       | expectedStatus | expectedMessage | expectedErrorCode   |      
+      | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   | EXPIRED_TOKEN       |
 
   @invalid_token
   Scenario Outline: Validate fails with invalid token
@@ -85,9 +92,11 @@ Feature: Validate Token API Automation
     * print 'Validate Invalid Token Response:', response
     * match response.data.validate == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | token                      | expectedStatus | expectedMessage  |
-      | malformed_or_invalid_token | 401            | 'Invalid token'  |
+      | token                      | expectedStatus | expectedMessage  | expectedErrorCode   |
+      | malformed_or_invalid_token | 401            | Invalid token    | INVALID_TOKEN       |
 

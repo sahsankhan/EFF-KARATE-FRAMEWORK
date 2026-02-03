@@ -5,6 +5,7 @@ Feature: User Management - Delete User Account By Email API Automation (Test Env
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
+    * def errorCodes = read('classpath:resources/common/error-codes.json')
     * def deleteUserQuery = read('classpath:resources/graphql/user-management/deleteUserAccountByEmail.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
@@ -41,11 +42,13 @@ Feature: User Management - Delete User Account By Email API Automation (Test Env
     * print 'DeleteUserAccountByEmail Missing Token Response:', response
     * match response.data.deleteUserAccountByEmail == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | token | email    | expectedStatus | expectedMessage           |
-      |       | existing | 400            | Missing token in header   |
+      | token | email    | expectedStatus | expectedMessage           |  expectedErrorCode   |
+      |       | existing | 400            | Missing token in header   |  MISSING_TOKEN       |
 
   @expired_token
   Scenario Outline: DeleteUserAccountByEmail fails with expired token
@@ -61,11 +64,13 @@ Feature: User Management - Delete User Account By Email API Automation (Test Env
     * print 'DeleteUserAccountByEmail Expired Token Response:', response
     * match response.data.deleteUserAccountByEmail == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | expiredToken                                                                                                                                                                | email    | expectedStatus | expectedMessage |
-      | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | existing | 401            | Expired token   |
+      | expiredToken                                                                                                                                                                | email    | expectedStatus | expectedMessage |  expectedErrorCode   | 
+      | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | existing | 401            | Expired token   |  EXPIRED_TOKEN       |
 
   @invalid_token
   Scenario Outline: DeleteUserAccountByEmail fails with invalid or corrupted token
@@ -81,13 +86,15 @@ Feature: User Management - Delete User Account By Email API Automation (Test Env
     * print 'DeleteUserAccountByEmail Invalid Token Response:', response
     * match response.data.deleteUserAccountByEmail == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | invalidToken                              | email    | expectedStatus | expectedMessage |
-      | invalid.token.string                      | existing | 401            | Invalid token   |
-      | random_corrupted_string_12345             | existing | 401            | Invalid token   |
-      | Bearer invalidtoken123                    | existing | 401            | Invalid token   |
+      | invalidToken                              | email    | expectedStatus | expectedMessage | expectedErrorCode   | 
+      | invalid.token.string                      | existing | 401            | Invalid token   | INVALID_TOKEN       |
+      | random_corrupted_string_12345             | existing | 401            | Invalid token   | INVALID_TOKEN       |
+      | Bearer invalidtoken123                    | existing | 401            | Invalid token   | INVALID_TOKEN       |
 
   @user_not_found
   Scenario Outline: DeleteUserAccountByEmail fails when user is not found
@@ -106,12 +113,14 @@ Feature: User Management - Delete User Account By Email API Automation (Test Env
     * print 'DeleteUserAccountByEmail User Not Found Response:', response
     * match response.data.deleteUserAccountByEmail == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | token    | email                         | expectedStatus | expectedMessage |
-      | existing | nonexisting@example.com       | 404            | User not found  |
-      | existing | deleteduser@example.com       | 404            | User not found  |
+      | token    | email                         | expectedStatus | expectedMessage | expectedErrorCode   | 
+      | existing | nonexisting@example.com       | 404            | User not found  | USER_NOT_FOUND      |
+      | existing | deleteduser@example.com       | 404            | User not found  | USER_NOT_FOUND      |
 
   @happy_path_delete_primary_user
   Scenario Outline: DeleteUserAccountByEmail succeeds with valid token and existing user email

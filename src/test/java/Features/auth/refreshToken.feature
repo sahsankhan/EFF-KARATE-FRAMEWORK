@@ -5,6 +5,7 @@ Feature: Refresh Token API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
+    * def errorCodes = read('classpath:resources/common/error-codes.json')
     * def refreshTokenQuery = read('classpath:resources/graphql/auth/refreshToken.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
@@ -54,11 +55,13 @@ Feature: Refresh Token API Automation
     * print 'RefreshToken Invalid Token Response:', response
     * match response.data.refreshToken == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | refreshToken               | expectedStatus | expectedMessage                      |
-      | corrupted_or_invalid_token | 401            | 'Invalid or corrupted refresh token' |
+      | refreshToken               | expectedStatus | expectedMessage                    |  expectedErrorCode    |    
+      | corrupted_or_invalid_token | 401            | Invalid or corrupted refresh token | INVALID_REFRESH_TOKEN |
 
   @missing_token
   Scenario Outline: Refresh fails when token is missing
@@ -72,11 +75,13 @@ Feature: Refresh Token API Automation
     * print 'RefreshToken Missing Token Response:', response
     * match response.data.refreshToken == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | refreshToken | expectedStatus | expectedMessage          |
-      |              | 400            | 'Missing refresh token'  |
+      | refreshToken | expectedStatus | expectedMessage        |  expectedErrorCode    |  
+      |              | 400            | Missing refresh token  | MISSING_REFRESH_TOKEN |
 
   @null_token
   Scenario Outline: Refresh fails when token is missing

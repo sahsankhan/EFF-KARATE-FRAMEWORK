@@ -5,6 +5,7 @@ Feature: Login API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
+    * def errorCodes = read('classpath:resources/common/error-codes.json')
     * def loginQuery = read('classpath:resources/graphql/auth/login.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
@@ -68,11 +69,13 @@ Feature: Login API Automation
     * print 'Login API Response:', response
     * match response.data.login == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | email    | password       | expectedStatus | expectedMessage              |
-      | existing | WrongPass@1234 | 401            | 'Invalid email or password!' |
+      | email    | password       | expectedStatus | expectedMessage            | expectedErrorCode   |
+      | existing | WrongPass@1234 | 401            | Invalid email or password! | INVALID_CREDENTIALS |
 
   @unverified_email
   Scenario Outline: Login fails with unverified email
@@ -88,11 +91,13 @@ Feature: Login API Automation
     * print 'Login API Response:', response
     * match response.data.login == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | email                        | password   | expectedStatus | expectedMessage              |                      
-      | unverified@example.com       | User@12345 | 401            | 'Invalid email or password!' |
+      | email                        | password   | expectedStatus | expectedMessage            | expectedErrorCode   |                     
+      | unverified@example.com       | User@12345 | 401            | Invalid email or password! | INVALID_CREDENTIALS |
 
   @non_existing_email
   Scenario Outline: Login fails with non-existing email
@@ -107,11 +112,13 @@ Feature: Login API Automation
     * print 'Login API Response:', response
     * match response.data.login == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | email                      | password | expectedStatus | expectedMessage                 |
-      | nonexisting@example.com    | existing | 401            | 'Invalid email or password!'    |
+      | email                      | password | expectedStatus | expectedMessage               | expectedErrorCode   | 
+      | nonexisting@example.com    | existing | 401            | Invalid email or password!    | INVALID_CREDENTIALS |
 
   @missing_email
   Scenario Outline: Login fails when email is missing
@@ -126,11 +133,13 @@ Feature: Login API Automation
     * print 'Login API Response:', response
     * match response.data.login == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | email | password | expectedStatus | expectedMessage         |
-      |       | existing | 400            | 'Email is required!'    |
+      | email | password | expectedStatus | expectedMessage       | expectedErrorCode   | 
+      |       | existing | 400            | Email is required!    | EMAIL_REQUIRED      |
 
   @missing_password
   Scenario Outline: Login fails when password is missing
@@ -145,9 +154,11 @@ Feature: Login API Automation
     * print 'Login API Response:', response
     * match response.data.login == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | email    | password | expectedStatus | expectedMessage            |
-      | existing |          | 400            | 'Password is required!'    |
+      | email    | password | expectedStatus | expectedMessage          | expectedErrorCode   | 
+      | existing |          | 400            | Password is required!    | PASSWORD_REQUIRED   |
 

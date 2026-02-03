@@ -5,6 +5,7 @@ Feature: User Management - Get User API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
+    * def errorCodes = read('classpath:resources/common/error-codes.json')
     * def getUserQuery = read('classpath:resources/graphql/user-management/getUser.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
@@ -55,11 +56,13 @@ Feature: User Management - Get User API Automation
     * print 'GetUser Missing Token Response:', response
     * match response.data.getUser == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | token | expectedStatus | expectedMessage           |
-      |       | 400            | 'Missing token in header' |
+      | token | expectedStatus | expectedMessage         |  expectedErrorCode   |
+      |       | 400            | Missing token in header |  MISSING_TOKEN       |
 
   @expired_token
   Scenario Outline: GetUser fails with expired token
@@ -73,11 +76,13 @@ Feature: User Management - Get User API Automation
     * print 'GetUser Expired Token Response:', response
     * match response.data.getUser == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage |
-      | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | 'Expired'       |
+      | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage |  expectedErrorCode   |
+      | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired         |  EXPIRED_TOKEN       |
 
   @invalid_token
   Scenario Outline: GetUser fails with invalid or corrupted token
@@ -91,12 +96,14 @@ Feature: User Management - Get User API Automation
     * print 'GetUser Invalid Token Response:', response
     * match response.data.getUser == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message contains <expectedMessage>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | invalidToken                              | expectedStatus | expectedMessage   |
-      | invalid.token.string                      | 401            | 'Invalid'         |
-      | random_corrupted_string_12345             | 401            | 'Invalid'         |
-      | Bearer invalidtoken123                    | 401            | 'Invalid'         |
+      | invalidToken                              | expectedStatus | expectedMessage | expectedErrorCode  |
+      | invalid.token.string                      | 401            | Invalid         | INVALID_TOKEN      |
+      | random_corrupted_string_12345             | 401            | Invalid         | INVALID_TOKEN      |
+      | Bearer invalidtoken123                    | 401            | Invalid         | INVALID_TOKEN      |
 
 

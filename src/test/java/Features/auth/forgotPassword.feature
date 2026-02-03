@@ -5,6 +5,7 @@ Feature: Forgot Password API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
+    * def errorCodes = read('classpath:resources/common/error-codes.json')
     * def forgotPasswordQuery = read('classpath:resources/graphql/auth/forgotPassword.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
@@ -54,11 +55,13 @@ Feature: Forgot Password API Automation
     * print 'ForgotPassword API Response:', response
     * match response.data.forgotPassword == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | email | expectedStatus | expectedMessage     |
-      |       | 400            | Email is required   |
+      | email | expectedStatus | expectedMessage     | expectedErrorCode   |
+      |       | 400            | Email is required   | EMAIL_REQUIRED      |
 
   @invalid_email
   Scenario Outline: Verify forgot password with invalid email
@@ -73,14 +76,21 @@ Feature: Forgot Password API Automation
     * print 'ForgotPassword API Response:', response
     * match response.data.forgotPassword == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | email       | expectedStatus | expectedMessage         |
-      | invalid     | 400            | Invalid email format!   |
-      | a@b         | 400            | Invalid email format!   |
-      | test@       | 400            | Invalid email format!   |
-
+      | email                 | expectedStatus | expectedMessage         | expectedErrorCode     |
+      | plainaddress          | 400            | Invalid email format!   | INVALID_EMAIL_FORMAT  |
+      | missingatsign.com     | 400            | Invalid email format!   | INVALID_EMAIL_FORMAT  |
+      | @domain.com           | 400            | Invalid email format!   | INVALID_EMAIL_FORMAT  |
+      | user@                 | 400            | Invalid email format!   | INVALID_EMAIL_FORMAT  |
+      | user@.com             | 400            | Invalid email format!   | INVALID_EMAIL_FORMAT  |
+      | user@domain           | 400            | Invalid email format!   | INVALID_EMAIL_FORMAT  |
+      | user name@domain.com  | 400            | Invalid email format!   | INVALID_EMAIL_FORMAT  |
+      | user@domain,com       | 400            | Invalid email format!   | INVALID_EMAIL_FORMAT  |
+     
   @user_not_found
   Scenario Outline: Verify forgot password user not found
     * def build = buildForgotPasswordData('<email>', existingEmail)
