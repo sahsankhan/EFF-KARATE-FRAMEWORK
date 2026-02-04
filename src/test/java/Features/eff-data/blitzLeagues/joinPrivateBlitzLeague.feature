@@ -5,6 +5,7 @@ Feature: EFF Data - Join Private Blitz League API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
+    * def errorCodes = read('classpath:resources/common/error-codes.json')
     * def joinPrivateBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/joinPrivateBlitzLeague.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
@@ -38,11 +39,13 @@ Feature: EFF Data - Join Private Blitz League API Automation
     * print 'JoinPrivateBlitzLeague Missing Token Response:', response
     * match response.data.joinPrivateBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | inviteCode | expectedStatus | expectedMessage         |
-      | existing   | 400            | Missing token in header |
+      | inviteCode | expectedStatus | expectedMessage         |  expectedErrorCode   |
+      | existing   | 400            | Missing token in header |  MISSING_TOKEN       |
 
   @expired_token
   Scenario Outline: JoinPrivateBlitzLeague fails with expired token
@@ -60,11 +63,13 @@ Feature: EFF Data - Join Private Blitz League API Automation
     * print 'JoinPrivateBlitzLeague Expired Token Response:', response
     * match response.data.joinPrivateBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | inviteCode | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage |
-      | existing   | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |
+      | inviteCode | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage |  expectedErrorCode   |
+      | existing   | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |  EXPIRED_TOKEN       |
 
   @invalid_token
   Scenario Outline: JoinPrivateBlitzLeague fails with invalid or corrupted token
@@ -82,13 +87,15 @@ Feature: EFF Data - Join Private Blitz League API Automation
     * print 'JoinPrivateBlitzLeague Invalid Token Response:', response
     * match response.data.joinPrivateBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | inviteCode | invalidToken                      | expectedStatus | expectedMessage |
-      | existing   | invalid.token.string              | 401            | Invalid token   |
-      | existing   | random_corrupted_string_12345     | 401            | Invalid token   |
-      | existing   | Bearer invalidtoken123            | 401            | Invalid token   |
+      | inviteCode | invalidToken                      | expectedStatus | expectedMessage |  expectedErrorCode   |
+      | existing   | invalid.token.string              | 401            | Invalid token   |  INVALID_TOKEN       |
+      | existing   | random_corrupted_string_12345     | 401            | Invalid token   |  INVALID_TOKEN       |
+      | existing   | Bearer invalidtoken123            | 401            | Invalid token   |  INVALID_TOKEN       |
 
   @invalid_invite_code
   Scenario Outline: JoinPrivateBlitzLeague fails with invalid invite code
@@ -105,13 +112,15 @@ Feature: EFF Data - Join Private Blitz League API Automation
     * print 'JoinPrivateBlitzLeague Invalid Invite Code Response:', response
     * match response.data.joinPrivateBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | inviteCode      | expectedStatus | expectedMessage        |
-      | INVALID123      | 404            | Invalid invite code!   |
-      | WRONGCODE       | 404            | Invalid invite code!   |
-      | ABC123          | 404            | Invalid invite code!   |
+      | inviteCode      | expectedStatus | expectedMessage        |  expectedErrorCode   |
+      | INVALID123      | 404            | Invalid invite code!   |  INVALID_INVITE_CODE |
+      | WRONGCODE       | 404            | Invalid invite code!   |  INVALID_INVITE_CODE |
+      | ABC123          | 404            | Invalid invite code!   |  INVALID_INVITE_CODE |
 
   @happy_path
   Scenario Outline: JoinPrivateBlitzLeague succeeds with valid invite code
@@ -157,9 +166,11 @@ Feature: EFF Data - Join Private Blitz League API Automation
     * print 'JoinPrivateBlitzLeague Already Member Response:', response
     * match response.data.joinPrivateBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | inviteCode | expectedStatus | expectedMessage |
-      | existing   | 409            | already         |
+      | inviteCode | expectedStatus | expectedMessage                                                            |  expectedErrorCode               |
+      | existing   | 409            | You have already joined this league. Please create a team to participate.  |  LEAGUE_JOINED_TEAM_NOT_CREATED  |
 

@@ -5,6 +5,7 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
+    * def errorCodes = read('classpath:resources/common/error-codes.json')
     * def checkBlitzLeagueNameQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/checkBlitzLeagueName.graphql')
     * def createBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/createBlitzLeague.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
@@ -37,11 +38,13 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * print 'CheckBlitzLeagueName Missing Token Response:', response
     * match response.data.checkBlitzLeagueName == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName     | expectedStatus | expectedMessage           |
-      | Valid League   | 400            | Missing token in header   |
+      | leagueName     | expectedStatus | expectedMessage           |  expectedErrorCode   |
+      | Valid League   | 400            | Missing token in header   |  MISSING_TOKEN       |
 
   @expired_token
   Scenario Outline: CheckBlitzLeagueName fails with expired token
@@ -57,11 +60,13 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * print 'CheckBlitzLeagueName Expired Token Response:', response
     * match response.data.checkBlitzLeagueName == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName     | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage   |
-      | Valid League   | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token     |
+      | leagueName     | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage   |  expectedErrorCode   |
+      | Valid League   | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token     |  EXPIRED_TOKEN       |
 
   @invalid_token
   Scenario Outline: CheckBlitzLeagueName fails with invalid or corrupted token
@@ -77,13 +82,15 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * print 'CheckBlitzLeagueName Invalid Token Response:', response
     * match response.data.checkBlitzLeagueName == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName     | invalidToken                              | expectedStatus | expectedMessage   |
-      | Valid League   | invalid.token.string                      | 401            | Invalid token     |
-      | Valid League   | random_corrupted_string_12345             | 401            | Invalid token     |
-      | Valid League   | Bearer invalidtoken123                    | 401            | Invalid token     |
+      | leagueName     | invalidToken                              | expectedStatus | expectedMessage   |  expectedErrorCode   |
+      | Valid League   | invalid.token.string                      | 401            | Invalid token     |  INVALID_TOKEN       |
+      | Valid League   | random_corrupted_string_12345             | 401            | Invalid token     |  INVALID_TOKEN       |
+      | Valid League   | Bearer invalidtoken123                    | 401            | Invalid token     |  INVALID_TOKEN       |
 
   @happy_path_available
   Scenario Outline: CheckBlitzLeagueName succeeds when league name is available
@@ -161,8 +168,8 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * match response.errors[0].message == '<expectedMessage>'
 
     Examples:
-      | leagueName        | expectedStatus | expectedMessage               |
-      | EFF Blitz League  | 409            | League name is already taken. |
+      | leagueName        | expectedStatus | expectedMessage               |  expectedErrorCode   |
+      | EFF Blitz League  | 409            | League name is already taken. |  LEAGUE_NAME_TAKEN   | 
 
   @league_name_too_short
   Scenario Outline: CheckBlitzLeagueName fails when league name is less than 3 characters
@@ -179,14 +186,16 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * print 'CheckBlitzLeagueName Too Short Response:', response
     * match response.data.checkBlitzLeagueName == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName | expectedStatus | expectedMessage                                |
-      | A          | 400            | League name must be at least 3 characters      |
-      | AB         | 400            | League name must be at least 3 characters      |
-      | 1          | 400            | League name must be at least 3 characters      |
-      | 12         | 400            | League name must be at least 3 characters      |
+      | leagueName | expectedStatus | expectedMessage                                |  expectedErrorCode      |
+      | A          | 400            | League name must be at least 3 characters      |  LEAGUE_NAME_TOO_SHORT  |
+      | AB         | 400            | League name must be at least 3 characters      |  LEAGUE_NAME_TOO_SHORT  |
+      | 1          | 400            | League name must be at least 3 characters      |  LEAGUE_NAME_TOO_SHORT  |
+      | 12         | 400            | League name must be at least 3 characters      |  LEAGUE_NAME_TOO_SHORT  |
 
   @league_name_too_long
   Scenario Outline: CheckBlitzLeagueName fails when league name exceeds 50 characters
@@ -203,13 +212,15 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * print 'CheckBlitzLeagueName Too Long Response:', response
     * match response.data.checkBlitzLeagueName == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName                                                 | expectedStatus | expectedMessage                                                                                  |
-      | This is a very long league name that exceeds fifty chars   | 400            | League name cannot exceed 50 characters                                                          |
-      | !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot.   |
-      | --------------------------------------------------------   | 400            | League name cannot exceed 50 characters                                                          |
+      | leagueName                                                 | expectedStatus | expectedMessage                                                                                  |  expectedErrorCode     |
+      | This is a very long league name that exceeds fifty chars   | 400            | League name cannot exceed 50 characters                                                          |  LEAGUE_NAME_TOO_LONG  |
+      | !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot.   |  INVALID_LEAGUE_NAME   |
+      | --------------------------------------------------------   | 400            | League name cannot exceed 50 characters                                                          |  LEAGUE_NAME_TOO_LONG  |
 
   @invalid_league_name_characters
   Scenario Outline: CheckBlitzLeagueName fails when league name contains invalid characters
@@ -226,32 +237,34 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * print 'CheckBlitzLeagueName Invalid Characters Response:', response
     * match response.data.checkBlitzLeagueName == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName        | expectedStatus | expectedMessage                                                                                |
-      | League@Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League#Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League$Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League%Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League&Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League*Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League!Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League(Name)      | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League[Name]      | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League{Name}      | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League/Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League+Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League=Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League,Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League;Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League:Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League"Name"      | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League<Name>      | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League?Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League\\Name      | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League~Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League`Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
+      | leagueName        | expectedStatus | expectedMessage                                                                                |  expectedErrorCode   |
+      | League@Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League#Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League$Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League%Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League&Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League*Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League!Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League(Name)      | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League[Name]      | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League{Name}      | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League/Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League+Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League=Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League,Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League;Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League:Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League"Name"      | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League<Name>      | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League?Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League\\Name      | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League~Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
+      | League`Name       | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |  INVALID_LEAGUE_NAME |
 
   @league_name_without_letters
   Scenario Outline: CheckBlitzLeagueName fails when league name contains no letters
@@ -268,13 +281,15 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * print 'CheckBlitzLeagueName No Letters Response:', response
     * match response.data.checkBlitzLeagueName == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName | expectedStatus | expectedMessage                               |
-      | 123        | 400            | League name must contain at least one letter. |
-      | ---        | 400            | League name must contain at least one letter. |
-      | 123-456    | 400            | League name must contain at least one letter. |
+      | leagueName | expectedStatus | expectedMessage                               |  expectedErrorCode      |
+      | 123        | 400            | League name must contain at least one letter. |  LEAGUE_NAME_NO_LETTER  |
+      | ---        | 400            | League name must contain at least one letter. |  LEAGUE_NAME_NO_LETTER  |
+      | 123-456    | 400            | League name must contain at least one letter. |  LEAGUE_NAME_NO_LETTER  |
 
   @whitespace_handling
   Scenario Outline: CheckBlitzLeagueName with various whitespace scenarios
@@ -291,16 +306,18 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * print 'CheckBlitzLeagueName Whitespace Response:', response
     * match response.data.checkBlitzLeagueName == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-     | leagueName                  | expectedStatus | expectedMessage                  | 
-     | EFF    Blitz     League     | 409            | League name is already taken.    |
-     | E F F B l I T Z L E A G U E | 409            | League name is already taken.    |
-     | EFFBlitzLeague              | 409            | League name is already taken.    |
-     | E f F B l i T z L e a G u E | 409            | League name is already taken.    |
-     | EFFBlitz    League          | 409            | League name is already taken.    |
-     | EFF      BlitzLeague        | 409            | League name is already taken.    |
+     | leagueName                  | expectedStatus | expectedMessage                  |  expectedErrorCode   |
+     | EFF    Blitz     League     | 409            | League name is already taken.    |  LEAGUE_NAME_TAKEN   |
+     | E F F B l I T Z L E A G U E | 409            | League name is already taken.    |  LEAGUE_NAME_TAKEN   |
+     | EFFBlitzLeague              | 409            | League name is already taken.    |  LEAGUE_NAME_TAKEN   |
+     | E f F B l i T z L e a G u E | 409            | League name is already taken.    |  LEAGUE_NAME_TAKEN   |
+     | EFFBlitz    League          | 409            | League name is already taken.    |  LEAGUE_NAME_TAKEN   |
+     | EFF      BlitzLeague        | 409            | League name is already taken.    |  LEAGUE_NAME_TAKEN   |
 
   @case_sensitive_handling
   Scenario Outline: CheckBlitzLeagueName with various whitespace scenarios
@@ -317,9 +334,11 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * print 'CheckBlitzLeagueName Whitespace Response:', response
     * match response.data.checkBlitzLeagueName == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-     | leagueName         | expectedStatus | expectedMessage                  |
-     | eff blitz league   | 409            | League name is already taken.    |
+     | leagueName         | expectedStatus | expectedMessage                  |  expectedErrorCode   |
+     | eff blitz league   | 409            | League name is already taken.    |  LEAGUE_NAME_TAKEN   |
   

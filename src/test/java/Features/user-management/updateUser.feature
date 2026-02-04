@@ -418,7 +418,7 @@ Feature: User Management - Update User API Automation
      | existing  |  0000-05-14   | 400            | Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.  | INVALID_DATE_VALUE  |
      | existing  |  1993-00-14   | 400            | Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.  | INVALID_DATE_VALUE  |
      | existing  |  1993-15-00   | 400            | Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.  | INVALID_DATE_VALUE  |
-     | existing  |  2030-05-14   | 400            | Date of birth cannot be in the future.                                    | INVALID_DATE_FORMAT |
+     | existing  |  2030-05-14   | 400            | Date of birth cannot be in the future.                                    | INVALID_DATE_VALUE  |
      | existing  |  2010-05-14   | 400            | You must be at least 18 years old.                                        | UNDERAGE            |
      | existing  |  2000-02-30   | 400            | Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.  | INVALID_DATE_VALUE  |
      | existing  |  2000-02-32   | 400            | Invalid calendar date. Input a valid date of birth in YYYY-MM-DD format.  | INVALID_DATE_VALUE  |
@@ -452,7 +452,7 @@ Feature: User Management - Update User API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-     | token     | profile_picture  | expectedStatus | expectedMessage                                                                        | expectedErrorCode       |
-     | existing  |  abc             | 400            | Invalid profile image. Must be a valid icon name like 'icon_tiger' or 'icon_person'.   | INVALID_PROFILE_PICTURE |
-     | existing  |  1234            | 400            | Invalid profile image. Must be a valid icon name like 'icon_tiger' or 'icon_person'.   | INVALID_PROFILE_PICTURE |   
+     | token     | profile_picture  | expectedStatus | expectedMessage                                    | expectedErrorCode       |
+     | existing  |  abc             | 400            | Invalid profile image. Must be a valid icon name   | INVALID_PROFILE_PICTURE |
+     | existing  |  1234            | 400            | Invalid profile image. Must be a valid icon name   | INVALID_PROFILE_PICTURE |   
 

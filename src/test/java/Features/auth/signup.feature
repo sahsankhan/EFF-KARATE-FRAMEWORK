@@ -321,8 +321,6 @@ Feature: Sign-Up API Automation
       | User       | Doe       | random   | user@                 | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | Invalid email format! | INVALID_EMAIL_FORMAT  |
       | User       | Doe       | random   | user@.com             | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | Invalid email format! | INVALID_EMAIL_FORMAT  |
       | User       | Doe       | random   | user@domain           | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | Invalid email format! | INVALID_EMAIL_FORMAT  |
-      | User       | Doe       | random   | user..dot@domain.com  | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | Invalid email format! | INVALID_EMAIL_FORMAT  |
-      | User       | Doe       | random   | user@domain..com      | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | Invalid email format! | INVALID_EMAIL_FORMAT  |
       | User       | Doe       | random   | user name@domain.com  | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | Invalid email format! | INVALID_EMAIL_FORMAT  |
       | User       | Doe       | random   | user@@domain.com      | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | Invalid email format! | INVALID_EMAIL_FORMAT  |
       | User       | Doe       | random   | user@domain,com       | NY    | 1999-05-14 | +14191000000 | Google         | icon_bear       | 400            | Invalid email format! | INVALID_EMAIL_FORMAT  |

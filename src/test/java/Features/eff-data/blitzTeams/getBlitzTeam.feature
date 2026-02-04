@@ -5,6 +5,7 @@ Feature: EFF Data - Get Blitz Team API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
+    * def errorCodes = read('classpath:resources/common/error-codes.json')
     * def getBlitzTeamQuery = read('classpath:resources/graphql/eff-data/blitzTeams/getBlitzTeam.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
@@ -46,11 +47,13 @@ Feature: EFF Data - Get Blitz Team API Automation
     * print 'GetBlitzTeam Missing Token Response:', response
     * match response.data.getBlitzTeam == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | teamId                       | expectedStatus | expectedMessage         |
-      | existingPrivateBlitzTeamId   | 400            | Missing token in header |
+      | teamId                       | expectedStatus | expectedMessage         | expectedErrorCode   |
+      | existingPrivateBlitzTeamId   | 400            | Missing token in header | MISSING_TOKEN       |
 
   @expired_token
   Scenario Outline: GetBlitzTeam fails with expired token
@@ -68,11 +71,13 @@ Feature: EFF Data - Get Blitz Team API Automation
     * print 'GetBlitzTeam Expired Token Response:', response
     * match response.data.getBlitzTeam == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | teamId                      | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage |
-      | existingPrivateBlitzTeamId  | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |
+      | teamId                      | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage | expectedErrorCode   |
+      | existingPrivateBlitzTeamId  | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   | EXPIRED_TOKEN       |
 
   @invalid_token
   Scenario Outline: GetBlitzTeam fails with invalid or corrupted token
@@ -90,13 +95,15 @@ Feature: EFF Data - Get Blitz Team API Automation
     * print 'GetBlitzTeam Invalid Token Response:', response
     * match response.data.getBlitzTeam == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | teamId                      | invalidToken                      | expectedStatus | expectedMessage |
-      | existingPrivateBlitzTeamId  | invalid.token.string              | 401            | Invalid token   |
-      | existingPrivateBlitzTeamId  | random_corrupted_string_12345     | 401            | Invalid token   |
-      | existingPrivateBlitzTeamId  | Bearer invalidtoken123            | 401            | Invalid token   |
+      | teamId                      | invalidToken                      | expectedStatus | expectedMessage | expectedErrorCode   |
+      | existingPrivateBlitzTeamId  | invalid.token.string              | 401            | Invalid token   | INVALID_TOKEN       |  
+      | existingPrivateBlitzTeamId  | random_corrupted_string_12345     | 401            | Invalid token   | INVALID_TOKEN       |
+      | existingPrivateBlitzTeamId  | Bearer invalidtoken123            | 401            | Invalid token   | INVALID_TOKEN       |
 
   @happy_path
   Scenario Outline: GetBlitzTeam succeeds when owner retrieves their own team
@@ -147,13 +154,15 @@ Feature: EFF Data - Get Blitz Team API Automation
     * print 'GetBlitzTeam Team Not Found Response:', response
     * match response.data.getBlitzTeam == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | teamId  | expectedStatus | expectedMessage             |
-      | 999999  | 404            | Team not found or deleted   |
-      | 100000  | 404            | Team not found or deleted   |
-      | 888888  | 404            | Team not found or deleted   |
+      | teamId  | expectedStatus | expectedMessage             | expectedErrorCode   |
+      | 999999  | 404            | Team not found or deleted   | TEAM_NOT_FOUND      |
+      | 100000  | 404            | Team not found or deleted   | TEAM_NOT_FOUND      |
+      | 888888  | 404            | Team not found or deleted   | TEAM_NOT_FOUND      |
 
   @invalid_team_id
   Scenario Outline: GetBlitzTeam fails with invalid team ID format
@@ -170,13 +179,15 @@ Feature: EFF Data - Get Blitz Team API Automation
     * print 'GetBlitzTeam Invalid Team ID Response:', response
     * match response.data.getBlitzTeam == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | teamId     | expectedStatus | expectedMessage                |
-      | invalid    | 400            | Team_ID must be a numeric ID   |
-      | abc123     | 400            | Team_ID must be a numeric ID   |
-      | team_id    | 400            | Team_ID must be a numeric ID   |
-      | 0          | 400            | Invalid Team_ID format         |
-      | -100000    | 400            | Invalid Team_ID format         |
-      | -999999    | 400            | Invalid Team_ID format         |
+      | teamId     | expectedStatus | expectedMessage                | expectedErrorCode   |
+      | invalid    | 400            | Team_ID must be a numeric ID   | INVALID_TEAM_ID     |
+      | abc123     | 400            | Team_ID must be a numeric ID   | INVALID_TEAM_ID     |
+      | team_id    | 400            | Team_ID must be a numeric ID   | INVALID_TEAM_ID     |
+      | 0          | 400            | Invalid Team_ID format         | INVALID_TEAM_ID     |
+      | -100000    | 400            | Invalid Team_ID format         | INVALID_TEAM_ID     |
+      | -999999    | 400            | Invalid Team_ID format         | INVALID_TEAM_ID     |

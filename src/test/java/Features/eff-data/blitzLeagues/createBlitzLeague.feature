@@ -6,6 +6,7 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
+    * def errorCodes = read('classpath:resources/common/error-codes.json')
     * def createBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/createBlitzLeague.graphql')
     * def getBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/getBlitzLeague.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
@@ -39,11 +40,13 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * print 'CreateBlitzLeague Missing Token Response:', response
     * match response.data.createBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName             | leagueImage | expectedStatus | expectedMessage         |
-      | Private Blitz League   | icon_bull   | 400            | Missing token in header |
+      | leagueName             | leagueImage | expectedStatus | expectedMessage         |  expectedErrorCode   |
+      | Private Blitz League   | icon_bull   | 400            | Missing token in header |  MISSING_TOKEN       |
 
   @expired_token
   Scenario Outline: CreateBlitzLeague fails with expired token
@@ -58,11 +61,13 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * print 'CreateBlitzLeague Expired Token Response:', response
     * match response.data.createBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName             | leagueImage | expiredToken                                                                                                                                                            | expectedStatus | expectedMessage |
-      | Private Blitz League   | icon_bull   | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |
+      | leagueName             | leagueImage | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage |  expectedErrorCode   |
+      | Private Blitz League   | icon_bull   | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |  EXPIRED_TOKEN       |
 
   @invalid_token
   Scenario Outline: CreateBlitzLeague fails with invalid or corrupted token
@@ -77,15 +82,44 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * print 'CreateBlitzLeague Invalid Token Response:', response
     * match response.data.createBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName             | leagueImage | invalidToken                      | expectedStatus | expectedMessage |
-      | Private Blitz League   | icon_bull   | invalid.token.string              | 401            | Invalid token   |
-      | Private Blitz League   | icon_bull   | random_corrupted_string_12345     | 401            | Invalid token   |
-      | Private Blitz League   | icon_bull   | Bearer invalidtoken123            | 401            | Invalid token   |
+      | leagueName             | leagueImage | invalidToken                      | expectedStatus | expectedMessage | expectedErrorCode   |
+      | Private Blitz League   | icon_bull   | invalid.token.string              | 401            | Invalid token   | INVALID_TOKEN       |
+      | Private Blitz League   | icon_bull   | random_corrupted_string_12345     | 401            | Invalid token   | INVALID_TOKEN       |
+      | Private Blitz League   | icon_bull   | Bearer invalidtoken123            | 401            | Invalid token   | INVALID_TOKEN       |
+ 
+  @invalid_league_image
+  Scenario Outline: CreateBlitzLeague fails with invalid league image
+    # PREREQUISITE CHECK: Ensure access token exists
+    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    
+    # STEP 1: Create first league with this name
+    * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken)
+    * header Authorization = build.authToken
+    * def payload = { query: '#(createBlitzLeagueQuery)', variables: '#(build.variables)' }
+    
+    Given request payload
+    When method post
+    Then status 200    
+    * print 'CreateBlitzLeague Response:', response
+    * match response.data.createBlitzLeague == null
+    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
- @happy_path_create_private_league
+    Examples:
+      | leagueName                            | leagueImage | expectedStatus | expectedMessage                                   | expectedErrorCode      |
+      | Private Blitz League for Automation   | 123         | 400            | Invalid league image. Must be a valid icon name   | INVALID_LEAGUE_IMAGE   |
+      | Private Blitz League for Automation   | abc         | 400            | Invalid league image. Must be a valid icon name   | INVALID_LEAGUE_IMAGE   |
+      | Private Blitz League for Automation   | ---         | 400            | Invalid league image. Must be a valid icon name   | INVALID_LEAGUE_IMAGE   |
+      | Private Blitz League for Automation   | icon        | 400            | Invalid league image. Must be a valid icon name   | INVALID_LEAGUE_IMAGE   |
+ 
+  @happy_path_create_private_league
   Scenario Outline: CreateBlitzLeague succeeds with valid data and saves invite code
     # PREREQUISITE CHECK: Ensure access token exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
@@ -142,7 +176,7 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * karate.log('Saved Private League Invite Code:', privateBlitzLeagueInviteCode)
 
     Examples:
-      | leagueName                           | leagueImage | expectedStatus | expectedMessage                       |
+      | leagueName                           | leagueImage | expectedStatus | expectedMessage                       | 
       | Private Blitz League for Automation  | icon_bull   | 200            | Blitz League created successfully     |
 
   @duplicate_league_name
@@ -161,11 +195,13 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * print 'CreateBlitzLeague Response:', response
     * match response.data.createBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName                            | leagueImage | expectedStatus | expectedMessage                           |
-      | Private Blitz League for Automation   | icon_bull   | 409            | A league with this name already exists.   |
+      | leagueName                            | leagueImage | expectedStatus | expectedMessage                           | expectedErrorCode   |
+      | Private Blitz League for Automation   | icon_bull   | 409            | A league with this name already exists.   | LEAGUE_NAME_TAKEN   |
 
   @league_name_too_short
   Scenario Outline: CreateBlitzLeague fails when league name is less than 3 characters
@@ -182,14 +218,16 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * print 'CreateBlitzLeague Too Short Response:', response
     * match response.data.createBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName | leagueImage  | expectedStatus | expectedMessage                                |
-      | A          | icon_bull    | 400            | League name must be at least 3 characters      |
-      | AB         | icon_bull    | 400            | League name must be at least 3 characters      |
-      | 1          | icon_bull    | 400            | League name must be at least 3 characters      |
-      | 12         | icon_bull    | 400            | League name must be at least 3 characters      |
+      | leagueName | leagueImage  | expectedStatus | expectedMessage                                | expectedErrorCode     |
+      | A          | icon_bull    | 400            | League name must be at least 3 characters      | LEAGUE_NAME_TOO_SHORT |
+      | AB         | icon_bull    | 400            | League name must be at least 3 characters      | LEAGUE_NAME_TOO_SHORT |
+      | 1          | icon_bull    | 400            | League name must be at least 3 characters      | LEAGUE_NAME_TOO_SHORT |
+      | 12         | icon_bull    | 400            | League name must be at least 3 characters      | LEAGUE_NAME_TOO_SHORT |
 
   @league_name_too_long
   Scenario Outline: CreateBlitzLeague fails when league name exceeds 50 characters
@@ -206,13 +244,15 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * print 'CreateBlitzLeague Too Long Response:', response
     * match response.data.createBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName                                                 | leagueImage  | expectedStatus | expectedMessage                                                                                  |
-      | This is a very long league name that exceeds fifty chars   | icon_bull    | 400            | League name cannot exceed 50 characters                                                          |
-      | !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot.   |
-      | --------------------------------------------------------   | icon_bull    | 400            | League name cannot exceed 50 characters                                                          |
+      | leagueName                                                 | leagueImage  | expectedStatus | expectedMessage                                                                                  | expectedErrorCode    |
+      | This is a very long league name that exceeds fifty chars   | icon_bull    | 400            | League name cannot exceed 50 characters                                                          | LEAGUE_NAME_TOO_LONG | 
+      | !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot.   | INVALID_LEAGUE_NAME  |
+      | --------------------------------------------------------   | icon_bull    | 400            | League name cannot exceed 50 characters                                                          | LEAGUE_NAME_TOO_LONG | 
 
   @invalid_league_name_characters
   Scenario Outline: CreateBlitzLeague fails when league name contains invalid characters
@@ -229,32 +269,34 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * print 'CreateBlitzLeague Invalid Characters Response:', response
     * match response.data.createBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName        | leagueImage  | expectedStatus | expectedMessage                                                                                |
-      | League@Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League#Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League$Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League%Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League&Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League*Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League!Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League(Name)      | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League[Name]      | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League{Name}      | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League/Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League+Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League=Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League,Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League;Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League:Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League"Name"      | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League<Name>      | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League?Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League\\Name      | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League~Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
-      | League`Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. |
+      | leagueName        | leagueImage  | expectedStatus | expectedMessage                                                                                | expectedErrorCode   |
+      | League@Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League#Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League$Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League%Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League&Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League*Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League!Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League(Name)      | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League[Name]      | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League{Name}      | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League/Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League+Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League=Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League,Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League;Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League:Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League"Name"      | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League<Name>      | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League?Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League\\Name      | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League~Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
+      | League`Name       | icon_bull    | 400            | League name can only contain letters, numbers, spaces, hyphen, underscore, apostrophe and dot. | INVALID_LEAGUE_NAME |
 
   @league_name_without_letters
   Scenario Outline: CreateBlitzLeague fails when league name contains no letters
@@ -271,13 +313,15 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * print 'CreateBlitzLeague No Letters Response:', response
     * match response.data.createBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName | leagueImage  | expectedStatus | expectedMessage                               |
-      | 123        | icon_bull    | 400            | League name must contain at least one letter. |
-      | ---        | icon_bull    | 400            | League name must contain at least one letter. |
-      | 123-456    | icon_bull    | 400            | League name must contain at least one letter. |
+      | leagueName | leagueImage  | expectedStatus | expectedMessage                               | expectedErrorCode     |
+      | 123        | icon_bull    | 400            | League name must contain at least one letter. | LEAGUE_NAME_NO_LETTER |
+      | ---        | icon_bull    | 400            | League name must contain at least one letter. | LEAGUE_NAME_NO_LETTER |
+      | 123-456    | icon_bull    | 400            | League name must contain at least one letter. | LEAGUE_NAME_NO_LETTER |
 
   @whitespace_handling
   Scenario Outline: CreateBlitzLeague with various whitespace scenarios
@@ -294,16 +338,18 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * print 'CreateBlitzLeague Whitespace Response:', response
     * match response.data.createBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-     | leagueName                                       | leagueImage  | expectedStatus | expectedMessage                            | 
-     | PRIVATE BLITZ LEAGUE FOR AUTOMATION              | icon_bull    | 409            | A league with this name already exists.    |
-     | PRIVATE B L I T Z L E A G U E FOR AUTOMATION     | icon_bull    | 409            | A league with this name already exists.    |
-     | PRIVATEBLITZLEAGUEFORAUTOMATION                  | icon_bull    | 409            | A league with this name already exists.    |
-     |   pRIvAtEBLITZ LEaGuE    FOrAuToMAtIoN           | icon_bull    | 409            | A league with this name already exists.    |
-     | PRIVATE   blitzleague    FORAUTOMATION           | icon_bull    | 409            | A league with this name already exists.    |
-     | PRIVATEBlitzLeague     FOR     AUTOMATION        | icon_bull    | 409            | A league with this name already exists.    |
+     | leagueName                                       | leagueImage  | expectedStatus | expectedMessage                            | expectedErrorCode   |
+     | PRIVATE BLITZ LEAGUE FOR AUTOMATION              | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
+     | PRIVATE B L I T Z L E A G U E FOR AUTOMATION     | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
+     | PRIVATEBLITZLEAGUEFORAUTOMATION                  | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
+     |   pRIvAtEBLITZ LEaGuE    FOrAuToMAtIoN           | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
+     | PRIVATE   blitzleague    FORAUTOMATION           | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
+     | PRIVATEBlitzLeague     FOR     AUTOMATION        | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
 
   @case_sensitive_handling
   Scenario Outline: CreateBlitzLeague with various whitespace scenarios
@@ -320,9 +366,11 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * print 'CreateBlitzLeague Whitespace Response:', response
     * match response.data.createBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-     | leagueName                            | leagueImage  | expectedStatus | expectedMessage                            |
-     | private blitz league for automation   | icon_bull    | 409            | A league with this name already exists.    |
+     | leagueName                            | leagueImage  | expectedStatus | expectedMessage                            | expectedErrorCode   |
+     | private blitz league for automation   | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
   

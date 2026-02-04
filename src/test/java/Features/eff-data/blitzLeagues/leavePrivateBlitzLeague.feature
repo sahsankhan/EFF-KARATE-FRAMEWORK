@@ -5,6 +5,7 @@ Feature: EFF Data - Leave Private Blitz League API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
+    * def errorCodes = read('classpath:resources/common/error-codes.json')
     * def leaveBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/leaveBlitzLeague.graphql')
     * def getBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/getBlitzLeague.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
@@ -39,11 +40,13 @@ Feature: EFF Data - Leave Private Blitz League API Automation
     * print 'LeavePrivateBlitzLeague Missing Token Response:', response
     * match response.data.leaveBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId                      | expectedStatus | expectedMessage         |
-      | existingPrivateBlitzLeagueId  | 400            | Missing token in header |
+      | leagueId                      | expectedStatus | expectedMessage         | expectedErrorCode   |
+      | existingPrivateBlitzLeagueId  | 400            | Missing token in header | MISSING_TOKEN       |
 
   @expired_token
   Scenario Outline: LeavePrivateBlitzLeague fails with expired token
@@ -61,11 +64,13 @@ Feature: EFF Data - Leave Private Blitz League API Automation
     * print 'LeavePrivateBlitzLeague Expired Token Response:', response
     * match response.data.leaveBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId                     | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage |
-      | existingPrivateBlitzLeagueId | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |
+      | leagueId                     | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage | expectedErrorCode   |
+      | existingPrivateBlitzLeagueId | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   | EXPIRED_TOKEN       |
 
   @invalid_token
   Scenario Outline: LeavePrivateBlitzLeague fails with invalid or corrupted token
@@ -83,13 +88,15 @@ Feature: EFF Data - Leave Private Blitz League API Automation
     * print 'LeavePrivateBlitzLeague Invalid Token Response:', response
     * match response.data.leaveBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId                      | invalidToken                      | expectedStatus | expectedMessage |
-      | existingPrivateBlitzLeagueId  | Bearer invalidtoken123            | 401            | Invalid token   |
-      | existingPrivateBlitzLeagueId  | random_corrupted_string_12345     | 401            | Invalid token   |
-      | existingPrivateBlitzLeagueId  | invalid.token.string              | 401            | Invalid token   |
+      | leagueId                      | invalidToken                      | expectedStatus | expectedMessage | expectedErrorCode   |
+      | existingPrivateBlitzLeagueId  | Bearer invalidtoken123            | 401            | Invalid token   | INVALID_TOKEN       |
+      | existingPrivateBlitzLeagueId  | random_corrupted_string_12345     | 401            | Invalid token   | INVALID_TOKEN       |
+      | existingPrivateBlitzLeagueId  | invalid.token.string              | 401            | Invalid token   | INVALID_TOKEN       |
 
   @happy_path
   Scenario Outline: LeavePrivateBlitzLeague succeeds with valid league ID and verifies member is removed
@@ -145,9 +152,11 @@ Feature: EFF Data - Leave Private Blitz League API Automation
     * print 'LeavePrivateBlitzLeague Not Member Response:', response
     * match response.data.leaveBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId                      | expectedStatus | expectedMessage                         |
-      | existingPrivateBlitzLeagueId  | 404            | You are not a member of this league.    |
+      | leagueId                      | expectedStatus | expectedMessage                         | expectedErrorCode           |
+      | existingPrivateBlitzLeagueId  | 404            | You are not a member of this league.    | LEAGUE_MEMBERSHIP_NOT_FOUND |
 

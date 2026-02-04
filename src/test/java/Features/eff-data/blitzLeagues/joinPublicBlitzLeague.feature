@@ -5,6 +5,7 @@ Feature: EFF Data - Join Public Blitz League API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
+    * def errorCodes = read('classpath:resources/common/error-codes.json')
     * def joinPublicBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/joinPublicBlitzLeague.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
@@ -38,11 +39,13 @@ Feature: EFF Data - Join Public Blitz League API Automation
     * print 'JoinPublicBlitzLeague Missing Token Response:', response
     * match response.data.joinPublicBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId                      | expectedStatus | expectedMessage         |
-      | existingPublicBlitzLeagueId   | 400            | Missing token in header |
+      | leagueId                      | expectedStatus | expectedMessage         | expectedErrorCode   |
+      | existingPublicBlitzLeagueId   | 400            | Missing token in header | MISSING_TOKEN       |
 
   @expired_token
   Scenario Outline: JoinPublicBlitzLeague fails with expired token
@@ -60,11 +63,13 @@ Feature: EFF Data - Join Public Blitz League API Automation
     * print 'JoinPublicBlitzLeague Expired Token Response:', response
     * match response.data.joinPublicBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId                     | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage |
-      | existingPublicBlitzLeagueId  | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |
+      | leagueId                     | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage | expectedErrorCode   |
+      | existingPublicBlitzLeagueId  | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   | EXPIRED_TOKEN       |
 
   @invalid_token
   Scenario Outline: JoinPublicBlitzLeague fails with invalid or corrupted token
@@ -82,13 +87,15 @@ Feature: EFF Data - Join Public Blitz League API Automation
     * print 'JoinPublicBlitzLeague Invalid Token Response:', response
     * match response.data.joinPublicBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId                      | invalidToken                      | expectedStatus | expectedMessage |
-      | existingPublicBlitzLeagueId   | Bearer invalidtoken123            | 401            | Invalid token   |
-      | existingPublicBlitzLeagueId   | random_corrupted_string_12345     | 401            | Invalid token   |
-      | existingPublicBlitzLeagueId   | invalid.token.string              | 401            | Invalid token   |
+      | leagueId                      | invalidToken                      | expectedStatus | expectedMessage | expectedErrorCode   |
+      | existingPublicBlitzLeagueId   | Bearer invalidtoken123            | 401            | Invalid token   | INVALID_TOKEN       |
+      | existingPublicBlitzLeagueId   | random_corrupted_string_12345     | 401            | Invalid token   | INVALID_TOKEN       |
+      | existingPublicBlitzLeagueId   | invalid.token.string              | 401            | Invalid token   | INVALID_TOKEN       |
 
   @happy_path
   Scenario Outline: JoinPublicBlitzLeague succeeds with valid public league ID
@@ -129,11 +136,13 @@ Feature: EFF Data - Join Public Blitz League API Automation
     * print 'JoinPublicBlitzLeague Already Member Response:', response
     * match response.data.joinPublicBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId                      | expectedStatus | expectedMessage                                                             |
-      | existingPublicBlitzLeagueId   | 409            | You have already joined this league. Please create a team to participate.   |
+      | leagueId                      | expectedStatus | expectedMessage                                                             | expectedErrorCode              |
+      | existingPublicBlitzLeagueId   | 409            | You have already joined this league. Please create a team to participate.   | LEAGUE_JOINED_TEAM_NOT_CREATED |
 
   @league_not_found
   Scenario Outline: JoinPublicBlitzLeague fails with non-existent league ID
@@ -150,12 +159,14 @@ Feature: EFF Data - Join Public Blitz League API Automation
     * print 'JoinPublicBlitzLeague League Not Found Response:', response
     * match response.data.joinPublicBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId | expectedStatus | expectedMessage    |
-      | 999999   | 404            | League not found   |
-      | 100000   | 404            | League not found   |
+      | leagueId | expectedStatus | expectedMessage    | expectedErrorCode   |
+      | 999999   | 404            | League not found   | LEAGUE_NOT_FOUND    |
+      | 100000   | 404            | League not found   | LEAGUE_NOT_FOUND    |
 
   @invalid_league_id
   Scenario Outline: JoinPublicBlitzLeague fails with invalid league ID format
@@ -172,12 +183,14 @@ Feature: EFF Data - Join Public Blitz League API Automation
     * print 'JoinPublicBlitzLeague Invalid League ID Response:', response
     * match response.data.joinPublicBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId      | expectedStatus | expectedMessage                  |
-      | invalid       | 400            | League_ID must be a numeric ID.  |
-      | abc123        | 400            | League_ID must be a numeric ID.  |
-      | league_id     | 400            | League_ID must be a numeric ID.  |
-      | -999999       | 400            | Invalid League_ID format!        |
-      | -100000       | 400            | Invalid League_ID format!        |
+      | leagueId      | expectedStatus | expectedMessage                  | expectedErrorCode   |
+      | invalid       | 400            | League_ID must be a numeric ID.  | INVALID_LEAGUE_ID   |
+      | abc123        | 400            | League_ID must be a numeric ID.  | INVALID_LEAGUE_ID   |
+      | league_id     | 400            | League_ID must be a numeric ID.  | INVALID_LEAGUE_ID   |
+      | -999999       | 400            | Invalid League_ID format!        | INVALID_LEAGUE_ID   |
+      | -100000       | 400            | Invalid League_ID format!        | INVALID_LEAGUE_ID   |

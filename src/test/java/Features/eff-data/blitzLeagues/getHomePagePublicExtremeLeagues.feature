@@ -5,6 +5,7 @@ Feature: EFF Data - Get Home Page Public Extreme Leagues API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
+    * def errorCodes = read('classpath:resources/common/error-codes.json')
     * def getHomePagePublicExtremeLeaguesQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/getHomePagePublicExtremeLeagues.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
@@ -21,11 +22,14 @@ Feature: EFF Data - Get Home Page Public Extreme Leagues API Automation
     * print 'GetHomePagePublicExtremeLeagues Missing Token Response:', response
     * match response.data.getHomePagePublicExtremeLeagues == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
     * match response.errors[0].message contains '<expectedMessage>'
 
+
     Examples:
-      | expectedStatus | expectedMessage         |
-      | 400            | Missing token in header |
+      | expectedStatus | expectedMessage         | expectedErrorCode   |
+      | 400            | Missing token in header | MISSING_TOKEN       |
 
   @expired_token
   Scenario Outline: GetHomePagePublicExtremeLeagues fails with expired token
@@ -39,11 +43,14 @@ Feature: EFF Data - Get Home Page Public Extreme Leagues API Automation
     * print 'GetHomePagePublicExtremeLeagues Expired Token Response:', response
     * match response.data.getHomePagePublicExtremeLeagues == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
+
 
     Examples:
-      | expiredToken                                                                                                                                                            | expectedStatus | expectedMessage |
-      | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |
+      | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage | expectedErrorCode   |
+      | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   | EXPIRED_TOKEN       |
 
   @invalid_token
   Scenario Outline: GetHomePagePublicExtremeLeagues fails with invalid or corrupted token
@@ -57,13 +64,16 @@ Feature: EFF Data - Get Home Page Public Extreme Leagues API Automation
     * print 'GetHomePagePublicExtremeLeagues Invalid Token Response:', response
     * match response.data.getHomePagePublicExtremeLeagues == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].message == '<expectedMessage>'
+    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
+    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
+    * match response.errors[0].message contains '<expectedMessage>'
+
 
     Examples:
-      | invalidToken                         | expectedStatus | expectedMessage |
-      | invalid.token.string                 | 401            | Invalid token   |
-      | random_corrupted_string_12345        | 401            | Invalid token   |
-      | Bearer invalidtoken123               | 401            | Invalid token   |
+      | invalidToken                         | expectedStatus | expectedMessage | expectedErrorCode   |
+      | invalid.token.string                 | 401            | Invalid token   | INVALID_TOKEN       |
+      | random_corrupted_string_12345        | 401            | Invalid token   | INVALID_TOKEN       |
+      | Bearer invalidtoken123               | 401            | Invalid token   | INVALID_TOKEN       |
 
   @happy_path_with_leagues
   Scenario: GetHomePagePublicExtremeLeagues returns proper schema for blitz and exchange leagues 
