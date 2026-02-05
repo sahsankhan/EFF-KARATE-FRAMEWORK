@@ -1,0 +1,25 @@
+mutation SetTimeframe($Season: Int!, $SeasonType: Int!, $Week: Int) {
+  setTimeframe(Season: $Season, SeasonType: $SeasonType, Week: $Week) {
+    statusCode
+    message
+    current_timeframe {
+      Season
+      SeasonType
+      Week
+      CurrentDateTime_UTC
+      StartDate
+      WeekStart_UTC
+      WeekStarted
+      FirstGameStart_UTC
+      FirstGameStarted
+      LastGameStart_UTC
+      LastGameStarted
+      LastGameEnd_UTC
+      LastGameEnded
+      SeasonPhase
+      LastCompletedWeek
+      UpcomingWeek
+      Notes
+    }
+  }
+}
