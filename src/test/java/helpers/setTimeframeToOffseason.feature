@@ -1,8 +1,8 @@
-Feature: Helper - Setup Default Timeframe to Preseason Week 1
+Feature: Helper - Setup Timeframe to Offseason
 
-  # This helper sets the timeframe to Preseason Week 1
-  # This allows all operations (create, join, leave) to work
-  # Called once at the beginning of TestRunner
+  # This helper sets the timeframe to Offseason
+  # Note: Offseason does not require a Week parameter
+  # Called at the beginning of TestRunnerOffseason
 
   Background:
     * url baseUrl
@@ -15,36 +15,34 @@ Feature: Helper - Setup Default Timeframe to Preseason Week 1
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
     * def buildTimeframeData =
       """
-      function(season, seasonType, week) {
+      function(season, seasonType) {
         var variables = {
           Season: parseInt(season),
-          SeasonType: parseInt(seasonType),
-          Week: parseInt(week)
+          SeasonType: parseInt(seasonType)
         };
         return variables;
       }
       """
 
-  @set_timeframe_to_preseason
-  Scenario Outline: Setup Preseason Week 1 as default timeframe
+  @set_timeframe_to_offseason
+  Scenario Outline: Setup Offseason
     # PREREQUISITE CHECK: Ensure access token exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
     
-    * def variables = buildTimeframeData('<season>', '<seasonType>', '<week>')
+    * def variables = buildTimeframeData('<season>', '<seasonType>')
     * header Authorization = existingAccessToken
     * def payload = { query: '#(setTimeframeQuery)', variables: '#(variables)' }
     
     Given request payload
     When method post
     Then status 200
-    * print 'Setup Default Timeframe Response:', response
+    * print 'Setup Timeframe Response:', response
     * match response.data.setTimeframe.statusCode == <expectedStatus>
     * match response.data.setTimeframe.message == '<expectedMessage>'
     * match response.data.setTimeframe.current_timeframe.Season == <season>
     * match response.data.setTimeframe.current_timeframe.SeasonType == <seasonType>
-    * match response.data.setTimeframe.current_timeframe.Week == <week>
-    * print 'Default timeframe set: Season <season>, Preseason Week <week> (All league operations ALLOWED)'
+    * print 'Timeframe set: Season <season>, Offseason (No week required)'
 
     Examples:
-      | season | seasonType | week | expectedStatus | expectedMessage      |
-      | 2025   | 2          | 1    | 200            | Timeframe updated    |
+      | season | seasonType | expectedStatus | expectedMessage      |
+      | 2025   | 4          | 200            | Timeframe updated    |

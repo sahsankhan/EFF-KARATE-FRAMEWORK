@@ -1,8 +1,8 @@
-Feature: Helper - Setup Default Timeframe to Preseason Week 1
+Feature: Helper - Setup Timeframe to Regular Season Week 9 (Last Game Not Started)
 
-  # This helper sets the timeframe to Preseason Week 1
-  # This allows all operations (create, join, leave) to work
-  # Called once at the beginning of TestRunner
+  # This helper sets the timeframe to Regular Season Week 9
+  # Scenario: Last game of the week has NOT started yet
+  # Called at the beginning of TestRunnerRegularSeasonWeek9GameNotStarted
 
   Background:
     * url baseUrl
@@ -25,8 +25,8 @@ Feature: Helper - Setup Default Timeframe to Preseason Week 1
       }
       """
 
-  @set_timeframe_to_preseason
-  Scenario Outline: Setup Preseason Week 1 as default timeframe
+  @set_timeframe_to_regular_season_week9_game_not_started
+  Scenario Outline: Setup Regular Season Week 9 - Last Game Not Started
     # PREREQUISITE CHECK: Ensure access token exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
     
@@ -37,14 +37,14 @@ Feature: Helper - Setup Default Timeframe to Preseason Week 1
     Given request payload
     When method post
     Then status 200
-    * print 'Setup Default Timeframe Response:', response
+    * print 'Setup Timeframe Response:', response
     * match response.data.setTimeframe.statusCode == <expectedStatus>
     * match response.data.setTimeframe.message == '<expectedMessage>'
     * match response.data.setTimeframe.current_timeframe.Season == <season>
     * match response.data.setTimeframe.current_timeframe.SeasonType == <seasonType>
     * match response.data.setTimeframe.current_timeframe.Week == <week>
-    * print 'Default timeframe set: Season <season>, Preseason Week <week> (All league operations ALLOWED)'
+    * print 'Timeframe set: Season <season>, Regular Season Week <week> - LAST GAME NOT STARTED'
 
     Examples:
       | season | seasonType | week | expectedStatus | expectedMessage      |
-      | 2025   | 2          | 1    | 200            | Timeframe updated    |
+      | 2025   | 1          | 9    | 200            | Timeframe updated    |

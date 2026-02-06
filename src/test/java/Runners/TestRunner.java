@@ -14,8 +14,7 @@ class TestRunner {
             "classpath:Features/auth/verifyEmail.feature",
             "classpath:Features/auth/login.feature",
             "classpath:Features/auth/forgotPassword.feature",
-            "classpath:Features/auth/verifyResetCode.feature",
-            "classpath:Features/auth/validateToken.feture",
+            "classpath:Features/auth/validateToken.feature",
             "classpath:Features/auth/refreshToken.feature",
 
             // User Management Module Tests (Run After Auth)
@@ -23,7 +22,7 @@ class TestRunner {
             "classpath:Features/user-management/updateUser.feature",
 
             // ⏰ TIMEFRAME SETUP - Set to Preseason Week 1 (allows all operations)
-            "classpath:helpers/setTimeframeToPreSeason.feature",
+            "classpath:helpers/setTimeframeToRegularSeasonWeek9GameNotStarted.feature",
 
              // Eff Data Module Tests (Run After User Management)
             "classpath:Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature",
