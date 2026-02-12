@@ -5,8 +5,8 @@ Feature: Sign-Up API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def errorCodes = read('classpath:resources/common/error-codes.json')
-    * def signUpQuery = read('classpath:resources/graphql/auth/signup.graphql')
+    * def errorCodes = read('classpath:common/error-codes.json')
+    * def signUpQuery = read('classpath:graphql/auth/signup.graphql')
     * def random = function() { return java.lang.Math.floor(java.lang.Math.random() * 100000); }
     * def buildSignUpData =
     """
