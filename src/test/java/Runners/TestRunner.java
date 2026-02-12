@@ -22,7 +22,7 @@ class TestRunner {
             "classpath:Features/user-management/updateUser.feature",
 
             // ⏰ TIMEFRAME SETUP - Set to Preseason Week 1 (allows all operations)
-            "classpath:helpers/setTimeframeToPreseasonWeek1.feature",
+            "classpath:helpers/setTimeframeToPreseason.feature",
 
              // Eff Data Module Tests (Run After User Management)
             "classpath:Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature",
