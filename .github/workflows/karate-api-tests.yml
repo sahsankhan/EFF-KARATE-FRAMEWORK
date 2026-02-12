@@ -31,15 +31,13 @@ jobs:
       - name: Build Project
         run: mvn clean install -DskipTests
 
-      - name: Create dummy env file
-        run: echo "CI=true" > .env
-
       - name: Run Karate Tests
         run: mvn test
 
-      - name: Upload Report
+      - name: Upload Karate HTML Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: karate-report
           path: target/karate-reports
+          retention-days: 7
