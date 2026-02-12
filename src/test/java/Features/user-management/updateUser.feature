@@ -5,8 +5,8 @@ Feature: User Management - Update User API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def errorCodes = read('classpath:resources/common/error-codes.json')
-    * def updateUserQuery = read('classpath:resources/graphql/user-management/updateUser.graphql')
+    * def errorCodes = read('classpath:common/error-codes.json')
+    * def updateUserQuery = read('classpath:graphql/user-management/updateUser.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)

@@ -9,7 +9,7 @@ Feature: Helper - Setup Timeframe to Regular Season Week 9 (Last Game Not Starte
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def setTimeframeQuery = read('classpath:resources/graphql/admin/setTimeframe.graphql')
+    * def setTimeframeQuery = read('classpath:graphql/admin/setTimeframe.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)

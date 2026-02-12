@@ -5,8 +5,8 @@ Feature: EFF Data - Join Public Blitz League API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def errorCodes = read('classpath:resources/common/error-codes.json')
-    * def joinPublicBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/joinPublicBlitzLeague.graphql')
+    * def errorCodes = read('classpath:common/error-codes.json')
+    * def joinPublicBlitzLeagueQuery = read('classpath:graphql/eff-data/blitzLeagues/joinPublicBlitzLeague.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)

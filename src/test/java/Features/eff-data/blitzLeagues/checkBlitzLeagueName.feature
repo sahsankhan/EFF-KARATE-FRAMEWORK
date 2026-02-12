@@ -5,9 +5,9 @@ Feature: EFF Data - Check Blitz League Name API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def errorCodes = read('classpath:resources/common/error-codes.json')
-    * def checkBlitzLeagueNameQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/checkBlitzLeagueName.graphql')
-    * def createBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/createBlitzLeague.graphql')
+    * def errorCodes = read('classpath:common/error-codes.json')
+    * def checkBlitzLeagueNameQuery = read('classpath:graphql/eff-data/blitzLeagues/checkBlitzLeagueName.graphql')
+    * def createBlitzLeagueQuery = read('classpath:graphql/eff-data/blitzLeagues/createBlitzLeague.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)

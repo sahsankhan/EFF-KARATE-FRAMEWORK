@@ -5,8 +5,8 @@ Feature: Validate Token API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def errorCodes = read('')
-    * def validateQuery = read('classpath:resources/graphql/auth/validateToken.graphql')
+    * def errorCodes = read('classpath:common/error-codes.json')
+    * def validateQuery = read('classpath:graphql/auth/validateToken.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)

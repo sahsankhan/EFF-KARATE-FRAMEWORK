@@ -5,8 +5,8 @@ Feature: User Management - Get User API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def errorCodes = read('classpath:resources/common/error-codes.json')
-    * def getUserQuery = read('classpath:resources/graphql/user-management/getUser.graphql')
+    * def errorCodes = read('classpath:common/error-codes.json')
+    * def getUserQuery = read('classpath:graphql/user-management/getUser.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * print 'SignUp Info from file:', signUpInfo
