@@ -8,7 +8,7 @@ class TestRunner {
     Karate runAllTests() {
         return Karate.run(
             // Auth Module Tests (Run First)
-            "classpath:Features/auth/checkUsername.feature",
+           "classpath:Features/auth/checkUsername.feature",
             "classpath:Features/auth/signup.feature",
             "classpath:Features/auth/setpassword.feature",
             "classpath:Features/auth/verifyEmail.feature",
@@ -21,8 +21,8 @@ class TestRunner {
             "classpath:Features/user-management/getUser.feature",
             "classpath:Features/user-management/updateUser.feature",
 
-            // ⏰ TIMEFRAME SETUP - Set to Preseason Week 1 (allows all operations)
-            "classpath:helpers/setTimeframeToRegularSeasonWeek9GameNotStarted.feature",
+            // TIMEFRAME SETUP - Set to Preseason (allows all operations)
+            "classpath:helpers/setTimeframeToPreSeason.feature",
 
              // Eff Data Module Tests (Run After User Management)
             "classpath:Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature",
@@ -52,6 +52,7 @@ class TestRunner {
 
             // Cleanup Module (Run Last - Deletes test user and all associated data)
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"
+            
             )
         .configDir("file:src/test"); 
     }
