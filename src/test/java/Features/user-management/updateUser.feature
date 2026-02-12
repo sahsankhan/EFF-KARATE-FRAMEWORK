@@ -32,7 +32,7 @@ Feature: User Management - Update User API Automation
       """
 
   @missing_authorization_header
-  Scenario Outline: UpdateUser fails when Authorization header is missing
+  Scenario Outline: UpdateUser fails as Authorization header is missing
     * def build = buildUpdateUserData('<token>', '<first_name>', 'skip', 'skip', 'skip', 'skip', 'skip', 'skip', existingAccessToken)
     * def resolvedToken = build.authToken
     # Do not set Authorization header
