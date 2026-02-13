@@ -60,6 +60,14 @@ jobs:
           echo "- Total Scenarios Executed: $TOTAL_SCENARIOS" >> $GITHUB_STEP_SUMMARY
           echo "- Passed Scenarios: $PASSED_SCENARIOS" >> $GITHUB_STEP_SUMMARY
           echo "- Failed Scenarios: $FAILED_SCENARIOS" >> $GITHUB_STEP_SUMMARY
+          
+          # Export variables for Slack notification
+          echo "TOTAL_FEATURES=$TOTAL_FEATURES" >> $GITHUB_ENV
+          echo "PASSED_FEATURES=$PASSED_FEATURES" >> $GITHUB_ENV
+          echo "FAILED_FEATURES=$FAILED_FEATURES" >> $GITHUB_ENV
+          echo "TOTAL_SCENARIOS=$TOTAL_SCENARIOS" >> $GITHUB_ENV
+          echo "PASSED_SCENARIOS=$PASSED_SCENARIOS" >> $GITHUB_ENV
+          echo "FAILED_SCENARIOS=$FAILED_SCENARIOS" >> $GITHUB_ENV
       
         
 
@@ -91,3 +99,132 @@ jobs:
           echo "🔗 [Click here to open report in browser](https://$SURGE_DOMAIN/karate-summary.html)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "ℹ️ Report will be available for 30 days" >> $GITHUB_STEP_SUMMARY
+          
+          # Export report URL for Slack notification
+          echo "REPORT_URL=https://$SURGE_DOMAIN/karate-summary.html" >> $GITHUB_ENV
+
+      - name: Send Slack Notification
+        if: always()
+        run: |
+          curl -X POST ${{ secrets.SLACK_WEBHOOK_URL }} \
+          -H 'Content-Type: application/json' \
+          -d '{
+            "text": "📊 Karate API Test Results - Run #${{ github.run_number }}",
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "📊 Automation Execution Summary",
+                  "emoji": true
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Repository:*\n${{ github.repository }}"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Branch:*\n${{ github.ref_name }}"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Triggered by:*\n${{ github.actor }}"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Run #:*\n${{ github.run_number }}"
+                  }
+                ]
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*📁 Feature File Summary*"
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Total Features Executed:*\n'"$TOTAL_FEATURES"'"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Passed Features:*\n✅ '"$PASSED_FEATURES"'"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Failed Features:*\n❌ '"$FAILED_FEATURES"'"
+                  }
+                ]
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*🧪 Scenario Summary*"
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Total Scenarios Executed:*\n'"$TOTAL_SCENARIOS"'"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Passed Scenarios:*\n✅ '"$PASSED_SCENARIOS"'"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Failed Scenarios:*\n❌ '"$FAILED_SCENARIOS"'"
+                  }
+                ]
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*📄 View Full HTML Report*\n<'"$REPORT_URL"'|Click here to open report in browser>\n\nℹ️ Report will be available for 30 days"
+                }
+              },
+              {
+                "type": "actions",
+                "elements": [
+                  {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "View Report 📊"
+                    },
+                    "url": "'"$REPORT_URL"'",
+                    "style": "primary"
+                  },
+                  {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "View Workflow Run"
+                    },
+                    "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                  }
+                ]
+              }
+            ]
+          }'
