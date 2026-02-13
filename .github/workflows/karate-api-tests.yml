@@ -34,6 +34,32 @@ jobs:
       - name: Run Karate Tests
         run: mvn test
 
+      - name: Add Automation Summary
+        if: always()
+        run: |
+          echo "## 🧪 Automation Execution Summary" >> $GITHUB_STEP_SUMMARY
+      
+          TOTAL_SCENARIOS=$(grep -o '"scenarioCount":[0-9]*' target/karate-reports/karate-summary-json.txt | cut -d: -f2)
+          PASSED_SCENARIOS=$(grep -o '"passedCount":[0-9]*' target/karate-reports/karate-summary-json.txt | cut -d: -f2)
+          FAILED_SCENARIOS=$(grep -o '"failedCount":[0-9]*' target/karate-reports/karate-summary-json.txt | cut -d: -f2)
+      
+          TOTAL_TESTCASES=$(grep -o '"stepCount":[0-9]*' target/karate-reports/karate-summary-json.txt | cut -d: -f2)
+          PASSED_TESTCASES=$(grep -o '"passedStepCount":[0-9]*' target/karate-reports/karate-summary-json.txt | cut -d: -f2)
+          FAILED_TESTCASES=$(grep -o '"failedStepCount":[0-9]*' target/karate-reports/karate-summary-json.txt | cut -d: -f2)
+      
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Scenario Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Total Scenarios: $TOTAL_SCENARIOS" >> $GITHUB_STEP_SUMMARY
+          echo "- Passed Scenarios: $PASSED_SCENARIOS" >> $GITHUB_STEP_SUMMARY
+          echo "- Failed Scenarios: $FAILED_SCENARIOS" >> $GITHUB_STEP_SUMMARY
+      
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🧪 Testcase Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Total Testcases Executed: $TOTAL_TESTCASES" >> $GITHUB_STEP_SUMMARY
+          echo "- Passed Testcases: $PASSED_TESTCASES" >> $GITHUB_STEP_SUMMARY
+          echo "- Failed Testcases: $FAILED_TESTCASES" >> $GITHUB_STEP_SUMMARY
+        
+
       - name: Upload Karate Summary Report Only
         if: always()
         uses: actions/upload-artifact@v4
