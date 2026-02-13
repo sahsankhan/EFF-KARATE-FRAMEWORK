@@ -34,39 +34,71 @@ jobs:
       - name: Run Karate Tests
         run: mvn test
 
-      - name: Generate Clean Execution Summary
+      - name: Generate Automation Summary
         if: always()
         run: |
-          echo "### 🧪 Automation Execution Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## 📊 Automation Execution Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
       
-          # Count scenarios
-          TOTAL_SCENARIOS=$(grep -r "Scenario:" target/karate-reports | wc -l)
-          PASSED_SCENARIOS=$(grep -r "class=\"passed\"" target/karate-reports | wc -l)
-          FAILED_SCENARIOS=$(grep -r "class=\"failed\"" target/karate-reports | wc -l)
+          # ===== FEATURE COUNT =====
+          PASSED_FEATURES=$(grep -o 'class="passed"' target/karate-reports/karate-summary.html | wc -l)
+          FAILED_FEATURES=$(grep -o 'class="failed"' target/karate-reports/karate-summary.html | wc -l)
+          TOTAL_FEATURES=$((PASSED_FEATURES + FAILED_FEATURES))
       
-          # Count testcases (steps)
-          TOTAL_TESTCASES=$(grep -r "match response" src/test/java/Features | wc -l)
-          PASSED_TESTCASES=$((TOTAL_TESTCASES - FAILED_SCENARIOS))
-          FAILED_TESTCASES=$FAILED_SCENARIOS
+          echo "### 📁 Feature File Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Total Features Executed: $TOTAL_FEATURES" >> $GITHUB_STEP_SUMMARY
+          echo "- Passed Features: $PASSED_FEATURES" >> $GITHUB_STEP_SUMMARY
+          echo "- Failed Features: $FAILED_FEATURES" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
       
-          echo "### 📊 Scenario Summary" >> $GITHUB_STEP_SUMMARY
-          echo "- Total Scenarios: $TOTAL_SCENARIOS" >> $GITHUB_STEP_SUMMARY
+          # ===== SCENARIO COUNT =====
+          TOTAL_SCENARIOS=$(grep -o '"scenarioCount":[0-9]*' target/karate-reports/karate-summary-json.txt | cut -d: -f2 | paste -sd+ | bc)
+          FAILED_SCENARIOS=$(grep -o '"failedCount":[0-9]*' target/karate-reports/karate-summary-json.txt | cut -d: -f2 | paste -sd+ | bc)
+          PASSED_SCENARIOS=$((TOTAL_SCENARIOS - FAILED_SCENARIOS))
+      
+          echo "### 🧪 Scenario Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Total Scenarios Executed: $TOTAL_SCENARIOS" >> $GITHUB_STEP_SUMMARY
           echo "- Passed Scenarios: $PASSED_SCENARIOS" >> $GITHUB_STEP_SUMMARY
           echo "- Failed Scenarios: $FAILED_SCENARIOS" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-      
-          echo "### 🧾 Testcase Summary" >> $GITHUB_STEP_SUMMARY
-          echo "- Total Testcases Executed: $TOTAL_TESTCASES" >> $GITHUB_STEP_SUMMARY
-          echo "- Passed Testcases: $PASSED_TESTCASES" >> $GITHUB_STEP_SUMMARY
-          echo "- Failed Testcases: $FAILED_TESTCASES" >> $GITHUB_STEP_SUMMARY
       
         
 
-      - name: Upload Karate Summary Report Only
+      - name: Upload Karate HTML Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: karate-summary
-          path: target/karate-reports/karate-summary.html
+          name: karate-reports-${{ github.run_number }}
+          path: target/karate-reports/
           retention-days: 7
+
+      - name: Publish Test Results
+        if: always()
+        uses: mikepenz/action-junit-report@v4
+        with:
+          report_paths: 'target/karate-reports/*.xml'
+          include_passed: true
+          detailed_summary: true
+          fail_on_failure: false
+
+      - name: Setup Node.js
+        if: always()
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Surge
+        if: always()
+        run: npm install -g surge
+
+      - name: Deploy Report to Surge.sh
+        if: always()
+        run: |
+          SURGE_DOMAIN="karate-report-${{ github.run_number }}-${{ github.run_id }}.surge.sh"
+          surge ./target/karate-reports $SURGE_DOMAIN --token ${{ secrets.SURGE_TOKEN || 'anonymous' }}
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📄 View Full HTML Report" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 [Click here to open report in browser](https://$SURGE_DOMAIN/karate-summary.html)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📊 [Alternative view: Timeline Report](https://$SURGE_DOMAIN/karate-timeline.html)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "ℹ️ Report will be available for 30 days" >> $GITHUB_STEP_SUMMARY
