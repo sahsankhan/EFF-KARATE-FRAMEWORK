@@ -34,10 +34,10 @@ jobs:
       - name: Run Karate Tests
         run: mvn test
 
-      - name: Upload Karate HTML Report
+      - name: Upload Karate Summary Report Only
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: karate-report
-          path: target/karate-reports
+          name: karate-summary
+          path: target/karate-reports/karate-summary.html
           retention-days: 7
