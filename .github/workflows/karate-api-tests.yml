@@ -94,7 +94,7 @@ jobs:
         if: always()
         run: |
           SURGE_DOMAIN="karate-report-${{ github.run_number }}-${{ github.run_id }}.surge.sh"
-          surge ./target/karate-reports $SURGE_DOMAIN --token ${{ secrets.SURGE_TOKEN || 'anonymous' }}
+          surge ./target/karate-reports $SURGE_DOMAIN --token ${{ secrets.SURGE_TOKEN }}
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📄 View Full HTML Report" >> $GITHUB_STEP_SUMMARY
           echo "🔗 [Click here to open report in browser](https://$SURGE_DOMAIN/karate-summary.html)" >> $GITHUB_STEP_SUMMARY
