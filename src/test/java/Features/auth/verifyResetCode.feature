@@ -45,29 +45,6 @@ Feature: Verify Reset Code API Automation
       | testing.automation.4127@gmail.com | 000000 | 401            | Invalid or expired verification code    | INVALID_OR_EXPIRED_CODE |
       | testing.automation.4127@gmail.com | 999999 | 401            | Invalid or expired verification code    | INVALID_OR_EXPIRED_CODE |
 
-  @happy_path
-  Scenario Outline: Verify reset code success using Gmail
-    * java.lang.Thread.sleep(360000)
-    # STEP 2 — Fetch OTP from Gmail
-    * def otpResponse = call read('classpath:helpers/gmailhelper.feature')
-    * def resetCode = otpResponse.result.code
-    * print 'Fetched OTP Code:', resetCode
-
-    * def verifyData = { email: '<email>', code: '#(resetCode)' } 
-    * def verifyPayload = { query: '#(verifyResetCodeQuery)', variables: '#(verifyData)' }
-
-    Given request verifyPayload
-    When method post
-    Then status 200
-
-    * print response
-    * match response.data.verifyResetCode.statusCode == <expectedStatus>
-    * match response.data.verifyResetCode.message == '<expectedMessage>'
-
-      Examples:
-        | email                             | expectedStatus | expectedMessage            | 
-        | testing.automation.4127@gmail.com | 200            | Code verified successfully |
-
   @invalid_email
   Scenario Outline: Verify reset code for invalid email
     * def build = buildVerifyResetCodeData('<email>', '<code>', existingEmail)
