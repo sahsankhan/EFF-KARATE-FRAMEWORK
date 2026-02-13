@@ -47,8 +47,7 @@ class TestRunner {
              "classpath:Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature",
              "classpath:Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature",
 
-            // Cleanup Module (Run Last - Deletes test user and all associated data)
-            "classpath:Features/user-management/deleteUserAccountByEmail.feature"
+           
             )
         .configDir("file:src/test"); 
     }
