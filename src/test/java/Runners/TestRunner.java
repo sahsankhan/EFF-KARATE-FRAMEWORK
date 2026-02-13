@@ -14,6 +14,7 @@ class TestRunner {
             "classpath:Features/auth/verifyEmail.feature",
             "classpath:Features/auth/login.feature",
             "classpath:Features/auth/forgotPassword.feature",
+            "classpath:Features/auth/verifyResetCode.feature",
             "classpath:Features/auth/validateToken.feature",
             "classpath:Features/auth/refreshToken.feature",
 
