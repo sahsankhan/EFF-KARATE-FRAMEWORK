@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - Dev
-# Environment Variables
+# Environment
 jobs:
   karate-tests:
     runs-on: ubuntu-latest
@@ -102,6 +102,8 @@ jobs:
           
           # Export report URL for Slack notification
           echo "REPORT_URL=https://$SURGE_DOMAIN/karate-summary.html" >> $GITHUB_ENV
+
+    # Slack Notification
 
       - name: Send Slack Notification
         if: always()
