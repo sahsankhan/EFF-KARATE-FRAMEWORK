@@ -3,10 +3,10 @@ name: Karate API Automation
 on:
   push:
     branches:
-      - Dev
+      - dev
   pull_request:
     branches:
-      - Dev
+      - dev
 # Environment
 jobs:
   karate-tests:
