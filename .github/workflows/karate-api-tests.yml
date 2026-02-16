@@ -213,7 +213,7 @@ jobs:
                     "type": "button",
                     "text": {
                       "type": "plain_text",
-                      "text": "View Report 📊"
+                      "text": "View Report"
                     },
                     "url": "'"$REPORT_URL"'",
                     "style": "primary"

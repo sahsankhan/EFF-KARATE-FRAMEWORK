@@ -33,12 +33,16 @@ class TestRunner {
             // Public Blitz League Module Tests
             "classpath:Features/eff-data/blitzLeagues/getHomePagePublicExtremeLeagues.feature",
             "classpath:Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature",
+            "classpath:Features/eff-data/blitzLeagues/leavePublicBlitzLeague.feature",
+            "classpath:Features/eff-data/blitzLeagues/getBlitzLeague.feature",
+             
 
             // Blitz Team Operations
             "classpath:Features/eff-data/blitzTeams/checkBlitzTeamName.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeam.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeams.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeamsByLeague.feature",
+            "classpath:Features/eff-data/blitzTeams/createBlitzTeam.feature",
 
         
 
