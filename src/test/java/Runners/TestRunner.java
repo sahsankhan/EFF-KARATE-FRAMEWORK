@@ -33,36 +33,24 @@ class TestRunner {
             // Public Blitz League Module Tests
             "classpath:Features/eff-data/blitzLeagues/getHomePagePublicExtremeLeagues.feature",
             "classpath:Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature",
-<<<<<<< HEAD
-            "classpath:Features/eff-data/blitzLeagues/leavePublicBlitzLeague.feature",
-            "classpath:Features/eff-data/blitzLeagues/getBlitzLeague.feature",
-             
-=======
-
->>>>>>> dev
             // Blitz Team Operations
             "classpath:Features/eff-data/blitzTeams/createBlitzTeam.feature",
             "classpath:Features/eff-data/blitzTeams/checkBlitzTeamName.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeam.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeams.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeamsByLeague.feature",
-<<<<<<< HEAD
-            "classpath:Features/eff-data/blitzTeams/createBlitzTeam.feature",
-        
-=======
 
             // Continue League Operations
             "classpath:Features/eff-data/blitzLeagues/getBlitzLeague.feature",
             "classpath:Features/eff-data/blitzLeagues/leavePublicBlitzLeague.feature",
 
->>>>>>> dev
             // Private Blitz League Module Tests 
              "classpath:Features/eff-data/blitzLeagues/createBlitzLeague.feature",
              "classpath:helpers/createSecondUser.feature",
              "classpath:Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature",
              "classpath:Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature",
 
-            // Cleanup Module (Run Last - Deletes test user and all associated data)
+            // Cleanup Module 
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"
             
             )
