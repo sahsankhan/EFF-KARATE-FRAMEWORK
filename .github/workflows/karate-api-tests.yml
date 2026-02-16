@@ -121,7 +121,7 @@ jobs:
           # Export report URL for Slack notification
           echo "REPORT_URL=https://$SURGE_DOMAIN/karate-summary.html" >> $GITHUB_ENV
 
-    # Slack Notification
+    # Slack Alert and Notification
 
       - name: Send Slack Notification
         if: always()
