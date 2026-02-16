@@ -5,10 +5,10 @@ Feature: Helper - Create Second User for Private League Testing
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def signUpQuery = read('classpath:resources/graphql/auth/signup.graphql')
-    * def setPasswordQuery = read('classpath:resources/graphql/auth/setpassword.graphql')
-    * def verifyEmailQuery = read('classpath:resources/graphql/auth/verifyEmail.graphql')
-    * def loginQuery = read('classpath:resources/graphql/auth/login.graphql')
+    * def signUpQuery = read('classpath:graphql/auth/signup.graphql')
+    * def setPasswordQuery = read('classpath:graphql/auth/setpassword.graphql')
+    * def verifyEmailQuery = read('classpath:graphql/auth/verifyEmail.graphql')
+    * def loginQuery = read('classpath:graphql/auth/login.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def random = function() { return java.lang.Math.floor(java.lang.Math.random() * 100000); }

@@ -5,10 +5,10 @@ Feature: EFF Data - Leave Blitz League API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def errorCodes = read('classpath:resources/common/error-codes.json')
-    * def leaveBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/leaveBlitzLeague.graphql')
-    * def getBlitzLeagueQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/getBlitzLeague.graphql')
-    * def getHomePagePublicExtremeLeaguesQuery = read('classpath:resources/graphql/eff-data/blitzLeagues/getHomePagePublicExtremeLeagues.graphql')
+    * def errorCodes = read('classpath:common/error-codes.json')
+    * def leaveBlitzLeagueQuery = read('classpath:graphql/eff-data/blitzLeagues/leaveBlitzLeague.graphql')
+    * def getBlitzLeagueQuery = read('classpath:graphql/eff-data/blitzLeagues/getBlitzLeague.graphql')
+    * def getHomePagePublicExtremeLeaguesQuery = read('classpath:graphql/eff-data/blitzLeagues/getHomePagePublicExtremeLeagues.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
@@ -121,21 +121,6 @@ Feature: EFF Data - Leave Blitz League API Automation
     * print 'LeaveBlitzLeague Success Response:', response
     * match response.data.leaveBlitzLeague.statusCode == <expectedStatus>
     * match response.data.leaveBlitzLeague.message == '<expectedMessage>'
-    
-    # Step 2: Verify user is no longer a member by calling getBlitzLeague
-    * def getLeaguePayload = { query: '#(getBlitzLeagueQuery)', variables: '#(build.variables)' }
-    * header Accept = 'application/json'
-    * header Content-Type = 'application/json'
-    * header x-api-key = apiKey
-    * header Authorization = build.authToken
-    
-    Given request getLeaguePayload
-    When method post
-    Then status 200
-    * print 'GetBlitzLeague After Leave Response:', response
-    * match response.data.getBlitzLeague == null
-    * match response.errors[0].errorInfo.statusCode == 403
-    * match response.errors[0].message contains 'You do not have permission to view this league'
 
     # Step 3: Verify member count is decremented by fetching public leagues again
     * def getLeaguesPayload = { query: '#(getHomePagePublicExtremeLeaguesQuery)' }

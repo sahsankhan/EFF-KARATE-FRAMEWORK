@@ -5,9 +5,9 @@ Feature: EFF Data - Check Exchange League Name API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def errorCodes = read('classpath:resources/common/error-codes.json')
-    * def checkExchangeLeagueNameQuery = read('classpath:resources/graphql/eff-data/exchangeLeagues/checkExchangeLeagueName.graphql')
-    * def createExchangeLeagueQuery = read('classpath:resources/graphql/eff-data/exchangeLeagues/createExchangeLeague.graphql')
+    * def errorCodes = read('classpath:common/error-codes.json')
+    * def checkExchangeLeagueNameQuery = read('classpath:graphql/eff-data/exchangeLeagues/checkExchangeLeagueName.graphql')
+    * def createExchangeLeagueQuery = read('classpath:graphql/eff-data/exchangeLeagues/createExchangeLeague.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)

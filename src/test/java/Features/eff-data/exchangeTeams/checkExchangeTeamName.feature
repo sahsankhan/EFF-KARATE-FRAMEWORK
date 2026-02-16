@@ -5,8 +5,8 @@ Feature: EFF Data - Check Exchange Team Name API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def errorCodes = read('classpath:resources/common/error-codes.json')
-    * def checkExchangeTeamNameQuery = read('classpath:resources/graphql/eff-data/ExchangeTeams/checkExchangeTeamName.graphql')
+    * def errorCodes = read('classpath:common/error-codes.json')
+    * def checkExchangeTeamNameQuery = read('classpath:graphql/eff-data/exchangeTeams/checkExchangeTeamName.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)

@@ -5,8 +5,8 @@ Feature: Set or Reset Password API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def errorCodes = read('classpath:resources/common/error-codes.json')
-    * def setPasswordQuery = read('classpath:resources/graphql/auth/setpassword.graphql')
+    * def errorCodes = read('classpath:common/error-codes.json')
+    * def setPasswordQuery = read('classpath:graphql/auth/setpassword.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingEmail = signUpInfo.email

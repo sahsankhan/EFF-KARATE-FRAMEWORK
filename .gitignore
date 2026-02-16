@@ -1,6 +1,5 @@
-.env
-
 .idea/
 .vscode/
 target/
 *.log
+.env

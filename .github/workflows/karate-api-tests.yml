@@ -3,11 +3,18 @@ name: Karate API Automation
 on:
   push:
     branches:
-      - Dev
+      - dev
+      - main
+
   pull_request:
     branches:
-      - Dev
+      - main
 
+  schedule:
+    - cron: '0 4 * * *'   # daily 9AM Pakistan time (UTC 4)
+
+  workflow_dispatch:
+# Environment
 jobs:
   karate-tests:
     runs-on: ubuntu-latest
@@ -31,12 +38,213 @@ jobs:
       - name: Build Project
         run: mvn clean install -DskipTests
 
+      - name: Create info file for CI
+        run: |
+          mkdir -p target
+          echo '{"email":"ci@test.com","password":"123456","accessToken":"dummy"}' > target/info.txt
+
       - name: Run Karate Tests
         run: mvn test
+        env:
+            BASE_URL: ${{ secrets.BASE_URL }}
+            X_API_KEY: ${{ secrets.X_API_KEY }}
+            GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+            GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+            GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
 
-      - name: Upload Report
+      - name: Generate Automation Summary
+        if: always()
+        run: |
+          echo "## 📊 Automation Execution Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+      
+          # ===== FEATURE COUNT =====
+          PASSED_FEATURES=$(grep -o 'class="passed"' target/karate-reports/karate-summary.html | wc -l)
+          FAILED_FEATURES=$(grep -o 'class="failed"' target/karate-reports/karate-summary.html | wc -l)
+          TOTAL_FEATURES=$((PASSED_FEATURES + FAILED_FEATURES))
+      
+          echo "### 📁 Feature File Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Total Features Executed: $TOTAL_FEATURES" >> $GITHUB_STEP_SUMMARY
+          echo "- Passed Features: $PASSED_FEATURES" >> $GITHUB_STEP_SUMMARY
+          echo "- Failed Features: $FAILED_FEATURES" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+      
+          # ===== SCENARIO COUNT =====
+          TOTAL_SCENARIOS=$(grep -o '"scenarioCount":[0-9]*' target/karate-reports/karate-summary-json.txt | cut -d: -f2 | paste -sd+ | bc)
+          FAILED_SCENARIOS=$(grep -o '"failedCount":[0-9]*' target/karate-reports/karate-summary-json.txt | cut -d: -f2 | paste -sd+ | bc)
+          PASSED_SCENARIOS=$((TOTAL_SCENARIOS - FAILED_SCENARIOS))
+      
+          echo "### 🧪 Scenario Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- Total Scenarios Executed: $TOTAL_SCENARIOS" >> $GITHUB_STEP_SUMMARY
+          echo "- Passed Scenarios: $PASSED_SCENARIOS" >> $GITHUB_STEP_SUMMARY
+          echo "- Failed Scenarios: $FAILED_SCENARIOS" >> $GITHUB_STEP_SUMMARY
+          
+          # Export variables for Slack notification
+          echo "TOTAL_FEATURES=$TOTAL_FEATURES" >> $GITHUB_ENV
+          echo "PASSED_FEATURES=$PASSED_FEATURES" >> $GITHUB_ENV
+          echo "FAILED_FEATURES=$FAILED_FEATURES" >> $GITHUB_ENV
+          echo "TOTAL_SCENARIOS=$TOTAL_SCENARIOS" >> $GITHUB_ENV
+          echo "PASSED_SCENARIOS=$PASSED_SCENARIOS" >> $GITHUB_ENV
+          echo "FAILED_SCENARIOS=$FAILED_SCENARIOS" >> $GITHUB_ENV
+      
+        
+
+      - name: Upload Karate HTML Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: karate-report
-          path: target/karate-reports
+          name: karate-reports-${{ github.run_number }}
+          path: target/karate-reports/
+          retention-days: 7
+
+      - name: Setup Node.js
+        if: always()
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Surge
+        if: always()
+        run: npm install -g surge
+
+      - name: Deploy Report to Surge.sh
+        if: always()
+        run: |
+          SURGE_DOMAIN="karate-report-${{ github.run_number }}-${{ github.run_id }}.surge.sh"
+          surge ./target/karate-reports $SURGE_DOMAIN --token ${{ secrets.SURGE_TOKEN }}
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📄 View Full HTML Report" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 [Click here to open report in browser](https://$SURGE_DOMAIN/karate-summary.html)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "ℹ️ Report will be available for 30 days" >> $GITHUB_STEP_SUMMARY
+          
+          # Export report URL for Slack notification
+          echo "REPORT_URL=https://$SURGE_DOMAIN/karate-summary.html" >> $GITHUB_ENV
+
+    # Slack Notification
+
+      - name: Send Slack Notification
+        if: always()
+        run: |
+          curl -X POST ${{ secrets.SLACK_WEBHOOK_URL }} \
+          -H 'Content-Type: application/json' \
+          -d '{
+            "text": "📊 Karate API Test Results - Run #${{ github.run_number }}",
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "📊 Automation Execution Summary",
+                  "emoji": true
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Repository:*\n${{ github.repository }}"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Branch:*\n${{ github.ref_name }}"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Triggered by:*\n${{ github.actor }}"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Run #:*\n${{ github.run_number }}"
+                  }
+                ]
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*📁 Feature File Summary*"
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Total Features Executed:*\n'"$TOTAL_FEATURES"'"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Passed Features:*\n✅ '"$PASSED_FEATURES"'"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Failed Features:*\n❌ '"$FAILED_FEATURES"'"
+                  }
+                ]
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*🧪 Scenario Summary*"
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Total Scenarios Executed:*\n'"$TOTAL_SCENARIOS"'"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Passed Scenarios:*\n✅ '"$PASSED_SCENARIOS"'"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Failed Scenarios:*\n❌ '"$FAILED_SCENARIOS"'"
+                  }
+                ]
+              },
+              {
+                "type": "divider"
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "*📄 View Full HTML Report*\n<'"$REPORT_URL"'|Click here to open report in browser>\n\nℹ️ Report will be available for 30 days"
+                }
+              },
+              {
+                "type": "actions",
+                "elements": [
+                  {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "View Report "
+                    },
+                    "url": "'"$REPORT_URL"'",
+                    "style": "primary"
+                  },
+                  {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "View Workflow Run"
+                    },
+                    "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                  }
+                ]
+              }
+            ]
+          }'

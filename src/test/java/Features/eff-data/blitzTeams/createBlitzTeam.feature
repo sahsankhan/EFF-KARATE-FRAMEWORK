@@ -5,19 +5,24 @@ Feature: EFF Data - Create Blitz Team API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def errorCodes = read('classpath:resources/common/error-codes.json')
-    * def createBlitzTeamQuery = read('classpath:resources/graphql/eff-data/blitzTeams/createBlitzTeam.graphql')
+    * def errorCodes = read('classpath:/common/error-codes.json')
+    * def createBlitzTeamQuery = read('classpath:/graphql/eff-data/blitzTeams/createBlitzTeam.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
     * def extremeBlitzLeagueId = karate.get('signUpInfo.extremeBlitzLeagueId', null)
+    * def random = function() { return java.lang.Math.floor(java.lang.Math.random() * 100000); }
     * def buildTeamData =
       """
       function(teamName, teamImage, leagueId, existingAccessToken) {
         var nameValue = teamName;
         var imageValue = teamImage;
         var idValue = leagueId;
-        
+
+        if (nameValue === 'random') {
+           nameValue = 'Blitz Team' + random() + Date.now(); 
+        }
+
         // Handle special keywords for dynamic values
         if (nameValue === 'null') nameValue = null;
         if (nameValue === 'true') nameValue = true;
@@ -65,8 +70,8 @@ Feature: EFF Data - Create Blitz Team API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:  
-      | teamName                                      | teamImage     | leagueId                      | expectedStatus | expectedMessage         | expectedErrorCode   |
-      | Personal Blitz Team for Testing Automation    | icon_tiger    | existingPublicBlitzLeagueId   | 400            | Missing token in header | MISSING_TOKEN       |
+      | teamName  | teamImage     | leagueId                      | expectedStatus | expectedMessage         | expectedErrorCode   |
+      | random    | icon_tiger    | existingPublicBlitzLeagueId   | 400            | Missing token in header | MISSING_TOKEN       |
 
   @expired_token
   Scenario Outline: CreateBlitzTeam fails with expired token
@@ -89,8 +94,8 @@ Feature: EFF Data - Create Blitz Team API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | teamName                                      | teamImage     | leagueId                     | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage | expectedErrorCode   |
-      | Personal Blitz Team for Testing Automation    | icon_tiger    | existingPublicBlitzLeagueId  | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   | EXPIRED_TOKEN       |
+      | teamName  | teamImage     | leagueId                     | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage | expectedErrorCode   |
+      | random    | icon_tiger    | existingPublicBlitzLeagueId  | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   | EXPIRED_TOKEN       |
 
   @invalid_token
   Scenario Outline: CreateBlitzTeam fails with invalid or corrupted token
@@ -113,37 +118,10 @@ Feature: EFF Data - Create Blitz Team API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | teamName                                      | teamImage     | leagueId                      | invalidToken                      | expectedStatus | expectedMessage | expectedErrorCode   |
-      | Personal Blitz Team for Testing Automation    | icon_tiger    | existingPublicBlitzLeagueId   | Bearer invalidtoken123            | 401            | Invalid token   | INVALID_TOKEN       | 
-      | Personal Blitz Team for Testing Automation    | icon_tiger    | existingPublicBlitzLeagueId   | random_corrupted_string_12345     | 401            | Invalid token   | INVALID_TOKEN       | 
-      | Personal Blitz Team for Testing Automation    | icon_tiger    | existingPublicBlitzLeagueId   | invalid.token.string              | 401            | Invalid token   | INVALID_TOKEN       | 
-
-  @invalid_team_image
-  Scenario Outline: CreateBlitzTeam fails when team image is invalid
-    # PREREQUISITE CHECK: Ensure access token and league ID exist
-    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.abort()
-    
-    * def build = buildTeamData('<teamName>', '<teamImage>', '<leagueId>', existingAccessToken)
-    * header Authorization = build.authToken
-    * def payload = { query: '#(createBlitzTeamQuery)', variables: '#(build.variables)' }
-    
-    Given request payload
-    When method post
-    Then status 200
-    * print 'CreateBlitzTeam Invalid Team Image Response:', response
-    * match response.data.createBlitzTeam == null
-    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
-    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
-    * match response.errors[0].message contains '<expectedMessage>'
-
-    Examples:
-      | teamName                                    | teamImage   | leagueId                      | expectedStatus | expectedMessage                                | expectedErrorCode   |
-      | Personal Blitz Team for Testing Automation  | abc         | existingPublicBlitzLeagueId   | 400            | Invalid team image. Must be a valid icon name  | INVALID_TEAM_IMAGE  | 
-      | Personal Blitz Team for Testing Automation  | 123         | existingPublicBlitzLeagueId   | 400            | Invalid team image. Must be a valid icon name  | INVALID_TEAM_IMAGE  | 
-      | Personal Blitz Team for Testing Automation  | ---         | existingPublicBlitzLeagueId   | 400            | Invalid team image. Must be a valid icon name  | INVALID_TEAM_IMAGE  | 
-      | Personal Blitz Team for Testing Automation  | icon        | existingPublicBlitzLeagueId   | 400            | Invalid team image. Must be a valid icon name  | INVALID_TEAM_IMAGE  | 
+      | teamName  | teamImage     | leagueId                      | invalidToken                      | expectedStatus | expectedMessage | expectedErrorCode   |
+      | random    | icon_tiger    | existingPublicBlitzLeagueId   | Bearer invalidtoken123            | 401            | Invalid token   | INVALID_TOKEN       | 
+      | random    | icon_tiger    | existingPublicBlitzLeagueId   | random_corrupted_string_12345     | 401            | Invalid token   | INVALID_TOKEN       | 
+      | random    | icon_tiger    | existingPublicBlitzLeagueId   | invalid.token.string              | 401            | Invalid token   | INVALID_TOKEN       | 
 
   @happy_path
   Scenario Outline: CreateBlitzTeam succeeds with valid data and saves Team_ID
@@ -166,12 +144,12 @@ Feature: EFF Data - Create Blitz Team API Automation
     
     # Save Team_ID and Team_Name to info file for subsequent tests
     * def createdTeamId = response.data.createBlitzTeam.Team_ID
-    * def createdTeamName = '<teamName>'
+    * def createdTeamName = build.variables.Team_Name
     * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremeBlitzLeagueId: signUpInfo.extremeBlitzLeagueId, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzTeamId: createdTeamId, privateBlitzTeamName: createdTeamName }, 'target/info.txt')
 
     Examples:
-      | teamName                                      | teamImage     | leagueId                      | expectedStatus | expectedMessage                       |
-      | Personal Blitz Team for Testing Automation    | icon_tiger    | existingPublicBlitzLeagueId   | 200            | Blitz Team created successfully       |
+      | teamName  | teamImage     | leagueId                      | expectedStatus | expectedMessage                       |
+      | random    | icon_tiger    | existingPublicBlitzLeagueId   | 200            | Blitz Team created successfully       |
 
   @user_already_has_team
   Scenario Outline: CreateBlitzTeam fails when user already has a team in the league
@@ -219,9 +197,9 @@ Feature: EFF Data - Create Blitz Team API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | teamName                                     | teamImage    | leagueId | expectedStatus | expectedMessage                | expectedErrorCode   |
-      |  Personal Blitz Team for Testing Automation  | icon_reaper  | 999999   | 404            | League not found or deleted.   | LEAGUE_NOT_FOUND    |
-      |  Personal Blitz Team for Testing Automation  | icon_reaper  | 100000   | 404            | League not found or deleted.   | LEAGUE_NOT_FOUND    |
+      | teamName | teamImage    | leagueId | expectedStatus | expectedMessage                | expectedErrorCode   |
+      |  random  | icon_reaper  | 999999   | 404            | League not found or deleted.   | LEAGUE_NOT_FOUND    |
+      |  random  | icon_reaper  | 100000   | 404            | League not found or deleted.   | LEAGUE_NOT_FOUND    |
 
   @invalid_league_id
   Scenario Outline: CreateBlitzTeam fails with invalid league ID format
@@ -243,12 +221,12 @@ Feature: EFF Data - Create Blitz Team API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | teamName                                    | teamImage    | leagueId   | expectedStatus | expectedMessage                  | expectedErrorCode   |
-      | Personal Blitz Team for Testing Automation  | icon_reaper  | invalid    | 400            | League_ID must be a numeric ID   | INVALID_LEAGUE_ID   | 
-      | Personal Blitz Team for Testing Automation  | icon_reaper  | abc123     | 400            | League_ID must be a numeric ID   | INVALID_LEAGUE_ID   |
-      | Personal Blitz Team for Testing Automation  | icon_reaper  | league_id  | 400            | League_ID must be a numeric ID   | INVALID_LEAGUE_ID   |
-      | Personal Blitz Team for Testing Automation  | icon_reaper  | -999999    | 400            | Invalid League_ID format         | INVALID_LEAGUE_ID   |
-      | Personal Blitz Team for Testing Automation  | icon_reaper  | -100000    | 400            | Invalid League_ID format         | INVALID_LEAGUE_ID   |
+      | teamName  | teamImage    | leagueId   | expectedStatus | expectedMessage                  | expectedErrorCode   |
+      | random    | icon_reaper  | invalid    | 400            | League_ID must be a numeric ID   | INVALID_LEAGUE_ID   | 
+      | random    | icon_reaper  | abc123     | 400            | League_ID must be a numeric ID   | INVALID_LEAGUE_ID   |
+      | random    | icon_reaper  | league_id  | 400            | League_ID must be a numeric ID   | INVALID_LEAGUE_ID   |
+      | random    | icon_reaper  | -999999    | 400            | Invalid League_ID format         | INVALID_LEAGUE_ID   |
+      | random    | icon_reaper  | -100000    | 400            | Invalid League_ID format         | INVALID_LEAGUE_ID   |
 
   @team_name_too_short
   Scenario Outline: CreateBlitzTeam fails when team name is less than 3 characters

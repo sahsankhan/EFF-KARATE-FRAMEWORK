@@ -5,8 +5,8 @@ Feature: User Management - Update User API Automation
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
     * header x-api-key = apiKey
-    * def errorCodes = read('classpath:resources/common/error-codes.json')
-    * def updateUserQuery = read('classpath:resources/graphql/user-management/updateUser.graphql')
+    * def errorCodes = read('classpath:common/error-codes.json')
+    * def updateUserQuery = read('classpath:graphql/user-management/updateUser.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
@@ -32,7 +32,7 @@ Feature: User Management - Update User API Automation
       """
 
   @missing_authorization_header
-  Scenario Outline: UpdateUser fails when Authorization header is missing
+  Scenario Outline: UpdateUser fails as Authorization header is missing
     * def build = buildUpdateUserData('<token>', '<first_name>', 'skip', 'skip', 'skip', 'skip', 'skip', 'skip', existingAccessToken)
     * def resolvedToken = build.authToken
     # Do not set Authorization header
