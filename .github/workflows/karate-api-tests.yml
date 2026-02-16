@@ -4,9 +4,16 @@ on:
   push:
     branches:
       - dev
+      - main
+
   pull_request:
     branches:
-      - dev
+      - main
+
+  schedule:
+    - cron: '0 4 * * *'   # daily 9AM Pakistan time (UTC 4)
+
+  workflow_dispatch:
 # Environment
 jobs:
   karate-tests:
@@ -213,7 +220,7 @@ jobs:
                     "type": "button",
                     "text": {
                       "type": "plain_text",
-                      "text": "View Report"
+                      "text": "View Report "
                     },
                     "url": "'"$REPORT_URL"'",
                     "style": "primary"
