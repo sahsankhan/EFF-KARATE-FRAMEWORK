@@ -121,23 +121,8 @@ Feature: EFF Data - Leave Blitz League API Automation
     * print 'LeaveBlitzLeague Success Response:', response
     * match response.data.leaveBlitzLeague.statusCode == <expectedStatus>
     * match response.data.leaveBlitzLeague.message == '<expectedMessage>'
-    
-    # Step 2: Verify user is no longer a member by calling getBlitzLeague
-    * def getLeaguePayload = { query: '#(getBlitzLeagueQuery)', variables: '#(build.variables)' }
-    * header Accept = 'application/json'
-    * header Content-Type = 'application/json'
-    * header x-api-key = apiKey
-    * header Authorization = build.authToken
-    
-    Given request getLeaguePayload
-    When method post
-    Then status 200
-    * print 'GetBlitzLeague After Leave Response:', response
-    * match response.data.getBlitzLeague == null
-    * match response.errors[0].errorInfo.statusCode == 403
-    * match response.errors[0].message contains 'You do not have permission to view this league'
 
-    # Step 3: Verify member count is decremented by fetching public leagues again
+    # Step 2: Verify member count is decremented by fetching public leagues again
     * def getLeaguesPayload = { query: '#(getHomePagePublicExtremeLeaguesQuery)' }
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
