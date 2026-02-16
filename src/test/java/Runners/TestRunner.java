@@ -50,7 +50,7 @@ class TestRunner {
              "classpath:Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature",
              "classpath:Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature",
 
-            // Cleanup Module 
+            //Module cleanup
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"
             
             )
