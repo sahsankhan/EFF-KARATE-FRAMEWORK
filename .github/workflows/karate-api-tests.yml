@@ -38,6 +38,11 @@ jobs:
       - name: Build Project
         run: mvn clean install -DskipTests
 
+      - name: Create info file for CI
+        run: |
+          mkdir -p target
+          touch target/info.txt
+
       - name: Run Karate Tests
         run: mvn test
 
