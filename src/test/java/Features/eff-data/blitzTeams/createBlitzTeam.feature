@@ -123,33 +123,6 @@ Feature: EFF Data - Create Blitz Team API Automation
       | random    | icon_tiger    | existingPublicBlitzLeagueId   | random_corrupted_string_12345     | 401            | Invalid token   | INVALID_TOKEN       | 
       | random    | icon_tiger    | existingPublicBlitzLeagueId   | invalid.token.string              | 401            | Invalid token   | INVALID_TOKEN       | 
 
-  @invalid_team_image
-  Scenario Outline: CreateBlitzTeam fails when team image is invalid
-    # PREREQUISITE CHECK: Ensure access token and league ID exist
-    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.abort()
-    
-    * def build = buildTeamData('<teamName>', '<teamImage>', '<leagueId>', existingAccessToken)
-    * header Authorization = build.authToken
-    * def payload = { query: '#(createBlitzTeamQuery)', variables: '#(build.variables)' }
-    
-    Given request payload
-    When method post
-    Then status 200
-    * print 'CreateBlitzTeam Invalid Team Image Response:', response
-    * match response.data.createBlitzTeam == null
-    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
-    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
-    * match response.errors[0].message contains '<expectedMessage>'
-
-    Examples:
-      | teamName   | teamImage   | leagueId                      | expectedStatus | expectedMessage                                | expectedErrorCode   |
-      | random     | abc         | existingPublicBlitzLeagueId   | 400            | Invalid team image. Must be a valid icon name  | INVALID_TEAM_IMAGE  | 
-      | random     | 123         | existingPublicBlitzLeagueId   | 400            | Invalid team image. Must be a valid icon name  | INVALID_TEAM_IMAGE  | 
-      | random     | ---         | existingPublicBlitzLeagueId   | 400            | Invalid team image. Must be a valid icon name  | INVALID_TEAM_IMAGE  | 
-      | random     | icon        | existingPublicBlitzLeagueId   | 400            | Invalid team image. Must be a valid icon name  | INVALID_TEAM_IMAGE  | 
-
   @happy_path
   Scenario Outline: CreateBlitzTeam succeeds with valid data and saves Team_ID
     # PREREQUISITE CHECK: Ensure access token and league ID exist

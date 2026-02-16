@@ -8,7 +8,7 @@ class TestRunner {
     Karate runAllTests() {
         return Karate.run(
             // Auth Module Tests (Run First)
-            "classpath:Features/auth/checkUsername.feature",
+           "classpath:Features/auth/checkUsername.feature",
             "classpath:Features/auth/signup.feature",
             "classpath:Features/auth/setpassword.feature",
             "classpath:Features/auth/verifyEmail.feature",
@@ -33,16 +33,29 @@ class TestRunner {
             // Public Blitz League Module Tests
             "classpath:Features/eff-data/blitzLeagues/getHomePagePublicExtremeLeagues.feature",
             "classpath:Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature",
+<<<<<<< HEAD
             "classpath:Features/eff-data/blitzLeagues/leavePublicBlitzLeague.feature",
             "classpath:Features/eff-data/blitzLeagues/getBlitzLeague.feature",
              
+=======
+
+>>>>>>> dev
             // Blitz Team Operations
+            "classpath:Features/eff-data/blitzTeams/createBlitzTeam.feature",
             "classpath:Features/eff-data/blitzTeams/checkBlitzTeamName.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeam.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeams.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeamsByLeague.feature",
+<<<<<<< HEAD
             "classpath:Features/eff-data/blitzTeams/createBlitzTeam.feature",
         
+=======
+
+            // Continue League Operations
+            "classpath:Features/eff-data/blitzLeagues/getBlitzLeague.feature",
+            "classpath:Features/eff-data/blitzLeagues/leavePublicBlitzLeague.feature",
+
+>>>>>>> dev
             // Private Blitz League Module Tests 
              "classpath:Features/eff-data/blitzLeagues/createBlitzLeague.feature",
              "classpath:helpers/createSecondUser.feature",
@@ -51,6 +64,7 @@ class TestRunner {
 
             // Cleanup Module (Run Last - Deletes test user and all associated data)
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"
+            
             )
         .configDir("file:src/test"); 
     }
