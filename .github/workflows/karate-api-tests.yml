@@ -38,8 +38,19 @@ jobs:
       - name: Build Project
         run: mvn clean install -DskipTests
 
+      - name: Create info file for CI
+        run: |
+          mkdir -p target
+          echo '{"email":"ci@test.com","password":"123456","accessToken":"dummy"}' > target/info.txt
+
       - name: Run Karate Tests
         run: mvn test
+        env:
+            BASE_URL: ${{ secrets.BASE_URL }}
+            X_API_KEY: ${{ secrets.X_API_KEY }}
+            GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+            GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+            GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
 
       - name: Generate Automation Summary
         if: always()
