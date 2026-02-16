@@ -41,7 +41,7 @@ jobs:
       - name: Create info file for CI
         run: |
           mkdir -p target
-          touch target/info.txt
+          echo '{"email":"ci@test.com","password":"123456","accessToken":"dummy"}' > target/info.txt
 
       - name: Run Karate Tests
         run: mvn test
