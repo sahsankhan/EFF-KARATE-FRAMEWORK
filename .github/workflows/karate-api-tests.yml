@@ -124,7 +124,7 @@ jobs:
     # Slack Alert and Notification
 
       - name: Send Slack Notification
-        if: always()
+        if: always() && github.ref_name == 'main'
         run: |
           curl -X POST ${{ secrets.SLACK_WEBHOOK_URL }} \
           -H 'Content-Type: application/json' \
