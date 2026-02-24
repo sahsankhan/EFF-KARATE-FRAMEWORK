@@ -36,6 +36,9 @@ public class PrivateLeagueFlowRunner {
             // Step 6: Private League Join (Second user joins via invite code)
             "classpath:Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature",
 
+            // Step 7: Cteate Private Team (Second user created the team)
+            "classpath:Features/eff-data/blitzTeams/createBlitzTeamPrivateLeague.feature",
+
             // Step 7: Leave Private League (Second user leaves the private league)
             "classpath:Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature",
 

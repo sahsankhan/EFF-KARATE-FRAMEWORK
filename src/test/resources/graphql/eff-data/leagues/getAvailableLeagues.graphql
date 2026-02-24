@@ -1,6 +1,7 @@
-query GetHomePagePublicExtremeLeagues {
-  getHomePagePublicExtremeLeagues {
+query GetAvailableLeagues {
+  getAvailableLeagues {
     statusCode
+
     blitz_league {
       _id
       League_Name
@@ -8,6 +9,7 @@ query GetHomePagePublicExtremeLeagues {
       Invite_Code
       League_Image
       Members
+      Limit
       Owner_Email
       Owner_ID
       Public
@@ -26,6 +28,7 @@ query GetHomePagePublicExtremeLeagues {
       sys_userModified_id
       sys_userModifiedName
     }
+
     exchange_league {
       _id
       League_Name
@@ -33,6 +36,7 @@ query GetHomePagePublicExtremeLeagues {
       Invite_Code
       League_Image
       Members
+      Limit
       Owner_Email
       Owner_ID
       Public
@@ -54,4 +58,3 @@ query GetHomePagePublicExtremeLeagues {
     }
   }
 }
-

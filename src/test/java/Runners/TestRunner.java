@@ -22,16 +22,18 @@ class TestRunner {
             "classpath:Features/user-management/getUser.feature",
             "classpath:Features/user-management/updateUser.feature",
 
-            // ⏰ TIMEFRAME SETUP - Set to Preseason Week 1 (allows all operations)
-            "classpath:helpers/setTimeframeToPreSeason.feature",
-
              // Eff Data Module Tests (Run After User Management)
             "classpath:Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature",
             "classpath:Features/eff-data/exchangeTeams/checkExchangeTeamName.feature",
             "classpath:Features/eff-data/exchangeLeagues/checkExchangeLeagueName.feature",
 
+            // ⏰ TIMEFRAME SETUP - Set to Preseason Week 1 (allows all operations)
+            "classpath:helpers/setTimeframeToPreSeason.feature",
+
             // Public Blitz League Module Tests
-            "classpath:Features/eff-data/blitzLeagues/getHomePagePublicExtremeLeagues.feature",
+            "classpath:Features/eff-data/leagues/getHomePagePublicExtremeLeagues.feature",
+            "classpath:Features/eff-data/leagues/getAvailableLeagues.feature",
+
             "classpath:Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature",
 
             // Blitz Team Operations
@@ -49,6 +51,10 @@ class TestRunner {
              "classpath:Features/eff-data/blitzLeagues/createBlitzLeague.feature",
              "classpath:helpers/createSecondUser.feature",
              "classpath:Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature",
+
+             // Blitz Team Operations
+             "classpath:Features/eff-data/blitzTeams/createBlitzTeamPrivateLeague.feature",
+             
              "classpath:Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature",
 
             //Module cleanup
