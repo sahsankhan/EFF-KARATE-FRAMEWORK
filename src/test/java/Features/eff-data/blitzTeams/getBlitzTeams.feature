@@ -12,7 +12,7 @@ Feature: EFF Data - Get Blitz Teams API Automation
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
     * def privateBlitzTeamId = karate.get('signUpInfo.privateBlitzTeamId', null)
     * def privateBlitzTeamName = karate.get('signUpInfo.privateBlitzTeamName', null)
-    * def extremeBlitzLeagueId = karate.get('signUpInfo.extremeBlitzLeagueId', null)
+    * def extremePublicBlitzLeagueId = karate.get('signUpInfo.extremePublicBlitzLeagueId', null)
 
   @missing_authorization_header
   Scenario Outline: GetBlitzTeams fails when Authorization header is missing
@@ -106,7 +106,7 @@ Feature: EFF Data - Get Blitz Teams API Automation
     * def team = createdTeam[0]
     * match team._id == privateBlitzTeamId + ''
     * match team.Team_Name == privateBlitzTeamName
-    * match team.League_ID == extremeBlitzLeagueId
+    * match team.League_ID == extremePublicBlitzLeagueId
     * match team.Owner_Email == signUpInfo.email
     
     # Validate league details

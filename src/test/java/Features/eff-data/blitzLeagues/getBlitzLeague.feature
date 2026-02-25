@@ -10,14 +10,14 @@ Feature: EFF Data - Get Blitz League API Automation
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
-    * def extremeBlitzLeagueId = karate.get('signUpInfo.extremeBlitzLeagueId', null)
-    * def initialBlitzMemberCount = karate.get('signUpInfo.initialBlitzMemberCount', null)
+    * def extremePublicBlitzLeagueId = karate.get('signUpInfo.extremePublicBlitzLeagueId', null)
+    * def initialPublicBlitzLeagueMemberCount = karate.get('signUpInfo.initialPublicBlitzLeagueMemberCount', null)
     * def buildLeagueData =
       """
       function(leagueId, existingAccessToken) {
         var idValue = leagueId;
         if (idValue === 'null') idValue = null;
-        if (idValue === 'existingPublicBlitzLeagueId') idValue = extremeBlitzLeagueId;
+        if (idValue === 'existingPublicBlitzLeagueId') idValue = extremePublicBlitzLeagueId;
         if (!isNaN(idValue) && idValue !== '' && idValue !== null) {
           idValue = Number(idValue);
         }
@@ -28,7 +28,7 @@ Feature: EFF Data - Get Blitz League API Automation
   @missing_authorization_header
   Scenario Outline: GetBlitzLeague fails when Authorization header is missing
     # PREREQUISITE CHECK: Ensure league ID exist
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
 
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     # Do not set Authorization header
@@ -51,7 +51,7 @@ Feature: EFF Data - Get Blitz League API Automation
   @expired_token
   Scenario Outline: GetBlitzLeague fails with expired token
     # PREREQUISITE CHECK: Ensure league ID exist
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
 
     * def expiredToken = '<expiredToken>'
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
@@ -75,7 +75,7 @@ Feature: EFF Data - Get Blitz League API Automation
   @invalid_token
   Scenario Outline: GetBlitzLeague fails with invalid or corrupted token
     # PREREQUISITE CHECK: Ensure league ID exist
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
 
     * def invalidToken = '<invalidToken>'
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
@@ -102,7 +102,7 @@ Feature: EFF Data - Get Blitz League API Automation
   Scenario Outline: GetBlitzLeague succeeds with valid league ID and verifies member count increment
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
     
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
@@ -118,7 +118,7 @@ Feature: EFF Data - Get Blitz League API Automation
     
     # Validate league data
     * def league = response.data.getBlitzLeague.leagues[0]
-    * match league._id == extremeBlitzLeagueId
+    * match league._id == extremePublicBlitzLeagueId
     * match league.League_Type == 'BLITZ'
     * match league.Game_Type == 'EXTREME'
     * match league.Public == true
@@ -127,7 +127,7 @@ Feature: EFF Data - Get Blitz League API Automation
     * def currentMemberCount = league.Members
     * print 'Current Member Count:', currentMemberCount
     
-    * if (initialBlitzMemberCount != null && currentMemberCount <= initialBlitzMemberCount) karate.fail('Member count should have increased after joining. Before=' + initialBlitzMemberCount + ', After=' + currentMemberCount)
+    * if (initialPublicBlitzLeagueMemberCount != null && currentMemberCount <= initialPublicBlitzLeagueMemberCount) karate.fail('Member count should have increased after joining. Before=' + initialPublicBlitzLeagueMemberCount + ', After=' + currentMemberCount)
     
     # Save current member count for leave verification
     * def updatedInfo = signUpInfo

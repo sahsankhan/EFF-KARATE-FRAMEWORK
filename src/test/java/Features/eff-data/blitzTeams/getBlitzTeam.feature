@@ -12,7 +12,7 @@ Feature: EFF Data - Get Blitz Team API Automation
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
     * def privateBlitzTeamId = karate.get('signUpInfo.privateBlitzTeamId', null)
     * def privateBlitzTeamName = karate.get('signUpInfo.privateBlitzTeamName', null)
-    * def extremeBlitzLeagueId = karate.get('signUpInfo.extremeBlitzLeagueId', null)
+    * def extremePublicBlitzLeagueId = karate.get('signUpInfo.extremePublicBlitzLeagueId', null)
 
     * def buildTeamData =
       """
@@ -127,13 +127,14 @@ Feature: EFF Data - Get Blitz Team API Automation
     * def team = response.data.getBlitzTeam.teams[0]
     * match team._id == privateBlitzTeamId + ''
     * match team.Team_Name == privateBlitzTeamName
-    * match team.League_ID == extremeBlitzLeagueId
+    * match team.League_ID == extremePublicBlitzLeagueId
     * match team.Owner_Email == signUpInfo.email
     
     # Validate league details
     * match team.league_details == '#present'
     * match team.league_details.Game_Type == 'EXTREME'
     * match team.league_details.League_Type == 'BLITZ'
+    * match team.league_details.Public == true
     
     Examples:
       | teamId                      | expectedStatus  | 

@@ -10,7 +10,7 @@ Feature: EFF Data - Create Blitz Team API Automation
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
-    * def extremeBlitzLeagueId = karate.get('signUpInfo.extremeBlitzLeagueId', null)
+    * def extremePublicBlitzLeagueId = karate.get('signUpInfo.extremePublicBlitzLeagueId', null)
     * def buildTeamData =
       """
       function(teamName, teamImage, leagueId, existingAccessToken) {
@@ -24,7 +24,7 @@ Feature: EFF Data - Create Blitz Team API Automation
         if (nameValue === 'false') nameValue = false;
         if (imageValue === 'null') imageValue = null;
         if (idValue === 'null') idValue = null;
-        if (idValue === 'existingPublicBlitzLeagueId') idValue = extremeBlitzLeagueId;
+        if (idValue === 'existingPublicBlitzLeagueId') idValue = extremePublicBlitzLeagueId;
         
         // Convert numeric strings to numbers
         if (!isNaN(nameValue) && nameValue !== '' && nameValue !== null) {
@@ -48,7 +48,7 @@ Feature: EFF Data - Create Blitz Team API Automation
   @missing_authorization_header
   Scenario Outline: CreateBlitzTeam fails when Authorization header is missing
     # PREREQUISITE CHECK: Ensure league ID exists
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
     
     * def build = buildTeamData('<teamName>', '<teamImage>', '<leagueId>', existingAccessToken)
     # Do not set Authorization header
@@ -71,7 +71,7 @@ Feature: EFF Data - Create Blitz Team API Automation
   @expired_token
   Scenario Outline: CreateBlitzTeam fails with expired token
     # PREREQUISITE CHECK: Ensure league ID exists
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
 
     * def expiredToken = '<expiredToken>'
     * def build = buildTeamData('<teamName>', '<teamImage>', '<leagueId>', existingAccessToken)
@@ -95,7 +95,7 @@ Feature: EFF Data - Create Blitz Team API Automation
   @invalid_token
   Scenario Outline: CreateBlitzTeam fails with invalid or corrupted token
     # PREREQUISITE CHECK: Ensure league ID exists
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
 
     * def invalidToken = '<invalidToken>'
     * def build = buildTeamData('<teamName>', '<teamImage>', '<leagueId>', existingAccessToken)
@@ -122,7 +122,7 @@ Feature: EFF Data - Create Blitz Team API Automation
   Scenario Outline: CreateBlitzTeam fails with invalid image provided
     # PREREQUISITE CHECK: Ensure league ID exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
 
     * def build = buildTeamData('<teamName>', '<teamImage>', '<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
@@ -149,7 +149,7 @@ Feature: EFF Data - Create Blitz Team API Automation
   Scenario Outline: CreateBlitzTeam succeeds with valid data and saves Team_ID
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
     
     * def build = buildTeamData('<teamName>', '<teamImage>', '<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
@@ -167,7 +167,7 @@ Feature: EFF Data - Create Blitz Team API Automation
     # Save Team_ID and Team_Name to info file for subsequent tests
     * def createdTeamId = response.data.createBlitzTeam.Team_ID
     * def createdTeamName = build.variables.Team_Name
-    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremeBlitzLeagueId: signUpInfo.extremeBlitzLeagueId, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzTeamId: createdTeamId, privateBlitzTeamName: createdTeamName }, 'target/info.txt')
+    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: signUpInfo.extremePublicBlitzLeagueId, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzTeamId: createdTeamId, privateBlitzTeamName: createdTeamName }, 'target/info.txt')
 
     Examples:
       | teamName                                      | teamImage     | leagueId                      | expectedStatus | expectedMessage                       |
@@ -177,7 +177,7 @@ Feature: EFF Data - Create Blitz Team API Automation
   Scenario Outline: CreateBlitzTeam fails when user already has a team in the league
     # PREREQUISITE CHECK: Ensure access token, league ID, and team ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
     * def existingTeamId = karate.get('signUpInfo.blitzTeamId', null)
     * if (existingTeamId == null) karate.abort()
     
@@ -254,7 +254,7 @@ Feature: EFF Data - Create Blitz Team API Automation
   Scenario Outline: CreateBlitzTeam fails when team name is less than 3 characters
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
     
     * def build = buildTeamData('<teamName>', '<teamImage>', '<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
@@ -281,7 +281,7 @@ Feature: EFF Data - Create Blitz Team API Automation
   Scenario Outline: CreateBlitzTeam fails when team name exceeds 50 characters
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
     
     * def build = buildTeamData('<teamName>', '<teamImage>', '<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
@@ -307,7 +307,7 @@ Feature: EFF Data - Create Blitz Team API Automation
   Scenario Outline: CreateBlitzTeam fails when team name contains invalid characters
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
     
     * def build = buildTeamData('<teamName>', '<teamImage>', '<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
@@ -343,7 +343,7 @@ Feature: EFF Data - Create Blitz Team API Automation
   Scenario Outline: CreateBlitzTeam fails when team name contains no letters
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
     
     * def build = buildTeamData('<teamName>', '<teamImage>', '<leagueId>', existingAccessToken)
     * header Authorization = build.authToken

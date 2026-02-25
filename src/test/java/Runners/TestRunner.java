@@ -54,7 +54,11 @@ class TestRunner {
 
              // Blitz Team Operations
              "classpath:Features/eff-data/blitzTeams/createBlitzTeamPrivateLeague.feature",
+             "classpath:Features/eff-data/blitzTeams/getBlitzTeamPrivateLeague.feature",
+             "classpath:Features/eff-data/blitzTeams/getBlitzTeamsPrivateLeague.feature",
+             "classpath:Features/eff-data/blitzTeams/getBlitzTeamsByPrivateLeague.feature",
              
+             "classpath:Features/eff-data/blitzLeagues/getPrivateBlitzLeague.feature",
              "classpath:Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature",
 
             //Module cleanup
