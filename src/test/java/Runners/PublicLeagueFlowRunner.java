@@ -28,7 +28,9 @@ public class PublicLeagueFlowRunner {
             "classpath:Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature",
 
             // Step 4: Public League Flow (Main Test Focus)
-            "classpath:Features/eff-data/blitzLeagues/getHomePagePublicExtremeLeagues.feature",
+            "classpath:Features/eff-data/leagues/getHomePagePublicExtremeLeagues.feature",
+            "classpath:Features/eff-data/leagues/getAvailableLeagues.feature",
+            
             "classpath:Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature",
             
             // Step 5: Blitz Team Operations

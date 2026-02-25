@@ -8,7 +8,8 @@ Feature: EFF Data - Leave Blitz League API Automation
     * def errorCodes = read('classpath:common/error-codes.json')
     * def leaveBlitzLeagueQuery = read('classpath:graphql/eff-data/blitzLeagues/leaveBlitzLeague.graphql')
     * def getBlitzLeagueQuery = read('classpath:graphql/eff-data/blitzLeagues/getBlitzLeague.graphql')
-    * def getHomePagePublicExtremeLeaguesQuery = read('classpath:graphql/eff-data/blitzLeagues/getHomePagePublicExtremeLeagues.graphql')
+    * def getHomePagePublicExtremeLeaguesQuery = read('classpath:graphql/eff-data/leagues/getHomePagePublicExtremeLeagues.graphql')
+    * def getAvailablePublicExtremeLeaguesQuery = read('classpath:graphql/eff-data/leagues/getAvailableLeagues.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
@@ -122,7 +123,24 @@ Feature: EFF Data - Leave Blitz League API Automation
     * match response.data.leaveBlitzLeague.statusCode == <expectedStatus>
     * match response.data.leaveBlitzLeague.message == '<expectedMessage>'
 
-    # Step 2: Verify member count is decremented by fetching public leagues again
+    # Step 2: Verify available leagues show both public blitz and exchange leagues
+    * def getLeaguesPayload = { query: '#(getAvailablePublicExtremeLeaguesQuery)' }
+    * header Accept = 'application/json'
+    * header Content-Type = 'application/json'
+    * header x-api-key = apiKey
+    * header Authorization = build.authToken
+
+    Given request getLeaguesPayload
+    When method post
+    Then status 200
+    * print 'GetAvailablePublicExtremeLeagues After Leave Response:', response
+    
+    # Validate response structure
+    * match response.data.getAvailableLeagues.statusCode == <expectedStatus>
+    * match response.data.getAvailableLeagues.blitz_league == '#present'
+    * match response.data.getAvailableLeagues.exchange_league == '#present'
+
+    # Step 3: Verify member count is decremented by fetching public leagues again
     * def getLeaguesPayload = { query: '#(getHomePagePublicExtremeLeaguesQuery)' }
     * header Accept = 'application/json'
     * header Content-Type = 'application/json'
@@ -150,6 +168,10 @@ Feature: EFF Data - Leave Blitz League API Automation
     * if (currentBlitzMemberCount != null) karate.log('Before leave:', currentBlitzMemberCount)
     * if (currentBlitzMemberCount != null) karate.log('After leave:', memberCountAfterLeave)
     * if (currentBlitzMemberCount != null && memberCountAfterLeave != currentBlitzMemberCount - 1) karate.fail('Member count should have decreased by 1 after leaving. Before=' + currentBlitzMemberCount + ', After=' + memberCountAfterLeave)
+
+    # Clear extremeBlitzLeagueId so subsequent features know the user is no longer a public league member
+    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremeBlitzLeagueId: null, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzTeamId: signUpInfo.privateBlitzTeamId, privateBlitzTeamName: signUpInfo.privateBlitzTeamName}, 'target/info.txt')
+    * karate.log('Cleared extremeBlitzLeagueId after leaving public league')
 
     Examples:
       | leagueId                      | expectedStatus | expectedMessage                                 |

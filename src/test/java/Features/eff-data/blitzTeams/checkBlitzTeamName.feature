@@ -158,7 +158,7 @@ Feature: EFF Data - Check Blitz Team Name API Automation
 
     Examples:
       | teamName                                     | leagueId      | expectedStatus | expectedMessage                                     | expectedErrorCode   |
-      | Personal Blitz Team For Testing Automation   | 1             | 409            | A team with this name already exists in this league.| TEAM_NAME_TAKEN     |
+      | Personal Blitz Team for Automation Testing   | 1             | 409            | A team with this name already exists in this league.| TEAM_NAME_TAKEN     |
 
   @team_name_too_short
   Scenario Outline: CheckBlitzTeamName fails when team name is less than 3 characters
@@ -300,9 +300,9 @@ Feature: EFF Data - Check Blitz Team Name API Automation
 
     Examples:
      | teamName                                            | leagueId      | expectedStatus | expectedMessage                                         | expectedErrorCode   | 
-     | PERSONALBLITZTEAMFORTESTINGAUTOMATION               | 1             | 409            | A team with this name already exists in this league.    | TEAM_NAME_TAKEN     |
-     | PERSONAL    BLITZTEAM FOR    TESTINGAUTOMATION      | 1             | 409            | A team with this name already exists in this league.    | TEAM_NAME_TAKEN     |
-     | PER SONAL BLITZ  TEAM FOR  TEST  ING  AUTO  MATION  | 1             | 409            | A team with this name already exists in this league.    | TEAM_NAME_TAKEN     |
+     | PERSONALBLITZTEAMFORAUTOMATIONTESTING               | 1             | 409            | A team with this name already exists in this league.    | TEAM_NAME_TAKEN     |
+     | PERSONAL    BLITZTEAM FOR    AUTOMATIONTESTING      | 1             | 409            | A team with this name already exists in this league.    | TEAM_NAME_TAKEN     |
+     | PER SONAL BLITZ  TEAM FOR   AUTO  MATION  TEST  ING | 1             | 409            | A team with this name already exists in this league.    | TEAM_NAME_TAKEN     |
 
   @case_sensitive_handling
   Scenario Outline: CheckBlitzTeamName with case sensitivity scenarios
@@ -324,6 +324,6 @@ Feature: EFF Data - Check Blitz Team Name API Automation
 
     Examples:
      | teamName                                    | leagueId      | expectedStatus | expectedMessage                                       | expectedErrorCode   |
-     | PERSONAL BLITZ TEAM FOR TESTING AUTOMATION  | 1             | 409            | A team with this name already exists in this league.  | TEAM_NAME_TAKEN     |
-     | personal blitz team for testing automation  | 1             | 409            | A team with this name already exists in this league.  | TEAM_NAME_TAKEN     |
-     | pERsonAl bLiTz tEaM fOr teStiNg auTomAtIoN  | 1             | 409            | A team with this name already exists in this league.  | TEAM_NAME_TAKEN     |
+     | PERSONAL BLITZ TEAM FOR AUTOMATION TESTING  | 1             | 409            | A team with this name already exists in this league.  | TEAM_NAME_TAKEN     |
+     | personal blitz team for automation testing  | 1             | 409            | A team with this name already exists in this league.  | TEAM_NAME_TAKEN     |
+     | pERsonAl bLiTz tEaM fOr auTomAtIoN teStiNg  | 1             | 409            | A team with this name already exists in this league.  | TEAM_NAME_TAKEN     |

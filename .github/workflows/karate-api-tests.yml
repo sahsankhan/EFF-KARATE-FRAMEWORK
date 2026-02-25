@@ -138,11 +138,11 @@ jobs:
             # Use defaults if empty
             [ -z "$REPO" ] && REPO="ExtremeFF-org/EFF_Portal"
             [ -z "$BRANCH" ] && BRANCH="main"
-            [ -z "$ACTOR" ] && ACTOR="Dev Repo Push"
-            
+            [ -z "$ACTOR" ] && ACTOR="temesgentop"
+              
             echo "SLACK_REPO=$REPO" >> $GITHUB_ENV
             echo "SLACK_BRANCH=$BRANCH" >> $GITHUB_ENV
-            echo "SLACK_TRIGGERED_BY=$ACTOR (via Zapier)" >> $GITHUB_ENV
+            echo "SLACK_TRIGGERED_BY=$ACTOR" >> $GITHUB_ENV
           else
             echo "SLACK_REPO=${{ github.repository }}" >> $GITHUB_ENV
             echo "SLACK_BRANCH=${{ github.ref_name }}" >> $GITHUB_ENV

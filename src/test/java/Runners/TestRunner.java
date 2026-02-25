@@ -31,7 +31,9 @@ class TestRunner {
             "classpath:helpers/setTimeframeToPreSeason.feature",
 
             // Public Blitz League Module Tests
-            "classpath:Features/eff-data/blitzLeagues/getHomePagePublicExtremeLeagues.feature",
+            "classpath:Features/eff-data/leagues/getHomePagePublicExtremeLeagues.feature",
+            "classpath:Features/eff-data/leagues/getAvailableLeagues.feature",
+
             "classpath:Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature",
             // Blitz Team Operations
             "classpath:Features/eff-data/blitzTeams/createBlitzTeam.feature",
@@ -48,6 +50,10 @@ class TestRunner {
              "classpath:Features/eff-data/blitzLeagues/createBlitzLeague.feature",
              "classpath:helpers/createSecondUser.feature",
              "classpath:Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature",
+
+             // Blitz Team Operations
+             "classpath:Features/eff-data/blitzTeams/createBlitzTeamPrivateLeague.feature",
+             
              "classpath:Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature",
 
             //Module cleanup
