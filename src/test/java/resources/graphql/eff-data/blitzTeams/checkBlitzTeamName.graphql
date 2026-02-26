@@ -1,9 +1,0 @@
-query CheckBlitzTeamName($League_ID: ID!, $Team_Name: String!) {
-  checkBlitzTeamName(League_ID: $League_ID, Team_Name: $Team_Name) {
-    statusCode
-    message
-    valid
-  }
-}
-
-
