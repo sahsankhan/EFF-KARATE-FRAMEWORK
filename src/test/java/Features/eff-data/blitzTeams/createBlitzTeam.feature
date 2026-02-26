@@ -187,7 +187,7 @@ Feature: EFF Data - Create Blitz Team API Automation
     # PREREQUISITE CHECK: Ensure access token, league ID, and team ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
     * if (extremePublicBlitzLeagueId == null) karate.abort()
-    * def existingTeamId = karate.get('signUpInfo.blitzTeamId', null)
+    * def existingTeamId = karate.get('signUpInfo.privateBlitzTeamId', null)
     * if (existingTeamId == null) karate.abort()
     
     * def build = buildTeamData('<teamName>', '<teamImage>', '<leagueId>', existingAccessToken, privateBlitzTeamName)
