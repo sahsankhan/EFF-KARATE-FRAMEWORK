@@ -7,7 +7,6 @@ Feature: Check Username API Automation
     * header x-api-key = apiKey
     * def errorCodes = read('classpath:common/error-codes.json')
     * def checkUsernameQuery = read('classpath:graphql/auth/checkUsername.graphql')
-    * def random = function() { return java.lang.Math.floor(java.lang.Math.random() * 100000); }
     * def buildCheckUsernameData =
       """
       function(username) {

@@ -10,7 +10,7 @@ Feature: EFF Data - Get Blitz Teams by League API Automation
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
-    * def extremeBlitzLeagueId = karate.get('signUpInfo.extremeBlitzLeagueId', null)
+    * def extremePublicBlitzLeagueId = karate.get('signUpInfo.extremePublicBlitzLeagueId', null)
     * def privateBlitzTeamId = karate.get('signUpInfo.privateBlitzTeamId', null)
     * def privateBlitzTeamName = karate.get('signUpInfo.privateBlitzTeamName', null)
     * def buildLeagueData =
@@ -20,7 +20,7 @@ Feature: EFF Data - Get Blitz Teams by League API Automation
         
         // Handle special keywords for dynamic values
         if (idValue === 'null') idValue = null;
-        if (idValue === 'existingPublicBlitzLeagueId') idValue = extremeBlitzLeagueId;
+        if (idValue === 'existingPublicBlitzLeagueId') idValue = extremePublicBlitzLeagueId;
         
         // Convert numeric strings to numbers
         if (!isNaN(idValue) && idValue !== '' && idValue !== null) {
@@ -34,7 +34,7 @@ Feature: EFF Data - Get Blitz Teams by League API Automation
   @missing_authorization_header
   Scenario Outline: GetBlitzTeamsByLeague fails when Authorization header is missing
     # PREREQUISITE CHECK: Ensure league ID exists
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
 
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     # Do not set Authorization header
@@ -57,7 +57,7 @@ Feature: EFF Data - Get Blitz Teams by League API Automation
   @expired_token
   Scenario Outline: GetBlitzTeamsByLeague fails with expired token
     # PREREQUISITE CHECK: Ensure league ID exists
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
     * if (privateBlitzTeamId == null) karate.abort()
 
     * def expiredToken = '<expiredToken>'
@@ -82,7 +82,7 @@ Feature: EFF Data - Get Blitz Teams by League API Automation
   @invalid_token
   Scenario Outline: GetBlitzTeamsByLeague fails with invalid or corrupted token
     # PREREQUISITE CHECK: Ensure league ID exists
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
     * if(privateBlitzTeamId == null) karate.abort()
 
     * def invalidToken = '<invalidToken>'
@@ -110,7 +110,7 @@ Feature: EFF Data - Get Blitz Teams by League API Automation
   Scenario Outline: GetBlitzTeamsByLeague successfully retrieves all teams in the league
     # PREREQUISITE CHECK: Ensure access token, league ID, and team ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
     * if (privateBlitzTeamId == null) karate.abort()
     
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
@@ -139,7 +139,7 @@ Feature: EFF Data - Get Blitz Teams by League API Automation
     * def team = userTeam[0]
     * match team._id == privateBlitzTeamId + ''
     * match team.Team_Name == privateBlitzTeamName
-    * match team.League_ID == extremeBlitzLeagueId
+    * match team.League_ID == extremePublicBlitzLeagueId
     * match team.Owner_Email == signUpInfo.email
     
     # Validate league details

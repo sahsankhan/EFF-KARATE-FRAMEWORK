@@ -1,4 +1,4 @@
-Feature: EFF Data - Create Blitz Team (Private League) API Automation
+Feature: EFF Data - Create Blitz Team For Private Blitz League API Automation
 
   Background:
     * url baseUrl
@@ -11,17 +11,12 @@ Feature: EFF Data - Create Blitz Team (Private League) API Automation
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def secondUserAccessToken = karate.get('signUpInfo.secondUser.accessToken', null)
     * def privateBlitzLeagueId = karate.get('signUpInfo.privateBlitzLeagueId', null)
-    * def random = function() { return java.lang.Math.floor(java.lang.Math.random() * 100000); }
     * def buildTeamData =
       """
       function(teamName, teamImage, leagueId, accessToken) {
         var nameValue = teamName;
         var imageValue = teamImage;
         var idValue = leagueId;
-
-        if (nameValue === 'random') {
-           nameValue = 'Blitz Team' + random() + Date.now(); 
-        }
 
         // Handle special keywords for dynamic values
         if (nameValue === 'null') nameValue = null;
@@ -70,12 +65,12 @@ Feature: EFF Data - Create Blitz Team (Private League) API Automation
 
     * def createdTeamId = response.data.createBlitzTeam.Team_ID
     * def createdTeamName = build.variables.Team_Name
-    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremeBlitzLeagueId: signUpInfo.extremeBlitzLeagueId, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzLeagueInviteCode: signUpInfo.privateBlitzLeagueInviteCode, secondUser: signUpInfo.secondUser, privateBlitzTeamId: signUpInfo.privateBlitzTeamId, privateBlitzTeamName: signUpInfo.privateBlitzTeamName, secondUserPrivateBlitzTeamId: createdTeamId, secondUserPrivateBlitzTeamName: createdTeamName}, 'target/info.txt')
+    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: signUpInfo.extremePublicBlitzLeagueId, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzLeagueInviteCode: signUpInfo.privateBlitzLeagueInviteCode, secondUser: signUpInfo.secondUser, secondUserPrivateBlitzTeamId: createdTeamId, secondUserPrivateBlitzTeamName: createdTeamName}, 'target/info.txt')
     * karate.log('Saved Second User Private Blitz Team ID:', createdTeamId)
 
     Examples:
-      | teamName | teamImage  | leagueId                       | expectedStatus | expectedMessage                 |
-      | random   | icon_tiger | existingPrivateBlitzLeagueId   | 200            | Blitz Team created successfully |
+      | teamName             | teamImage  | leagueId                       | expectedStatus | expectedMessage                 |
+      | Private Blitz Team   | icon_tiger | existingPrivateBlitzLeagueId   | 200            | Blitz Team created successfully |
 
   @user_already_has_team_in_private_league
   Scenario Outline: CreateBlitzTeam fails when second user already has a team in the private league

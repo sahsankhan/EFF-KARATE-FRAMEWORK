@@ -29,20 +29,21 @@ public class PrivateLeagueFlowRunner {
 
             // Step 4: Private League Flow (Main Test Focus)
             "classpath:Features/eff-data/blitzLeagues/createBlitzLeague.feature",
-
-            // Step 5: Create Second User (Required for testing private league invite/join)
             "classpath:helpers/createSecondUser.feature",
 
-            // Step 6: Private League Join (Second user joins via invite code)
             "classpath:Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature",
 
-            // Step 7: Cteate Private Team (Second user created the team)
+            // Step 5: Blitz Team Operations
             "classpath:Features/eff-data/blitzTeams/createBlitzTeamPrivateLeague.feature",
+            "classpath:Features/eff-data/blitzTeams/getBlitzTeamPrivateLeague.feature",
+            "classpath:Features/eff-data/blitzTeams/getBlitzTeamsPrivateLeague.feature",
+            "classpath:Features/eff-data/blitzTeams/getBlitzTeamsByPrivateLeague.feature",
 
-            // Step 7: Leave Private League (Second user leaves the private league)
+            // Step 6: Continue League Operations
+            "classpath:Features/eff-data/blitzLeagues/getPrivateBlitzLeague.feature",
             "classpath:Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature",
 
-            // Step 8: Cleanup (Deletes test user and all associated data)
+            // Step 7: Cleanup (Deletes test user and all associated data)
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"
         )
         .configDir("file:src/test")

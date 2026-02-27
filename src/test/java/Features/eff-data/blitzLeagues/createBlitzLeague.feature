@@ -14,9 +14,10 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
     * def buildLeagueData =
       """
-      function(leagueName, leagueImage, existingAccessToken) {
+      function(leagueName, leagueImage, existingAccessToken, privateBlitzLeagueName) {
         var nameValue = leagueName;
         var imageValue = leagueImage;
+        if (nameValue === 'privateBlitzLeagueName') nameValue = privateBlitzLeagueName;
         if (nameValue === 'null') nameValue = null;
         if (imageValue === 'null') imageValue = null;
         if (nameValue === 'true') nameValue = true;
@@ -24,9 +25,21 @@ Feature: EFF Data - Create Private Blitz League API Automation
         if (!isNaN(nameValue) && nameValue !== '' && nameValue !== null) {
           nameValue = Number(nameValue);
         }
+        
+        // Handle whitespace and case transformations
+        if (privateBlitzLeagueName) {
+          if (nameValue === 'UPPER') nameValue = privateBlitzLeagueName.toUpperCase();
+          if (nameValue === 'LOWER') nameValue = privateBlitzLeagueName.toLowerCase();
+          if (nameValue === 'MIXED_SPACES') nameValue = '   ' + privateBlitzLeagueName.replace(/ /g, '    ') + '   ';
+          if (nameValue === 'NO_SPACES') nameValue = privateBlitzLeagueName.replace(/ /g, '');
+          if (nameValue === 'SPACED_LETTERS') nameValue = privateBlitzLeagueName.split('').join(' ');
+        }
+        
         return { authToken: existingAccessToken, variables: { League_Name: nameValue, League_Image: imageValue } };
       }
       """
+    * def runSuffix = java.lang.System.currentTimeMillis() + ''
+    * def privateBlitzLeagueName = 'Blitz League' + runSuffix
 
   @missing_authorization_header
   Scenario Outline: CreateBlitzLeague fails when Authorization header is missing
@@ -45,8 +58,8 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName             | leagueImage | expectedStatus | expectedMessage         |  expectedErrorCode   |
-      | Private Blitz League   | icon_bull   | 400            | Missing token in header |  MISSING_TOKEN       |
+      | leagueName     | leagueImage | expectedStatus | expectedMessage         |  expectedErrorCode   |
+      | Valid League   | icon_bull   | 400            | Missing token in header |  MISSING_TOKEN       |
 
   @expired_token
   Scenario Outline: CreateBlitzLeague fails with expired token
@@ -66,8 +79,8 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName             | leagueImage | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage |  expectedErrorCode   |
-      | Private Blitz League   | icon_bull   | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |  EXPIRED_TOKEN       |
+      | leagueName     | leagueImage | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage |  expectedErrorCode   |
+      | Valid League   | icon_bull   | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |  EXPIRED_TOKEN       |
 
   @invalid_token
   Scenario Outline: CreateBlitzLeague fails with invalid or corrupted token
@@ -87,10 +100,10 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName             | leagueImage | invalidToken                      | expectedStatus | expectedMessage | expectedErrorCode   |
-      | Private Blitz League   | icon_bull   | invalid.token.string              | 401            | Invalid token   | INVALID_TOKEN       |
-      | Private Blitz League   | icon_bull   | random_corrupted_string_12345     | 401            | Invalid token   | INVALID_TOKEN       |
-      | Private Blitz League   | icon_bull   | Bearer invalidtoken123            | 401            | Invalid token   | INVALID_TOKEN       |
+      | leagueName     | leagueImage | invalidToken                      | expectedStatus | expectedMessage | expectedErrorCode   |
+      | Valid League   | icon_bull   | invalid.token.string              | 401            | Invalid token   | INVALID_TOKEN       |
+      | Valid League   | icon_bull   | random_corrupted_string_12345     | 401            | Invalid token   | INVALID_TOKEN       |
+      | Valid League   | icon_bull   | Bearer invalidtoken123            | 401            | Invalid token   | INVALID_TOKEN       |
  
   @invalid_league_image
   Scenario Outline: CreateBlitzLeague fails with invalid league image
@@ -113,18 +126,18 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName                            | leagueImage | expectedStatus | expectedMessage                                   | expectedErrorCode      |
-      | Private Blitz League for Automation   | 123         | 400            | Invalid league image. Must be a valid icon name   | INVALID_LEAGUE_IMAGE   |
-      | Private Blitz League for Automation   | abc         | 400            | Invalid league image. Must be a valid icon name   | INVALID_LEAGUE_IMAGE   |
-      | Private Blitz League for Automation   | ---         | 400            | Invalid league image. Must be a valid icon name   | INVALID_LEAGUE_IMAGE   |
-      | Private Blitz League for Automation   | icon        | 400            | Invalid league image. Must be a valid icon name   | INVALID_LEAGUE_IMAGE   |
+      | leagueName    | leagueImage | expectedStatus | expectedMessage                                   | expectedErrorCode      |
+      | Valid League  | 123         | 400            | Invalid league image. Must be a valid icon name   | INVALID_LEAGUE_IMAGE   |
+      | Valid League  | abc         | 400            | Invalid league image. Must be a valid icon name   | INVALID_LEAGUE_IMAGE   |
+      | Valid League  | ---         | 400            | Invalid league image. Must be a valid icon name   | INVALID_LEAGUE_IMAGE   |
+      | Valid League  | icon        | 400            | Invalid league image. Must be a valid icon name   | INVALID_LEAGUE_IMAGE   |
  
   @happy_path_create_private_league
   Scenario Outline: CreateBlitzLeague succeeds with valid data and saves invite code
     # PREREQUISITE CHECK: Ensure access token exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
     
-    * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken)
+    * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken, privateBlitzLeagueName)
     * header Authorization = build.authToken
     * def payload = { query: '#(createBlitzLeagueQuery)', variables: '#(build.variables)' }
     
@@ -171,21 +184,27 @@ Feature: EFF Data - Create Private Blitz League API Automation
     
     # Save private league ID and invite code to info.txt
     * def privateBlitzLeagueInviteCode = createdLeague.Invite_Code
-    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremeBlitzLeagueId: signUpInfo.extremeBlitzLeagueId, privateBlitzLeagueId: privateBlitzLeagueId, privateBlitzLeagueInviteCode: privateBlitzLeagueInviteCode}, 'target/info.txt')
+    * def initialPrivateBlitzLeagueMemberCount = createdLeague.Members
+
+    * karate.log('Initial Private Blitz League Member Count:', initialPrivateBlitzLeagueMemberCount)
+
+    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: signUpInfo.extremePublicBlitzLeagueId, privateBlitzLeagueId: privateBlitzLeagueId,  privateBlitzLeagueName: privateBlitzLeagueName,  privateBlitzLeagueInviteCode: privateBlitzLeagueInviteCode, initialPrivateBlitzLeagueMemberCount: initialPrivateBlitzLeagueMemberCount}, 'target/info.txt')
     * karate.log('Saved Private League ID:', privateBlitzLeagueId)
     * karate.log('Saved Private League Invite Code:', privateBlitzLeagueInviteCode)
+    * karate.log('Saved Private Blitz League Initial Member Count:', initialPrivateBlitzLeagueMemberCount)
 
     Examples:
-      | leagueName                           | leagueImage | expectedStatus | expectedMessage                       | 
-      | Private Blitz League for Automation  | icon_bull   | 200            | Blitz League created successfully     |
+      | leagueName              | leagueImage | expectedStatus | expectedMessage                       | 
+      | privateBlitzLeagueName  | icon_bull   | 200            | Blitz League created successfully     |
 
   @duplicate_league_name
   Scenario Outline: CreateBlitzLeague fails with duplicate league name
-    # PREREQUISITE CHECK: Ensure access token exists
+    # PREREQUISITE CHECK: Ensure access token exists and league name exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    * if (signUpInfo.privateBlitzLeagueName == null) karate.fail('No created league name found. Run @happy_path_create_private_league scenario first')
     
-    # STEP 1: Create first league with this name
-    * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken)
+    * def createdLeagueName = signUpInfo.privateBlitzLeagueName
+    * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken, createdLeagueName)
     * header Authorization = build.authToken
     * def payload = { query: '#(createBlitzLeagueQuery)', variables: '#(build.variables)' }
     
@@ -200,8 +219,8 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueName                            | leagueImage | expectedStatus | expectedMessage                           | expectedErrorCode   |
-      | Private Blitz League for Automation   | icon_bull   | 409            | A league with this name already exists.   | LEAGUE_NAME_TAKEN   |
+      | leagueName              | leagueImage | expectedStatus | expectedMessage                           | expectedErrorCode   |
+      | privateBlitzLeagueName  | icon_bull   | 409            | A league with this name already exists.   | LEAGUE_NAME_TAKEN   |
 
   @league_name_too_short
   Scenario Outline: CreateBlitzLeague fails when league name is less than 3 characters
@@ -325,17 +344,18 @@ Feature: EFF Data - Create Private Blitz League API Automation
 
   @whitespace_handling
   Scenario Outline: CreateBlitzLeague with various whitespace scenarios
-    # PREREQUISITE CHECK: Ensure access token exists
+    # PREREQUISITE CHECK: Ensure access token and league name exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    * if (signUpInfo.privateBlitzLeagueName == null) karate.fail('No created league name found. Run @happy_path_create_private_league scenario first')
     
-    * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken)
+    * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken, signUpInfo.privateBlitzLeagueName)
     * header Authorization = build.authToken
     * def payload = { query: '#(createBlitzLeagueQuery)', variables: '#(build.variables)' }
     
     Given request payload
     When method post
     Then status 200
-    * print 'CreateBlitzLeague Whitespace Response:', response
+    * print 'CreateBlitzLeague Response:', response
     * match response.data.createBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
     * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
@@ -343,27 +363,26 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-     | leagueName                                       | leagueImage  | expectedStatus | expectedMessage                            | expectedErrorCode   |
-     | PRIVATE BLITZ LEAGUE FOR AUTOMATION              | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
-     | PRIVATE B L I T Z L E A G U E FOR AUTOMATION     | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
-     | PRIVATEBLITZLEAGUEFORAUTOMATION                  | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
-     |   pRIvAtEBLITZ LEaGuE    FOrAuToMAtIoN           | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
-     | PRIVATE   blitzleague    FORAUTOMATION           | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
-     | PRIVATEBlitzLeague     FOR     AUTOMATION        | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
+     | leagueName       | leagueImage  | expectedStatus | expectedMessage                            | expectedErrorCode   |
+     | UPPER            | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
+     | MIXED_SPACES     | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
+     | NO_SPACES        | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
+     | SPACED_LETTERS   | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
 
   @case_sensitive_handling
-  Scenario Outline: CreateBlitzLeague with various whitespace scenarios
-    # PREREQUISITE CHECK: Ensure access token exists
+  Scenario Outline: CreateBlitzLeague with case sensitivity scenarios
+    # PREREQUISITE CHECK: Ensure access token and league name exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    * if (signUpInfo.privateBlitzLeagueName == null) karate.fail('No created league name found. Run @happy_path_create_private_league scenario first')
     
-    * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken)
+    * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken, signUpInfo.privateBlitzLeagueName)
     * header Authorization = build.authToken
     * def payload = { query: '#(createBlitzLeagueQuery)', variables: '#(build.variables)' }
     
     Given request payload
     When method post
     Then status 200
-    * print 'CreateBlitzLeague Whitespace Response:', response
+    * print 'CreateBlitzLeague Response:', response
     * match response.data.createBlitzLeague == null
     * match response.errors[0].errorInfo.statusCode == <expectedStatus>
     * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
@@ -371,6 +390,6 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-     | leagueName                            | leagueImage  | expectedStatus | expectedMessage                            | expectedErrorCode   |
-     | private blitz league for automation   | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
-  
+     | leagueName | leagueImage  | expectedStatus | expectedMessage                            | expectedErrorCode   |
+     | LOWER      | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |
+     | UPPER      | icon_bull    | 409            | A league with this name already exists.    | LEAGUE_NAME_TAKEN   |

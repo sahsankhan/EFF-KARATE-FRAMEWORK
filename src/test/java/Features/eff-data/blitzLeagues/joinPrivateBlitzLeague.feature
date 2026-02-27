@@ -26,9 +26,6 @@ Feature: EFF Data - Join Private Blitz League API Automation
 
   @missing_authorization_header
   Scenario Outline: JoinPrivateBlitzLeague fails when Authorization header is missing
-    # PREREQUISITE CHECK: Ensure invite code exists
-    * if (privateBlitzLeagueInviteCode == null) karate.fail('No invite code found. Run createBlitzLeague.feature first')
-   
     * def build = buildJoinLeagueData('<inviteCode>', secondUserAccessToken)
     # Do not set Authorization header
     * def payload = { query: '#(joinPrivateBlitzLeagueQuery)', variables: '#(build.variables)' }
@@ -45,13 +42,10 @@ Feature: EFF Data - Join Private Blitz League API Automation
 
     Examples:
       | inviteCode | expectedStatus | expectedMessage         |  expectedErrorCode   |
-      | existing   | 400            | Missing token in header |  MISSING_TOKEN       |
+      | ABC123     | 400            | Missing token in header |  MISSING_TOKEN       |
 
   @expired_token
   Scenario Outline: JoinPrivateBlitzLeague fails with expired token
-    # PREREQUISITE CHECK: Ensure invite code exists
-    * if (privateBlitzLeagueInviteCode == null) karate.fail('No invite code found. Run createBlitzLeague.feature first')
-
     * def expiredToken = '<expiredToken>'
     * def build = buildJoinLeagueData('<inviteCode>', secondUserAccessToken)
     * header Authorization = expiredToken
@@ -69,13 +63,10 @@ Feature: EFF Data - Join Private Blitz League API Automation
 
     Examples:
       | inviteCode | expiredToken                                                                                                                                                                | expectedStatus | expectedMessage |  expectedErrorCode   |
-      | existing   | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |  EXPIRED_TOKEN       |
+      | ABC123     | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWx1ZSI6InVzZXJleGFtcGxlMjI1QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzY0MTcyOTE2fQ.cQmknZ_etOJ9Fw-YJYHLscbqD4XoXWFdQYSJd7czypo | 401            | Expired token   |  EXPIRED_TOKEN       |
 
   @invalid_token
   Scenario Outline: JoinPrivateBlitzLeague fails with invalid or corrupted token
-    # PREREQUISITE CHECK: Ensure invite code exists
-    * if (privateBlitzLeagueInviteCode == null) karate.fail('No invite code found. Run createBlitzLeague.feature first')
-
     * def invalidToken = '<invalidToken>'
     * def build = buildJoinLeagueData('<inviteCode>', secondUserAccessToken)
     * header Authorization = invalidToken
@@ -93,9 +84,9 @@ Feature: EFF Data - Join Private Blitz League API Automation
 
     Examples:
       | inviteCode | invalidToken                      | expectedStatus | expectedMessage |  expectedErrorCode   |
-      | existing   | invalid.token.string              | 401            | Invalid token   |  INVALID_TOKEN       |
-      | existing   | random_corrupted_string_12345     | 401            | Invalid token   |  INVALID_TOKEN       |
-      | existing   | Bearer invalidtoken123            | 401            | Invalid token   |  INVALID_TOKEN       |
+      | ABC123     | invalid.token.string              | 401            | Invalid token   |  INVALID_TOKEN       |
+      | ABC123     | random_corrupted_string_12345     | 401            | Invalid token   |  INVALID_TOKEN       |
+      | ABC123     | Bearer invalidtoken123            | 401            | Invalid token   |  INVALID_TOKEN       |
 
   @invalid_invite_code
   Scenario Outline: JoinPrivateBlitzLeague fails with invalid invite code
@@ -128,8 +119,6 @@ Feature: EFF Data - Join Private Blitz League API Automation
     * if (secondUserAccessToken == null) karate.fail('No second user found. Run helpers/createSecondUser.feature first')
     # PREREQUISITE CHECK: Ensure invite code exists
     * if (privateBlitzLeagueInviteCode == null) karate.fail('No invite code found. Run createBlitzLeague.feature first')
-    # PREREQUISITE CHECK: Ensure private league ID exists
-    * if (privateBlitzLeagueId == null) karate.fail('No private league ID found. Run createBlitzLeague.feature first')
 
     * def build = buildJoinLeagueData('<inviteCode>', secondUserAccessToken)
     * header Authorization = build.authToken

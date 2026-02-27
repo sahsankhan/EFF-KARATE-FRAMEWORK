@@ -41,9 +41,9 @@ Feature: Verify Reset Code API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | email                             | code   | expectedStatus | expectedMessage                         | expectedErrorCode       |
-      | testing.automation.4127@gmail.com | 000000 | 401            | Invalid or expired verification code    | INVALID_OR_EXPIRED_CODE |
-      | testing.automation.4127@gmail.com | 999999 | 401            | Invalid or expired verification code    | INVALID_OR_EXPIRED_CODE |
+      | email      | code   | expectedStatus | expectedMessage                         | expectedErrorCode       |
+      | existing   | 000000 | 401            | Invalid or expired verification code    | INVALID_OR_EXPIRED_CODE |
+      | existing   | 999999 | 401            | Invalid or expired verification code    | INVALID_OR_EXPIRED_CODE |
 
   @invalid_email
   Scenario Outline: Verify reset code for invalid email

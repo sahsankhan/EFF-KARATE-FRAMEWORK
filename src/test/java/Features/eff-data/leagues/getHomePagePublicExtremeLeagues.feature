@@ -109,22 +109,22 @@ Feature: EFF Data - Get Home Page Public Extreme Leagues API Automation
     * match exchangeLeague.League_Type == 'EXCHANGE'
     
     # Save IDs for next tests
-    * def extremeBlitzLeagueId = blitzLeague._id
-    * def extremeExchangeLeagueId = exchangeLeague._id
-    * def initialBlitzMemberCount = blitzLeague.Members
-    * def initialExchangeMemberCount = exchangeLeague.Members
+    * def extremePublicBlitzLeagueId = blitzLeague._id
+    * def extremePublicExchangeLeagueId = exchangeLeague._id
+    * def initialPublicBlitzLeagueMemberCount = blitzLeague.Members
+    * def initialPublicExchangeLeagueMemberCount = exchangeLeague.Members
 
-    * karate.log('Saved EXTREME Blitz League ID:', extremeBlitzLeagueId)
-    * karate.log('Saved EXTREME Exchange League ID:', extremeExchangeLeagueId)
-    * karate.log('Initial Blitz Member Count:', initialBlitzMemberCount)
-    * karate.log('Initial Exchange Member Count:', initialExchangeMemberCount)
+    * karate.log('Saved EXTREME Public Blitz League ID:', extremePublicBlitzLeagueId)
+    * karate.log('Saved EXTREME Public Exchange League ID:', extremePublicExchangeLeagueId)
+    * karate.log('Initial Public Blitz League Member Count:', initialPublicBlitzLeagueMemberCount)
+    * karate.log('Initial Public Exchange League Member Count:', initialPublicExchangeLeagueMemberCount)
 
     # Persist to info file
     * def updatedInfo = signUpInfo
-    * updatedInfo.extremeBlitzLeagueId = extremeBlitzLeagueId
-    * updatedInfo.initialBlitzMemberCount = initialBlitzMemberCount
-    * updatedInfo.extremeExchangeLeagueId = extremeExchangeLeagueId
-    * updatedInfo.initialExchangeMemberCount = initialExchangeMemberCount
+    * updatedInfo.extremePublicBlitzLeagueId = extremePublicBlitzLeagueId
+    * updatedInfo.initialPublicBlitzLeagueMemberCount = initialPublicBlitzLeagueMemberCount
+    * updatedInfo.extremePublicExchangeLeagueId = extremePublicExchangeLeagueId
+    * updatedInfo.initialPublicExchangeLeagueMemberCount = initialPublicExchangeLeagueMemberCount
 
     * karate.write(updatedInfo, 'target/info.txt')
     * karate.log('Saved league IDs and member count to info file:', updatedInfo)

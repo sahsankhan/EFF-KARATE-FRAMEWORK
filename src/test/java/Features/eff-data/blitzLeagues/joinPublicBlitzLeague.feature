@@ -11,13 +11,13 @@ Feature: EFF Data - Join Public Blitz League API Automation
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
-    * def extremeBlitzLeagueId = karate.get('signUpInfo.extremeBlitzLeagueId', null)
+    * def extremePublicBlitzLeagueId = karate.get('signUpInfo.extremePublicBlitzLeagueId', null)
     * def buildLeagueData =
       """
       function(leagueId, existingAccessToken) {
         var idValue = leagueId;
         if (idValue === 'null') idValue = null;
-        if (idValue === 'existingPublicBlitzLeagueId') idValue = extremeBlitzLeagueId;
+        if (idValue === 'existingPublicBlitzLeagueId') idValue = extremePublicBlitzLeagueId;
         if (!isNaN(idValue) && idValue !== '' && idValue !== null) {
           idValue = Number(idValue);
         }
@@ -28,7 +28,7 @@ Feature: EFF Data - Join Public Blitz League API Automation
   @missing_authorization_header
   Scenario Outline: JoinPublicBlitzLeague fails when Authorization header is missing
     # PREREQUISITE CHECK: Ensure league ID exist
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
    
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     # Do not set Authorization header
@@ -51,7 +51,7 @@ Feature: EFF Data - Join Public Blitz League API Automation
   @expired_token
   Scenario Outline: JoinPublicBlitzLeague fails with expired token
     # PREREQUISITE CHECK: Ensure league ID exist
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
 
     * def expiredToken = '<expiredToken>'
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
@@ -75,7 +75,7 @@ Feature: EFF Data - Join Public Blitz League API Automation
   @invalid_token
   Scenario Outline: JoinPublicBlitzLeague fails with invalid or corrupted token
     # PREREQUISITE CHECK: Ensure league ID exist
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
 
     * def invalidToken = '<invalidToken>'
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
@@ -102,7 +102,7 @@ Feature: EFF Data - Join Public Blitz League API Automation
   Scenario Outline: JoinPublicBlitzLeague succeeds with valid public league ID
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
     
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
@@ -114,7 +114,7 @@ Feature: EFF Data - Join Public Blitz League API Automation
     * print 'JoinPublicBlitzLeague Success Response:', response
     * match response.data.joinPublicBlitzLeague.statusCode == <expectedStatus>
     * match response.data.joinPublicBlitzLeague.message == '<expectedMessage>'
-    * match response.data.joinPublicBlitzLeague.League_ID == extremeBlitzLeagueId
+    * match response.data.joinPublicBlitzLeague.League_ID == extremePublicBlitzLeagueId
 
     # Step 2: Verify available leagues show only one exchange league
     * def getLeaguesPayload = { query: '#(getAvailablePublicExtremeLeaguesQuery)' }
@@ -141,7 +141,7 @@ Feature: EFF Data - Join Public Blitz League API Automation
   Scenario Outline: JoinPublicBlitzLeague handles already joined league gracefully
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremeBlitzLeagueId == null) karate.abort()
+    * if (extremePublicBlitzLeagueId == null) karate.abort()
     
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
