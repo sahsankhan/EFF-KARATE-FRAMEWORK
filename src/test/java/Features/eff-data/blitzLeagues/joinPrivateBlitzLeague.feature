@@ -115,8 +115,9 @@ Feature: EFF Data - Join Private Blitz League API Automation
 
   @happy_path
   Scenario Outline: JoinPrivateBlitzLeague succeeds with valid invite code
-    # PREREQUISITE CHECK: Ensure second user token exists
+    # PREREQUISITE CHECK: Ensure second user token exists and season is preseason
     * if (secondUserAccessToken == null) karate.fail('No second user found. Run helpers/createSecondUser.feature first')
+    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     # PREREQUISITE CHECK: Ensure invite code exists
     * if (privateBlitzLeagueInviteCode == null) karate.fail('No invite code found. Run createBlitzLeague.feature first')
 

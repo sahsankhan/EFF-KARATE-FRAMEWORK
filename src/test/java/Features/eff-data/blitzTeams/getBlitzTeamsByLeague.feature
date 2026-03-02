@@ -108,8 +108,9 @@ Feature: EFF Data - Get Blitz Teams by League API Automation
 
   @happy_path
   Scenario Outline: GetBlitzTeamsByLeague successfully retrieves all teams in the league
-    # PREREQUISITE CHECK: Ensure access token, league ID, and team ID exist
+    # PREREQUISITE CHECK: Ensure access token, league ID, and team ID exist and season is preseason
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     * if (extremePublicBlitzLeagueId == null) karate.abort()
     * if (privateBlitzTeamId == null) karate.abort()
     

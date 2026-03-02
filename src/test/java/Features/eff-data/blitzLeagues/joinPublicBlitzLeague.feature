@@ -100,8 +100,9 @@ Feature: EFF Data - Join Public Blitz League API Automation
 
   @happy_path
   Scenario Outline: JoinPublicBlitzLeague succeeds with valid public league ID
-    # PREREQUISITE CHECK: Ensure access token and league ID exist
+    # PREREQUISITE CHECK: Ensure access token and league ID exist and season is preseason
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     * if (extremePublicBlitzLeagueId == null) karate.abort()
     
     * def build = buildLeagueData('<leagueId>', existingAccessToken)

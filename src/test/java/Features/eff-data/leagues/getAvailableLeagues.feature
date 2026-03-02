@@ -77,9 +77,10 @@ Feature: EFF Data - Get Available Public Extreme Leagues API Automation
 
   @happy_path_with_leagues
   Scenario: GetAvailablePublicExtremeLeagues returns available public leagues with proper schema
-    # PREREQUISITE CHECK: Ensure access token exists
+    # PREREQUISITE CHECK: Ensure access token exists and season is preseason
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    
+    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
+
     * header Authorization = existingAccessToken
     * def payload = { query: '#(getAvailablePublicExtremeLeaguesQuery)' }
     

@@ -1,6 +1,7 @@
 package Runners;
 
 import com.intuit.karate.junit5.Karate;
+import org.junit.jupiter.api.AfterAll;
 
 /**
  * Private League Flow Runner - Complete end-to-end flow for private league testing
@@ -49,6 +50,17 @@ public class PrivateLeagueFlowRunner {
         .configDir("file:src/test")
         .outputCucumberJson(true)
         .outputJunitXml(true);
+    }
+    
+    @AfterAll
+    static void enhanceReports() {
+        System.out.println("\n🔧 Auto-enhancing Karate reports with scenario counts...");
+        try {
+            ReportEnhancer.main(new String[]{});
+            System.out.println("Reports automatically enhanced! Check karate-summary.html");
+        } catch (Exception e) {
+            System.err.println("Failed to enhance reports: " + e.getMessage());
+        }
     }
 }
 

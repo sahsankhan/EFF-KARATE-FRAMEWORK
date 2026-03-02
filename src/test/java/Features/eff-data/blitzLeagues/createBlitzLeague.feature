@@ -12,6 +12,7 @@ Feature: EFF Data - Create Private Blitz League API Automation
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
+    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     * def buildLeagueData =
       """
       function(leagueName, leagueImage, existingAccessToken, privateBlitzLeagueName) {
@@ -109,7 +110,7 @@ Feature: EFF Data - Create Private Blitz League API Automation
   Scenario Outline: CreateBlitzLeague fails with invalid league image
     # PREREQUISITE CHECK: Ensure access token exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    
+
     # STEP 1: Create first league with this name
     * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken)
     * header Authorization = build.authToken
@@ -133,10 +134,11 @@ Feature: EFF Data - Create Private Blitz League API Automation
       | Valid League  | icon        | 400            | Invalid league image. Must be a valid icon name   | INVALID_LEAGUE_IMAGE   |
  
   @happy_path_create_private_league
-  Scenario Outline: CreateBlitzLeague succeeds with valid data and saves invite code
-    # PREREQUISITE CHECK: Ensure access token exists
+  Scenario Outline: CreateBlitzLeague succeeds with valid data and saves invite code 
+    # PREREQUISITE CHECK: Ensure access token exists and season is preseason
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    
+    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
+
     * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken, privateBlitzLeagueName)
     * header Authorization = build.authToken
     * def payload = { query: '#(createBlitzLeagueQuery)', variables: '#(build.variables)' }
@@ -199,7 +201,7 @@ Feature: EFF Data - Create Private Blitz League API Automation
 
   @duplicate_league_name
   Scenario Outline: CreateBlitzLeague fails with duplicate league name
-    # PREREQUISITE CHECK: Ensure access token exists and league name exists
+    # PREREQUISITE CHECK: Ensure access token and league name exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
     * if (signUpInfo.privateBlitzLeagueName == null) karate.fail('No created league name found. Run @happy_path_create_private_league scenario first')
     
@@ -224,9 +226,9 @@ Feature: EFF Data - Create Private Blitz League API Automation
 
   @league_name_too_short
   Scenario Outline: CreateBlitzLeague fails when league name is less than 3 characters
-    # PREREQUISITE CHECK: Ensure access token exists
+    # PREREQUISITE CHECK: Ensure access token exists 
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    
+
     * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken)
     * header Authorization = build.authToken
     * def payload = { query: '#(createBlitzLeagueQuery)', variables: '#(build.variables)' }
@@ -252,7 +254,7 @@ Feature: EFF Data - Create Private Blitz League API Automation
   Scenario Outline: CreateBlitzLeague fails when league name exceeds 50 characters
     # PREREQUISITE CHECK: Ensure access token exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    
+
     * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken)
     * header Authorization = build.authToken
     * def payload = { query: '#(createBlitzLeagueQuery)', variables: '#(build.variables)' }
@@ -277,7 +279,7 @@ Feature: EFF Data - Create Private Blitz League API Automation
   Scenario Outline: CreateBlitzLeague fails when league name contains invalid characters
     # PREREQUISITE CHECK: Ensure access token exists
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    
+
     * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken)
     * header Authorization = build.authToken
     * def payload = { query: '#(createBlitzLeagueQuery)', variables: '#(build.variables)' }
@@ -319,9 +321,9 @@ Feature: EFF Data - Create Private Blitz League API Automation
 
   @league_name_without_letters
   Scenario Outline: CreateBlitzLeague fails when league name contains no letters
-    # PREREQUISITE CHECK: Ensure access token exists
+    # PREREQUISITE CHECK: Ensure access token exists 
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    
+
     * def build = buildLeagueData('<leagueName>', '<leagueImage>', existingAccessToken)
     * header Authorization = build.authToken
     * def payload = { query: '#(createBlitzLeagueQuery)', variables: '#(build.variables)' }
