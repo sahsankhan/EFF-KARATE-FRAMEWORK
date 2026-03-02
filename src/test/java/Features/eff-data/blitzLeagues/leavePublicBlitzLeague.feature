@@ -103,8 +103,9 @@ Feature: EFF Data - Leave Blitz League API Automation
 
   @happy_path
   Scenario Outline: LeaveBlitzLeague complete flow - leave, verify permissions removed, and member count decreased
-    # PREREQUISITE CHECK: Ensure access token and league ID exist
+    # PREREQUISITE CHECK: Ensure access token and league ID exist and season is preseason
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     * if (extremePublicBlitzLeagueId == null) karate.abort()
     
     # Log member count before leaving for tracking

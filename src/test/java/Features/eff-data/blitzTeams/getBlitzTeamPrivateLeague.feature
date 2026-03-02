@@ -34,8 +34,9 @@ Feature: EFF Data - Get Blitz Team for Private Blitz League API Automation
 
   @happy_path
   Scenario Outline: GetBlitzTeam succeeds when owner retrieves their own team created on a private league
-    # PREREQUISITE CHECK: Ensure second user access token and team ID exist
+    # PREREQUISITE CHECK: Ensure second user access token and team ID exist and season is preseason
     * if (secondUserAccessToken == null) karate.fail('No second user access token found. Run createSecondUser.feature first')
+    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     * if (privateBlitzTeamId == null) karate.abort()
     
     * def build = buildTeamData('<teamId>', secondUserAccessToken)

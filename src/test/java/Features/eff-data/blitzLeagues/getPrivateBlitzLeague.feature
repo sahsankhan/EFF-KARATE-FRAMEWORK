@@ -27,8 +27,9 @@ Feature: EFF Data - Get Private Blitz League API Automation
 
   @happy_path
   Scenario Outline: GetBlitzLeague succeeds with valid league ID and verifies member count increment
-    # PREREQUISITE CHECK: Ensure access token and league ID exist
+    # PREREQUISITE CHECK: Ensure access token and league ID exist and season is preseason
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
+    * call read('classpath:helpers/checkAndEnsurePreseason.feature') 
     * if (privateBlitzLeagueId == null) karate.abort()
     
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
