@@ -67,7 +67,7 @@ Feature: EFF Data - Create Blitz Team For Private Blitz League API Automation
 
     * def createdTeamId = response.data.createBlitzTeam.Team_ID
     * def createdTeamName = build.variables.Team_Name
-    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: signUpInfo.extremePublicBlitzLeagueId, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzLeagueInviteCode: signUpInfo.privateBlitzLeagueInviteCode, secondUser: signUpInfo.secondUser, secondUserPrivateBlitzTeamId: createdTeamId, secondUserPrivateBlitzTeamName: createdTeamName}, 'target/info.txt')
+    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: signUpInfo.extremePublicBlitzLeagueId, extremePublicExchangeLeagueId: signUpInfo.extremePublicExchangeLeagueId, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzLeagueInviteCode: signUpInfo.privateBlitzLeagueInviteCode, secondUser: signUpInfo.secondUser, secondUserPrivateBlitzTeamId: createdTeamId, secondUserPrivateBlitzTeamName: createdTeamName}, 'target/info.txt')
     * karate.log('Saved Second User Private Blitz Team ID:', createdTeamId)
 
     Examples:

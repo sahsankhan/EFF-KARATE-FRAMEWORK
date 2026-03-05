@@ -190,7 +190,7 @@ Feature: EFF Data - Create Private Blitz League API Automation
 
     * karate.log('Initial Private Blitz League Member Count:', initialPrivateBlitzLeagueMemberCount)
 
-    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: signUpInfo.extremePublicBlitzLeagueId, privateBlitzLeagueId: privateBlitzLeagueId,  privateBlitzLeagueName: privateBlitzLeagueName,  privateBlitzLeagueInviteCode: privateBlitzLeagueInviteCode, initialPrivateBlitzLeagueMemberCount: initialPrivateBlitzLeagueMemberCount}, 'target/info.txt')
+    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: signUpInfo.extremePublicBlitzLeagueId, extremePublicExchangeLeagueId: signUpInfo.extremePublicExchangeLeagueId, privateBlitzLeagueId: privateBlitzLeagueId,  privateBlitzLeagueName: privateBlitzLeagueName,  privateBlitzLeagueInviteCode: privateBlitzLeagueInviteCode, initialPrivateBlitzLeagueMemberCount: initialPrivateBlitzLeagueMemberCount}, 'target/info.txt')
     * karate.log('Saved Private League ID:', privateBlitzLeagueId)
     * karate.log('Saved Private League Invite Code:', privateBlitzLeagueInviteCode)
     * karate.log('Saved Private Blitz League Initial Member Count:', initialPrivateBlitzLeagueMemberCount)

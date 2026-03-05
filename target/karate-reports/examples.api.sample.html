@@ -457,6 +457,130 @@ classpath:examples/api/sample.feature:16
         </div>
       </div>
     </div>
+      
+      
+      <script>
+(function() {
+    function addScenarioBoxes() {
+        try {
+            const table = document.querySelector('.features-table tbody');
+            if (!table) return;
+            
+            let totalPassedScenarios = 0;
+            let totalFailedScenarios = 0;
+            
+            const rows = table.querySelectorAll('tr');
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                if (cells.length >= 5) {
+                    totalPassedScenarios += parseInt(cells[2].textContent.trim()) || 0;
+                    totalFailedScenarios += parseInt(cells[3].textContent.trim()) || 0;
+                }
+            });
+            
+            const navCount = document.querySelector('.nav-count');
+            const existingPass = document.getElementById('nav-pass');
+            const existingFail = document.getElementById('nav-fail');
+            
+            if (navCount && existingPass && existingFail && !document.getElementById('scenarios-added')) {
+                
+                // Add spacing to existing feature boxes
+                existingPass.style.marginBottom = '2px';
+                existingFail.style.marginBottom = '2px';
+                
+                // Add Features label AFTER feature boxes (in middle)
+                const featuresLabel = document.createElement('div');
+                featuresLabel.textContent = 'Features';
+                featuresLabel.style.cssText = 'font-size: 11px; color: #999; text-align: center; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; margin: 10px 0 15px 0;';
+                navCount.appendChild(featuresLabel);
+                
+                // Create scenario boxes with identical styling
+                const passedBox = document.createElement('div');
+                passedBox.className = existingPass.className;
+                
+                // Copy all attributes
+                for (let i = 0; i < existingPass.attributes.length; i++) {
+                    const attr = existingPass.attributes[i];
+                    if (attr.name !== 'id') {
+                        passedBox.setAttribute(attr.name, attr.value);
+                    }
+                }
+                
+                // Copy exact styling
+                const passedStyles = window.getComputedStyle(existingPass);
+                passedBox.style.height = passedStyles.height;
+                passedBox.style.minHeight = passedStyles.minHeight;
+                passedBox.style.padding = passedStyles.padding;
+                passedBox.style.fontSize = passedStyles.fontSize;
+                passedBox.style.fontWeight = passedStyles.fontWeight;
+                passedBox.style.fontFamily = passedStyles.fontFamily;
+                passedBox.style.lineHeight = passedStyles.lineHeight;
+                passedBox.style.textAlign = passedStyles.textAlign;
+                passedBox.style.display = passedStyles.display;
+                passedBox.style.alignItems = passedStyles.alignItems;
+                passedBox.style.justifyContent = passedStyles.justifyContent;
+                passedBox.style.boxSizing = passedStyles.boxSizing;
+                passedBox.style.marginBottom = '2px';
+                
+                passedBox.textContent = totalPassedScenarios;
+                
+                // Same for failed box
+                const failedBox = document.createElement('div');
+                failedBox.className = existingFail.className;
+                
+                for (let i = 0; i < existingFail.attributes.length; i++) {
+                    const attr = existingFail.attributes[i];
+                    if (attr.name !== 'id') {
+                        failedBox.setAttribute(attr.name, attr.value);
+                    }
+                }
+                
+                const failedStyles = window.getComputedStyle(existingFail);
+                failedBox.style.height = failedStyles.height;
+                failedBox.style.minHeight = failedStyles.minHeight;
+                failedBox.style.padding = failedStyles.padding;
+                failedBox.style.fontSize = failedStyles.fontSize;
+                failedBox.style.fontWeight = failedStyles.fontWeight;
+                failedBox.style.fontFamily = failedStyles.fontFamily;
+                failedBox.style.lineHeight = failedStyles.lineHeight;
+                failedBox.style.textAlign = failedStyles.textAlign;
+                failedBox.style.display = failedStyles.display;
+                failedBox.style.alignItems = failedStyles.alignItems;
+                failedBox.style.justifyContent = failedStyles.justifyContent;
+                failedBox.style.boxSizing = failedStyles.boxSizing;
+                
+                failedBox.textContent = totalFailedScenarios;
+                
+                // Add scenario boxes
+                navCount.appendChild(passedBox);
+                navCount.appendChild(failedBox);
+                
+                // Add Scenarios label at the very bottom
+                const scenariosLabel = document.createElement('div');
+                scenariosLabel.textContent = 'Scenarios';
+                scenariosLabel.style.cssText = 'font-size: 11px; color: #999; text-align: center; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; margin: 10px 0 0 0;';
+                navCount.appendChild(scenariosLabel);
+                
+                // Mark as done
+                const marker = document.createElement('div');
+                marker.id = 'scenarios-added';
+                marker.style.display = 'none';
+                document.body.appendChild(marker);
+                
+                console.log('Perfect layout: Feature boxes -> Features label -> Scenario boxes -> Scenarios label');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addScenarioBoxes);
+    } else {
+        addScenarioBoxes();
+    }
+})();
+    </script>
   </body>
 </html>
 
