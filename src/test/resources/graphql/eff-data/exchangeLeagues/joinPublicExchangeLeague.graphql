@@ -1,0 +1,7 @@
+mutation JoinPublicExchangeLeague($League_ID: ID!) {
+  joinPublicExchangeLeague(League_ID: $League_ID) {
+    statusCode
+    message
+    League_ID
+  }
+}

@@ -1,0 +1,7 @@
+mutation CreateExchangeTeam($Team_Name: String!, $Team_Image: String, $League_ID: ID!) {
+  createExchangeTeam(Team_Name: $Team_Name, Team_Image: $Team_Image, League_ID: $League_ID) {
+    statusCode
+    message
+    Team_ID
+  }
+}

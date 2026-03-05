@@ -14,6 +14,8 @@ Feature: EFF Data - Leave Blitz League API Automation
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
     * def extremePublicBlitzLeagueId = karate.get('signUpInfo.extremePublicBlitzLeagueId', null)
+    * def extremePublicExchangeLeagueId = karate.get('signUpInfo.extremePublicExchangeLeagueId', null)
+    * karate.log('🔍 [leavePublicBlitzLeague] BEFORE extremePublicExchangeLeagueId:', extremePublicExchangeLeagueId)
     * def currentBlitzMemberCount = karate.get('signUpInfo.currentBlitzMemberCount', null)
     * def buildLeagueData =
       """
@@ -172,7 +174,7 @@ Feature: EFF Data - Leave Blitz League API Automation
     * if (currentBlitzMemberCount != null) karate.log('Member count validation passed - decreased from ' + currentBlitzMemberCount + ' to ' + memberCountAfterLeave + ' (parallel execution safe)')
 
     # Clear extremePublicBlitzLeagueId so subsequent features know the user is no longer a public league member
-    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: null, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzTeamId: signUpInfo.privateBlitzTeamId, privateBlitzTeamName: signUpInfo.privateBlitzTeamName}, 'target/info.txt')
+    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: null, extremePublicExchangeLeagueId: signUpInfo.extremePublicExchangeLeagueId, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzTeamId: signUpInfo.privateBlitzTeamId, privateBlitzTeamName: signUpInfo.privateBlitzTeamName}, 'target/info.txt')
     * karate.log('Cleared extremePublicBlitzLeagueId after leaving public league')
 
     Examples:

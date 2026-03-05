@@ -23,6 +23,104 @@ public class ReportEnhancer {
             
             // JavaScript with correct layout - Features in middle, Scenarios at bottom
             String customJS = "(function() {\n" +
+                "    function reorderFeatures() {\n" +
+                "        try {\n" +
+                "            console.log('Starting feature reordering...');\n" +
+                "            \n" +
+                "            // Reorder main features table\n" +
+                "            const mainTable = document.querySelector('.features-table tbody');\n" +
+                "            if (mainTable) {\n" +
+                "                console.log('Reordering main features table');\n" +
+                "                reorderTable(mainTable);\n" +
+                "            }\n" +
+                "            \n" +
+                "            // Reorder tags table if it exists\n" +
+                "            const tagsTable = document.querySelector('.table-condensed tbody');\n" +
+                "            if (tagsTable) {\n" +
+                "                console.log('Reordering tags table');\n" +
+                "                reorderTable(tagsTable);\n" +
+                "            }\n" +
+                "            \n" +
+                "            // Also set up observers for tab switching\n" +
+                "            setupTabObserver();\n" +
+                "            \n" +
+                "        } catch (e) {\n" +
+                "            console.error('Error in reorderFeatures:', e);\n" +
+                "        }\n" +
+                "    }\n" +
+                "    \n" +
+                "    function reorderTable(table) {\n" +
+                "        try {\n" +
+                "            \n" +
+                "            const order = ['Features/auth/checkUsername.feature','Features/auth/signup.feature','Features/auth/setpassword.feature','Features/auth/verifyEmail.feature','Features/auth/login.feature','Features/auth/forgotPassword.feature','Features/auth/verifyResetCode.feature','Features/auth/validateToken.feature','Features/auth/refreshToken.feature','Features/user-management/getUser.feature','Features/user-management/updateUser.feature','Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature','Features/eff-data/exchangeTeams/checkExchangeTeamName.feature','Features/eff-data/exchangeLeagues/checkExchangeLeagueName.feature','helpers/setTimeframeToPreSeason.feature','Features/eff-data/leagues/getHomePagePublicExtremeLeagues.feature','Features/eff-data/leagues/getAvailableLeagues.feature','Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature','Features/eff-data/blitzTeams/createBlitzTeam.feature','Features/eff-data/blitzTeams/checkBlitzTeamName.feature','Features/eff-data/blitzTeams/getBlitzTeam.feature','Features/eff-data/blitzTeams/getBlitzTeams.feature','Features/eff-data/blitzTeams/getBlitzTeamsByLeague.feature','Features/eff-data/blitzLeagues/getBlitzLeague.feature','Features/eff-data/blitzLeagues/leavePublicBlitzLeague.feature','Features/eff-data/blitzLeagues/createBlitzLeague.feature','helpers/createSecondUser.feature','Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature','Features/eff-data/blitzTeams/createBlitzTeamPrivateLeague.feature','Features/eff-data/blitzTeams/getBlitzTeamPrivateLeague.feature','Features/eff-data/blitzTeams/getBlitzTeamsPrivateLeague.feature','Features/eff-data/blitzTeams/getBlitzTeamsByPrivateLeague.feature','Features/eff-data/blitzLeagues/getPrivateBlitzLeague.feature','Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature','Features/eff-data/exchangeLeagues/joinPublicExchangeLeague.feature','Features/eff-data/exchangeTeams/createExchangeTeam.feature','Features/user-management/deleteUserAccountByEmail.feature'];\n" +
+                "            \n" +
+                "            const rows = Array.from(table.querySelectorAll('tr'));\n" +
+                "            console.log('Found', rows.length, 'rows in table');\n" +
+                "            \n" +
+                "            const featureMap = {};\n" +
+                "            rows.forEach(row => {\n" +
+                "                const cell = row.querySelector('td');\n" +
+                "                if (cell) {\n" +
+                "                    const featureName = cell.textContent.trim();\n" +
+                "                    featureMap[featureName] = row;\n" +
+                "                }\n" +
+                "            });\n" +
+                "            \n" +
+                "            table.innerHTML = '';\n" +
+                "            \n" +
+                "            let reorderedCount = 0;\n" +
+                "            order.forEach(feature => {\n" +
+                "                if (featureMap[feature]) {\n" +
+                "                    table.appendChild(featureMap[feature]);\n" +
+                "                    delete featureMap[feature];\n" +
+                "                    reorderedCount++;\n" +
+                "                }\n" +
+                "            });\n" +
+                "            \n" +
+                "            // Add any remaining features\n" +
+                "            Object.values(featureMap).forEach(row => table.appendChild(row));\n" +
+                "            \n" +
+                "            console.log('Reordered', reorderedCount, 'features in this table');\n" +
+                "        } catch (e) {\n" +
+                "            console.error('Error reordering table:', e);\n" +
+                "        }\n" +
+                "    }\n" +
+                "    \n" +
+                "    function setupTabObserver() {\n" +
+                "        try {\n" +
+                "            // Watch for tab clicks\n" +
+                "            const tabs = document.querySelectorAll('a[href=\"#tags\"], a[href=\"#summary\"]');\n" +
+                "            tabs.forEach(tab => {\n" +
+                "                tab.addEventListener('click', () => {\n" +
+                "                    setTimeout(() => {\n" +
+                "                        console.log('Tab switched, reordering tables...');\n" +
+                "                        reorderFeatures();\n" +
+                "                    }, 200);\n" +
+                "                });\n" +
+                "            });\n" +
+                "            \n" +
+                "            // Also use MutationObserver to catch dynamic table changes\n" +
+                "            const observer = new MutationObserver(() => {\n" +
+                "                const tagsTable = document.querySelector('.table-condensed tbody');\n" +
+                "                if (tagsTable && !tagsTable.hasAttribute('data-reordered')) {\n" +
+                "                    setTimeout(() => {\n" +
+                "                        console.log('New table detected, reordering...');\n" +
+                "                        reorderTable(tagsTable);\n" +
+                "                        tagsTable.setAttribute('data-reordered', 'true');\n" +
+                "                    }, 100);\n" +
+                "                }\n" +
+                "            });\n" +
+                "            \n" +
+                "            observer.observe(document.body, {\n" +
+                "                childList: true,\n" +
+                "                subtree: true\n" +
+                "            });\n" +
+                "            \n" +
+                "        } catch (e) {\n" +
+                "            console.error('Error setting up tab observer:', e);\n" +
+                "        }\n" +
+                "    }\n" +
+                "    \n" +
                 "    function addScenarioBoxes() {\n" +
                 "        try {\n" +
                 "            const table = document.querySelector('.features-table tbody');\n" +
@@ -129,17 +227,34 @@ public class ReportEnhancer {
                 "                marker.style.display = 'none';\n" +
                 "                document.body.appendChild(marker);\n" +
                 "                \n" +
-                "                console.log('Perfect layout: Feature boxes -> Features label -> Scenario boxes -> Scenarios label');\n" +
                 "            }\n" +
                 "        } catch (error) {\n" +
                 "            console.error('Error:', error);\n" +
                 "        }\n" +
                 "    }\n" +
                 "    \n" +
+                "    function enhance() {\n" +
+                "        // Add a small delay to ensure table is fully rendered\n" +
+                "        setTimeout(() => {\n" +
+                "            reorderFeatures();\n" +
+                "            addScenarioBoxes();\n" +
+                "            \n" +
+                "            // Recheck periodically for dynamically loaded content\n" +
+                "            setTimeout(() => {\n" +
+                "                const tagsTable = document.querySelector('.table-condensed tbody');\n" +
+                "                if (tagsTable && !tagsTable.hasAttribute('data-reordered')) {\n" +
+                "                    console.log('Late tags table detection, reordering...');\n" +
+                "                    reorderTable(tagsTable);\n" +
+                "                    tagsTable.setAttribute('data-reordered', 'true');\n" +
+                "                }\n" +
+                "            }, 1000);\n" +
+                "        }, 100);\n" +
+                "    }\n" +
+                "    \n" +
                 "    if (document.readyState === 'loading') {\n" +
-                "        document.addEventListener('DOMContentLoaded', addScenarioBoxes);\n" +
+                "        document.addEventListener('DOMContentLoaded', enhance);\n" +
                 "    } else {\n" +
-                "        addScenarioBoxes();\n" +
+                "        enhance();\n" +
                 "    }\n" +
                 "})();";
             
@@ -162,8 +277,11 @@ public class ReportEnhancer {
         try {
             String content = Files.readString(htmlFile);
             
-            // Clean up any previous versions
-            content = content.replaceAll("<script[^>]*>\\s*\\(function\\(\\)[\\s\\S]*?\\}\\)\\(\\);\\s*</script>", "");
+            // Clean up any previous versions  
+            content = content.replaceAll("<script[^>]*>\\s*\\(function\\(\\)[\\s\\S]*?\\}\\)\\(\\);?\\s*</script>", "");
+            
+            // Also clean up any existing markers
+            content = content.replaceAll("<div[^>]*id=\"scenarios-added\"[^>]*></div>", "");
             
             // Skip if already enhanced
             if (content.contains("scenarios-added")) {

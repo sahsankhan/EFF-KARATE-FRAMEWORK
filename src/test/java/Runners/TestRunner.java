@@ -27,14 +27,16 @@ class TestRunner {
             "classpath:Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature",
             "classpath:Features/eff-data/exchangeTeams/checkExchangeTeamName.feature",
             "classpath:Features/eff-data/exchangeLeagues/checkExchangeLeagueName.feature",
-
+            
             // ⏰ TIMEFRAME SETUP - Set to Preseason Week 1 (allows all operations)
             "classpath:helpers/setTimeframeToPreSeason.feature",
 
-            // Public Blitz League Module Tests
+            // Fetching Public Extreme Leagues for both Blitz and Exchange Formats
             "classpath:Features/eff-data/leagues/getHomePagePublicExtremeLeagues.feature",
             "classpath:Features/eff-data/leagues/getAvailableLeagues.feature",
 
+            // Blitz Format Flow Tests
+            // Public Blitz League Module Tests
             "classpath:Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature",
             // Blitz Team Operations
             "classpath:Features/eff-data/blitzTeams/createBlitzTeam.feature",
@@ -61,6 +63,13 @@ class TestRunner {
              "classpath:Features/eff-data/blitzLeagues/getPrivateBlitzLeague.feature",
              "classpath:Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature",
 
+            // Exchange Format Flow Tests
+            // Public Exchange League Module Tests
+            "classpath:Features/eff-data/exchangeLeagues/joinPublicExchangeLeague.feature",
+
+            // Exchange Team Operations
+            "classpath:Features/eff-data/exchangeTeams/createExchangeTeam.feature",
+
             //Module cleanup
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"
             
@@ -71,7 +80,7 @@ class TestRunner {
     }
     @AfterAll
     static void enhanceReports() {
-        System.out.println("\n🔧 Auto-enhancing Karate reports with scenario counts...");
+        System.out.println("\n Auto-enhancing Karate reports with scenario counts...");
         try {
             ReportEnhancer.main(new String[]{});
             System.out.println("Reports automatically enhanced! Check karate-summary.html");
