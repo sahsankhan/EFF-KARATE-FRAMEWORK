@@ -25,7 +25,6 @@ class TestRunner {
 
             // Eff Data Module Tests (Run After User Management)
             "classpath:Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature",
-            "classpath:Features/eff-data/exchangeTeams/checkExchangeTeamName.feature",
             "classpath:Features/eff-data/exchangeLeagues/checkExchangeLeagueName.feature",
             
             // ⏰ TIMEFRAME SETUP - Set to Preseason Week 1 (allows all operations)
@@ -69,6 +68,7 @@ class TestRunner {
 
             // Exchange Team Operations
             "classpath:Features/eff-data/exchangeTeams/createExchangeTeam.feature",
+            "classpath:Features/eff-data/exchangeTeams/checkExchangeTeamName.feature",
 
             //Module cleanup
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"
