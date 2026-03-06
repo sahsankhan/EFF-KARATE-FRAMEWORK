@@ -14,8 +14,6 @@ Feature: EFF Data - Leave Blitz League API Automation
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
     * def extremePublicBlitzLeagueId = karate.get('signUpInfo.extremePublicBlitzLeagueId', null)
-    * def extremePublicExchangeLeagueId = karate.get('signUpInfo.extremePublicExchangeLeagueId', null)
-    * karate.log('🔍 [leavePublicBlitzLeague] BEFORE extremePublicExchangeLeagueId:', extremePublicExchangeLeagueId)
     * def currentBlitzMemberCount = karate.get('signUpInfo.currentBlitzMemberCount', null)
     * def buildLeagueData =
       """
@@ -107,8 +105,8 @@ Feature: EFF Data - Leave Blitz League API Automation
   Scenario Outline: LeaveBlitzLeague complete flow - leave, verify permissions removed, and member count decreased
     # PREREQUISITE CHECK: Ensure access token and league ID exist and season is preseason
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     * if (extremePublicBlitzLeagueId == null) karate.abort()
+    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     
     # Log member count before leaving for tracking
     * if (currentBlitzMemberCount != null) karate.log('Member count before leaving:', currentBlitzMemberCount)

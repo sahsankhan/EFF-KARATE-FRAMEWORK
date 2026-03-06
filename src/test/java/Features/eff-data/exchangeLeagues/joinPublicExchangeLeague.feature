@@ -102,8 +102,8 @@ Feature: EFF Data - Join Public Exchange League API Automation
   Scenario Outline: JoinPublicExchangeLeague succeeds with valid public league ID
     # PREREQUISITE CHECK: Ensure access token and league ID exist and season is preseason
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     * if (extremePublicExchangeLeagueId == null) karate.abort()
+    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
