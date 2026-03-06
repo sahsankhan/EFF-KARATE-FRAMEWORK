@@ -159,8 +159,8 @@ Feature: EFF Data - Create Exchange Team API Automation
   Scenario Outline: CreateExchangeTeam succeeds with valid data and saves Team_ID
     # PREREQUISITE CHECK: Ensure access token and league ID exist and season is preseason
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     * if (extremePublicExchangeLeagueId == null) karate.abort()
+    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
  
     * def build = buildTeamData('<teamName>', '<teamImage>', '<leagueId>', existingAccessToken, privateExchangeTeamName)
     * header Authorization = build.authToken

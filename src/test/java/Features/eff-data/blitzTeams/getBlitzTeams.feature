@@ -79,8 +79,8 @@ Feature: EFF Data - Get Blitz Teams API Automation
   Scenario Outline: GetBlitzTeams successfully retrieves all user's teams
     # PREREQUISITE CHECK: Ensure access token, team ID exist and season is preseason
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     * if (privateBlitzTeamId == null) karate.abort()
+    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     
     * header Authorization = existingAccessToken
     * def payload = { query: '#(getBlitzTeamsQuery)' }

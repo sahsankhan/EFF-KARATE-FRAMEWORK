@@ -102,8 +102,8 @@ Feature: EFF Data - Leave Private Blitz League API Automation
   Scenario Outline: LeavePrivateBlitzLeague succeeds with valid league ID and verifies member is removed
     # PREREQUISITE CHECK: Ensure second user access token and league ID exist and season is preseason
     * if (secondUserAccessToken == null) karate.fail('No second user access token found. Run createSecondUser.feature first')
-    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     * if (privateBlitzLeagueId == null) karate.abort()
+    * call read('classpath:helpers/checkAndEnsurePreseason.feature')
     
     # Step 1: Second user leaves the private league
     * def build = buildLeagueData('<leagueId>', secondUserAccessToken)
