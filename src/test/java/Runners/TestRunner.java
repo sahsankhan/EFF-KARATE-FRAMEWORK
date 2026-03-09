@@ -70,6 +70,9 @@ class TestRunner {
             // Exchange Team Operations
             "classpath:Features/eff-data/exchangeTeams/createExchangeTeam.feature",
             "classpath:Features/eff-data/exchangeTeams/checkExchangeTeamName.feature",
+            "classpath:Features/eff-data/exchangeTeams/getExchangeTeam.feature",
+            "classpath:Features/eff-data/exchangeTeams/getExchangeTeams.feature",
+            "classpath:Features/eff-data/exchangeTeams/getExchangeTeamsByLeague.feature",
 
             //Module cleanup
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"

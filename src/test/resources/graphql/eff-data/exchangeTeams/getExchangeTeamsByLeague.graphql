@@ -1,0 +1,38 @@
+query GetExchangeTeamsByLeague($League_ID: ID!) {
+  getExchangeTeamsByLeague(League_ID: $League_ID) {
+    statusCode
+    teams {
+      _id
+      Team_Name
+      Team_Image
+      League_ID
+      Owner_Email
+      Owner_ID
+      Cash
+      Rank
+      Total_Value
+      Total_Transactions
+      Weekly_Value
+      Weekly_Transactions
+      owner {
+        id
+        username
+        profile_picture
+      }
+      league_details {
+        League_Name
+        Game_Type
+        League_Type
+        Public
+        Members
+      }
+      sys_dateCreated
+      sys_dateModified
+      sys_deleted
+      sys_userCreated_id
+      sys_userCreatedName
+      sys_userModified_id
+      sys_userModifiedName
+    }
+  }
+}
