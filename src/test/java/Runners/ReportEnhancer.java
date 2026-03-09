@@ -6,6 +6,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.stream.Stream;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 /**
  * Standalone utility to enhance Karate reports with scenario counts
@@ -13,13 +17,67 @@ import java.util.stream.Stream;
  */
 public class ReportEnhancer {
     
+    /**
+     * Extracts the feature execution order from TestRunner.java
+     */
+    private static List<String> extractFeatureOrderFromTestRunner() {
+        List<String> featureOrder = new ArrayList<>();
+        try {
+            Path testRunnerPath = Paths.get("src/test/java/Runners/TestRunner.java");
+            if (!Files.exists(testRunnerPath)) {
+                System.out.println("TestRunner.java not found. Using fallback order.");
+                return featureOrder;
+            }
+            
+            String content = Files.readString(testRunnerPath);
+            
+            // Pattern to match "classpath:..." paths in the Karate.run() method
+            Pattern pattern = Pattern.compile("\"classpath:([^\"]+\\.feature)\"");
+            Matcher matcher = pattern.matcher(content);
+            
+            while (matcher.find()) {
+                String featurePath = matcher.group(1);
+                // Convert classpath format to report format (remove classpath: prefix)
+                featureOrder.add(featurePath);
+            }
+            
+            System.out.println("Extracted " + featureOrder.size() + " features from TestRunner.java");
+            
+        } catch (IOException e) {
+            System.err.println("Error reading TestRunner.java: " + e.getMessage());
+        }
+        
+        return featureOrder;
+    }
+    
+    /**
+     * Builds a JavaScript array string from the feature order list
+     */
+    private static String buildJavaScriptArray(List<String> features) {
+        if (features.isEmpty()) {
+            return "[]";
+        }
+        
+        StringBuilder sb = new StringBuilder("[");
+        for (int i = 0; i < features.size(); i++) {
+            if (i > 0) sb.append(",");
+            sb.append("'").append(features.get(i)).append("'");
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+    
     public static void main(String[] args) {
         try {
             Path reportsDir = Paths.get("target/karate-reports");
             if (!Files.exists(reportsDir)) {
-                System.out.println("❌ Reports directory not found. Run tests first!");
+                System.out.println("Reports directory not found. Run tests first!");
                 return;
             }
+            
+            // Extract feature order from TestRunner.java
+            List<String> dynamicOrder = extractFeatureOrderFromTestRunner();
+            String orderArray = buildJavaScriptArray(dynamicOrder);
             
             // JavaScript with correct layout - Features in middle, Scenarios at bottom
             String customJS = "(function() {\n" +
@@ -34,11 +92,22 @@ public class ReportEnhancer {
                 "                reorderTable(mainTable);\n" +
                 "            }\n" +
                 "            \n" +
-                "            // Reorder tags table if it exists\n" +
-                "            const tagsTable = document.querySelector('.table-condensed tbody');\n" +
+                "            // Reorder tags table if it exists (try multiple selectors)\n" +
+                "            const tagSelectors = ['.table-condensed tbody', '.table tbody', '#tags .table tbody', '[role=\"tabpanel\"] .table tbody'];\n" +
+                "            let tagsTable = null;\n" +
+                "            for (const selector of tagSelectors) {\n" +
+                "                tagsTable = document.querySelector(selector);\n" +
+                "                if (tagsTable && tagsTable.closest('#tags, [aria-labelledby=\"tags-tab\"]')) {\n" +
+                "                    console.log('Found tags table with selector:', selector);\n" +
+                "                    break;\n" +
+                "                }\n" +
+                "            }\n" +
                 "            if (tagsTable) {\n" +
                 "                console.log('Reordering tags table');\n" +
                 "                reorderTable(tagsTable);\n" +
+                "            } else {\n" +
+                "                console.log('Tags table not found - trying alternative approach');\n" +
+                "                setTimeout(() => reorderTagsTableAlternative(), 500);\n" +
                 "            }\n" +
                 "            \n" +
                 "            // Also set up observers for tab switching\n" +
@@ -52,7 +121,7 @@ public class ReportEnhancer {
                 "    function reorderTable(table) {\n" +
                 "        try {\n" +
                 "            \n" +
-                "            const order = ['Features/auth/checkUsername.feature','Features/auth/signup.feature','Features/auth/setpassword.feature','Features/auth/verifyEmail.feature','Features/auth/login.feature','Features/auth/forgotPassword.feature','Features/auth/verifyResetCode.feature','Features/auth/validateToken.feature','Features/auth/refreshToken.feature','Features/user-management/getUser.feature','Features/user-management/updateUser.feature','Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature','Features/eff-data/exchangeTeams/checkExchangeTeamName.feature','Features/eff-data/exchangeLeagues/checkExchangeLeagueName.feature','helpers/setTimeframeToPreSeason.feature','Features/eff-data/leagues/getHomePagePublicExtremeLeagues.feature','Features/eff-data/leagues/getAvailableLeagues.feature','Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature','Features/eff-data/blitzTeams/createBlitzTeam.feature','Features/eff-data/blitzTeams/checkBlitzTeamName.feature','Features/eff-data/blitzTeams/getBlitzTeam.feature','Features/eff-data/blitzTeams/getBlitzTeams.feature','Features/eff-data/blitzTeams/getBlitzTeamsByLeague.feature','Features/eff-data/blitzLeagues/getBlitzLeague.feature','Features/eff-data/blitzLeagues/leavePublicBlitzLeague.feature','Features/eff-data/blitzLeagues/createBlitzLeague.feature','helpers/createSecondUser.feature','Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature','Features/eff-data/blitzTeams/createBlitzTeamPrivateLeague.feature','Features/eff-data/blitzTeams/getBlitzTeamPrivateLeague.feature','Features/eff-data/blitzTeams/getBlitzTeamsPrivateLeague.feature','Features/eff-data/blitzTeams/getBlitzTeamsByPrivateLeague.feature','Features/eff-data/blitzLeagues/getPrivateBlitzLeague.feature','Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature','Features/eff-data/exchangeLeagues/joinPublicExchangeLeague.feature','Features/eff-data/exchangeTeams/createExchangeTeam.feature','Features/user-management/deleteUserAccountByEmail.feature'];\n" +
+                "            const order = __DYNAMIC_ORDER__;\n" +
                 "            \n" +
                 "            const rows = Array.from(table.querySelectorAll('tr'));\n" +
                 "            console.log('Found', rows.length, 'rows in table');\n" +
@@ -86,28 +155,65 @@ public class ReportEnhancer {
                 "        }\n" +
                 "    }\n" +
                 "    \n" +
+                "    function reorderTagsTableAlternative() {\n" +
+                "        try {\n" +
+                "            console.log('Trying alternative tags table detection...');\n" +
+                "            // Look for any table that might be the tags table\n" +
+                "            const allTables = document.querySelectorAll('table tbody');\n" +
+                "            for (const table of allTables) {\n" +
+                "                const firstRow = table.querySelector('tr');\n" +
+                "                if (firstRow) {\n" +
+                "                    const firstCell = firstRow.querySelector('td');\n" +
+                "                    if (firstCell && firstCell.textContent.includes('.feature')) {\n" +
+                "                        console.log('Found potential tags table, attempting reorder...');\n" +
+                "                        reorderTable(table);\n" +
+                "                        table.setAttribute('data-reordered', 'true');\n" +
+                "                        break;\n" +
+                "                    }\n" +
+                "                }\n" +
+                "            }\n" +
+                "        } catch (e) {\n" +
+                "            console.error('Error in alternative tags table reordering:', e);\n" +
+                "        }\n" +
+                "    }\n" +
+                "    \n" +
                 "    function setupTabObserver() {\n" +
                 "        try {\n" +
-                "            // Watch for tab clicks\n" +
-                "            const tabs = document.querySelectorAll('a[href=\"#tags\"], a[href=\"#summary\"]');\n" +
+            "            // Watch for tab clicks with better timing\n" +
+                "            const tabs = document.querySelectorAll('a[href=\"#tags\"], a[href=\"#summary\"], [data-toggle=\"tab\"]');\n" +
                 "            tabs.forEach(tab => {\n" +
-                "                tab.addEventListener('click', () => {\n" +
+                "                tab.addEventListener('click', (event) => {\n" +
+                "                    const isTagsTab = tab.getAttribute('href') === '#tags' || tab.textContent.toLowerCase().includes('tags');\n" +
+                "                    const delay = isTagsTab ? 500 : 200; // Extra delay for tags tab\n" +
                 "                    setTimeout(() => {\n" +
-                "                        console.log('Tab switched, reordering tables...');\n" +
+                "                        console.log('Tab switched to:', isTagsTab ? 'tags' : 'other', 'reordering tables...');\n" +
                 "                        reorderFeatures();\n" +
-                "                    }, 200);\n" +
+                "                        if (isTagsTab) {\n" +
+                "                            // Extra attempt for tags\n" +
+                "                            setTimeout(() => reorderTagsTableAlternative(), 300);\n" +
+                "                        }\n" +
+                "                    }, delay);\n" +
                 "                });\n" +
                 "            });\n" +
                 "            \n" +
                 "            // Also use MutationObserver to catch dynamic table changes\n" +
-                "            const observer = new MutationObserver(() => {\n" +
-                "                const tagsTable = document.querySelector('.table-condensed tbody');\n" +
-                "                if (tagsTable && !tagsTable.hasAttribute('data-reordered')) {\n" +
-                "                    setTimeout(() => {\n" +
-                "                        console.log('New table detected, reordering...');\n" +
-                "                        reorderTable(tagsTable);\n" +
-                "                        tagsTable.setAttribute('data-reordered', 'true');\n" +
-                "                    }, 100);\n" +
+                "            const observer = new MutationObserver((mutations) => {\n" +
+                "                // Check for tags tables with multiple selectors\n" +
+                "                const tagSelectors = ['.table-condensed tbody', '.table tbody', '#tags .table tbody', '[role=\"tabpanel\"] .table tbody'];\n" +
+                "                for (const selector of tagSelectors) {\n" +
+                "                    const tagsTable = document.querySelector(selector);\n" +
+                "                    if (tagsTable && !tagsTable.hasAttribute('data-reordered')) {\n" +
+                "                        // Check if this is actually a tags table by looking for .feature files\n" +
+                "                        const firstRow = tagsTable.querySelector('tr td');\n" +
+                "                        if (firstRow && firstRow.textContent.includes('.feature')) {\n" +
+                "                            setTimeout(() => {\n" +
+                "                                console.log('New tags table detected with selector:', selector);\n" +
+                "                                reorderTable(tagsTable);\n" +
+                "                                tagsTable.setAttribute('data-reordered', 'true');\n" +
+                "                            }, 100);\n" +
+                "                            break;\n" +
+                "                        }\n" +
+                "                    }\n" +
                 "                }\n" +
                 "            });\n" +
                 "            \n" +
@@ -241,13 +347,27 @@ public class ReportEnhancer {
                 "            \n" +
                 "            // Recheck periodically for dynamically loaded content\n" +
                 "            setTimeout(() => {\n" +
-                "                const tagsTable = document.querySelector('.table-condensed tbody');\n" +
-                "                if (tagsTable && !tagsTable.hasAttribute('data-reordered')) {\n" +
-                "                    console.log('Late tags table detection, reordering...');\n" +
-                "                    reorderTable(tagsTable);\n" +
-                "                    tagsTable.setAttribute('data-reordered', 'true');\n" +
-                "                }\n" +
+                "                console.log('Performing periodic check for tables...');\n" +
+                "                reorderFeatures();\n" +
+                "                reorderTagsTableAlternative();\n" +
                 "            }, 1000);\n" +
+                "            \n" +
+                "            // Additional periodic check specifically for tags\n" +
+                "            setInterval(() => {\n" +
+                "                const allTables = document.querySelectorAll('table tbody');\n" +
+                "                let foundUnorderedTagsTable = false;\n" +
+                "                for (const table of allTables) {\n" +
+                "                    if (!table.hasAttribute('data-reordered')) {\n" +
+                "                        const firstCell = table.querySelector('tr td');\n" +
+                "                        if (firstCell && firstCell.textContent.includes('.feature')) {\n" +
+                "                            console.log('Periodic check found unordered tags table');\n" +
+                "                            reorderTable(table);\n" +
+                "                            table.setAttribute('data-reordered', 'true');\n" +
+                "                            foundUnorderedTagsTable = true;\n" +
+                "                        }\n" +
+                "                    }\n" +
+                "                }\n" +
+                "            }, 3000);\n" +
                 "        }, 100);\n" +
                 "    }\n" +
                 "    \n" +
@@ -258,10 +378,13 @@ public class ReportEnhancer {
                 "    }\n" +
                 "})();";
             
+            // Replace the placeholder with the dynamic order
+            final String finalCustomJS = customJS.replace("__DYNAMIC_ORDER__", orderArray);
+            
             // Process HTML files
             try (Stream<Path> files = Files.walk(reportsDir)) {
                 long enhanced = files.filter(path -> path.toString().endsWith(".html"))
-                     .peek(htmlFile -> enhanceHtmlFile(htmlFile, customJS))
+                     .peek(htmlFile -> enhanceHtmlFile(htmlFile, finalCustomJS))
                      .count();
                 
                 System.out.println("Enhanced " + enhanced + " files - Features in middle, Scenarios at bottom");
