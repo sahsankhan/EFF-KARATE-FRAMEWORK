@@ -130,6 +130,11 @@ Feature: EFF Data - Get Exchange Team API Automation
     * match team.Team_Name == privateExchangeTeamName
     * match team.League_ID == extremePublicExchangeLeagueId
     * match team.Owner_Email == signUpInfo.email
+    * match team.Cash == 1000.0
+    * match team.Assets_Value == 0.0
+    * match team.Total_Value == 1000.0
+    * match team.Total_Transactions == 0
+    * match team.Transaction_Limit == null
     
     # Validate league details
     * match team.league_details == '#present'

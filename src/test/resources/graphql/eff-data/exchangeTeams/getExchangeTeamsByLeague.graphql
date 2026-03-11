@@ -9,9 +9,11 @@ query GetExchangeTeamsByLeague($League_ID: ID!) {
       Owner_Email
       Owner_ID
       Cash
+      Assets_Value
       Rank
       Total_Value
       Total_Transactions
+      Transaction_Limit
       Weekly_Value
       Weekly_Transactions
       owner {
