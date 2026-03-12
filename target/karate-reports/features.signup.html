@@ -10287,6 +10287,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
       
       
       
+      
       <script>
 (function() {
     function reorderFeatures() {
@@ -10300,11 +10301,22 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
                 reorderTable(mainTable);
             }
             
-            // Reorder tags table if it exists
-            const tagsTable = document.querySelector('.table-condensed tbody');
+            // Reorder tags table if it exists (try multiple selectors)
+            const tagSelectors = ['.table-condensed tbody', '.table tbody', '#tags .table tbody', '[role="tabpanel"] .table tbody'];
+            let tagsTable = null;
+            for (const selector of tagSelectors) {
+                tagsTable = document.querySelector(selector);
+                if (tagsTable && tagsTable.closest('#tags, [aria-labelledby="tags-tab"]')) {
+                    console.log('Found tags table with selector:', selector);
+                    break;
+                }
+            }
             if (tagsTable) {
                 console.log('Reordering tags table');
                 reorderTable(tagsTable);
+            } else {
+                console.log('Tags table not found - trying alternative approach');
+                setTimeout(() => reorderTagsTableAlternative(), 500);
             }
             
             // Also set up observers for tab switching
@@ -10318,7 +10330,7 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
     function reorderTable(table) {
         try {
             
-            const order = ['Features/auth/checkUsername.feature','Features/auth/signup.feature','Features/auth/setpassword.feature','Features/auth/verifyEmail.feature','Features/auth/login.feature','Features/auth/forgotPassword.feature','Features/auth/verifyResetCode.feature','Features/auth/validateToken.feature','Features/auth/refreshToken.feature','Features/user-management/getUser.feature','Features/user-management/updateUser.feature','Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature','Features/eff-data/exchangeTeams/checkExchangeTeamName.feature','Features/eff-data/exchangeLeagues/checkExchangeLeagueName.feature','helpers/setTimeframeToPreSeason.feature','Features/eff-data/leagues/getHomePagePublicExtremeLeagues.feature','Features/eff-data/leagues/getAvailableLeagues.feature','Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature','Features/eff-data/blitzTeams/createBlitzTeam.feature','Features/eff-data/blitzTeams/checkBlitzTeamName.feature','Features/eff-data/blitzTeams/getBlitzTeam.feature','Features/eff-data/blitzTeams/getBlitzTeams.feature','Features/eff-data/blitzTeams/getBlitzTeamsByLeague.feature','Features/eff-data/blitzLeagues/getBlitzLeague.feature','Features/eff-data/blitzLeagues/leavePublicBlitzLeague.feature','Features/eff-data/blitzLeagues/createBlitzLeague.feature','helpers/createSecondUser.feature','Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature','Features/eff-data/blitzTeams/createBlitzTeamPrivateLeague.feature','Features/eff-data/blitzTeams/getBlitzTeamPrivateLeague.feature','Features/eff-data/blitzTeams/getBlitzTeamsPrivateLeague.feature','Features/eff-data/blitzTeams/getBlitzTeamsByPrivateLeague.feature','Features/eff-data/blitzLeagues/getPrivateBlitzLeague.feature','Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature','Features/eff-data/exchangeLeagues/joinPublicExchangeLeague.feature','Features/eff-data/exchangeTeams/createExchangeTeam.feature','Features/user-management/deleteUserAccountByEmail.feature'];
+            const order = ['Features/auth/checkUsername.feature','Features/auth/signup.feature','Features/auth/setpassword.feature','Features/auth/verifyEmail.feature','Features/auth/login.feature','Features/auth/forgotPassword.feature','Features/auth/verifyResetCode.feature','Features/auth/validateToken.feature','Features/auth/refreshToken.feature','Features/user-management/getUser.feature','Features/user-management/updateUser.feature','Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature','Features/eff-data/exchangeLeagues/checkExchangeLeagueName.feature','helpers/setTimeframeToPreSeason.feature','Features/eff-data/leagues/getHomePagePublicExtremeLeagues.feature','Features/eff-data/leagues/getAvailableLeagues.feature','Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature','Features/eff-data/blitzTeams/createBlitzTeam.feature','Features/eff-data/blitzTeams/checkBlitzTeamName.feature','Features/eff-data/blitzTeams/getBlitzTeam.feature','Features/eff-data/blitzTeams/getBlitzTeams.feature','Features/eff-data/blitzTeams/getBlitzTeamsByLeague.feature','Features/eff-data/blitzLeagues/getBlitzLeague.feature','Features/eff-data/blitzLeagues/leavePublicBlitzLeague.feature','Features/eff-data/blitzLeagues/createBlitzLeague.feature','helpers/createSecondUser.feature','Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature','Features/eff-data/blitzTeams/createBlitzTeamPrivateLeague.feature','Features/eff-data/blitzTeams/getBlitzTeamPrivateLeague.feature','Features/eff-data/blitzTeams/getBlitzTeamsPrivateLeague.feature','Features/eff-data/blitzTeams/getBlitzTeamsByPrivateLeague.feature','Features/eff-data/blitzLeagues/getPrivateBlitzLeague.feature','Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature','Features/eff-data/exchangeLeagues/joinPublicExchangeLeague.feature','Features/eff-data/exchangeTeams/createExchangeTeam.feature','Features/eff-data/exchangeTeams/checkExchangeTeamName.feature','Features/eff-data/exchangeTeams/getExchangeTeam.feature','Features/eff-data/exchangeTeams/getExchangeTeams.feature','Features/eff-data/exchangeTeams/getExchangeTeamsByLeague.feature','Features/eff-data/exchangeLeagues/getExchangeLeague.feature','Features/user-management/deleteUserAccountByEmail.feature'];
             
             const rows = Array.from(table.querySelectorAll('tr'));
             console.log('Found', rows.length, 'rows in table');
@@ -10352,28 +10364,65 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
         }
     }
     
+    function reorderTagsTableAlternative() {
+        try {
+            console.log('Trying alternative tags table detection...');
+            // Look for any table that might be the tags table
+            const allTables = document.querySelectorAll('table tbody');
+            for (const table of allTables) {
+                const firstRow = table.querySelector('tr');
+                if (firstRow) {
+                    const firstCell = firstRow.querySelector('td');
+                    if (firstCell && firstCell.textContent.includes('.feature')) {
+                        console.log('Found potential tags table, attempting reorder...');
+                        reorderTable(table);
+                        table.setAttribute('data-reordered', 'true');
+                        break;
+                    }
+                }
+            }
+        } catch (e) {
+            console.error('Error in alternative tags table reordering:', e);
+        }
+    }
+    
     function setupTabObserver() {
         try {
-            // Watch for tab clicks
-            const tabs = document.querySelectorAll('a[href="#tags"], a[href="#summary"]');
+            // Watch for tab clicks with better timing
+            const tabs = document.querySelectorAll('a[href="#tags"], a[href="#summary"], [data-toggle="tab"]');
             tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
+                tab.addEventListener('click', (event) => {
+                    const isTagsTab = tab.getAttribute('href') === '#tags' || tab.textContent.toLowerCase().includes('tags');
+                    const delay = isTagsTab ? 500 : 200; // Extra delay for tags tab
                     setTimeout(() => {
-                        console.log('Tab switched, reordering tables...');
+                        console.log('Tab switched to:', isTagsTab ? 'tags' : 'other', 'reordering tables...');
                         reorderFeatures();
-                    }, 200);
+                        if (isTagsTab) {
+                            // Extra attempt for tags
+                            setTimeout(() => reorderTagsTableAlternative(), 300);
+                        }
+                    }, delay);
                 });
             });
             
             // Also use MutationObserver to catch dynamic table changes
-            const observer = new MutationObserver(() => {
-                const tagsTable = document.querySelector('.table-condensed tbody');
-                if (tagsTable && !tagsTable.hasAttribute('data-reordered')) {
-                    setTimeout(() => {
-                        console.log('New table detected, reordering...');
-                        reorderTable(tagsTable);
-                        tagsTable.setAttribute('data-reordered', 'true');
-                    }, 100);
+            const observer = new MutationObserver((mutations) => {
+                // Check for tags tables with multiple selectors
+                const tagSelectors = ['.table-condensed tbody', '.table tbody', '#tags .table tbody', '[role="tabpanel"] .table tbody'];
+                for (const selector of tagSelectors) {
+                    const tagsTable = document.querySelector(selector);
+                    if (tagsTable && !tagsTable.hasAttribute('data-reordered')) {
+                        // Check if this is actually a tags table by looking for .feature files
+                        const firstRow = tagsTable.querySelector('tr td');
+                        if (firstRow && firstRow.textContent.includes('.feature')) {
+                            setTimeout(() => {
+                                console.log('New tags table detected with selector:', selector);
+                                reorderTable(tagsTable);
+                                tagsTable.setAttribute('data-reordered', 'true');
+                            }, 100);
+                            break;
+                        }
+                    }
                 }
             });
             
@@ -10507,13 +10556,27 @@ posthog.init('phc_M6fKk3dSX9HjglkqPSybauGas45NINb7EgsPGU8N9g1',{
             
             // Recheck periodically for dynamically loaded content
             setTimeout(() => {
-                const tagsTable = document.querySelector('.table-condensed tbody');
-                if (tagsTable && !tagsTable.hasAttribute('data-reordered')) {
-                    console.log('Late tags table detection, reordering...');
-                    reorderTable(tagsTable);
-                    tagsTable.setAttribute('data-reordered', 'true');
-                }
+                console.log('Performing periodic check for tables...');
+                reorderFeatures();
+                reorderTagsTableAlternative();
             }, 1000);
+            
+            // Additional periodic check specifically for tags
+            setInterval(() => {
+                const allTables = document.querySelectorAll('table tbody');
+                let foundUnorderedTagsTable = false;
+                for (const table of allTables) {
+                    if (!table.hasAttribute('data-reordered')) {
+                        const firstCell = table.querySelector('tr td');
+                        if (firstCell && firstCell.textContent.includes('.feature')) {
+                            console.log('Periodic check found unordered tags table');
+                            reorderTable(table);
+                            table.setAttribute('data-reordered', 'true');
+                            foundUnorderedTagsTable = true;
+                        }
+                    }
+                }
+            }, 3000);
         }, 100);
     }
     
