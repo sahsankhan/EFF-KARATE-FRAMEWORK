@@ -1,0 +1,6 @@
+mutation LeaveExchangeLeague($League_ID: ID!) {
+  leaveExchangeLeague(League_ID: $League_ID) {
+    statusCode
+    message
+  }
+}
