@@ -76,6 +76,7 @@ class TestRunner {
 
             // Continue Exchange League Operations
             "classpath:Features/eff-data/exchangeLeagues/getExchangeLeague.feature",
+            "classpath:Features/eff-data/exchangeLeagues/leavePublicExchangeLeague.feature",
             
             //Module cleanup
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"

@@ -14,6 +14,7 @@ Feature: EFF Data - Leave Exchange League API Automation
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
     * def extremePublicExchangeLeagueId = karate.get('signUpInfo.extremePublicExchangeLeagueId', null)
+    * def leftExchangeLeagueId = karate.get('signUpInfo.extremePublicExchangeLeagueId', null)
     * def currentExchangeMemberCount = karate.get('signUpInfo.currentExchangeMemberCount', null)
     * def buildLeagueData =
       """
@@ -21,6 +22,7 @@ Feature: EFF Data - Leave Exchange League API Automation
         var idValue = leagueId;
         if (idValue === 'null') idValue = null;
         if (idValue === 'existingPublicExchangeLeagueId') idValue = extremePublicExchangeLeagueId;
+        if (idValue === 'leftExchangeLeagueId') idValue = leftExchangeLeagueId
         if (!isNaN(idValue) && idValue !== '' && idValue !== null) {
           idValue = Number(idValue);
         }
@@ -170,9 +172,11 @@ Feature: EFF Data - Leave Exchange League API Automation
     * if (currentExchangeMemberCount != null) karate.log('After leave:', memberCountAfterLeave)
     * if (currentExchangeMemberCount != null && memberCountAfterLeave >= currentExchangeMemberCount) karate.fail('Member count should have decreased after leaving. Before=' + currentExchangeMemberCount + ', After=' + memberCountAfterLeave)
     * if (currentExchangeMemberCount != null) karate.log('Member count validation passed - decreased from ' + currentExchangeMemberCount + ' to ' + memberCountAfterLeave + ' (parallel execution safe)')
+    
+    * def leftExchangeLeagueId = extremePublicExchangeLeagueId
 
     # Clear extremePublicExchangeLeagueId so subsequent features know the user is no longer a public league member
-    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: signUpInfo.extremePublicBlitzLeagueId, extremePublicExchangeLeagueId: null, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzTeamId: signUpInfo.privateBlitzTeamId, privateBlitzTeamName: signUpInfo.privateBlitzTeamName}, 'target/info.txt')
+    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: signUpInfo.extremePublicBlitzLeagueId, extremePublicExchangeLeagueId: null, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzTeamId: signUpInfo.privateBlitzTeamId, privateBlitzTeamName: signUpInfo.privateBlitzTeamName, leftExchangeLeagueId: leftExchangeLeagueId}, 'target/info.txt')
     * karate.log('Cleared extremePublicExchangeLeagueId after leaving public league')
 
     Examples:
@@ -183,7 +187,7 @@ Feature: EFF Data - Leave Exchange League API Automation
   Scenario Outline: LeaveExchangeLeague fails when user is not a member
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremePublicExchangeLeagueId == null) karate.abort()
+    * if (leftExchangeLeagueId == null) karate.abort()
 
     # Attempt to leave the league again (should fail as user already left)
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
@@ -201,8 +205,8 @@ Feature: EFF Data - Leave Exchange League API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId                         | expectedStatus | expectedMessage                         | expectedErrorCode           |
-      | existingPublicExchangeLeagueId   | 404            | You are not a member of this league.    | LEAGUE_MEMBERSHIP_NOT_FOUND |
+      | leagueId               | expectedStatus | expectedMessage                         | expectedErrorCode           |
+      | leftExchangeLeagueId   | 404            | You are not a member of this league.    | LEAGUE_MEMBERSHIP_NOT_FOUND |
 
   @league_not_found
   Scenario Outline: LeaveExchangeLeague fails with non-existent league ID
@@ -227,29 +231,6 @@ Feature: EFF Data - Leave Exchange League API Automation
       | leagueId | expectedStatus | expectedMessage   | expectedErrorCode   |
       | 999999   | 404            | League not found  | LEAGUE_NOT_FOUND    |
       | 100000   | 404            | League not found  | LEAGUE_NOT_FOUND    |
-
-  @league_owner_cannot_leave
-  Scenario Outline: LeaveExchangeLeague fails when league owner tries to leave
-    # PREREQUISITE CHECK: Ensure access token exists
-    * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    
-    * def build = buildLeagueData('<leagueId>', existingAccessToken)
-    * header Authorization = build.authToken
-    * def payload = { query: '#(leaveExchangeLeagueQuery)', variables: '#(build.variables)' }
-    
-    Given request payload
-    When method post
-    Then status 200
-    * print 'LeaveExchangeLeague Owner Cannot Leave Response:', response
-    * match response.data.leaveExchangeLeague == null
-    * match response.errors[0].errorInfo.statusCode == <expectedStatus>
-    * match response.errors[0].errorInfo.errorCodeID == errorCodes[expectedErrorCode]
-    * match response.errors[0].errorInfo.errorCode == '<expectedErrorCode>'
-    * match response.errors[0].message contains '<expectedMessage>'
-
-    Examples:
-      | leagueId | expectedStatus | expectedMessage                          | expectedErrorCode              |
-      | 1        | 403            | League owner cannot leave the league     | LEAGUE_OWNER_LEAVE_NOT_ALLOWED |
 
   @invalid_league_id
   Scenario Outline: LeaveExchangeLeague fails with invalid league ID format

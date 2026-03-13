@@ -14,6 +14,7 @@ Feature: EFF Data - Leave Blitz League API Automation
     * def signUpInfo = JSON.parse(rawSignUpInfo)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
     * def extremePublicBlitzLeagueId = karate.get('signUpInfo.extremePublicBlitzLeagueId', null)
+    * def leftBlitzLeagueId = karate.get('signUpInfo.leftBlitzLeagueId', null)
     * def currentBlitzMemberCount = karate.get('signUpInfo.currentBlitzMemberCount', null)
     * def buildLeagueData =
       """
@@ -21,6 +22,7 @@ Feature: EFF Data - Leave Blitz League API Automation
         var idValue = leagueId;
         if (idValue === 'null') idValue = null;
         if (idValue === 'existingPublicBlitzLeagueId') idValue = extremePublicBlitzLeagueId;
+        if (idValue === 'leftBlitzLeagueId') idValue = leftBlitzLeagueId
         if (!isNaN(idValue) && idValue !== '' && idValue !== null) {
           idValue = Number(idValue);
         }
@@ -170,10 +172,11 @@ Feature: EFF Data - Leave Blitz League API Automation
     * if (currentBlitzMemberCount != null) karate.log('After leave:', memberCountAfterLeave)
     * if (currentBlitzMemberCount != null && memberCountAfterLeave >= currentBlitzMemberCount) karate.fail('Member count should have decreased after leaving. Before=' + currentBlitzMemberCount + ', After=' + memberCountAfterLeave)
     * if (currentBlitzMemberCount != null) karate.log('Member count validation passed - decreased from ' + currentBlitzMemberCount + ' to ' + memberCountAfterLeave + ' (parallel execution safe)')
-
+    
+    * def leftBlitzLeagueId = extremePublicBlitzLeagueId
     # Clear extremePublicBlitzLeagueId so subsequent features know the user is no longer a public league member
-    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: null, extremePublicExchangeLeagueId: signUpInfo.extremePublicExchangeLeagueId, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzTeamId: signUpInfo.privateBlitzTeamId, privateBlitzTeamName: signUpInfo.privateBlitzTeamName}, 'target/info.txt')
-    * karate.log('Cleared extremePublicBlitzLeagueId after leaving public league')
+    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: null, extremePublicExchangeLeagueId: signUpInfo.extremePublicExchangeLeagueId, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzTeamId: signUpInfo.privateBlitzTeamId, privateBlitzTeamName: signUpInfo.privateBlitzTeamName, leftBlitzLeagueId: leftBlitzLeagueId}, 'target/info.txt')
+    * karate.log('Cleared extremePublicBlitzLeagueId after leaving public league, stored leftBlitzLeagueId:', leftBlitzLeagueId)
 
     Examples:
       | leagueId                      | expectedStatus | expectedMessage                                 |
@@ -183,8 +186,8 @@ Feature: EFF Data - Leave Blitz League API Automation
   Scenario Outline: LeaveBlitzLeague fails when user is not a member
     # PREREQUISITE CHECK: Ensure access token and league ID exist
     * if (existingAccessToken == null) karate.fail('No access token found in test data. Run login.feature first')
-    * if (extremePublicBlitzLeagueId == null) karate.abort()
-
+    * if (leftBlitzLeagueId == null) karate.abort()
+    
     # Attempt to leave the league again (should fail as user already left)
     * def build = buildLeagueData('<leagueId>', existingAccessToken)
     * header Authorization = build.authToken
@@ -201,8 +204,8 @@ Feature: EFF Data - Leave Blitz League API Automation
     * match response.errors[0].message contains '<expectedMessage>'
 
     Examples:
-      | leagueId                      | expectedStatus | expectedMessage                         | expectedErrorCode           |
-      | existingPublicBlitzLeagueId   | 404            | You are not a member of this league.    | LEAGUE_MEMBERSHIP_NOT_FOUND |
+      | leagueId           | expectedStatus | expectedMessage                         | expectedErrorCode           |
+      | leftBlitzLeagueId  | 404            | You are not a member of this league.    | LEAGUE_MEMBERSHIP_NOT_FOUND |
 
   @league_not_found
   Scenario Outline: LeaveBlitzLeague fails with non-existent league ID

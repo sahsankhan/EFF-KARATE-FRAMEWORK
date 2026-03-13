@@ -21,31 +21,47 @@ public class PublicLeagueFlowRunner {
             "classpath:Features/auth/setpassword.feature",
             "classpath:Features/auth/verifyEmail.feature",
             "classpath:Features/auth/login.feature",
+            "classpath:Features/auth/forgotPassword.feature",
+            "classpath:Features/auth/verifyResetCode.feature",
+            "classpath:Features/auth/validateToken.feature",
+            "classpath:Features/auth/refreshToken.feature",
 
             // Step 2: User Management (Validates user data)
             "classpath:Features/user-management/getUser.feature",
+            "classpath:Features/user-management/updateUser.feature",
 
-            // Step 3: Blitz League Name Validation
+            // Step 3: League Name Validations
             "classpath:Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature",
+            "classpath:Features/eff-data/exchangeLeagues/checkExchangeLeagueName.feature",
 
-            // Step 4: Public League Flow (Main Test Focus)
+            // Step 4: Environment Setup (Set timeframe to preseason for all operations)
+            "classpath:helpers/setTimeframeToPreSeason.feature",
+
+            // Step 5: Fetch Available Public Leagues
             "classpath:Features/eff-data/leagues/getHomePagePublicExtremeLeagues.feature",
             "classpath:Features/eff-data/leagues/getAvailableLeagues.feature",
             
+            // Step 6: Blitz Format Public League Flow - Complete End-to-End
             "classpath:Features/eff-data/blitzLeagues/joinPublicBlitzLeague.feature",
-            
-            // Step 5: Blitz Team Operations
             "classpath:Features/eff-data/blitzTeams/createBlitzTeam.feature",
             "classpath:Features/eff-data/blitzTeams/checkBlitzTeamName.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeam.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeams.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeamsByLeague.feature",
-            
-            // Step 6: Continue League Operations
             "classpath:Features/eff-data/blitzLeagues/getBlitzLeague.feature",
             "classpath:Features/eff-data/blitzLeagues/leavePublicBlitzLeague.feature",
 
-            // Step 7: Cleanup (Deletes test user and all associated data)
+            // Step 7: Exchange Format Public League Flow - Complete End-to-End
+            "classpath:Features/eff-data/exchangeLeagues/joinPublicExchangeLeague.feature",
+            "classpath:Features/eff-data/exchangeTeams/createExchangeTeam.feature",
+            "classpath:Features/eff-data/exchangeTeams/checkExchangeTeamName.feature",
+            "classpath:Features/eff-data/exchangeTeams/getExchangeTeam.feature",
+            "classpath:Features/eff-data/exchangeTeams/getExchangeTeams.feature",
+            "classpath:Features/eff-data/exchangeTeams/getExchangeTeamsByLeague.feature",
+            "classpath:Features/eff-data/exchangeLeagues/getExchangeLeague.feature",
+            "classpath:Features/eff-data/exchangeLeagues/leaveExchangeLeague.feature",
+
+            // Step 8: Cleanup (Deletes test user and all associated data)
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"
         )
         .configDir("file:src/test")
