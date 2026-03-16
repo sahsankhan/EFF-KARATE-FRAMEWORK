@@ -1,11 +1,8 @@
-mutation CreateExchangeLeague($League_Name: String!) {
-  createExchangeLeague(League_Name: $League_Name) {
+mutation CreateExchangeLeague($League_Name: String!, $League_Image: String) {
+  createExchangeLeague(League_Name: $League_Name, League_Image: $League_Image) {
     statusCode
     message
-    league {
-      id
-      name
-    }
+    League_ID
   }
 }
 
