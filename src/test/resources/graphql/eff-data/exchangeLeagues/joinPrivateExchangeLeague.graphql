@@ -1,0 +1,7 @@
+mutation JoinPrivateExchangeLeague($Invite_Code: String!) {
+  joinPrivateExchangeLeague(Invite_Code: $Invite_Code) {
+    statusCode
+    message
+    League_ID
+  }
+}
