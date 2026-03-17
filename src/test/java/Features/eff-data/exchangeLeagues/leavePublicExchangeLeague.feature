@@ -12,6 +12,8 @@ Feature: EFF Data - Leave Exchange League API Automation
     * def getAvailablePublicExtremeLeaguesQuery = read('classpath:graphql/eff-data/leagues/getAvailableLeagues.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
+    * def secondUserAccessToken = karate.get('signUpInfo.secondUser.accessToken', null)
+    * karate.log(secondUserAccessToken)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
     * def extremePublicExchangeLeagueId = karate.get('signUpInfo.extremePublicExchangeLeagueId', null)
     * def leftExchangeLeagueId = karate.get('signUpInfo.extremePublicExchangeLeagueId', null)
@@ -176,7 +178,7 @@ Feature: EFF Data - Leave Exchange League API Automation
     * def leftExchangeLeagueId = extremePublicExchangeLeagueId
 
     # Clear extremePublicExchangeLeagueId so subsequent features know the user is no longer a public league member
-    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: signUpInfo.extremePublicBlitzLeagueId, extremePublicExchangeLeagueId: null, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzTeamId: signUpInfo.privateBlitzTeamId, privateBlitzTeamName: signUpInfo.privateBlitzTeamName, leftExchangeLeagueId: leftExchangeLeagueId}, 'target/info.txt')
+    * karate.write({email: signUpInfo.email, resetKey: signUpInfo.resetKey, password: signUpInfo.password, isVerified: signUpInfo.isVerified, passwordSet: signUpInfo.passwordSet, refreshToken: signUpInfo.refreshToken, accessToken: signUpInfo.accessToken, extremePublicBlitzLeagueId: signUpInfo.extremePublicBlitzLeagueId, extremePublicExchangeLeagueId: null, privateBlitzLeagueId: signUpInfo.privateBlitzLeagueId, privateBlitzTeamId: signUpInfo.privateBlitzTeamId, privateBlitzTeamName: signUpInfo.privateBlitzTeamName, secondUser: signUpInfo.secondUser, leftExchangeLeagueId: leftExchangeLeagueId}, 'target/info.txt')
     * karate.log('Cleared extremePublicExchangeLeagueId after leaving public league')
 
     Examples:

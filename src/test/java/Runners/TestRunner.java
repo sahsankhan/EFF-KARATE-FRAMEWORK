@@ -80,7 +80,8 @@ class TestRunner {
             
             // Private Exchange League Module Tests 
             "classpath:Features/eff-data/exchangeLeagues/createExchangeLeague.feature",
-            
+            "classpath:Features/eff-data/exchangeLeagues/joinPrivateExchangeLeague.feature",
+
             //Module cleanup
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"
             
