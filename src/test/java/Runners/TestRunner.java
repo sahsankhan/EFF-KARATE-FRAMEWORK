@@ -84,6 +84,8 @@ class TestRunner {
 
             "classpath:Features/eff-data/exchangeTeams/createExchangeTeamPrivateLeague.feature",
             "classpath:Features/eff-data/exchangeTeams/getExchangeTeamPrivateLeague.feature",
+            "classpath:Features/eff-data/exchangeTeams/getExchangeTeamsPrivateLeague.feature",
+            "classpath:Features/eff-data/exchangeTeams/getExchangeTeamsByPrivateLeague.feature",
 
             //Module cleanup
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"
