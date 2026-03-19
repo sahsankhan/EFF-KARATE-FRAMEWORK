@@ -12,8 +12,6 @@ Feature: EFF Data - Leave Exchange League API Automation
     * def getAvailablePublicExtremeLeaguesQuery = read('classpath:graphql/eff-data/leagues/getAvailableLeagues.graphql')
     * def rawSignUpInfo = karate.read('file:target/target/info.txt')
     * def signUpInfo = JSON.parse(rawSignUpInfo)
-    * def secondUserAccessToken = karate.get('signUpInfo.secondUser.accessToken', null)
-    * karate.log(secondUserAccessToken)
     * def existingAccessToken = karate.get('signUpInfo.accessToken', null)
     * def extremePublicExchangeLeagueId = karate.get('signUpInfo.extremePublicExchangeLeagueId', null)
     * def leftExchangeLeagueId = karate.get('signUpInfo.extremePublicExchangeLeagueId', null)
