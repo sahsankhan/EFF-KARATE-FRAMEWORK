@@ -17,7 +17,7 @@ Feature: EFF Data - Get Private Blitz League API Automation
       function(leagueId, existingAccessToken) {
         var idValue = leagueId;
         if (idValue === 'null') idValue = null;
-        if (idValue === 'existingPublicBlitzLeagueId') idValue = privateBlitzLeagueId;
+        if (idValue === 'existingPrivateBlitzLeagueId') idValue = privateBlitzLeagueId;
         if (!isNaN(idValue) && idValue !== '' && idValue !== null) {
           idValue = Number(idValue);
         }
@@ -58,7 +58,7 @@ Feature: EFF Data - Get Private Blitz League API Automation
     * if (initialPrivateBlitzLeagueMemberCount != null && currentMemberCount <= initialPrivateBlitzLeagueMemberCount) karate.fail('Member count should have increased after joining. Before=' + initialPrivateBlitzLeagueMemberCount + ', After=' + currentMemberCount)
 
     Examples:
-      | leagueId                     | expectedStatus | 
-      | existingPublicBlitzLeagueId  | 200            | 
+      | leagueId                      | expectedStatus | 
+      | existingPrivateBlitzLeagueId  | 200            | 
 
  

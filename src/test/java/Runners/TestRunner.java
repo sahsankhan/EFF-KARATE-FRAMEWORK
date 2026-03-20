@@ -80,11 +80,16 @@ class TestRunner {
             // Private Exchange League Module Tests 
             "classpath:Features/eff-data/exchangeLeagues/createExchangeLeague.feature",
             "classpath:Features/eff-data/exchangeLeagues/joinPrivateExchangeLeague.feature",
-
+            
+            // Exchange Team Operations
             "classpath:Features/eff-data/exchangeTeams/createExchangeTeamPrivateLeague.feature",
             "classpath:Features/eff-data/exchangeTeams/getExchangeTeamPrivateLeague.feature",
             "classpath:Features/eff-data/exchangeTeams/getExchangeTeamsPrivateLeague.feature",
             "classpath:Features/eff-data/exchangeTeams/getExchangeTeamsByPrivateLeague.feature",
+                        
+            // Continue Exchange League Operations
+            "classpath:Features/eff-data/exchangeLeagues/getPrivateExchangeLeague.feature",
+            "classpath:Features/eff-data/exchangeLeagues/leavePrivateExchangeLeague.feature",
 
             //Module cleanup
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"

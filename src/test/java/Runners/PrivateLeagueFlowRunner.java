@@ -6,9 +6,9 @@ import org.junit.jupiter.api.AfterAll;
 /**
  * Private League Flow Runner - Complete end-to-end flow for private league testing
  * 
- * Flow: Auth Setup → User Management → Private League Creation → Second User → Private League Join → Leave League
+ * Flow: Auth Setup → User Management → Private League Creation (Blitz & Exchange) → Second User → Private League Join → Leave League
  * 
- * Use this runner when you want to test the complete private league journey
+ * Use this runner when you want to test the complete private league journey for both Blitz and Exchange formats
  */
 public class PrivateLeagueFlowRunner {
 
@@ -25,24 +25,33 @@ public class PrivateLeagueFlowRunner {
             // Step 2: User Management (Validates user data)
             "classpath:Features/user-management/getUser.feature",
 
-            // Step 3: Blitz League Name Validation
+            // Step 3: League Name Validations
             "classpath:Features/eff-data/blitzLeagues/checkBlitzLeagueName.feature",
+            "classpath:Features/eff-data/exchangeLeagues/checkExchangeLeagueName.feature",
 
-            // Step 4: Private League Flow (Main Test Focus)
+            // Step 4: Blitz Format Private League Flow - Complete End-to-End
             "classpath:Features/eff-data/blitzLeagues/createBlitzLeague.feature",
-            "classpath:helpers/createSecondUser.feature",
+
+             // Step 5: Create Second User for Private League Testing
+             "classpath:helpers/createSecondUser.feature",
 
             "classpath:Features/eff-data/blitzLeagues/joinPrivateBlitzLeague.feature",
-
-            // Step 5: Blitz Team Operations
             "classpath:Features/eff-data/blitzTeams/createBlitzTeamPrivateLeague.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeamPrivateLeague.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeamsPrivateLeague.feature",
             "classpath:Features/eff-data/blitzTeams/getBlitzTeamsByPrivateLeague.feature",
-
-            // Step 6: Continue League Operations
             "classpath:Features/eff-data/blitzLeagues/getPrivateBlitzLeague.feature",
             "classpath:Features/eff-data/blitzLeagues/leavePrivateBlitzLeague.feature",
+
+            // Step 6: Exchange Format Private League Flow - Complete End-to-End
+            "classpath:Features/eff-data/exchangeLeagues/createExchangeLeague.feature",
+            "classpath:Features/eff-data/exchangeLeagues/joinPrivateExchangeLeague.feature",
+            "classpath:Features/eff-data/exchangeTeams/createExchangeTeamPrivateLeague.feature",
+            "classpath:Features/eff-data/exchangeTeams/getExchangeTeamPrivateLeague.feature",
+            "classpath:Features/eff-data/exchangeTeams/getExchangeTeamsPrivateLeague.feature",
+            "classpath:Features/eff-data/exchangeTeams/getExchangeTeamsByPrivateLeague.feature",
+            "classpath:Features/eff-data/exchangeLeagues/getPrivateExchangeLeague.feature",
+            "classpath:Features/eff-data/exchangeLeagues/leavePrivateExchangeLeague.feature",
 
             // Step 7: Cleanup (Deletes test user and all associated data)
             "classpath:Features/user-management/deleteUserAccountByEmail.feature"
