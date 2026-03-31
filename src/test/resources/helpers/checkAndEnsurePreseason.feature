@@ -30,13 +30,15 @@ Feature: Helper - Check and Ensure Preseason
     * match response.data.getEFFTimeframe.statusCode == <expectedStatus>
     * match response.data.getEFFTimeframe.message == '<expectedMessage>'
     * def currentSeasonType = response.data.getEFFTimeframe.current_timeframe.SeasonType
-    * print 'Current Season Type:', currentSeasonType, 'Expected Preseason Type:', <expectedSeasonType>
+    * def currentWeek = response.data.getEFFTimeframe.current_timeframe.Week
+    * print 'Current Season/Week:', currentSeasonType, currentWeek, 'Expected Preseason:', <expectedSeasonType>, <expectedWeek>
     
     # If not preseason, set to preseason
-    * if (currentSeasonType != <expectedSeasonType>) karate.call('classpath:helpers/setTimeframeToPreSeason.feature')
-    * if (currentSeasonType == <expectedSeasonType>) karate.log('Already in preseason - no action needed')
-    * if (currentSeasonType != <expectedSeasonType>) karate.log('Season type changed to preseason (SeasonType: ' + <expectedSeasonType> + ')')
+    * def shouldEnsurePreseason = (currentSeasonType != <expectedSeasonType> || currentWeek != <expectedWeek>)
+    * if (shouldEnsurePreseason) karate.call('classpath:helpers/setTimeframeToPreSeason.feature')
+    * if (!shouldEnsurePreseason) karate.log('Already in preseason (SeasonType: ' + <expectedSeasonType> + ', Week: ' + <expectedWeek> + ') - no action needed')
+    * if (shouldEnsurePreseason) karate.log('Ensuring preseason (SeasonType: ' + <expectedSeasonType> + ', Week: ' + <expectedWeek> + '). Current was (SeasonType: ' + currentSeasonType + ', Week: ' + currentWeek + ')')
 
     Examples:
-      | expectedSeasonType | expectedStatus | expectedMessage         |
-      | 2                  | 200            | EFF timeframe retrieved |
+      | expectedSeasonType | expectedWeek | expectedStatus | expectedMessage         |
+      | 2                  | 1            | 200            | EFF timeframe retrieved |
