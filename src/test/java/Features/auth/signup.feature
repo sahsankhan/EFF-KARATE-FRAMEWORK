@@ -8,10 +8,11 @@ Feature: Sign-Up API Automation
     * def errorCodes = read('classpath:common/error-codes.json')
     * def signUpQuery = read('classpath:graphql/auth/signup.graphql')
     * def random = function() { return java.lang.Math.floor(java.lang.Math.random() * 100000); }
+    * def emailSuffix = function() { return '' + java.lang.System.currentTimeMillis() + java.lang.Math.floor(java.lang.Math.random() * 1000000); }
     * def buildSignUpData =
     """
     function(first_name, last_name, username, email, state, dob, phone, heard_about_us, profile_picture, test_bypass) {
-      var dynamicEmail = email == 'random' ? 'userexample' + random() + '@gmail.com' : email;
+      var dynamicEmail = email == 'random' ? 'userexample' + emailSuffix() + '@gmail.com' : email;
       var dynamicUsername = username == 'random' ? String.fromCharCode(97 + Math.floor(Math.random() * 26)) + random() : username;
       var userData = {
         first_name: first_name,
